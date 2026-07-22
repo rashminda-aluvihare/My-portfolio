@@ -30,8 +30,8 @@ export default function Experience() {
       type: 'Bank Internship',
       skills: 'Branch Banking Operations',
       certificate: 'Service Letter',
+      passedExam: 'IT, Digital Banking and Settlements (IBSL DBF Level I)',
       responsibilities: [
-        'Passed IBSL DBF Subject: IT, Digital Banking and Settlements.',
         'Supported branch banking operations, financial transactions, and daily account management logs.',
         'Assisted customers in handling account openings, deposit services, and digital loan requests.',
         'Gained hands-on exposure to secure enterprise banking databases and transactional software.',
@@ -177,6 +177,42 @@ export default function Experience() {
                 </div>
               )}
 
+
+              {/* Passed Examination Badge Banner */}
+              {exp.passedExam && (
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    flexWrap: 'wrap',
+                    gap: '10px',
+                    background: 'linear-gradient(135deg, rgba(56, 239, 125, 0.12), rgba(0, 242, 254, 0.12))',
+                    border: '1px solid rgba(56, 239, 125, 0.4)',
+                    padding: '10px 16px',
+                    borderRadius: '10px',
+                    boxShadow: '0 0 15px rgba(56, 239, 125, 0.15)',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#38ef7d', fontWeight: 700, fontSize: '0.9rem' }}>
+                    <Award size={18} />
+                    <span>PASSED EXAM: {exp.passedExam}</span>
+                  </div>
+                  <span
+                    style={{
+                      background: '#38ef7d',
+                      color: '#0a1912',
+                      fontSize: '0.75rem',
+                      fontWeight: 900,
+                      padding: '3px 10px',
+                      borderRadius: '999px',
+                      boxShadow: '0 0 8px rgba(56, 239, 125, 0.5)',
+                    }}
+                  >
+                    ✓ PASSED
+                  </span>
+                </div>
+              )}
 
               {/* Responsibilities */}
               <div style={{ borderTop: '1px solid var(--card-border)', paddingTop: '16px' }}>

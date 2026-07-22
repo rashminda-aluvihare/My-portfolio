@@ -1,4 +1,4 @@
-import { GraduationCap, Calendar, BookOpen, CheckSquare } from 'lucide-react';
+import { GraduationCap, Calendar, BookOpen, CheckCircle2, Award } from 'lucide-react';
 
 export default function Education() {
   const educations = [
@@ -8,6 +8,7 @@ export default function Education() {
       location: 'Sri Lanka',
       duration: 'Reading / Ongoing',
       status: 'Banking & Finance Student',
+      passedSubject: 'IT, Digital Banking and Settlements',
       modules: [
         'IT, Digital Banking and Settlements (Passed)',
         'Financial Systems & Commercial Banking Operations',
@@ -134,6 +135,43 @@ export default function Education() {
                 </div>
               </div>
 
+              {/* Passed Subject Highlight Banner */}
+              {edu.passedSubject && (
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    flexWrap: 'wrap',
+                    gap: '10px',
+                    background: 'linear-gradient(135deg, rgba(56, 239, 125, 0.15), rgba(17, 153, 142, 0.15))',
+                    border: '1px solid rgba(56, 239, 125, 0.4)',
+                    padding: '12px 18px',
+                    borderRadius: '12px',
+                    boxShadow: '0 0 20px rgba(56, 239, 125, 0.15)',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#38ef7d', fontWeight: 700, fontSize: '0.95rem' }}>
+                    <Award size={20} />
+                    <span>PASSED SUBJECT: {edu.passedSubject}</span>
+                  </div>
+                  <span
+                    style={{
+                      background: '#38ef7d',
+                      color: '#0a1912',
+                      fontSize: '0.75rem',
+                      fontWeight: 900,
+                      letterSpacing: '0.05em',
+                      padding: '4px 12px',
+                      borderRadius: '999px',
+                      boxShadow: '0 0 10px rgba(56, 239, 125, 0.5)',
+                    }}
+                  >
+                    PASSED EXAM
+                  </span>
+                </div>
+              )}
+
               {/* Modules */}
               <div style={{ borderTop: '1px solid var(--card-border)', paddingTop: '20px' }}>
                 <h4
@@ -154,25 +192,52 @@ export default function Education() {
                     gap: '10px',
                   }}
                 >
-                  {edu.modules.map((mod, mIdx) => (
-                    <li
-                      key={mIdx}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        gap: '10px',
-                        color: 'var(--text-secondary)',
-                        fontSize: '0.95rem',
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      <BookOpen
-                        size={16}
-                        style={{ color: 'var(--accent-cyan)', marginTop: '3px', flexShrink: 0 }}
-                      />
-                      <span>{mod}</span>
-                    </li>
-                  ))}
+                  {edu.modules.map((mod, mIdx) => {
+                    const isPassed = mod.includes('(Passed)');
+                    return (
+                      <li
+                        key={mIdx}
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'space-between',
+                          gap: '10px',
+                          color: isPassed ? '#38ef7d' : 'var(--text-secondary)',
+                          fontWeight: isPassed ? 700 : 500,
+                          fontSize: '0.95rem',
+                          lineHeight: 1.5,
+                          background: isPassed ? 'rgba(56, 239, 125, 0.06)' : 'transparent',
+                          border: isPassed ? '1px solid rgba(56, 239, 125, 0.25)' : 'none',
+                          padding: isPassed ? '8px 12px' : '0',
+                          borderRadius: isPassed ? '8px' : '0',
+                        }}
+                      >
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                          {isPassed ? (
+                            <CheckCircle2 size={18} style={{ color: '#38ef7d', flexShrink: 0 }} />
+                          ) : (
+                            <BookOpen size={16} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
+                          )}
+                          <span>{isPassed ? mod.replace(' (Passed)', '') : mod}</span>
+                        </div>
+                        {isPassed && (
+                          <span
+                            style={{
+                              fontSize: '0.7rem',
+                              fontWeight: 800,
+                              color: '#38ef7d',
+                              background: 'rgba(56, 239, 125, 0.15)',
+                              border: '1px solid rgba(56, 239, 125, 0.4)',
+                              padding: '2px 8px',
+                              borderRadius: '999px',
+                            }}
+                          >
+                            ✓ PASSED
+                          </span>
+                        )}
+                      </li>
+                    );
+                  })}
                 </ul>
               </div>
             </div>
