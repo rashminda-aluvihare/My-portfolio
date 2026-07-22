@@ -156,57 +156,26 @@ export default function Experience() {
                 </div>
               </div>
 
-              {/* Skills & Certificate Badges */}
-              <div
-                style={{
-                  display: 'flex',
-                  flexWrap: 'wrap',
-                  gap: '12px',
-                  alignItems: 'center',
-                  background: 'rgba(255, 255, 255, 0.02)',
-                  padding: '12px 16px',
-                  borderRadius: '10px',
-                  border: '1px solid var(--card-border)',
-                }}
-              >
-                {/* Certificate */}
-                {exp.certificate && (
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      fontSize: '0.85rem',
-                      fontWeight: 600,
-                      color: 'var(--text-primary)',
-                      background: 'rgba(255, 255, 255, 0.05)',
-                      padding: '4px 10px',
-                      borderRadius: '6px',
-                      border: '1px solid var(--card-border)',
-                    }}
-                  >
-                    <FileText size={15} style={{ color: exp.badgeColor }} />
-                    <span>{exp.certificate}</span>
-                  </div>
-                )}
+              {/* Skill Specialization Badge */}
+              {exp.skills && (
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    background: 'rgba(255, 255, 255, 0.02)',
+                    padding: '10px 14px',
+                    borderRadius: '10px',
+                    border: '1px solid var(--card-border)',
+                  }}
+                >
+                  <Layers size={15} style={{ color: exp.badgeColor }} />
+                  <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
+                    {exp.skills}
+                  </span>
+                </div>
+              )}
 
-                {/* Skill specialization */}
-                {exp.skills && (
-                  <div
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '6px',
-                      fontSize: '0.85rem',
-                      fontWeight: 600,
-                      color: 'var(--text-secondary)',
-                    }}
-                  >
-                    <Layers size={15} style={{ color: exp.badgeColor }} />
-                    <span>{exp.skills}</span>
-                  </div>
-                )}
-              </div>
 
               {/* Responsibilities */}
               <div style={{ borderTop: '1px solid var(--card-border)', paddingTop: '16px' }}>
