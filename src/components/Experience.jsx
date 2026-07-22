@@ -25,7 +25,7 @@ export default function Experience() {
       role: 'Internship Trainee',
       company: "People's Bank Sri Lanka",
       companyType: 'Internship',
-      location: 'Sri Lanka',
+      location: 'Ukuwela Branch, Sri Lanka',
       duration: 'Jan 2024 - Jul 2024 · 7 mos',
       type: 'Bank Internship',
       skills: 'Branch Banking Operations',
