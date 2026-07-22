@@ -19,7 +19,7 @@ export default function ProjectDemoModal({ demoType, onClose }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        zIndex: 10000,
+        zIndex: 999999,
         padding: '20px',
         animation: 'fadeIn 0.3s ease-out',
       }}

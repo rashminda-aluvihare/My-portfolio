@@ -87,7 +87,7 @@ export default function App() {
       <Navbar theme={theme} toggleTheme={toggleTheme} />
 
       {/* Page Sections */}
-      <main style={{ position: 'relative', zIndex: 1 }}>
+      <main style={{ position: 'relative' }}>
         <Hero />
         <About />
         <Experience />
