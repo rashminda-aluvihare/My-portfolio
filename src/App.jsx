@@ -111,12 +111,7 @@ export default function App() {
           fontSize: '0.9rem',
         }}
       >
-        <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-          <p>© {new Date().getFullYear()} Rashminda Aluvihare. All Rights Reserved.</p>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.8rem' }}>
-            Built using Vite, React, and Premium Vanilla CSS.
-          </p>
-        </div>
+
       </footer>
 
       {/* Scroll to Top Trigger */}
