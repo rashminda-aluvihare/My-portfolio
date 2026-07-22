@@ -227,18 +227,20 @@ export default function Navbar({ theme, toggleTheme }) {
       {/* Mobile Drawer Menu */}
       {isOpen && (
         <div
-          className="glass-panel"
           style={{
             position: 'absolute',
-            top: 'calc(100% + 12px)',
+            top: 'calc(100% + 10px)',
             left: 0,
             right: 0,
-            padding: '24px',
+            background: 'var(--bg-secondary)',
+            border: '1px solid var(--card-border)',
+            padding: '16px',
             display: 'flex',
             flexDirection: 'column',
-            gap: '16px',
+            gap: '8px',
             borderRadius: '16px',
-            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
+            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
+            zIndex: 9999,
           }}
         >
           <ul
@@ -246,7 +248,9 @@ export default function Navbar({ theme, toggleTheme }) {
               display: 'flex',
               flexDirection: 'column',
               listStyle: 'none',
-              gap: '16px',
+              gap: '4px',
+              margin: 0,
+              padding: 0,
             }}
           >
             {navItems.map((item) => {
@@ -258,12 +262,16 @@ export default function Navbar({ theme, toggleTheme }) {
                     href={item.href}
                     onClick={() => setIsOpen(false)}
                     style={{
-                      color: isActive ? 'var(--accent-cyan)' : 'var(--text-secondary)',
+                      color: isActive ? 'var(--accent-cyan)' : 'var(--text-primary)',
+                      background: isActive ? 'rgba(0, 242, 254, 0.12)' : 'transparent',
                       textDecoration: 'none',
-                      fontWeight: 600,
+                      fontWeight: isActive ? 700 : 600,
                       fontSize: '1rem',
                       display: 'block',
-                      padding: '8px 0',
+                      padding: '12px 16px',
+                      borderRadius: '10px',
+                      transition: 'all 0.2s ease',
+                      border: isActive ? '1px solid rgba(0, 242, 254, 0.3)' : '1px solid transparent',
                     }}
                   >
                     {item.label}
