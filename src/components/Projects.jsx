@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { ExternalLink, Calendar } from 'lucide-react';
+import { ExternalLink, Calendar, BookOpen, ArrowUpRight } from 'lucide-react';
 import ProjectDemoModal from './ProjectDemoModal';
+import CaseStudyModal from './CaseStudyModal';
+import { caseStudiesData } from '../data/caseStudiesData';
 
 // Import project banner images for high-end professional aesthetics
 import finbridgeImg from '../assets/finbridge.png';
@@ -12,6 +14,7 @@ import loanSavingsImg from '../assets/loan_savings.png';
 export default function Projects() {
   const [filter, setFilter] = useState('all');
   const [activeDemo, setActiveDemo] = useState(null);
+  const [activeCaseStudyKey, setActiveCaseStudyKey] = useState(null);
 
   const projectCategories = [
     { id: 'all', name: 'All Work' },
@@ -21,6 +24,7 @@ export default function Projects() {
 
   const projectsList = [
     {
+      id: 'finbridge',
       title: 'FinBridge AI Platform',
       description: 'AI-driven microfinance, digital wallet & alternative loan risk assessment platform tailored for underserved micro-entrepreneurs. Evaluates non-traditional inputs to generate credit scores (300–850), lowering interest barriers.',
       tags: ['Next.js (App Router)', 'React 19', 'TypeScript', 'Zustand', 'Tailwind CSS', 'Framer Motion', 'Recharts', 'Trilingual i18n'],
@@ -31,6 +35,7 @@ export default function Projects() {
       image: finbridgeImg,
     },
     {
+      id: 'fund-management',
       title: 'FundManagementSystem-v2',
       description: 'A Web-based Fund Management System developed for SLIATE HNDIT academic curriculum. Built using PHP & MySQL database. Integrates Chart.js visualizations to manage registrations, track monthly payments, and monitor expenditures.',
       tags: ['PHP', 'MySQL', 'Chart.js', 'Bootstrap', 'JavaScript'],
@@ -41,6 +46,7 @@ export default function Projects() {
       image: fundManagementImg,
     },
     {
+      id: 'agronexa',
       title: 'agronexa-lk',
       description: 'A tracking and smart planning platform tailored for agricultural workflows. Formulates visual reporting data, helps optimize farm operations, and tracks crop outputs using modern JavaScript modules.',
       tags: ['JavaScript', 'HTML5', 'CSS3', 'Interactive Charts'],
@@ -51,6 +57,7 @@ export default function Projects() {
       image: agronexaImg,
     },
     {
+      id: 'fixed-deposit',
       title: 'FixedDepositCalculation-System',
       description: 'A Java-based core logic simulator for calculating fixed deposit schemes. Calculates interest models, compounding formulas, and tax deductions based on investment duration variables.',
       tags: ['Java SE', 'Financial Formulas', 'Desktop Console'],
@@ -61,6 +68,7 @@ export default function Projects() {
       image: fixedDepositImg,
     },
     {
+      id: 'loan-savings',
       title: 'Savingaccounts-LoancalculationSystem',
       description: 'A mathematical logic engine in Java for tracking saving account interests and loan amortization schedules. Incorporates reducing-balance algorithms, EMI computations, and payment tables.',
       tags: ['Java SE', 'OOP Logic', 'Interest Algorithms'],
@@ -85,7 +93,7 @@ export default function Projects() {
             Featured Projects
           </h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginTop: '10px' }}>
-            A curated selection of my academic work, web systems, and system applications.
+            A curated selection of my academic work, web systems, and system applications. Click <strong style={{ color: 'var(--accent-cyan)' }}>View Case Study</strong> for full details.
           </p>
         </div>
 
@@ -143,9 +151,9 @@ export default function Projects() {
             gap: '30px',
           }}
         >
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project) => (
             <div
-              key={index}
+              key={project.id}
               className="glass-panel"
               style={{
                 borderRadius: '16px',
@@ -154,6 +162,7 @@ export default function Projects() {
                 flexDirection: 'column',
                 height: '100%',
                 transition: 'var(--transition-bounce)',
+                position: 'relative',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.transform = 'translateY(-6px)';
@@ -178,10 +187,11 @@ export default function Projects() {
                   />
                 </div>
               )}
+
               {/* Card Header Area */}
               <div
                 style={{
-                  padding: '24px 24px 12px 24px',
+                  padding: '20px 24px 12px 24px',
                   borderBottom: '1px solid var(--card-border)',
                   display: 'flex',
                   justifyContent: 'space-between',
@@ -218,8 +228,46 @@ export default function Projects() {
                   {project.description}
                 </p>
 
+                {/* Case Study Trigger Button */}
+                <button
+                  onClick={() => setActiveCaseStudyKey(project.id)}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '8px',
+                    width: '100%',
+                    padding: '10px 16px',
+                    borderRadius: '10px',
+                    background: 'rgba(0, 242, 254, 0.08)',
+                    border: '1px solid rgba(0, 242, 254, 0.25)',
+                    color: 'var(--accent-cyan)',
+                    fontSize: '0.88rem',
+                    fontWeight: 700,
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    marginTop: '4px',
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(0, 242, 254, 0.18)';
+                    e.currentTarget.style.borderColor = 'var(--accent-cyan)';
+                    e.currentTarget.style.boxShadow = '0 0 15px rgba(0, 242, 254, 0.25)';
+                    e.currentTarget.style.transform = 'translateY(-1px)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(0, 242, 254, 0.08)';
+                    e.currentTarget.style.borderColor = 'rgba(0, 242, 254, 0.25)';
+                    e.currentTarget.style.boxShadow = 'none';
+                    e.currentTarget.style.transform = 'none';
+                  }}
+                >
+                  <BookOpen size={16} />
+                  <span>View Case Study</span>
+                  <ArrowUpRight size={16} />
+                </button>
+
                 {/* Tech tags */}
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '8px' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '4px' }}>
                   {project.tags.map((tag, tIdx) => (
                     <span
                       key={tIdx}
@@ -246,7 +294,9 @@ export default function Projects() {
                   background: 'rgba(0, 0, 0, 0.15)',
                   borderTop: '1px solid var(--card-border)',
                   display: 'flex',
-                  gap: '16px',
+                  alignItems: 'center',
+                  justifyContent: 'space-between',
+                  gap: '12px',
                 }}
               >
                 <a
@@ -267,7 +317,7 @@ export default function Projects() {
                   onMouseLeave={(e) => (e.currentTarget.style.color = 'var(--text-secondary)')}
                 >
                   <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" style={{ display: 'inline-block', verticalAlign: 'middle' }}><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-                  <span>GitHub Repository</span>
+                  <span>GitHub</span>
                 </a>
                 
                 {project.demo && (
@@ -288,7 +338,6 @@ export default function Projects() {
                       fontSize: '0.85rem',
                       fontWeight: 700,
                       color: 'var(--accent-cyan)',
-                      marginLeft: 'auto',
                       cursor: 'pointer',
                       transition: 'var(--transition-smooth)',
                     }}
@@ -304,6 +353,18 @@ export default function Projects() {
           ))}
         </div>
       </div>
+
+      {/* Case Study Modal */}
+      {activeCaseStudyKey && caseStudiesData[activeCaseStudyKey] && (
+        <CaseStudyModal
+          caseStudy={caseStudiesData[activeCaseStudyKey]}
+          onClose={() => setActiveCaseStudyKey(null)}
+          onOpenDemo={(demoType) => {
+            setActiveCaseStudyKey(null);
+            setActiveDemo(demoType);
+          }}
+        />
+      )}
 
       {/* Interactive Project Demo Modal overlay */}
       {activeDemo && (

@@ -351,3 +351,40 @@ input[type="range"]::-moz-range-thumb {
 .photo-hover-container:hover img {
   transform: scale(1.05);
 }
+
+/* Modal Animations & Styles */
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+    -webkit-backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+}
+
+@keyframes modalSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.case-study-body::-webkit-scrollbar {
+  width: 6px;
+}
+.case-study-body::-webkit-scrollbar-thumb {
+  background: var(--card-border);
+  border-radius: 999px;
+}
+.case-study-body::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-cyan);
+}
+
