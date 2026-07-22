@@ -7,6 +7,7 @@ import Experience from './components/Experience';
 import Education from './components/Education';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
+import Activities from './components/Activities';
 import Contact from './components/Contact';
 import { ArrowUp } from 'lucide-react';
 
@@ -93,6 +94,7 @@ export default function App() {
         <Education />
         <Skills />
         <Projects />
+        <Activities />
         <Contact />
       </main>
 
