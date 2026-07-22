@@ -15,7 +15,7 @@ export default function App() {
   // Theme state
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem('theme');
-    return saved || 'dark'; // dark default
+    return saved || 'light'; // light default
   });
 
   const [showScrollTop, setShowScrollTop] = useState(false);
