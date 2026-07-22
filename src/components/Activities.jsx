@@ -106,9 +106,7 @@ export default function Activities() {
           <h2 style={{ fontSize: '2.5rem', fontWeight: 800 }} className="gradient-text">
             Activities & Industry Visits
           </h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginTop: '10px' }}>
-            A log of my industry exposures, tech tours, field studies, and academic activities. Click any photo to zoom.
-          </p>
+
         </div>
 
         {/* Activities Grid */}
