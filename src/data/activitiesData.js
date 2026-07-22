@@ -1,4 +1,3 @@
-// Industry Visits, Workshops & Field Activities Data
 import visit99x1 from '../assets/99xvisit1.jpg';
 import visit99x2 from '../assets/99xvisit2.jpg';
 
