@@ -35,7 +35,7 @@ export default function Projects() {
       tags: ['JavaScript', 'HTML5', 'CSS3', 'Interactive Charts'],
       category: 'web',
       github: 'https://github.com/rashminda-aluvihare/agronexa-lk',
-      demo: null,
+      demo: 'https://agronexa-lk.vercel.app',
       date: 'Independent Development',
       image: agronexaImg,
     },
