@@ -339,7 +339,7 @@ input[type="range"]::-moz-range-thumb {
     grid-template-columns: 1fr !important;
   }
   .hero-section-compact {
-    padding-top: 70px !important;
+    padding-top: 125px !important;
     min-height: auto !important;
   }
 }
