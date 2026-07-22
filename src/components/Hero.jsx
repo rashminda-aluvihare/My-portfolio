@@ -241,19 +241,7 @@ export default function Hero() {
             position: 'relative',
             borderRadius: '16px',
             overflow: 'hidden',
-            boxShadow: '0 20px 50px rgba(0,0,0,0.5)',
-            transform: 'perspective(1000px) rotateY(-5deg) rotateX(5deg)',
-            transition: 'var(--transition-smooth)',
-          }}
-          onMouseMove={(e) => {
-            const card = e.currentTarget;
-            const box = card.getBoundingClientRect();
-            const x = e.clientX - box.left - box.width / 2;
-            const y = e.clientY - box.top - box.height / 2;
-            card.style.transform = `perspective(1000px) rotateY(${x * 0.04}deg) rotateX(${-y * 0.04}deg) translateY(-5px)`;
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'perspective(1000px) rotateY(-5deg) rotateX(5deg)';
+            boxShadow: '0 10px 30px rgba(0, 0, 0, 0.3)',
           }}
         >
           {/* Terminal Title Bar */}

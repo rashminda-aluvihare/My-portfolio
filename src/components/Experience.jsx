@@ -60,7 +60,7 @@ export default function Experience() {
           {experiences.map((exp, idx) => (
             <div
               key={idx}
-              className="glass-panel animate-float"
+              className="glass-panel"
               style={{
                 padding: '32px',
                 display: 'flex',
