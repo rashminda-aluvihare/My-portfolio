@@ -48,7 +48,7 @@ export default function Hero() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: '85px',
+        paddingTop: '100px',
         paddingBottom: '40px',
       }}
     >
