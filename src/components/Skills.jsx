@@ -20,7 +20,11 @@ export default function Skills() {
     { name: 'Process Improvement', category: 'pm_ba', type: 'Business Analysis', color: '#38ef7d', icon: <Workflow size={18} /> },
 
     // Software Development
-    { name: 'JavaScript (React)', category: 'dev', type: 'Frontend Stack', color: '#61dafb', icon: <Code2 size={18} /> },
+    { name: 'Next.js & TypeScript', category: 'dev', type: 'Fullstack Stack', color: '#0070f3', icon: <Code2 size={18} /> },
+    { name: 'React 19 & Zustand', category: 'dev', type: 'Frontend Logic', color: '#61dafb', icon: <Code2 size={18} /> },
+    { name: 'Tailwind & Framer Motion', category: 'dev', type: 'UI & Animations', color: '#38bdf8', icon: <Code2 size={18} /> },
+    { name: 'Recharts Visualization', category: 'dev', type: 'Data Analytics', color: '#ff7300', icon: <Cpu size={18} /> },
+    { name: 'JavaScript (ES6+)', category: 'dev', type: 'Core Frontend', color: '#f7df1e', icon: <Code2 size={18} /> },
     { name: 'PHP', category: 'dev', type: 'Backend Stack', color: '#4F5D95', icon: <Terminal size={18} /> },
     { name: 'Java SE', category: 'dev', type: 'OOP Language', color: '#b07219', icon: <Cpu size={18} /> },
     { name: 'Responsive Web UI', category: 'dev', type: 'CSS Design', color: '#9b51e0', icon: <Code2 size={18} /> },

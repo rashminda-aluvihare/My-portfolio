@@ -287,7 +287,7 @@ export default function Hero() {
               fontSize: '0.85rem',
               lineHeight: 1.6,
               color: 'var(--text-primary)',
-            }}
+            }} 
           >
             <div style={{ color: 'var(--text-muted)' }}>{"{"}</div>
             <div style={{ paddingLeft: '20px' }}>
