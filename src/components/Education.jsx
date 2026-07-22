@@ -8,9 +8,8 @@ export default function Education() {
       location: 'Sri Lanka',
       duration: 'Reading / Ongoing',
       status: 'Banking & Finance Student',
-      passedSubject: 'IT, Digital Banking and Settlements',
       modules: [
-        'IT, Digital Banking and Settlements (Passed)',
+        'IT, Digital Banking and Settlements (Passed Subject)',
         'Financial Systems & Commercial Banking Operations',
         'International Trade & Digital Banking Regulations',
         'Credit Management & Risk Analysis',
@@ -135,43 +134,6 @@ export default function Education() {
                 </div>
               </div>
 
-              {/* Passed Subject Highlight Banner */}
-              {edu.passedSubject && (
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    flexWrap: 'wrap',
-                    gap: '10px',
-                    background: 'linear-gradient(135deg, rgba(56, 239, 125, 0.15), rgba(17, 153, 142, 0.15))',
-                    border: '1px solid rgba(56, 239, 125, 0.4)',
-                    padding: '12px 18px',
-                    borderRadius: '12px',
-                    boxShadow: '0 0 20px rgba(56, 239, 125, 0.15)',
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', color: '#38ef7d', fontWeight: 700, fontSize: '0.95rem' }}>
-                    <Award size={20} />
-                    <span>PASSED SUBJECT: {edu.passedSubject}</span>
-                  </div>
-                  <span
-                    style={{
-                      background: '#38ef7d',
-                      color: '#0a1912',
-                      fontSize: '0.75rem',
-                      fontWeight: 900,
-                      letterSpacing: '0.05em',
-                      padding: '4px 12px',
-                      borderRadius: '999px',
-                      boxShadow: '0 0 10px rgba(56, 239, 125, 0.5)',
-                    }}
-                  >
-                    PASSED EXAM
-                  </span>
-                </div>
-              )}
-
               {/* Modules */}
               <div style={{ borderTop: '1px solid var(--card-border)', paddingTop: '20px' }}>
                 <h4
@@ -193,7 +155,7 @@ export default function Education() {
                   }}
                 >
                   {edu.modules.map((mod, mIdx) => {
-                    const isPassed = mod.includes('(Passed)');
+                    const isPassed = mod.includes('(Passed Subject)');
                     return (
                       <li
                         key={mIdx}
@@ -218,21 +180,21 @@ export default function Education() {
                           ) : (
                             <BookOpen size={16} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
                           )}
-                          <span>{isPassed ? mod.replace(' (Passed)', '') : mod}</span>
+                          <span>{isPassed ? mod.replace(' (Passed Subject)', '') : mod}</span>
                         </div>
                         {isPassed && (
                           <span
                             style={{
-                              fontSize: '0.7rem',
+                              fontSize: '0.75rem',
                               fontWeight: 800,
                               color: '#38ef7d',
                               background: 'rgba(56, 239, 125, 0.15)',
                               border: '1px solid rgba(56, 239, 125, 0.4)',
-                              padding: '2px 8px',
+                              padding: '3px 10px',
                               borderRadius: '999px',
                             }}
                           >
-                            ✓ PASSED
+                            ✓ PASSED SUBJECT
                           </span>
                         )}
                       </li>
