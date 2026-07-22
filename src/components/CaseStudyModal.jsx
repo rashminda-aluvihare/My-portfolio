@@ -237,7 +237,7 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
               </div>
               <div>
                 <span style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#ef4444' }}>
-                  01. Challenge & Problem
+                  Challenge & Problem
                 </span>
                 <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginTop: '2px' }}>
                   {caseStudy.problem.title}
@@ -264,88 +264,6 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
                   />
                   <span style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.5 }}>
                     {pt}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* SECTION 2: KEY OUTCOMES & IMPACT */}
-          <div
-            style={{
-              background: 'var(--bg-secondary)',
-              border: '1px solid rgba(0, 242, 254, 0.4)',
-              borderRadius: '18px',
-              padding: '24px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '16px',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div
-                style={{
-                  background: 'rgba(0, 242, 254, 0.15)',
-                  color: 'var(--accent-cyan)',
-                  padding: '10px',
-                  borderRadius: '12px',
-                  display: 'flex',
-                }}
-              >
-                <Trophy size={22} />
-              </div>
-              <div>
-                <span style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--accent-cyan)' }}>
-                  02. Results & Impact
-                </span>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginTop: '2px' }}>
-                  {caseStudy.outcome.title}
-                </h3>
-              </div>
-            </div>
-
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.96rem', lineHeight: 1.65 }}>
-              {caseStudy.outcome.description}
-            </p>
-
-            {/* Quantitative Metrics Grid */}
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(170px, 1fr))',
-                gap: '14px',
-                marginTop: '6px',
-              }}
-            >
-              {caseStudy.outcome.metrics.map((m, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    background: 'var(--bg-primary)',
-                    border: '1px solid var(--card-border)',
-                    borderRadius: '14px',
-                    padding: '16px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    textAlign: 'center',
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: '1.45rem',
-                      fontWeight: 800,
-                      color: 'var(--accent-cyan)',
-                      letterSpacing: '-0.02em',
-                    }}
-                  >
-                    {m.value}
-                  </span>
-                  <span style={{ fontSize: '0.85rem', fontWeight: 700, color: 'var(--text-primary)', marginTop: '4px' }}>
-                    {m.label}
-                  </span>
-                  <span style={{ fontSize: '0.74rem', color: 'var(--text-muted)', marginTop: '2px' }}>
-                    {m.subtext}
                   </span>
                 </div>
               ))}
