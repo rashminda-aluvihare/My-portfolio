@@ -33,9 +33,7 @@ export default function Skills() {
           <h2 style={{ fontSize: '2.5rem', fontWeight: 800 }} className="gradient-text">
             Skills & Tech Stack
           </h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginTop: '10px' }}>
-            My technical competencies, business analysis toolsets, and software engineering capabilities.
-          </p>
+
         </div>
 
         {/* Unified Skills Grid */}
