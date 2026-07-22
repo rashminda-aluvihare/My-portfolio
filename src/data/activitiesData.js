@@ -1,19 +1,18 @@
 // Industry Visits, Workshops & Field Activities Data
-// Photos එකතු කිරීමට පහත ක්‍රම 2 න් එකක් භාවිතා කරන්න:
-// Option 1: Photo එක d:\portfolio\src\assets\ එකට දමා උඩින් import කර image: visit1Img ලෙස යොදන්න.
-// Option 2: Direct photo Web URL එකක් image: 'https://...' ලෙස යොදන්න.
+import visit99x1 from '../assets/99xvisit1.jpg';
+import visit99x2 from '../assets/99xvisit2.jpg';
 
 export const activitiesData = [
   {
     id: 1,
-    title: 'SLIATE HNDIT Industry Exposure Visit',
+    title: 'SLIATE HNDIT Industry Exposure Visit – 99x',
     category: 'Industry Visit',
-    organization: 'SLIATE HNDIT',
+    organization: 'SLIATE HNDIT / 99x',
     date: '2025 / 2026',
     location: 'Colombo, Sri Lanka',
-    description: 'Participated in a specialized enterprise technology & system infrastructure visit. Observed real-world software engineering practices, server room setups, and Agile project workflows.',
-    tags: ['System Infrastructure', 'Agile Operations', 'Enterprise IT'],
-    image: null, // e.g. 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80' or import visit1 from '../assets/visit1.jpg'
+    description: 'Participated in a specialized session on modern Quality Engineering and Test Automation practices hosted by 99x. Gained insights into quality-driven software development, enterprise test automation architectures, and Agile testing workflows from industry leaders.',
+    tags: ['Quality Engineering', 'Test Automation', 'Quality Assurance', 'Software Testing', 'Agile Operations'],
+    images: [visit99x1, visit99x2],
   },
   {
     id: 2,
@@ -24,6 +23,6 @@ export const activitiesData = [
     location: 'Central Province Branch',
     description: 'Studied core banking transaction flows, digital loan approval queues, customer verification protocols, and RDBMS financial transaction logging.',
     tags: ['FinTech Workflows', 'Banking RDBMS', 'Loan Operations'],
-    image: null,
+    images: [],
   },
 ];

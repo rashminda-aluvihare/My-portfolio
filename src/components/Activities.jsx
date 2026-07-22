@@ -59,8 +59,36 @@ export default function Activities() {
                 overflow: 'hidden',
               }}
             >
-              {/* Optional Photo / Image Banner */}
-              {item.image && (
+              {/* Photo / Image Gallery Grid */}
+              {item.images && item.images.length > 0 ? (
+                <div
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: item.images.length > 1 ? '1fr 1fr' : '1fr',
+                    gap: '8px',
+                    borderRadius: '12px',
+                    overflow: 'hidden',
+                    border: '1px solid var(--card-border)',
+                  }}
+                >
+                  {item.images.map((imgSrc, imgIdx) => (
+                    <div key={imgIdx} style={{ height: '180px', overflow: 'hidden' }}>
+                      <img
+                        src={imgSrc}
+                        alt={`${item.title} photo ${imgIdx + 1}`}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'cover',
+                          transition: 'transform 0.3s ease',
+                        }}
+                        onMouseEnter={(e) => (e.currentTarget.style.transform = 'scale(1.05)')}
+                        onMouseLeave={(e) => (e.currentTarget.style.transform = 'scale(1)')}
+                      />
+                    </div>
+                  ))}
+                </div>
+              ) : item.image ? (
                 <div
                   style={{
                     position: 'relative',
@@ -80,7 +108,7 @@ export default function Activities() {
                     }}
                   />
                 </div>
-              )}
+              ) : null}
               {/* Header Badge & Date */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
                 <span
