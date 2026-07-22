@@ -1,4 +1,4 @@
-import { MapPin, Heart, Code2 } from 'lucide-react';
+import { Code2 } from 'lucide-react';
 
 export default function About() {
   return (
@@ -10,7 +10,7 @@ export default function About() {
             About Me
           </h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginTop: '10px' }}>
-            Get to know my coding philosophy, values, and location.
+            Get to know my management philosophy, values, and core technical background.
           </p>
         </div>
 
@@ -45,57 +45,20 @@ export default function About() {
             </div>
           </div>
 
-          {/* Right Column: Info & Location */}
+          {/* Right Column: Quick Info */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', justifyContent: 'center' }}>
             {/* Quick Bio Info */}
-            <div className="glass-panel" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)' }}>Quick Profile</h4>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-                <strong>Role:</strong> Aspiring Project Manager & Business Analyst
+            <div className="glass-panel" style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '16px', height: '100%', justifyContent: 'center' }}>
+              <h4 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>Quick Profile</h4>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.6 }}>
+                <strong style={{ color: 'var(--accent-cyan)' }}>Role:</strong> Aspiring Project Manager & Business Analyst
               </p>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-                <strong>Core Focus:</strong> Requirements Engineering, Agile Scrum, System Analysis, FinTech
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.6 }}>
+                <strong style={{ color: 'var(--accent-cyan)' }}>Core Focus:</strong> Requirements Engineering, Agile Scrum, System Analysis, FinTech
               </p>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-                <strong>Technical Depth:</strong> Next.js, React, TypeScript, PHP, MySQL, Java SE
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.6 }}>
+                <strong style={{ color: 'var(--accent-cyan)' }}>Technical Depth:</strong> Next.js, React 19, TypeScript, PHP, MySQL, Java SE
               </p>
-            </div>
-
-            {/* Colombo Sri Lanka Card */}
-            <div
-              className="glass-panel"
-              style={{
-                padding: '24px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '16px',
-                background: 'linear-gradient(135deg, rgba(13, 18, 31, 0.8), rgba(5, 7, 10, 0.9))',
-              }}
-            >
-              <div
-                style={{
-                  background: 'rgba(255, 0, 0, 0.05)',
-                  border: '1px solid rgba(255, 0, 0, 0.1)',
-                  borderRadius: '12px',
-                  width: '50px',
-                  height: '50px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                }}
-              >
-                <MapPin style={{ color: '#ff4757' }} size={24} />
-              </div>
-              <div>
-                <h4 style={{ fontSize: '1.1rem', fontWeight: 700 }}>Colombo, Sri Lanka</h4>
-                <p style={{ color: 'var(--text-muted)', fontSize: '0.85rem', fontFamily: 'monospace' }}>
-                  6.9271° N, 79.8612° E
-                </p>
-                <span style={{ fontSize: '0.85rem', color: 'var(--text-secondary)' }}>
-                  Working remotely & open to local collaboration.
-                </span>
-              </div>
             </div>
           </div>
 
