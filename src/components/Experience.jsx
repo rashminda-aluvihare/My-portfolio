@@ -1,20 +1,44 @@
-import { Briefcase, Calendar, CheckSquare } from 'lucide-react';
+import { Briefcase, Calendar, CheckSquare, Award, FileText, Globe, Layers } from 'lucide-react';
 
 export default function Experience() {
   const experiences = [
     {
+      role: 'Full Stack Developer',
+      company: 'Decodelabs',
+      companyType: 'Internship',
+      location: 'Remote',
+      duration: 'Jun 2026 · 1 mo',
+      type: 'Developer Internship',
+      skills: 'Full-Stack Development and MERN Stack',
+      certificate: 'Internship Certificate',
+      responsibilities: [
+        'Developed scalable full-stack web applications utilizing modern MERN stack architecture.',
+        'Engineered responsive user interfaces and robust RESTful API endpoints.',
+        'Collaborated remotely with development team to build production-grade features.',
+        'Practiced Git version control, component design patterns, and code optimization.',
+      ],
+      badgeColor: 'var(--accent-cyan)',
+      bgAlpha: 'rgba(0, 242, 254, 0.1)',
+      borderAlpha: 'rgba(0, 242, 254, 0.25)',
+    },
+    {
       role: 'Internship Trainee',
       company: "People's Bank Sri Lanka",
-      location: 'Matale / Colombo Branches, Sri Lanka',
-      duration: 'Jan 2024 - Jul 2024 (7 Months)',
+      companyType: 'Internship',
+      location: 'Sri Lanka',
+      duration: 'Jan 2024 - Jul 2024 · 7 mos',
       type: 'Bank Internship',
+      skills: 'Branch Banking Operations',
+      certificate: 'Service Letter',
       responsibilities: [
-        'Supported branch banking operations, transactions, and daily account management logs.',
+        'Supported branch banking operations, financial transactions, and daily account management logs.',
         'Assisted customers in handling account openings, deposit services, and digital loan requests.',
-        'Gained exposure to secure enterprise bank databases and transactional software systems.',
-        'Collaborated with division heads to streamline front-desk operations and customer queues.',
+        'Gained hands-on exposure to secure enterprise banking databases and transactional software.',
+        'Collaborated with senior staff to streamline front-desk banking operations.',
       ],
-      color: '#9b51e0',
+      badgeColor: 'var(--accent-purple)',
+      bgAlpha: 'rgba(155, 81, 224, 0.1)',
+      borderAlpha: 'rgba(155, 81, 224, 0.25)',
     },
   ];
 
@@ -27,12 +51,12 @@ export default function Experience() {
             Professional Experience
           </h2>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginTop: '10px' }}>
-            My internship journey in the banking and finance industry.
+            My internship journey in software engineering and banking operations.
           </p>
         </div>
 
         {/* Experience List */}
-        <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '32px' }}>
+        <div style={{ maxWidth: '850px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '32px' }}>
           {experiences.map((exp, idx) => (
             <div
               key={idx}
@@ -58,11 +82,11 @@ export default function Experience() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                   <div
                     style={{
-                      background: 'rgba(155, 81, 224, 0.1)',
-                      border: '1px solid rgba(155, 81, 224, 0.2)',
+                      background: exp.bgAlpha,
+                      border: `1px solid ${exp.borderAlpha}`,
                       borderRadius: '12px',
                       padding: '12px',
-                      color: 'var(--accent-purple)',
+                      color: exp.badgeColor,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
@@ -75,7 +99,7 @@ export default function Experience() {
                       {exp.role}
                     </h3>
                     <h4 style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
-                      {exp.company}
+                      {exp.company} · <span style={{ opacity: 0.8 }}>{exp.companyType}</span>
                     </h4>
                   </div>
                 </div>
@@ -92,9 +116,9 @@ export default function Experience() {
                     style={{
                       fontSize: '0.8rem',
                       fontWeight: 700,
-                      color: 'var(--accent-purple)',
-                      background: 'rgba(155, 81, 224, 0.1)',
-                      border: '1px solid rgba(155, 81, 224, 0.25)',
+                      color: exp.badgeColor,
+                      background: exp.bgAlpha,
+                      border: `1px solid ${exp.borderAlpha}`,
                       padding: '4px 12px',
                       borderRadius: '999px',
                     }}
@@ -115,20 +139,86 @@ export default function Experience() {
                     <Calendar size={14} />
                     {exp.duration}
                   </span>
+                  {exp.location && (
+                    <span
+                      style={{
+                        fontSize: '0.8rem',
+                        color: 'var(--text-muted)',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '4px',
+                      }}
+                    >
+                      <Globe size={13} />
+                      {exp.location}
+                    </span>
+                  )}
                 </div>
               </div>
 
+              {/* Skills & Certificate Badges */}
+              <div
+                style={{
+                  display: 'flex',
+                  flexWrap: 'wrap',
+                  gap: '12px',
+                  alignItems: 'center',
+                  background: 'rgba(255, 255, 255, 0.02)',
+                  padding: '12px 16px',
+                  borderRadius: '10px',
+                  border: '1px solid var(--card-border)',
+                }}
+              >
+                {/* Certificate */}
+                {exp.certificate && (
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      fontSize: '0.85rem',
+                      fontWeight: 600,
+                      color: 'var(--text-primary)',
+                      background: 'rgba(255, 255, 255, 0.05)',
+                      padding: '4px 10px',
+                      borderRadius: '6px',
+                      border: '1px solid var(--card-border)',
+                    }}
+                  >
+                    <FileText size={15} style={{ color: exp.badgeColor }} />
+                    <span>{exp.certificate}</span>
+                  </div>
+                )}
+
+                {/* Skill specialization */}
+                {exp.skills && (
+                  <div
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      fontSize: '0.85rem',
+                      fontWeight: 600,
+                      color: 'var(--text-secondary)',
+                    }}
+                  >
+                    <Layers size={15} style={{ color: exp.badgeColor }} />
+                    <span>{exp.skills}</span>
+                  </div>
+                )}
+              </div>
+
               {/* Responsibilities */}
-              <div style={{ borderTop: '1px solid var(--card-border)', paddingTop: '20px' }}>
+              <div style={{ borderTop: '1px solid var(--card-border)', paddingTop: '16px' }}>
                 <h4
                   style={{
-                    fontSize: '1rem',
+                    fontSize: '0.95rem',
                     fontWeight: 700,
                     marginBottom: '12px',
                     color: 'var(--text-primary)',
                   }}
                 >
-                  Key Operations & Exposure:
+                  Key Operations & Highlights:
                 </h4>
                 <ul
                   style={{
@@ -152,7 +242,7 @@ export default function Experience() {
                     >
                       <CheckSquare
                         size={16}
-                        style={{ color: 'var(--accent-purple)', marginTop: '3px', flexShrink: 0 }}
+                        style={{ color: exp.badgeColor, marginTop: '3px', flexShrink: 0 }}
                       />
                       <span>{resp}</span>
                     </li>
@@ -166,3 +256,4 @@ export default function Experience() {
     </section>
   );
 }
+
