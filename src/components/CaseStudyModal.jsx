@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { X, AlertTriangle, Layers, Trophy, ExternalLink, Calendar, CheckCircle2, Sparkles } from 'lucide-react';
+import { X, AlertTriangle, Layers, ExternalLink, Calendar, CheckCircle2 } from 'lucide-react';
 
 export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
   if (!caseStudy) return null;
@@ -320,33 +320,7 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
             </div>
           </div>
 
-          {/* Tech Stack Badges */}
-          <div style={{ marginTop: '4px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
-              <Sparkles size={16} style={{ color: 'var(--accent-cyan)' }} />
-              <h4 style={{ fontSize: '0.9rem', fontWeight: 700, color: 'var(--text-primary)', margin: 0 }}>
-                Technologies & Architecture Stack
-              </h4>
-            </div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-              {caseStudy.tags.map((t, idx) => (
-                <span
-                  key={idx}
-                  style={{
-                    fontSize: '0.8rem',
-                    fontWeight: 600,
-                    color: 'var(--text-primary)',
-                    background: 'var(--bg-secondary)',
-                    border: '1px solid var(--card-border)',
-                    padding: '6px 14px',
-                    borderRadius: '10px',
-                  }}
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
-          </div>
+
         </div>
 
         {/* ================= FIXED FOOTER (Non-Scrolling & Solid) ================= */}
