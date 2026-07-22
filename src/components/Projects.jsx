@@ -3,6 +3,7 @@ import { ExternalLink, Calendar } from 'lucide-react';
 import ProjectDemoModal from './ProjectDemoModal';
 
 // Import project banner images for high-end professional aesthetics
+import finbridgeImg from '../assets/finbridge.png';
 import fundManagementImg from '../assets/fund_management.png';
 import agronexaImg from '../assets/agronexa.png';
 import fixedDepositImg from '../assets/fixed_deposit.png';
@@ -14,11 +15,21 @@ export default function Projects() {
 
   const projectCategories = [
     { id: 'all', name: 'All Work' },
-    { id: 'web', name: 'Web & PHP' },
+    { id: 'web', name: 'Web & FinTech' },
     { id: 'java', name: 'Java Systems' },
   ];
 
   const projectsList = [
+    {
+      title: 'FinBridge AI Platform',
+      description: "Sri Lanka's 1st AI Micro-Credit & Loan Risk Assessment Platform. Features automated financial health scores, AI risk profiling, income & expense tracking, and micro-credit loan eligibility engines.",
+      tags: ['Next.js 14', 'Tailwind CSS', 'FinTech AI', 'React', 'Risk Profiling'],
+      category: 'web',
+      github: 'https://github.com/rashminda-aluvihare/finbridge',
+      demo: 'https://finbridge-xi.vercel.app',
+      date: 'AI FinTech Platform',
+      image: finbridgeImg,
+    },
     {
       title: 'FundManagementSystem-v2',
       description: 'A Web-based Fund Management System developed for SLIATE HNDIT academic curriculum. Built using PHP & MySQL database. Integrates Chart.js visualizations to manage registrations, track monthly payments, and monitor expenditures.',
