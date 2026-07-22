@@ -6,7 +6,7 @@ export default function Education() {
       degree: 'Higher National Diploma in Information Technology (HNDIT)',
       institution: 'Sri Lanka Institute of Advanced Technological Education (SLIATE)',
       location: 'Matale / Colombo, Sri Lanka',
-      duration: 'Ongoing Academic Journey',
+      duration: 'Aug 2024 - Aug 2026',
       status: 'Undergraduate',
       modules: [
         'Software Engineering Methods & System Analysis',
