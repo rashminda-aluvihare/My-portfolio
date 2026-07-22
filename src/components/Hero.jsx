@@ -42,13 +42,14 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="section"
+      className="section hero-section-compact"
       style={{
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: '120px',
+        paddingTop: '85px',
+        paddingBottom: '40px',
       }}
     >
       <div
@@ -60,7 +61,7 @@ export default function Hero() {
           flexDirection: 'column',
           alignItems: 'center',
           textAlign: 'center',
-          gap: '24px',
+          gap: '18px',
         }}
       >
         {/* Welcome Tag */}

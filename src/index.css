@@ -338,6 +338,10 @@ input[type="range"]::-moz-range-thumb {
   .contact-direct-grid {
     grid-template-columns: 1fr !important;
   }
+  .hero-section-compact {
+    padding-top: 70px !important;
+    min-height: auto !important;
+  }
 }
 /* Activity Photo Gallery & Lightbox Animations */
 .photo-hover-container:hover .hover-overlay {
