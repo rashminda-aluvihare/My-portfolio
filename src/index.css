@@ -325,7 +325,7 @@ input[type="range"]::-moz-range-thumb {
   cursor: pointer;
 }
 
-/* Responsive grid rules for calculators */
+/* Responsive grid rules for calculators and contact section */
 @media (max-width: 600px) {
   .calc-inputs-grid {
     grid-template-columns: 1fr !important;
@@ -334,6 +334,9 @@ input[type="range"]::-moz-range-thumb {
   .calc-cards-grid {
     grid-template-columns: 1fr !important;
     gap: 10px !important;
+  }
+  .contact-direct-grid {
+    grid-template-columns: 1fr !important;
   }
 }
 /* Activity Photo Gallery & Lightbox Animations */
