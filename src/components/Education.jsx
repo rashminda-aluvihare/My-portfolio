@@ -3,6 +3,20 @@ import { GraduationCap, Calendar, BookOpen, CheckSquare } from 'lucide-react';
 export default function Education() {
   const educations = [
     {
+      degree: 'Diploma in Banking & Finance (DBF Level)',
+      institution: 'Institute of Bankers of Sri Lanka (IBSL)',
+      location: 'Sri Lanka',
+      duration: 'Reading / Ongoing',
+      status: 'Banking & Finance Student',
+      modules: [
+        'Financial Systems & Commercial Banking Operations',
+        'International Trade & Digital Banking Regulations',
+        'Credit Management & Risk Analysis',
+        'Monetary Economics & Financial Services',
+      ],
+      color: '#9b51e0',
+    },
+    {
       degree: 'Higher National Diploma in Information Technology (HNDIT)',
       institution: 'Sri Lanka Institute of Advanced Technological Education (SLIATE)',
       location: 'Matale / Colombo, Sri Lanka',
