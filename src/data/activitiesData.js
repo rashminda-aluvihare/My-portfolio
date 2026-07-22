@@ -13,7 +13,7 @@ export const activitiesData = [
     title: 'SLIATE HNDIT Industry Exposure Visit – 99x',
     category: 'Industry Visit',
     organization: 'SLIATE HNDIT / 99x',
-    date: '2025 / 2026',
+    date: '2026',
     location: 'Colombo, Sri Lanka',
     description: 'Participated in a specialized session on modern Quality Engineering and Test Automation practices hosted by 99x. Gained insights into quality-driven software development, enterprise test automation architectures, and Agile testing workflows from industry leaders.',
     tags: ['Quality Engineering', 'Test Automation', 'Quality Assurance', 'Software Testing', 'Agile Operations'],
