@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Mail, ArrowRight, ExternalLink } from 'lucide-react';
+import HeroBlockchainCanvas from './HeroBlockchainCanvas';
 
 export default function Hero() {
   const [roleText, setRoleText] = useState('');
@@ -50,8 +51,13 @@ export default function Hero() {
         justifyContent: 'center',
         paddingTop: '130px',
         paddingBottom: '40px',
+        position: 'relative',
+        overflow: 'hidden',
       }}
     >
+      {/* Blockchain Background Canvas strictly scoped to Home/Hero page */}
+      <HeroBlockchainCanvas />
+
       <div
         className="container"
         style={{
@@ -62,6 +68,8 @@ export default function Hero() {
           alignItems: 'center',
           textAlign: 'center',
           gap: '20px',
+          position: 'relative',
+          zIndex: 1,
         }}
       >
         {/* Welcome Tag */}
