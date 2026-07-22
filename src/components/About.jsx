@@ -21,26 +21,26 @@ export default function About() {
           <div className="glass-panel" style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <h3 style={{ fontSize: '1.5rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '10px' }}>
               <Code2 style={{ color: 'var(--accent-cyan)' }} size={24} />
-              My Coding Philosophy
+              My Management & Technical Philosophy
             </h3>
             
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-              As an HNDIT undergraduate, I believe that high-quality coding sits at the intersection of logical backend engineering and elegant design. I love creating databases, structuring PHP APIs, and building clean visual dashboards in JavaScript.
+              As an HNDIT undergraduate specializing in Business Analysis and Project Management, I bridge the critical gap between business vision and software execution. I excel at translating complex business requirements into clear functional specs, UML/BPMN models, and actionable Agile backlogs.
             </p>
 
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-              My academic assignments are not just exercises—I turn them into robust, clean tools (such as my financial simulation and fund management systems) which showcase clean structure and optimized logic.
+              Having hands-on software development experience across Next.js, React, Java, PHP, and SQL allows me to collaborate effectively with engineering teams, perform precise feasibility analysis, and lead data-driven software solutions like <strong>FinBridge AI</strong>.
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
               <span style={{ padding: '6px 12px', background: 'rgba(155, 81, 224, 0.1)', border: '1px solid rgba(155, 81, 224, 0.2)', borderRadius: '8px', fontSize: '0.85rem', color: 'var(--accent-purple)', fontWeight: 600 }}>
-                Problem Solver
+                Agile / Scrum Facilitator
               </span>
               <span style={{ padding: '6px 12px', background: 'rgba(0, 242, 254, 0.1)', border: '1px solid rgba(0, 242, 254, 0.2)', borderRadius: '8px', fontSize: '0.85rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>
-                Structured Architect
+                Requirements Engineer
               </span>
               <span style={{ padding: '6px 12px', background: 'rgba(0, 112, 243, 0.1)', border: '1px solid rgba(0, 112, 243, 0.2)', borderRadius: '8px', fontSize: '0.85rem', color: 'var(--accent-blue)', fontWeight: 600 }}>
-                Clean Coder
+                Technical BA & PM
               </span>
             </div>
           </div>
@@ -51,13 +51,13 @@ export default function About() {
             <div className="glass-panel" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
               <h4 style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--text-primary)' }}>Quick Profile</h4>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-                <strong>Role:</strong> Full Stack Web Developer & HNDIT Student
+                <strong>Role:</strong> Aspiring Project Manager & Business Analyst
               </p>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-                <strong>Core Stack:</strong> PHP, MySQL, Java, JavaScript (React)
+                <strong>Core Focus:</strong> Requirements Engineering, Agile Scrum, System Analysis, FinTech
               </p>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>
-                <strong>Passions:</strong> RDBMS structure, Visual metric reports, Clean UI
+                <strong>Technical Depth:</strong> Next.js, React, TypeScript, PHP, MySQL, Java SE
               </p>
             </div>
 
