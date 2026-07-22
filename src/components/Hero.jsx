@@ -159,37 +159,40 @@ export default function Hero() {
             }}
           >
             <a
-              href="mailto:rashmindaluvihare@gmail.com"
+              href="https://linkedin.com/in/rashminda-aluvihare-98604532b"
+              target="_blank"
+              rel="noreferrer"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '10px',
                 padding: '10px 18px',
                 borderRadius: '12px',
-                background: 'rgba(155, 81, 224, 0.12)',
-                border: '1px solid rgba(155, 81, 224, 0.4)',
+                background: 'rgba(10, 102, 194, 0.12)',
+                border: '1px solid rgba(10, 102, 194, 0.4)',
                 color: 'var(--text-primary)',
                 textDecoration: 'none',
                 fontWeight: 700,
                 fontSize: '0.88rem',
                 transition: 'all 0.2s ease',
-                boxShadow: '0 4px 15px rgba(155, 81, 224, 0.18)',
+                boxShadow: '0 4px 15px rgba(10, 102, 194, 0.2)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(155, 81, 224, 0.25)';
-                e.currentTarget.style.borderColor = 'var(--accent-purple)';
+                e.currentTarget.style.background = 'rgba(10, 102, 194, 0.25)';
+                e.currentTarget.style.borderColor = '#0A66C2';
                 e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 8px 25px rgba(155, 81, 224, 0.35)';
+                e.currentTarget.style.boxShadow = '0 8px 25px rgba(10, 102, 194, 0.45)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(155, 81, 224, 0.12)';
-                e.currentTarget.style.borderColor = 'rgba(155, 81, 224, 0.4)';
+                e.currentTarget.style.background = 'rgba(10, 102, 194, 0.12)';
+                e.currentTarget.style.borderColor = 'rgba(10, 102, 194, 0.4)';
                 e.currentTarget.style.transform = 'none';
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(155, 81, 224, 0.18)';
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(10, 102, 194, 0.2)';
               }}
             >
-              <Mail size={18} style={{ color: 'var(--accent-purple)' }} />
-              <span>Email Me</span>
+              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#0A66C2' }}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+              <span>LinkedIn</span>
+              <ExternalLink size={13} style={{ opacity: 0.7 }} />
             </a>
 
             <a
@@ -230,40 +233,37 @@ export default function Hero() {
             </a>
 
             <a
-              href="https://linkedin.com/in/rashminda-aluvihare-98604532b"
-              target="_blank"
-              rel="noreferrer"
+              href="mailto:rashmindaluvihare@gmail.com"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
                 gap: '10px',
                 padding: '10px 18px',
                 borderRadius: '12px',
-                background: 'rgba(10, 102, 194, 0.12)',
-                border: '1px solid rgba(10, 102, 194, 0.4)',
+                background: 'rgba(155, 81, 224, 0.12)',
+                border: '1px solid rgba(155, 81, 224, 0.4)',
                 color: 'var(--text-primary)',
                 textDecoration: 'none',
                 fontWeight: 700,
                 fontSize: '0.88rem',
                 transition: 'all 0.2s ease',
-                boxShadow: '0 4px 15px rgba(10, 102, 194, 0.2)',
+                boxShadow: '0 4px 15px rgba(155, 81, 224, 0.18)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(10, 102, 194, 0.25)';
-                e.currentTarget.style.borderColor = '#0A66C2';
+                e.currentTarget.style.background = 'rgba(155, 81, 224, 0.25)';
+                e.currentTarget.style.borderColor = 'var(--accent-purple)';
                 e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 8px 25px rgba(10, 102, 194, 0.45)';
+                e.currentTarget.style.boxShadow = '0 8px 25px rgba(155, 81, 224, 0.35)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(10, 102, 194, 0.12)';
-                e.currentTarget.style.borderColor = 'rgba(10, 102, 194, 0.4)';
+                e.currentTarget.style.background = 'rgba(155, 81, 224, 0.12)';
+                e.currentTarget.style.borderColor = 'rgba(155, 81, 224, 0.4)';
                 e.currentTarget.style.transform = 'none';
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(10, 102, 194, 0.2)';
+                e.currentTarget.style.boxShadow = '0 4px 15px rgba(155, 81, 224, 0.18)';
               }}
             >
-              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#0A66C2' }}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-              <span>LinkedIn</span>
-              <ExternalLink size={13} style={{ opacity: 0.7 }} />
+              <Mail size={18} style={{ color: 'var(--accent-purple)' }} />
+              <span>Email Me</span>
             </a>
           </div>
         </div>
