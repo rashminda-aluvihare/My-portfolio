@@ -30,44 +30,42 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
         left: 0,
         width: '100vw',
         height: '100vh',
-        background: 'rgba(3, 6, 14, 0.88)',
-        backdropFilter: 'blur(20px)',
-        WebkitBackdropFilter: 'blur(20px)',
+        background: 'rgba(0, 0, 0, 0.75)', // Solid dimmed backdrop overlay without blur
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        zIndex: 999999, // Highest z-index above floating navbar
+        zIndex: 999999, // Highest z-index above navbar
         padding: '16px',
-        animation: 'modalFadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
+        animation: 'modalFadeIn 0.2s ease-out',
       }}
       onClick={onClose}
     >
-      {/* Modal Dialog Box */}
+      {/* Modal Dialog Box (Solid Opaque Container) */}
       <div
-        className="glass-panel case-study-modal-box"
+        className="case-study-modal-box"
         style={{
           width: '100%',
           maxWidth: '880px',
           height: '88vh',
           maxHeight: '820px',
-          background: 'var(--card-bg, rgba(10, 14, 24, 0.95))',
-          border: '1px solid var(--card-border, rgba(255, 255, 255, 0.12))',
+          background: 'var(--bg-primary)', // Solid background matching active theme
+          border: '1px solid var(--card-border)',
           borderRadius: '24px',
-          boxShadow: '0 30px 70px -15px rgba(0, 0, 0, 0.7), 0 0 40px rgba(0, 242, 254, 0.15)',
+          boxShadow: '0 25px 60px rgba(0, 0, 0, 0.5)',
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
-          animation: 'modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+          animation: 'modalSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
           position: 'relative',
         }}
         onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside modal
       >
-        {/* ================= FIXED HEADER (Non-Scrolling) ================= */}
+        {/* ================= FIXED HEADER (Non-Scrolling & Solid) ================= */}
         <div
           style={{
             padding: '20px 28px',
-            background: 'var(--nav-bg, rgba(8, 11, 20, 0.95))',
-            borderBottom: '1px solid var(--card-border, rgba(255, 255, 255, 0.1))',
+            background: 'var(--bg-secondary)', // Solid secondary header background
+            borderBottom: '1px solid var(--card-border)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -86,8 +84,8 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
                   textTransform: 'uppercase',
                   letterSpacing: '0.06em',
                   color: 'var(--accent-cyan)',
-                  background: 'rgba(0, 242, 254, 0.12)',
-                  border: '1px solid rgba(0, 242, 254, 0.3)',
+                  background: 'rgba(0, 242, 254, 0.1)',
+                  border: '1px solid var(--accent-cyan)',
                   padding: '4px 12px',
                   borderRadius: '20px',
                 }}
@@ -131,8 +129,8 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
             onClick={onClose}
             aria-label="Close Case Study Modal"
             style={{
-              background: 'rgba(255, 255, 255, 0.08)',
-              border: '1px solid var(--card-border, rgba(255, 255, 255, 0.15))',
+              background: 'var(--bg-primary)',
+              border: '1px solid var(--card-border)',
               color: 'var(--text-primary)',
               cursor: 'pointer',
               width: '42px',
@@ -141,20 +139,19 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              transition: 'all 0.25s ease',
+              transition: 'all 0.2s ease',
               flexShrink: 0,
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.2)',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(239, 68, 68, 0.25)';
-              e.currentTarget.style.color = '#ff4d4d';
-              e.currentTarget.style.borderColor = '#ff4d4d';
-              e.currentTarget.style.transform = 'rotate(90deg) scale(1.08)';
+              e.currentTarget.style.background = '#ef4444';
+              e.currentTarget.style.color = '#ffffff';
+              e.currentTarget.style.borderColor = '#ef4444';
+              e.currentTarget.style.transform = 'rotate(90deg)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.08)';
+              e.currentTarget.style.background = 'var(--bg-primary)';
               e.currentTarget.style.color = 'var(--text-primary)';
-              e.currentTarget.style.borderColor = 'var(--card-border, rgba(255, 255, 255, 0.15))';
+              e.currentTarget.style.borderColor = 'var(--card-border)';
               e.currentTarget.style.transform = 'none';
             }}
           >
@@ -172,9 +169,10 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
             flexDirection: 'column',
             gap: '24px',
             flex: 1,
+            background: 'var(--bg-primary)',
           }}
         >
-          {/* Overview Subtitle & Banner Image */}
+          {/* Subtitle & Image Banner */}
           <div>
             <p
               style={{
@@ -195,8 +193,8 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
                   overflow: 'hidden',
                   maxHeight: '260px',
                   position: 'relative',
-                  border: '1px solid var(--card-border, rgba(255, 255, 255, 0.1))',
-                  boxShadow: '0 12px 30px rgba(0, 0, 0, 0.4)',
+                  border: '1px solid var(--card-border)',
+                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
                 }}
               >
                 <img
@@ -216,8 +214,8 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
           {/* SECTION 1: PROBLEM STATEMENT */}
           <div
             style={{
-              background: 'rgba(239, 68, 68, 0.06)',
-              border: '1px solid rgba(239, 68, 68, 0.25)',
+              background: 'var(--bg-secondary)',
+              border: '1px solid rgba(239, 68, 68, 0.4)',
               borderRadius: '18px',
               padding: '24px',
               display: 'flex',
@@ -228,18 +226,17 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <div
                 style={{
-                  background: 'rgba(239, 68, 68, 0.16)',
-                  color: '#ff6b6b',
+                  background: 'rgba(239, 68, 68, 0.15)',
+                  color: '#ef4444',
                   padding: '10px',
                   borderRadius: '12px',
                   display: 'flex',
-                  boxShadow: '0 0 15px rgba(239, 68, 68, 0.2)',
                 }}
               >
                 <AlertTriangle size={22} />
               </div>
               <div>
-                <span style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#ff6b6b' }}>
+                <span style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#ef4444' }}>
                   01. Challenge & Problem
                 </span>
                 <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginTop: '2px' }}>
@@ -257,15 +254,15 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
                 <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
                   <div
                     style={{
-                      width: '6px',
-                      height: '6px',
+                      width: '7px',
+                      height: '7px',
                       borderRadius: '50%',
-                      background: '#ff6b6b',
+                      background: '#ef4444',
                       marginTop: '9px',
                       flexShrink: 0,
                     }}
                   />
-                  <span style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--text-primary)', lineHeight: 1.5 }}>
+                  <span style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.5 }}>
                     {pt}
                   </span>
                 </div>
@@ -276,8 +273,8 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
           {/* SECTION 2: DEVELOPMENT PROCESS & ARCHITECTURE */}
           <div
             style={{
-              background: 'rgba(155, 81, 224, 0.06)',
-              border: '1px solid rgba(155, 81, 224, 0.25)',
+              background: 'var(--bg-secondary)',
+              border: '1px solid rgba(155, 81, 224, 0.4)',
               borderRadius: '18px',
               padding: '24px',
               display: 'flex',
@@ -288,18 +285,17 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <div
                 style={{
-                  background: 'rgba(155, 81, 224, 0.16)',
-                  color: '#c084fc',
+                  background: 'rgba(155, 81, 224, 0.15)',
+                  color: 'var(--accent-purple)',
                   padding: '10px',
                   borderRadius: '12px',
                   display: 'flex',
-                  boxShadow: '0 0 15px rgba(155, 81, 224, 0.2)',
                 }}
               >
                 <Layers size={22} />
               </div>
               <div>
-                <span style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: '#c084fc' }}>
+                <span style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--accent-purple)' }}>
                   02. Architecture & Solution
                 </span>
                 <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginTop: '2px' }}>
@@ -315,8 +311,8 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '6px' }}>
               {caseStudy.process.points.map((pt, idx) => (
                 <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                  <CheckCircle2 size={18} style={{ color: '#c084fc', flexShrink: 0, marginTop: '2px' }} />
-                  <span style={{ fontSize: '0.9rem', fontWeight: 500, color: 'var(--text-primary)', lineHeight: 1.5 }}>
+                  <CheckCircle2 size={18} style={{ color: 'var(--accent-purple)', flexShrink: 0, marginTop: '2px' }} />
+                  <span style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.5 }}>
                     {pt}
                   </span>
                 </div>
@@ -327,8 +323,8 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
           {/* SECTION 3: KEY OUTCOMES & IMPACT */}
           <div
             style={{
-              background: 'rgba(0, 242, 254, 0.06)',
-              border: '1px solid rgba(0, 242, 254, 0.25)',
+              background: 'var(--bg-secondary)',
+              border: '1px solid rgba(0, 242, 254, 0.4)',
               borderRadius: '18px',
               padding: '24px',
               display: 'flex',
@@ -339,12 +335,11 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
               <div
                 style={{
-                  background: 'rgba(0, 242, 254, 0.16)',
+                  background: 'rgba(0, 242, 254, 0.15)',
                   color: 'var(--accent-cyan)',
                   padding: '10px',
                   borderRadius: '12px',
                   display: 'flex',
-                  boxShadow: '0 0 15px rgba(0, 242, 254, 0.2)',
                 }}
               >
                 <Trophy size={22} />
@@ -376,15 +371,14 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
                 <div
                   key={idx}
                   style={{
-                    background: 'rgba(0, 0, 0, 0.3)',
-                    border: '1px solid var(--card-border, rgba(255, 255, 255, 0.08))',
+                    background: 'var(--bg-primary)',
+                    border: '1px solid var(--card-border)',
                     borderRadius: '14px',
                     padding: '16px',
                     display: 'flex',
                     flexDirection: 'column',
                     alignItems: 'center',
                     textAlign: 'center',
-                    boxShadow: '0 4px 15px rgba(0,0,0,0.2)',
                   }}
                 >
                   <span
@@ -424,11 +418,10 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
                     fontSize: '0.8rem',
                     fontWeight: 600,
                     color: 'var(--text-primary)',
-                    background: 'rgba(255, 255, 255, 0.05)',
-                    border: '1px solid var(--card-border, rgba(255, 255, 255, 0.12))',
-                    padding: '5px 14px',
+                    background: 'var(--bg-secondary)',
+                    border: '1px solid var(--card-border)',
+                    padding: '6px 14px',
                     borderRadius: '10px',
-                    boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
                   }}
                 >
                   {t}
@@ -438,12 +431,12 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
           </div>
         </div>
 
-        {/* ================= FIXED FOOTER (Non-Scrolling) ================= */}
+        {/* ================= FIXED FOOTER (Non-Scrolling & Solid) ================= */}
         <div
           style={{
             padding: '18px 28px',
-            background: 'var(--nav-bg, rgba(8, 11, 20, 0.95))',
-            borderTop: '1px solid var(--card-border, rgba(255, 255, 255, 0.1))',
+            background: 'var(--bg-secondary)', // Solid footer background
+            borderTop: '1px solid var(--card-border)',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
@@ -464,8 +457,8 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
               gap: '8px',
               padding: '11px 20px',
               borderRadius: '12px',
-              background: 'rgba(255, 255, 255, 0.07)',
-              border: '1px solid var(--card-border, rgba(255, 255, 255, 0.15))',
+              background: 'var(--bg-primary)',
+              border: '1px solid var(--card-border)',
               color: 'var(--text-primary)',
               fontSize: '0.95rem',
               fontWeight: 700,
@@ -473,12 +466,12 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
               transition: 'all 0.2s ease',
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.15)';
-              e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.3)';
+              e.currentTarget.style.borderColor = 'var(--accent-cyan)';
+              e.currentTarget.style.color = 'var(--accent-cyan)';
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.07)';
-              e.currentTarget.style.borderColor = 'var(--card-border, rgba(255, 255, 255, 0.15))';
+              e.currentTarget.style.borderColor = 'var(--card-border)';
+              e.currentTarget.style.color = 'var(--text-primary)';
             }}
           >
             <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
@@ -503,22 +496,19 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
                   gap: '8px',
                   padding: '11px 22px',
                   borderRadius: '12px',
-                  background: 'linear-gradient(135deg, var(--accent-cyan), #0070f3)',
+                  background: 'var(--accent-cyan)',
                   border: 'none',
-                  color: '#fff',
+                  color: '#000000',
                   fontSize: '0.92rem',
-                  fontWeight: 700,
+                  fontWeight: 800,
                   cursor: 'pointer',
-                  boxShadow: '0 4px 20px rgba(0, 242, 254, 0.35)',
                   transition: 'all 0.2s ease',
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 6px 25px rgba(0, 242, 254, 0.5)';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.transform = 'none';
-                  e.currentTarget.style.boxShadow = '0 4px 20px rgba(0, 242, 254, 0.35)';
                 }}
               >
                 <span>{caseStudy.demo.startsWith('http') ? 'Launch Live App' : 'Run Simulator'}</span>
@@ -531,8 +521,8 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
               style={{
                 padding: '11px 20px',
                 borderRadius: '12px',
-                background: 'rgba(255, 255, 255, 0.06)',
-                border: '1px solid var(--card-border, rgba(255, 255, 255, 0.12))',
+                background: 'var(--bg-primary)',
+                border: '1px solid var(--card-border)',
                 color: 'var(--text-secondary)',
                 fontSize: '0.92rem',
                 fontWeight: 600,
@@ -541,11 +531,9 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.color = 'var(--text-primary)';
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.color = 'var(--text-secondary)';
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)';
               }}
             >
               Close
