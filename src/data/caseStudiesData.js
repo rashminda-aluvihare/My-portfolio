@@ -26,7 +26,7 @@ export const caseStudiesData = {
       ]
     },
     process: {
-      title: 'Engineering Solution & Architecture',
+      title: 'AI Micro-Credit Engine & Modern Stack Implementation',
       description: 'Engineered a modern web platform leveraging Next.js App Router and Zustand for fast state management. Integrated an AI-driven alternative risk scoring algorithm evaluating non-traditional financial indicators to calculate credit ratings (300–850). Added full trilingual localization (English, Sinhala, Tamil) and dynamic financial visualization dashboards.',
       points: [
         'Built dynamic alternative credit scoring model evaluating cash flows & transactions.',
@@ -66,7 +66,7 @@ export const caseStudiesData = {
       ]
     },
     process: {
-      title: 'System Design & Database Architecture',
+      title: 'Relational Database Schema & PHP Audit Portal',
       description: 'Developed a robust PHP-backed web portal backed by a normalized MySQL relational schema. Integrated Chart.js for automated visual analytics, dynamic payment receipts, user role management (Admin/Student), and instant search filtering.',
       points: [
         'Normalized MySQL database tables for members, monthly dues, and expense vouchers.',
@@ -106,7 +106,7 @@ export const caseStudiesData = {
       ]
     },
     process: {
-      title: 'Development Strategy & UI Optimization',
+      title: 'Lightweight ES6+ Modular Workflow Engine',
       description: 'Designed a lightweight, responsive single-page web app built with modular ES6+ JavaScript modules. Features interactive crop tracking cards, visual yield projections, and simple resource input calculators.',
       points: [
         'Constructed modular JS components for crop growth timeline calculation.',
@@ -146,7 +146,7 @@ export const caseStudiesData = {
       ]
     },
     process: {
-      title: 'Java Architecture & Algorithmic Implementation',
+      title: 'Precision OOP Compounding Engine',
       description: 'Constructed an OOP Java application following modular domain design. Implemented mathematical compounding logic, tax deduction policies, and structured console output reporting.',
       points: [
         'Designed immutable FinancialCalculation classes for thread-safe math execution.',
@@ -186,7 +186,7 @@ export const caseStudiesData = {
       ]
     },
     process: {
-      title: 'Algorithmic Engine & Java Implementation',
+      title: 'Reducing-Balance EMI Amortization Algorithm',
       description: 'Developed Java OOP modules for calculating loan EMIs using compound reducing balances and projection engines for systematic investment plans (SIP). Includes dynamic table formatting for step-by-step payment breakdown.',
       points: [
         'Built Equated Monthly Installment (EMI) reducing-balance math formula.',

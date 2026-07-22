@@ -296,7 +296,7 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
               </div>
               <div>
                 <span style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--accent-purple)' }}>
-                  02. Architecture & Solution
+                  02. How We Solved It
                 </span>
                 <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginTop: '2px' }}>
                   {caseStudy.process.title}
