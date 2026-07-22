@@ -1,5 +1,7 @@
 # Rashminda Aluvihare — Personal Portfolio & Web Applications
 
+🌐 **Live Demo**: [https://rashmindaluvihare.vercel.app/](https://rashmindaluvihare.vercel.app/)
+
 A modern, responsive, and high-performance portfolio web application built with React and Vite. It showcases academic background, technical skills, web development projects, interactive financial engines, and contact information.
 
 ## 🌟 Key Features
