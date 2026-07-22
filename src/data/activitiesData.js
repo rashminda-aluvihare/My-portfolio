@@ -1,5 +1,7 @@
 // Industry Visits, Workshops & Field Activities Data
-// New Industry Visit එකක් එකතු කිරීමට මෙම array එකට අලුත් object එකක් copy-paste කරන්න.
+// Photos එකතු කිරීමට පහත ක්‍රම 2 න් එකක් භාවිතා කරන්න:
+// Option 1: Photo එක d:\portfolio\src\assets\ එකට දමා උඩින් import කර image: visit1Img ලෙස යොදන්න.
+// Option 2: Direct photo Web URL එකක් image: 'https://...' ලෙස යොදන්න.
 
 export const activitiesData = [
   {
@@ -11,7 +13,7 @@ export const activitiesData = [
     location: 'Colombo, Sri Lanka',
     description: 'Participated in a specialized enterprise technology & system infrastructure visit. Observed real-world software engineering practices, server room setups, and Agile project workflows.',
     tags: ['System Infrastructure', 'Agile Operations', 'Enterprise IT'],
-    image: null, // Add image path e.g. import visitImg from '../assets/visit1.jpg'
+    image: null, // e.g. 'https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80' or import visit1 from '../assets/visit1.jpg'
   },
   {
     id: 2,

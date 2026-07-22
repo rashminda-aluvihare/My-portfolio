@@ -50,14 +50,37 @@ export default function Activities() {
               key={item.id}
               className="glass-panel"
               style={{
-                padding: '28px',
+                padding: '24px',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '16px',
                 borderRadius: '16px',
                 transition: 'all 0.2s ease',
+                overflow: 'hidden',
               }}
             >
+              {/* Optional Photo / Image Banner */}
+              {item.image && (
+                <div
+                  style={{
+                    position: 'relative',
+                    height: '200px',
+                    borderRadius: '12px',
+                    overflow: 'hidden',
+                    border: '1px solid var(--card-border)',
+                  }}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover',
+                    }}
+                  />
+                </div>
+              )}
               {/* Header Badge & Date */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
                 <span
