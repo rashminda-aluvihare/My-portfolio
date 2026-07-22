@@ -9,6 +9,7 @@ export default function Education() {
       duration: 'Reading / Ongoing',
       status: 'Banking & Finance Student',
       modules: [
+        'IT, Digital Banking and Settlements (Passed)',
         'Financial Systems & Commercial Banking Operations',
         'International Trade & Digital Banking Regulations',
         'Credit Management & Risk Analysis',

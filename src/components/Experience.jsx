@@ -31,6 +31,7 @@ export default function Experience() {
       skills: 'Branch Banking Operations',
       certificate: 'Service Letter',
       responsibilities: [
+        'Passed IBSL DBF Subject: IT, Digital Banking and Settlements.',
         'Supported branch banking operations, financial transactions, and daily account management logs.',
         'Assisted customers in handling account openings, deposit services, and digital loan requests.',
         'Gained hands-on exposure to secure enterprise banking databases and transactional software.',
