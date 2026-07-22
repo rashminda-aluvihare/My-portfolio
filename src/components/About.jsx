@@ -9,21 +9,19 @@ export default function About() {
           <h2 style={{ fontSize: '2.5rem', fontWeight: 800 }} className="gradient-text">
             About Me
           </h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginTop: '10px' }}>
-            Get to know my management philosophy, values, and core technical background.
-          </p>
+
         </div>
 
         {/* Grid Layout */}
         <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '40px' }}>
-          
+
           {/* Left Column: Philosophy */}
           <div className="glass-panel" style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <h3 style={{ fontSize: '1.5rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '10px' }}>
               <Code2 style={{ color: 'var(--accent-cyan)' }} size={24} />
               My Management & Technical Philosophy
             </h3>
-            
+
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
               As an HNDIT undergraduate specializing in Business Analysis and Project Management, I bridge the critical gap between business vision and software execution. I excel at translating complex business requirements into clear functional specs, UML/BPMN models, and actionable Agile backlogs.
             </p>
