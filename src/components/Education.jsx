@@ -194,7 +194,7 @@ export default function Education() {
                               borderRadius: '999px',
                             }}
                           >
-                            ✓ PASSED SUBJECT
+                            PASSED SUBJECT
                           </span>
                         )}
                       </li>

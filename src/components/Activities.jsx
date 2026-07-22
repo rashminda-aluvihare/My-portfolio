@@ -90,7 +90,6 @@ export default function Activities() {
             style={{
               display: 'inline-flex',
               alignItems: 'center',
-              gap: '6px',
               padding: '6px 16px',
               borderRadius: '999px',
               background: 'rgba(155, 81, 224, 0.1)',
@@ -101,7 +100,6 @@ export default function Activities() {
               marginBottom: '12px',
             }}
           >
-            <Compass size={16} />
             <span>EXPOSURE & FIELD VISITS</span>
           </div>
 
@@ -392,14 +390,11 @@ export default function Activities() {
                           color: 'var(--text-secondary)',
                           background: 'rgba(255, 255, 255, 0.02)',
                           border: '1px solid var(--card-border)',
-                          padding: '3px 8px',
+                          padding: '4px 10px',
                           borderRadius: '6px',
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '4px',
+                          display: 'inline-block',
                         }}
                       >
-                        <Tag size={12} style={{ color: 'var(--accent-purple)' }} />
                         {tag}
                       </span>
                     ))}
