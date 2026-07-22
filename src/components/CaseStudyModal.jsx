@@ -270,57 +270,7 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
             </div>
           </div>
 
-          {/* SECTION 2: DEVELOPMENT PROCESS & ARCHITECTURE */}
-          <div
-            style={{
-              background: 'var(--bg-secondary)',
-              border: '1px solid rgba(155, 81, 224, 0.4)',
-              borderRadius: '18px',
-              padding: '24px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '14px',
-            }}
-          >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-              <div
-                style={{
-                  background: 'rgba(155, 81, 224, 0.15)',
-                  color: 'var(--accent-purple)',
-                  padding: '10px',
-                  borderRadius: '12px',
-                  display: 'flex',
-                }}
-              >
-                <Layers size={22} />
-              </div>
-              <div>
-                <span style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--accent-purple)' }}>
-                  02. How We Solved It
-                </span>
-                <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginTop: '2px' }}>
-                  {caseStudy.process.title}
-                </h3>
-              </div>
-            </div>
-
-            <p style={{ color: 'var(--text-secondary)', fontSize: '0.96rem', lineHeight: 1.65 }}>
-              {caseStudy.process.description}
-            </p>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '6px' }}>
-              {caseStudy.process.points.map((pt, idx) => (
-                <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                  <CheckCircle2 size={18} style={{ color: 'var(--accent-purple)', flexShrink: 0, marginTop: '2px' }} />
-                  <span style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.5 }}>
-                    {pt}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* SECTION 3: KEY OUTCOMES & IMPACT */}
+          {/* SECTION 2: KEY OUTCOMES & IMPACT */}
           <div
             style={{
               background: 'var(--bg-secondary)',
@@ -346,7 +296,7 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
               </div>
               <div>
                 <span style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--accent-cyan)' }}>
-                  03. Results & Impact
+                  02. Results & Impact
                 </span>
                 <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginTop: '2px' }}>
                   {caseStudy.outcome.title}
