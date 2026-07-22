@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, Terminal } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 
 export default function Navbar({ theme, toggleTheme }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -80,13 +80,11 @@ export default function Navbar({ theme, toggleTheme }) {
           textDecoration: 'none',
           color: 'var(--text-primary)',
           fontWeight: 800,
-          fontFamily: 'var(--font-display)',
           fontSize: '1.25rem',
-          letterSpacing: '-0.03em',
+          letterSpacing: '-0.02em',
         }}
       >
-        <Terminal style={{ color: 'var(--accent-cyan)' }} size={22} />
-        <span>RASHMINDA<span style={{ color: 'var(--accent-purple)' }}>.A</span></span>
+        <span className="gradient-text">Rashminda Aluvihare</span>
       </a>
 
       {/* Desktop Navigation Items */}
