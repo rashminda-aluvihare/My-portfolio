@@ -61,7 +61,7 @@ export default function Hero() {
           flexDirection: 'column',
           alignItems: 'center',
           textAlign: 'center',
-          gap: '18px',
+          gap: '20px',
         }}
       >
         {/* Welcome Tag */}
