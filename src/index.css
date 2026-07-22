@@ -336,3 +336,11 @@ input[type="range"]::-moz-range-thumb {
     gap: 10px !important;
   }
 }
+/* Activity Photo Gallery & Lightbox Animations */
+.photo-hover-container:hover .hover-overlay {
+  opacity: 1 !important;
+}
+
+.photo-hover-container:hover img {
+  transform: scale(1.05);
+}
