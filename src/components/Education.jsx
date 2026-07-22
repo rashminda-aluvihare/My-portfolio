@@ -3,6 +3,20 @@ import { GraduationCap, Calendar, BookOpen, CheckSquare } from 'lucide-react';
 export default function Education() {
   const educations = [
     {
+      degree: 'BSc (Hons) Computer Science',
+      institution: 'Undergraduate Degree Program',
+      location: 'Sri Lanka',
+      duration: 'Academic Studies',
+      status: 'Undergraduate',
+      modules: [
+        'Software Engineering & System Architecture',
+        'Business Analysis & Requirements Engineering',
+        'Agile Software Development & Project Management',
+        'Database Management & Advanced SQL',
+      ],
+      color: '#9b51e0',
+    },
+    {
       degree: 'Higher National Diploma in Information Technology (HNDIT)',
       institution: 'Sri Lanka Institute of Advanced Technological Education (SLIATE)',
       location: 'Matale / Colombo, Sri Lanka',

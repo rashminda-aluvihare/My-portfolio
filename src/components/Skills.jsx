@@ -1,31 +1,34 @@
 import { useState } from 'react';
-import { Database, Code2, ShieldAlert, Library, Cpu } from 'lucide-react';
+import { Database, Code2, Cpu, FileCheck, Target, Workflow, LayoutList, Terminal } from 'lucide-react';
 
 export default function Skills() {
   const [activeCategory, setActiveCategory] = useState('all');
 
   const skillCategories = [
-    { id: 'all', name: 'All Stack' },
-    { id: 'backend', name: 'Backend & DB' },
-    { id: 'frontend', name: 'Frontend & UI' },
-    { id: 'academic', name: 'Languages & Tools' },
+    { id: 'all', name: 'All Skills' },
+    { id: 'pm_ba', name: 'PM & Business Analysis' },
+    { id: 'dev', name: 'Software Development' },
+    { id: 'db', name: 'Database & Architecture' },
   ];
 
   const skills = [
-    // Backend
-    { name: 'PHP', level: 85, category: 'backend', type: 'Language', color: '#4F5D95', icon: <Database size={18} /> },
-    { name: 'MySQL', level: 90, category: 'backend', type: 'Database', color: '#00758F', icon: <Database size={18} /> },
-    { name: 'Java SE', level: 75, category: 'academic', type: 'Language', color: '#b07219', icon: <Cpu size={18} /> },
-    
-    // Frontend
-    { name: 'JavaScript', level: 80, category: 'frontend', type: 'Language', color: '#f1e05a', icon: <Code2 size={18} /> },
-    { name: 'React', level: 75, category: 'frontend', type: 'Framework', color: '#61dafb', icon: <Code2 size={18} /> },
-    { name: 'CSS / Responsive UI', level: 90, category: 'frontend', type: 'Styling', color: '#663399', icon: <Code2 size={18} /> },
-    
-    // Systems & Tools
-    { name: 'Chart.js', level: 80, category: 'frontend', type: 'Visuals', color: '#ff6384', icon: <Library size={18} /> },
-    { name: 'Git & GitHub', level: 85, category: 'academic', type: 'Version Control', color: '#f05032', icon: <Cpu size={18} /> },
-    { name: 'Systems Analysis (SDLC)', level: 80, category: 'backend', type: 'Methodology', color: '#9b51e0', icon: <Database size={18} /> },
+    // Project Management & Business Analysis
+    { name: 'Requirements Gathering', category: 'pm_ba', type: 'Business Analysis', color: '#00f2fe', icon: <FileCheck size={18} /> },
+    { name: 'Agile & Scrum', category: 'pm_ba', type: 'Methodology', color: '#9b51e0', icon: <Workflow size={18} /> },
+    { name: 'Project Planning', category: 'pm_ba', type: 'Management', color: '#ff6384', icon: <Target size={18} /> },
+    { name: 'UML & BPMN Modeling', category: 'pm_ba', type: 'System Design', color: '#00758F', icon: <LayoutList size={18} /> },
+    { name: 'Process Improvement', category: 'pm_ba', type: 'Business Analysis', color: '#38ef7d', icon: <Workflow size={18} /> },
+
+    // Software Development
+    { name: 'JavaScript (React)', category: 'dev', type: 'Frontend Stack', color: '#61dafb', icon: <Code2 size={18} /> },
+    { name: 'PHP', category: 'dev', type: 'Backend Stack', color: '#4F5D95', icon: <Terminal size={18} /> },
+    { name: 'Java SE', category: 'dev', type: 'OOP Language', color: '#b07219', icon: <Cpu size={18} /> },
+    { name: 'Responsive Web UI', category: 'dev', type: 'CSS Design', color: '#9b51e0', icon: <Code2 size={18} /> },
+
+    // Database & Architecture
+    { name: 'SQL', category: 'db', type: 'Query Language', color: '#f1e05a', icon: <Database size={18} /> },
+    { name: 'MySQL', category: 'db', type: 'RDBMS', color: '#00758F', icon: <Database size={18} /> },
+    { name: 'System Analysis', category: 'db', type: 'Architecture', color: '#00f2fe', icon: <Cpu size={18} /> },
   ];
 
   const filteredSkills = activeCategory === 'all'

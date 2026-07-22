@@ -3,7 +3,12 @@ import { Mail, ArrowRight, ExternalLink } from 'lucide-react';
 
 export default function Hero() {
   const [roleText, setRoleText] = useState('');
-  const roles = ['HNDIT Undergraduate', 'Full Stack Developer', 'PHP & MySQL Enthusiast', 'Java programmer'];
+  const roles = [
+    'IT Undergraduate',
+    'Aspiring Project Manager',
+    'Business Analyst',
+    'Full Stack Developer',
+  ];
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -118,11 +123,11 @@ export default function Hero() {
             style={{
               color: 'var(--text-secondary)',
               fontSize: '1.1rem',
-              maxWidth: '520px',
+              maxWidth: '540px',
               lineHeight: 1.6,
             }}
           >
-            Undergraduate IT student crafting premium, fast web platforms. Specialist in blending powerful backend logics with smooth, immersive user interfaces.
+            IT Undergraduate & Aspiring Project Manager & Business Analyst. Skilled in requirements gathering, Agile & Scrum methodologies, UML/BPMN modeling, and full-stack software development.
           </p>
 
           {/* Call to Actions */}
@@ -279,7 +284,7 @@ export default function Hero() {
             style={{
               padding: '24px',
               fontFamily: 'monospace',
-              fontSize: '0.9rem',
+              fontSize: '0.85rem',
               lineHeight: 1.6,
               color: 'var(--text-primary)',
             }}
@@ -289,37 +294,36 @@ export default function Hero() {
               <span style={{ color: 'var(--accent-purple)' }}>"name"</span>: <span style={{ color: 'var(--accent-cyan)' }}>"Rashminda Aluvihare"</span>,
             </div>
             <div style={{ paddingLeft: '20px' }}>
-              <span style={{ color: 'var(--accent-purple)' }}>"title"</span>: <span style={{ color: 'var(--accent-cyan)' }}>"Undergraduate IT Student"</span>,
+              <span style={{ color: 'var(--accent-purple)' }}>"title"</span>: <span style={{ color: 'var(--accent-cyan)' }}>"IT Undergraduate | Aspiring PM & BA"</span>,
             </div>
             <div style={{ paddingLeft: '20px' }}>
-              <span style={{ color: 'var(--accent-purple)' }}>"education"</span>: <span style={{ color: 'var(--accent-cyan)' }}>"HNDIT @ SLIATE"</span>,
+              <span style={{ color: 'var(--accent-purple)' }}>"education"</span>: <span style={{ color: 'var(--accent-cyan)' }}>"HNDIT @ SLIATE | BSc (Hons) CS"</span>,
             </div>
             <div style={{ paddingLeft: '20px' }}>
               <span style={{ color: 'var(--accent-purple)' }}>"interests"</span>: <span style={{ color: 'var(--text-primary)' }}>{"["}</span>
               <div style={{ paddingLeft: '20px' }}>
-                <span style={{ color: 'var(--accent-cyan)' }}>"Web Development"</span>,
+                <span style={{ color: 'var(--accent-cyan)' }}>"Project Management"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"Business Analysis"</span>,
               </div>
               <div style={{ paddingLeft: '20px' }}>
-                <span style={{ color: 'var(--accent-cyan)' }}>"Database Engineering"</span>,
+                <span style={{ color: 'var(--accent-cyan)' }}>"Digital Banking"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"System Analysis"</span>,
               </div>
               <div style={{ paddingLeft: '20px' }}>
-                <span style={{ color: 'var(--accent-cyan)' }}>"System Analysis"</span>
+                <span style={{ color: 'var(--accent-cyan)' }}>"Process Improvement"</span>
               </div>
-              <div style={{ paddingLeft: '20px' }} />
               <div style={{ paddingLeft: '0px' }}>{"],"}</div>
             </div>
             <div style={{ paddingLeft: '20px' }}>
-              <span style={{ color: 'var(--accent-purple)' }}>"coreStack"</span>: <span style={{ color: 'var(--text-primary)' }}>{"["}</span>
+              <span style={{ color: 'var(--accent-purple)' }}>"coreSkills"</span>: <span style={{ color: 'var(--text-primary)' }}>{"["}</span>
               <div style={{ paddingLeft: '20px' }}>
-                <span style={{ color: 'var(--accent-cyan)' }}>"PHP"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"MySQL"</span>,
+                <span style={{ color: 'var(--accent-cyan)' }}>"Requirements Gathering"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"Agile & Scrum"</span>,
               </div>
               <div style={{ paddingLeft: '20px' }}>
-                <span style={{ color: 'var(--accent-cyan)' }}>"JavaScript (React)"</span>,
+                <span style={{ color: 'var(--accent-cyan)' }}>"Project Planning"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"UML & BPMN"</span>,
               </div>
               <div style={{ paddingLeft: '20px' }}>
-                <span style={{ color: 'var(--accent-cyan)' }}>"Java SE"</span>
+                <span style={{ color: 'var(--accent-cyan)' }}>"SQL"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"JavaScript (React)"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"PHP"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"MySQL"</span>
               </div>
-              <div>{"  ],"}</div>
+              <div style={{ paddingLeft: '0px' }}>{"],"}</div>
             </div>
             <div style={{ paddingLeft: '20px' }}>
               <span style={{ color: 'var(--accent-purple)' }}>"location"</span>: <span style={{ color: 'var(--accent-cyan)' }}>"Colombo, Sri Lanka"</span>
