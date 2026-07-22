@@ -15,33 +15,34 @@ export const caseStudiesData = {
     image: finbridgeImg,
     github: 'https://github.com/rashminda-aluvihare/finbridge',
     demo: 'https://finbridge-xi.vercel.app',
-    tags: ['Next.js App Router', 'React 19', 'TypeScript', 'Zustand', 'Tailwind CSS', 'Framer Motion', 'Recharts', 'Trilingual i18n'],
+    tags: ['Next.js 16 (App Router)', 'React 19', 'TypeScript', 'Python FastAPI', 'Scikit-Learn ML', 'Zustand', 'Recharts', 'Node.js/Express'],
     problem: {
       title: 'The Challenge & Industry Problem',
-      description: 'Micro-entrepreneurs and low-income individuals in emerging economies lack traditional bank accounts or formal credit histories. Consequently, traditional legacy banks deny them affordable capital, forcing business owners to rely on predatory unorganized lenders with exorbitant interest rates.',
+      description: 'Micro-entrepreneurs, farmers, and low-income individuals in emerging economies like Sri Lanka lack formal bank accounts and traditional credit histories. Consequently, legacy financial institutions deny them affordable capital, forcing business owners to rely on predatory informal lenders with exorbitant interest rates.',
       points: [
-        'Lack of formal credit history excludes micro-entrepreneurs from traditional loans.',
-        'High default risks for financial institutions due to insufficient data.',
-        'Language & accessibility barriers in traditional mobile banking portals.'
+        'Credit History Exclusion: Absence of formal credit records (e.g., CRIB scores) excludes micro-entrepreneurs from low-interest commercial loans.',
+        'High Default Risk Uncertainty: Financial institutions struggle to evaluate risk for unbanked individuals due to asymmetric and insufficient financial data.',
+        'Language & Accessibility Barriers: Traditional banking portals lack localized multi-language support (Sinhala/Tamil/English) and intuitive mobile interfaces suited for rural communities.'
       ]
     },
     process: {
-      title: 'AI Micro-Credit Engine & Modern Stack Implementation',
-      description: 'Engineered a modern web platform leveraging Next.js App Router and Zustand for fast state management. Integrated an AI-driven alternative risk scoring algorithm evaluating non-traditional financial indicators to calculate credit ratings (300–850). Added full trilingual localization (English, Sinhala, Tamil) and dynamic financial visualization dashboards.',
+      title: 'AI Micro-Credit Engine & Modern Stack Architecture',
+      description: 'Engineered a modern web platform leveraging Next.js 16 (App Router) and Zustand for dynamic state management, paired with a dual-layer AI credit assessment architecture. FinBridge calculates transparent alternative credit scores (300–850) by evaluating non-traditional financial indicators such as utility payment timeliness, peer ratings, and debt-to-income (DTI) metrics.',
       points: [
-        'Built dynamic alternative credit scoring model evaluating cash flows & transactions.',
-        'Designed trilingual UI (English/Sinhala/Tamil) with smooth theme switching.',
-        'Implemented interactive loan simulator & real-time repayment schedule calculators.'
+        'Multi-Factor Alternative Risk Algorithm: Integrates quantitative scoring weighted across DTI ratio (45%), Utility Bill Timeliness (20%), Savings Ratio (15%), Community Peer Ratings (10%), and Loan Burden Ratio (10%).',
+        'Dual-Layer Machine Learning Microservice: Features a Python FastAPI backend utilizing Scikit-Learn (RandomForestRegressor & RandomForestClassifier with StandardScaler) providing Explainable AI (XAI) feature analysis alongside real-time client-side TypeScript calculations.',
+        'Interactive "What-If" Credit Simulator: Real-time parameter sliders allowing users to visualize credit score variations, interest rate adjustments (8%–32%), and risk category banding (Low, Medium, High, Very High).',
+        'Trilingual & Multi-Role Architecture: Full Sinhala, English, and Tamil localization (i18n) with dedicated dashboards for Borrowers (digital wallet & loans), Lenders (portfolio yields & NPL metrics), and Admins (fraud anomaly logs & approval queues).'
       ]
     },
     outcome: {
       title: 'Results & Measurable Impact',
-      description: 'Delivered an intuitive, high-performance platform capable of evaluating micro-loan eligibility in minutes while empowering unbanked entrepreneurs with transparent digital wallet tools.',
+      description: 'Delivered an intuitive, high-performance platform capable of evaluating unbanked loan eligibility in minutes while empowering micro-entrepreneurs with transparent digital wallet tools.',
       metrics: [
-        { label: 'Scoring Engine', value: '300-850', subtext: 'Credit score range' },
-        { label: 'Loan Processing', value: '< 3 Mins', subtext: 'Instant assessment' },
-        { label: 'Languages', value: '3 Languages', subtext: 'EN / SI / TA i18n' },
-        { label: 'State Efficiency', value: '100%', subtext: 'Zustand reactivity' }
+        { label: 'Scoring Engine', value: '300-850', subtext: 'Multi-factor AI score' },
+        { label: 'ML Microservice', value: 'FastAPI', subtext: 'Random Forest + XAI' },
+        { label: 'Languages', value: '3 Languages', subtext: 'Sinhala / Tamil / English' },
+        { label: 'Architecture', value: 'Full-Stack', subtext: 'Next.js + Express + Python' }
       ]
     }
   },

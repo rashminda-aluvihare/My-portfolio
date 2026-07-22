@@ -27,7 +27,7 @@ export default function Projects() {
       id: 'finbridge',
       title: 'FinBridge AI Platform',
       description: 'AI-driven microfinance, digital wallet & alternative loan risk assessment platform tailored for underserved micro-entrepreneurs. Evaluates non-traditional inputs to generate credit scores (300–850), lowering interest barriers.',
-      tags: ['Next.js (App Router)', 'React 19', 'TypeScript', 'Zustand', 'Tailwind CSS', 'Framer Motion', 'Recharts', 'Trilingual i18n'],
+      tags: ['Next.js 16', 'React 19', 'TypeScript', 'Python FastAPI (Scikit-Learn)', 'Express.js', 'Zustand', 'Recharts', 'Trilingual i18n'],
       category: 'web',
       github: 'https://github.com/rashminda-aluvihare/finbridge',
       demo: 'https://finbridge-xi.vercel.app',

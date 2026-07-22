@@ -250,23 +250,36 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '6px' }}>
-              {caseStudy.problem.points.map((pt, idx) => (
-                <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                  <div
-                    style={{
-                      width: '7px',
-                      height: '7px',
-                      borderRadius: '50%',
-                      background: '#ef4444',
-                      marginTop: '9px',
-                      flexShrink: 0,
-                    }}
-                  />
-                  <span style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.5 }}>
-                    {pt}
-                  </span>
-                </div>
-              ))}
+              {caseStudy.problem.points.map((pt, idx) => {
+                const hasColon = typeof pt === 'string' && pt.includes(': ');
+                const colonIdx = hasColon ? pt.indexOf(': ') : -1;
+                const title = hasColon ? pt.substring(0, colonIdx) : null;
+                const rest = hasColon ? pt.substring(colonIdx + 2) : pt;
+                return (
+                  <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                    <div
+                      style={{
+                        width: '7px',
+                        height: '7px',
+                        borderRadius: '50%',
+                        background: '#ef4444',
+                        marginTop: '9px',
+                        flexShrink: 0,
+                      }}
+                    />
+                    <span style={{ fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.5 }}>
+                      {hasColon ? (
+                        <>
+                          <strong style={{ color: 'var(--text-primary)', fontWeight: 700 }}>{title}: </strong>
+                          <span style={{ color: 'var(--text-secondary)' }}>{rest}</span>
+                        </>
+                      ) : (
+                        pt
+                      )}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
@@ -309,14 +322,27 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
             </p>
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '6px' }}>
-              {caseStudy.process.points.map((pt, idx) => (
-                <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
-                  <CheckCircle2 size={18} style={{ color: 'var(--accent-purple)', flexShrink: 0, marginTop: '2px' }} />
-                  <span style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-primary)', lineHeight: 1.5 }}>
-                    {pt}
-                  </span>
-                </div>
-              ))}
+              {caseStudy.process.points.map((pt, idx) => {
+                const hasColon = typeof pt === 'string' && pt.includes(': ');
+                const colonIdx = hasColon ? pt.indexOf(': ') : -1;
+                const title = hasColon ? pt.substring(0, colonIdx) : null;
+                const rest = hasColon ? pt.substring(colonIdx + 2) : pt;
+                return (
+                  <div key={idx} style={{ display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                    <CheckCircle2 size={18} style={{ color: 'var(--accent-purple)', flexShrink: 0, marginTop: '2px' }} />
+                    <span style={{ fontSize: '0.9rem', color: 'var(--text-primary)', lineHeight: 1.5 }}>
+                      {hasColon ? (
+                        <>
+                          <strong style={{ color: 'var(--text-primary)', fontWeight: 700 }}>{title}: </strong>
+                          <span style={{ color: 'var(--text-secondary)' }}>{rest}</span>
+                        </>
+                      ) : (
+                        pt
+                      )}
+                    </span>
+                  </div>
+                );
+              })}
             </div>
           </div>
 
