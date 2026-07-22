@@ -3,7 +3,7 @@ import { GraduationCap, Calendar, BookOpen, CheckSquare } from 'lucide-react';
 export default function Education() {
   const educations = [
     {
-      degree: 'Diploma in Banking & Finance (DBF Level)',
+      degree: 'Diploma in Banking & Finance (DBF Level I)',
       institution: 'Institute of Bankers of Sri Lanka (IBSL)',
       location: 'Sri Lanka',
       duration: 'Reading / Ongoing',

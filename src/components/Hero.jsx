@@ -302,7 +302,7 @@ export default function Hero() {
                 <span style={{ color: 'var(--accent-cyan)' }}>"HNDIT @ SLIATE"</span>,
               </div>
               <div style={{ paddingLeft: '20px' }}>
-                <span style={{ color: 'var(--accent-cyan)' }}>"DBF Level (Reading) - IBSL"</span>
+                <span style={{ color: 'var(--accent-cyan)' }}>"DBF Level I (Reading) - IBSL"</span>
               </div>
               <div style={{ paddingLeft: '0px' }}>{"],"}</div>
             </div>
@@ -312,14 +312,17 @@ export default function Hero() {
                 <span style={{ color: 'var(--accent-cyan)' }}>"Project Management"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"Business Analysis"</span>,
               </div>
               <div style={{ paddingLeft: '20px' }}>
-                <span style={{ color: 'var(--accent-cyan)' }}>"FinTech"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"System Analysis"</span>
+                <span style={{ color: 'var(--accent-cyan)' }}>"Digital Banking"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"FinTech"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"System Analysis"</span>
               </div>
               <div style={{ paddingLeft: '0px' }}>{"],"}</div>
             </div>
             <div style={{ paddingLeft: '20px' }}>
               <span style={{ color: 'var(--accent-purple)' }}>"coreSkills"</span>: <span style={{ color: 'var(--text-primary)' }}>{"["}</span>
               <div style={{ paddingLeft: '20px' }}>
-                <span style={{ color: 'var(--accent-cyan)' }}>"Agile & Scrum"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"Project Planning"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"SQL"</span>,
+                <span style={{ color: 'var(--accent-cyan)' }}>"Agile & Scrum"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"Project Planning"</span>,
+              </div>
+              <div style={{ paddingLeft: '20px' }}>
+                <span style={{ color: 'var(--accent-cyan)' }}>"Requirements Gathering"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"SQL"</span>,
               </div>
               <div style={{ paddingLeft: '20px' }}>
                 <span style={{ color: 'var(--accent-cyan)' }}>"JavaScript (React)"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"PHP"</span>, <span style={{ color: 'var(--accent-cyan)' }}>"MySQL"</span>
