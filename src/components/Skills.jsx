@@ -3,10 +3,12 @@ import { Database, Code2, Cpu, FileCheck, Target, Workflow, LayoutList, Terminal
 export default function Skills() {
   const skills = [
     // Project Management & Business Analysis
-    { name: 'Requirements Gathering', type: 'Business Analysis', color: '#00f2fe', icon: <FileCheck size={18} /> },
-    { name: 'Agile & Scrum', type: 'Methodology', color: '#9b51e0', icon: <Workflow size={18} /> },
+    { name: 'Agile Methodology', type: 'Methodology', color: '#9b51e0', icon: <Workflow size={18} /> },
+    { name: 'Scrum', type: 'Agile Framework', color: '#00f2fe', icon: <Workflow size={18} /> },
     { name: 'Project Planning', type: 'Management', color: '#ff6384', icon: <Target size={18} /> },
-    { name: 'UML & BPMN Modeling', type: 'System Design', color: '#00758F', icon: <LayoutList size={18} /> },
+    { name: 'Requirement Engineering', type: 'Business Analysis', color: '#38ef7d', icon: <FileCheck size={18} /> },
+    { name: 'Business Process Modeling', type: 'System Design', color: '#00758F', icon: <LayoutList size={18} /> },
+    { name: 'Requirements Gathering', type: 'Business Analysis', color: '#00f2fe', icon: <FileCheck size={18} /> },
     { name: 'Process Improvement', type: 'Business Analysis', color: '#38ef7d', icon: <Workflow size={18} /> },
 
     // Software Development
