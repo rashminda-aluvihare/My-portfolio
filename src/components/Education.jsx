@@ -23,6 +23,7 @@ export default function Education() {
     {
       degree: 'Higher National Diploma in Information Technology (HNDIT)',
       institution: 'Sri Lanka Institute of Advanced Technological Education (SLIATE)',
+      specialization: 'Business Analysis & Project Management, Software Engineering, Quality Assurance',
       logo: sliateLogo,
       location: 'Matale / Colombo, Sri Lanka',
       duration: 'Aug 2024 - Aug 2026',
@@ -115,6 +116,11 @@ export default function Education() {
                     <h4 style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
                       {edu.institution}
                     </h4>
+                    {edu.specialization && (
+                      <p style={{ fontSize: '0.88rem', color: 'var(--accent-cyan)', fontWeight: 600, marginTop: '4px' }}>
+                        <span style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>Specialization:</span> {edu.specialization}
+                      </p>
+                    )}
                   </div>
                 </div>
 
