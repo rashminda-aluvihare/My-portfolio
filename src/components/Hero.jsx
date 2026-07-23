@@ -153,17 +153,14 @@ export default function Hero() {
             <span>View Projects</span>
             <ArrowRight size={18} />
           </a>
-          <a
-            href="/Rashminda_Aluvihare_CV.pdf"
-            download="Rashminda_Aluvihare_CV.pdf"
-            target="_blank"
-            rel="noreferrer"
+          <button
+            onClick={() => alert("CV download will be available soon! In the meantime, feel free to reach out via the Contact section.")}
             className="btn-premium secondary"
             style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
           >
             <Download size={18} style={{ color: 'var(--accent-cyan)' }} />
             <span>Download CV</span>
-          </a>
+          </button>
           <a href="#contact" className="btn-premium secondary">
             <span>Let's Talk</span>
           </a>

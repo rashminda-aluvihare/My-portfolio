@@ -179,11 +179,8 @@ export default function Navbar({ theme, toggleTheme }) {
         </button>
 
         {/* CV Download Button */}
-        <a
-          href="/Rashminda_Aluvihare_CV.pdf"
-          download="Rashminda_Aluvihare_CV.pdf"
-          target="_blank"
-          rel="noreferrer"
+        <button
+          onClick={() => alert("CV download will be available soon! In the meantime, feel free to reach out via the Contact section.")}
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -195,7 +192,7 @@ export default function Navbar({ theme, toggleTheme }) {
             background: 'rgba(0, 242, 254, 0.1)',
             border: '1px solid rgba(0, 242, 254, 0.25)',
             color: 'var(--accent-cyan)',
-            textDecoration: 'none',
+            cursor: 'pointer',
             transition: 'var(--transition-bounce)',
           }}
           onMouseEnter={(e) => {
@@ -209,7 +206,7 @@ export default function Navbar({ theme, toggleTheme }) {
         >
           <Download size={14} />
           <span>CV</span>
-        </a>
+        </button>
       </div>
 
       {/* Mobile menu controls */}
