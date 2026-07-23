@@ -23,11 +23,11 @@ export default function About() {
             </h3>
 
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-              As an HNDIT undergraduate specializing in Business Analysis and Project Management, I bridge the critical gap between business vision and software execution. I excel at translating complex business requirements into clear functional specs, UML/BPMN models, and actionable Agile backlogs.
+              As an HNDIT undergraduate aspiring to build a career in Project Management and Business Analysis, I am passionate about connecting business goals with technology-driven solutions. I enjoy analyzing business needs, gathering requirements, and transforming them into clear functional specifications, UML/BPMN models, user stories, and well-structured Agile backlogs.
             </p>
 
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-              Having hands-on software development experience across Next.js, React, Java, PHP, and SQL allows me to collaborate effectively with engineering teams, perform precise feasibility analysis, and lead data-driven software solutions like <strong>FinBridge AI</strong>.
+              My technical foundation in Next.js, React, Java, PHP, and SQL enables me to communicate effectively with development teams, understand technical constraints, and support informed decision-making throughout the project lifecycle. I believe successful projects are driven by effective communication, stakeholder collaboration, structured planning, and continuous improvement.
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
