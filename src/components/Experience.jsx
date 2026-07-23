@@ -1,4 +1,5 @@
 import { Briefcase, Calendar, CheckSquare, Award, FileText, Globe, Layers } from 'lucide-react';
+import peoplesBankLogo from '../assets/peoplesbank.jpg';
 
 export default function Experience() {
   const experiences = [
@@ -24,6 +25,7 @@ export default function Experience() {
     {
       role: 'Internship Trainee',
       company: "People's Bank Sri Lanka",
+      logo: peoplesBankLogo,
       companyType: 'Internship',
       location: 'Ukuwela Branch, Sri Lanka',
       duration: 'Jan 2024 - Jul 2024 · 7 mos',
@@ -82,17 +84,35 @@ export default function Experience() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                   <div
                     style={{
-                      background: exp.bgAlpha,
-                      border: `1px solid ${exp.borderAlpha}`,
-                      borderRadius: '12px',
-                      padding: '12px',
+                      background: exp.logo ? '#ffffff' : exp.bgAlpha,
+                      border: `1px solid ${exp.logo ? 'rgba(255, 255, 255, 0.2)' : exp.borderAlpha}`,
+                      borderRadius: '14px',
+                      padding: exp.logo ? '4px' : '12px',
+                      width: '54px',
+                      height: '54px',
                       color: exp.badgeColor,
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
+                      flexShrink: 0,
+                      boxShadow: '0 4px 14px rgba(0, 0, 0, 0.15)',
+                      overflow: 'hidden',
                     }}
                   >
-                    <Briefcase size={24} />
+                    {exp.logo ? (
+                      <img
+                        src={exp.logo}
+                        alt={exp.company}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'contain',
+                          borderRadius: '8px',
+                        }}
+                      />
+                    ) : (
+                      <Briefcase size={24} />
+                    )}
                   </div>
                   <div>
                     <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-primary)' }}>
