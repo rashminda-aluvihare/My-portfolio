@@ -202,20 +202,6 @@ export default function Projects() {
                   <Calendar size={14} />
                   <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>{project.date}</span>
                 </div>
-                
-                <span
-                  style={{
-                    fontSize: '0.75rem',
-                    fontWeight: 700,
-                    color: project.category === 'web' ? 'var(--accent-cyan)' : 'var(--accent-purple)',
-                    background: project.category === 'web' ? 'rgba(0, 242, 254, 0.1)' : 'rgba(155, 81, 224, 0.1)',
-                    border: `1px solid ${project.category === 'web' ? 'rgba(0, 242, 254, 0.2)' : 'rgba(155, 81, 224, 0.2)'}`,
-                    padding: '4px 10px',
-                    borderRadius: '8px',
-                  }}
-                >
-                  {project.category === 'web' ? 'Web System' : 'Java Backend'}
-                </span>
               </div>
 
               {/* Card Body Area */}
