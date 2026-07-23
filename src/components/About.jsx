@@ -1,5 +1,3 @@
-import { Code2 } from 'lucide-react';
-
 export default function About() {
   return (
     <section id="about" className="section" style={{ background: 'var(--bg-secondary)', position: 'relative' }}>
@@ -17,8 +15,7 @@ export default function About() {
 
           {/* Left Column: Philosophy */}
           <div className="glass-panel" style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
-            <h3 style={{ fontSize: '1.5rem', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <Code2 style={{ color: 'var(--accent-cyan)' }} size={24} />
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 700 }}>
               My Management & Technical Philosophy
             </h3>
 
