@@ -8,9 +8,9 @@ import loanSavingsImg from '../assets/loan_savings.png';
 export const caseStudiesData = {
   'finbridge': {
     id: 'finbridge',
-    title: 'FinBridge AI Platform',
+    title: 'FinBridge – AI-Based Personal Financial Health & Loan Risk Assessment Platform',
     category: 'Web & FinTech / AI',
-    subtitle: 'AI-driven microfinance, digital wallet & credit risk scoring platform',
+    subtitle: 'Empower your financial future with automated health scores, risk profiling, and AI recommendations.',
     date: 'AI FinTech Platform',
     image: finbridgeImg,
     github: 'https://github.com/rashminda-aluvihare/finbridge',

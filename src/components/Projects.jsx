@@ -25,8 +25,8 @@ export default function Projects() {
   const projectsList = [
     {
       id: 'finbridge',
-      title: 'FinBridge AI Platform',
-      description: 'AI-driven microfinance, digital wallet & alternative loan risk assessment platform tailored for underserved micro-entrepreneurs. Evaluates non-traditional inputs to generate credit scores (300–850), lowering interest barriers.',
+      title: 'FinBridge – AI-Based Personal Financial Health & Loan Risk Assessment Platform',
+      description: 'Empower your financial future with automated health scores, risk profiling, and AI recommendations.',
       tags: ['Next.js 16', 'React 19', 'TypeScript', 'Python FastAPI (Scikit-Learn)', 'Express.js', 'Zustand', 'Recharts', 'Trilingual i18n'],
       category: 'web',
       github: 'https://github.com/rashminda-aluvihare/finbridge',
