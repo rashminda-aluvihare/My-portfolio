@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Mail, ArrowRight, ExternalLink } from 'lucide-react';
+import { Mail, ArrowRight, ExternalLink, Download } from 'lucide-react';
 import HeroBlockchainCanvas from './HeroBlockchainCanvas';
 
 export default function Hero() {
@@ -152,6 +152,17 @@ export default function Hero() {
           <a href="#projects" className="btn-premium primary">
             <span>View Projects</span>
             <ArrowRight size={18} />
+          </a>
+          <a
+            href="/Rashminda_Aluvihare_CV.pdf"
+            download="Rashminda_Aluvihare_CV.pdf"
+            target="_blank"
+            rel="noreferrer"
+            className="btn-premium secondary"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+          >
+            <Download size={18} style={{ color: 'var(--accent-cyan)' }} />
+            <span>Download CV</span>
           </a>
           <a href="#contact" className="btn-premium secondary">
             <span>Let's Talk</span>
