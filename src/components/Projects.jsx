@@ -58,8 +58,8 @@ export default function Projects() {
     },
     {
       id: 'fixed-deposit',
-      title: 'FixedDepositCalculation-System',
-      description: 'A Java-based core logic simulator for calculating fixed deposit schemes. Calculates interest models, compounding formulas, and tax deductions based on investment duration variables.',
+      title: 'Fixed Deposit Calculation System',
+      description: "A Java-based banking application inspired by People's Bank fixed deposit schemes, calculating maturity values, compound interest, and applicable tax deductions based on investment amount and deposit tenure.",
       tags: ['Java SE', 'Financial Formulas', 'Desktop Console'],
       category: 'java',
       github: 'https://github.com/rashminda-aluvihare/FixedDepositCalculation-System',
@@ -69,8 +69,8 @@ export default function Projects() {
     },
     {
       id: 'loan-savings',
-      title: 'Savingaccounts-LoancalculationSystem',
-      description: 'A mathematical logic engine in Java for tracking saving account interests and loan amortization schedules. Incorporates reducing-balance algorithms, EMI computations, and payment tables.',
+      title: 'Saving Accounts & Loan Calculation System',
+      description: "A Java-based banking application inspired by People's Bank savings and loan schemes, automating interest, loan EMI, and reducing-balance calculations while generating accurate repayment schedules.",
       tags: ['Java SE', 'OOP Logic', 'Interest Algorithms'],
       category: 'java',
       github: 'https://github.com/rashminda-aluvihare/Savingaccounts-LoancalculationSystem',

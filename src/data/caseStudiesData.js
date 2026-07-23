@@ -129,9 +129,9 @@ export const caseStudiesData = {
 
   'fixed-deposit': {
     id: 'fixed-deposit',
-    title: 'FixedDepositCalculation-System',
+    title: 'Fixed Deposit Calculation System',
     category: 'Java Financial Core Logic',
-    subtitle: 'Object-Oriented core algorithm engine for compounding interest & tax schemes',
+    subtitle: "A Java-based banking application inspired by People's Bank fixed deposit schemes, calculating maturity values, compound interest, and applicable tax deductions based on investment amount and deposit tenure.",
     date: 'Java Academic Project',
     image: fixedDepositImg,
     github: 'https://github.com/rashminda-aluvihare/FixedDepositCalculation-System',
@@ -169,9 +169,9 @@ export const caseStudiesData = {
 
   'loan-savings': {
     id: 'loan-savings',
-    title: 'Savingaccounts-LoancalculationSystem',
+    title: 'Saving Accounts & Loan Calculation System',
     category: 'Java Banking Engine',
-    subtitle: 'Loan amortization algorithms & progressive savings growth simulator',
+    subtitle: "A Java-based banking application inspired by People's Bank savings and loan schemes, automating interest, loan EMI, and reducing-balance calculations while generating accurate repayment schedules.",
     date: 'Academic Assignment',
     image: loanSavingsImg,
     github: 'https://github.com/rashminda-aluvihare/Savingaccounts-LoancalculationSystem',
