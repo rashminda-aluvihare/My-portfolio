@@ -136,7 +136,7 @@ export default function Hero() {
             lineHeight: 1.6,
           }}
         >
-          IT Undergraduate & Aspiring Project Manager & Business Analyst. Skilled in requirements gathering, Agile & Scrum methodologies, UML/BPMN modeling, and full-stack software development.
+          HNDIT undergraduate specializing in Business Analysis and Project Management, with hands-on experience in full-stack development and fintech-oriented solutions.
         </p>
 
         {/* Call to Actions */}
