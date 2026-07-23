@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon, Download } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 
 export default function Navbar({ theme, toggleTheme }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -176,36 +176,6 @@ export default function Navbar({ theme, toggleTheme }) {
           aria-label="Toggle Theme"
         >
           {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
-
-        {/* CV Download Button */}
-        <button
-          onClick={() => alert("CV download will be available soon! In the meantime, feel free to reach out via the Contact section.")}
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '6px',
-            padding: '6px 14px',
-            borderRadius: '999px',
-            fontSize: '0.82rem',
-            fontWeight: 700,
-            background: 'rgba(0, 242, 254, 0.1)',
-            border: '1px solid rgba(0, 242, 254, 0.25)',
-            color: 'var(--accent-cyan)',
-            cursor: 'pointer',
-            transition: 'var(--transition-bounce)',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'var(--accent-cyan)';
-            e.currentTarget.style.color = '#ffffff';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'rgba(0, 242, 254, 0.1)';
-            e.currentTarget.style.color = 'var(--accent-cyan)';
-          }}
-        >
-          <Download size={14} />
-          <span>CV</span>
         </button>
       </div>
 
