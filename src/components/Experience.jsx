@@ -1,11 +1,13 @@
 import { Briefcase, Calendar, CheckSquare, Award, FileText, Globe, Layers } from 'lucide-react';
 import peoplesBankLogo from '../assets/peoplesbank.jpg';
+import decodeLogo from '../assets/decode.png';
 
 export default function Experience() {
   const experiences = [
     {
       role: 'Full Stack Developer',
       company: 'Decodelabs',
+      logo: decodeLogo,
       companyType: 'Internship',
       location: 'Remote',
       duration: 'Jun 2026 · 1 mo',
