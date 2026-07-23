@@ -91,9 +91,9 @@ export default function App() {
         <Hero />
         <About />
         <Experience />
+        <Projects />
         <Education />
         <Skills />
-        <Projects />
         <Activities />
         <Contact />
       </main>
