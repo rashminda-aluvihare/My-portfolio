@@ -24,6 +24,17 @@ export default function Projects() {
 
   const projectsList = [
     {
+      id: 'agronexa',
+      title: 'AgroNexa LK – Smart Agriculture Marketplace',
+      description: 'A blockchain-enabled agriculture platform connecting farmers and buyers with transparent pricing and verified transactions.',
+      tags: ['JavaScript', 'HTML5', 'CSS3', 'Blockchain Concepts', 'Smart Agriculture'],
+      category: 'web',
+      github: 'https://github.com/rashminda-aluvihare/agronexa-lk',
+      demo: 'https://agronexa-lk.vercel.app',
+      date: 'Independent Development',
+      image: agronexaImg,
+    },
+    {
       id: 'finbridge',
       title: 'FinBridge – AI-Based Personal Financial Health & Loan Risk Assessment Platform',
       description: 'Empower your financial future with automated health scores, risk profiling, and AI recommendations.',
@@ -44,17 +55,6 @@ export default function Projects() {
       demo: null,
       date: 'Semester 2 Project',
       image: fundManagementImg,
-    },
-    {
-      id: 'agronexa',
-      title: 'AgroNexa LK – Smart Agriculture Marketplace',
-      description: 'A blockchain-enabled agriculture platform connecting farmers and buyers with transparent pricing and verified transactions.',
-      tags: ['JavaScript', 'HTML5', 'CSS3', 'Blockchain Concepts', 'Smart Agriculture'],
-      category: 'web',
-      github: 'https://github.com/rashminda-aluvihare/agronexa-lk',
-      demo: 'https://agronexa-lk.vercel.app',
-      date: 'Independent Development',
-      image: agronexaImg,
     },
     {
       id: 'fixed-deposit',
