@@ -9,13 +9,11 @@ export default function Skills() {
     { name: 'Requirement Engineering', type: 'Business Analysis', color: '#38ef7d', icon: <FileCheck size={18} /> },
     { name: 'Business Process Modeling', type: 'System Design', color: '#00758F', icon: <LayoutList size={18} /> },
     { name: 'Requirements Gathering', type: 'Business Analysis', color: '#00f2fe', icon: <FileCheck size={18} /> },
-    { name: 'Process Improvement', type: 'Business Analysis', color: '#38ef7d', icon: <Workflow size={18} /> },
 
     // Software Development
     { name: 'Next.js & TypeScript', type: 'Fullstack Stack', color: '#0070f3', icon: <Code2 size={18} /> },
     { name: 'React 19 & Zustand', type: 'Frontend Logic', color: '#61dafb', icon: <Code2 size={18} /> },
     { name: 'Tailwind & Framer Motion', type: 'UI & Animations', color: '#38bdf8', icon: <Code2 size={18} /> },
-    { name: 'Recharts Visualization', type: 'Data Analytics', color: '#ff7300', icon: <Cpu size={18} /> },
     { name: 'JavaScript (ES6+)', type: 'Core Frontend', color: '#f7df1e', icon: <Code2 size={18} /> },
     { name: 'PHP', type: 'Backend Stack', color: '#4F5D95', icon: <Terminal size={18} /> },
     { name: 'Java SE', type: 'OOP Language', color: '#b07219', icon: <Cpu size={18} /> },
