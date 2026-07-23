@@ -89,9 +89,9 @@ export const caseStudiesData = {
 
   'agronexa': {
     id: 'agronexa',
-    title: 'agronexa-lk',
+    title: 'AgroNexa LK – Smart Agriculture Marketplace',
     category: 'Smart Agriculture / Web',
-    subtitle: 'Farm workflow management, crop cycle planning & yield tracking dashboard',
+    subtitle: 'A blockchain-enabled agriculture platform connecting farmers and buyers with transparent pricing and verified transactions.',
     date: 'Independent Development',
     image: agronexaImg,
     github: 'https://github.com/rashminda-aluvihare/agronexa-lk',
