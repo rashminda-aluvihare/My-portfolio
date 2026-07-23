@@ -1,10 +1,13 @@
 import { GraduationCap, Calendar, BookOpen, CheckCircle2, Award } from 'lucide-react';
+import ibslLogo from '../assets/ibsl.png';
+import sliateLogo from '../assets/SLIATE_LOGO2.png';
 
 export default function Education() {
   const educations = [
     {
       degree: 'Diploma in Banking & Finance (DBF Level I)',
       institution: 'Institute of Bankers of Sri Lanka (IBSL)',
+      logo: ibslLogo,
       location: 'Sri Lanka',
       duration: 'Reading / Ongoing',
       status: 'Banking & Finance Student',
@@ -20,6 +23,7 @@ export default function Education() {
     {
       degree: 'Higher National Diploma in Information Technology (HNDIT)',
       institution: 'Sri Lanka Institute of Advanced Technological Education (SLIATE)',
+      logo: sliateLogo,
       location: 'Matale / Colombo, Sri Lanka',
       duration: 'Aug 2024 - Aug 2026',
       status: 'Undergraduate',
@@ -74,17 +78,35 @@ export default function Education() {
                 <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
                   <div
                     style={{
-                      background: 'rgba(0, 242, 254, 0.1)',
-                      border: '1px solid rgba(0, 242, 254, 0.2)',
-                      borderRadius: '12px',
-                      padding: '12px',
+                      background: edu.logo ? '#ffffff' : 'rgba(0, 242, 254, 0.1)',
+                      border: '1px solid rgba(0, 242, 254, 0.3)',
+                      borderRadius: '14px',
+                      padding: edu.logo ? '6px' : '12px',
+                      width: '54px',
+                      height: '54px',
                       color: 'var(--accent-cyan)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
+                      flexShrink: 0,
+                      boxShadow: '0 4px 14px rgba(0, 0, 0, 0.15)',
+                      overflow: 'hidden',
                     }}
                   >
-                    <GraduationCap size={24} />
+                    {edu.logo ? (
+                      <img
+                        src={edu.logo}
+                        alt={edu.institution}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          objectFit: 'contain',
+                          borderRadius: '8px',
+                        }}
+                      />
+                    ) : (
+                      <GraduationCap size={24} />
+                    )}
                   </div>
                   <div>
                     <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-primary)' }}>
