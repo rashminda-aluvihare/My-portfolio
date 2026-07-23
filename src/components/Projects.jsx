@@ -173,18 +173,54 @@ export default function Projects() {
             >
               {/* Card Image Area */}
               {project.image && (
-                <div style={{ position: 'relative', height: '190px', overflow: 'hidden', borderBottom: '1px solid var(--card-border)' }}>
-                  <img
-                    src={project.image}
-                    alt={project.title}
+                <div
+                  style={{
+                    position: 'relative',
+                    height: '210px',
+                    overflow: 'hidden',
+                    borderBottom: '1px solid var(--card-border)',
+                    background: 'rgba(0, 0, 0, 0.35)',
+                    padding: '12px 12px 0 12px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                  }}
+                >
+                  {/* Browser Mockup Header */}
+                  <div
                     style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                      height: '22px',
+                      background: 'rgba(255, 255, 255, 0.07)',
+                      borderRadius: '8px 8px 0 0',
+                      border: '1px solid rgba(255, 255, 255, 0.12)',
+                      borderBottom: 'none',
+                      display: 'flex',
+                      alignItems: 'center',
+                      padding: '0 10px',
+                      gap: '6px',
+                      flexShrink: 0,
                     }}
-                    className="project-card-image"
-                  />
+                  >
+                    <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#ff5f56' }} />
+                    <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#ffbd2e' }} />
+                    <div style={{ width: '7px', height: '7px', borderRadius: '50%', background: '#27c93f' }} />
+                  </div>
+                  
+                  {/* Image Container */}
+                  <div style={{ flex: 1, overflow: 'hidden', position: 'relative', border: '1px solid rgba(255, 255, 255, 0.1)', borderTop: 'none' }}>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'cover',
+                        objectPosition: 'top center',
+                        display: 'block',
+                        transition: 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)',
+                      }}
+                      className="project-card-image"
+                    />
+                  </div>
                 </div>
               )}
 

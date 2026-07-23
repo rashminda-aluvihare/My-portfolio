@@ -191,10 +191,14 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
                 style={{
                   borderRadius: '16px',
                   overflow: 'hidden',
-                  maxHeight: '260px',
                   position: 'relative',
                   border: '1px solid var(--card-border)',
-                  boxShadow: '0 8px 24px rgba(0, 0, 0, 0.2)',
+                  boxShadow: '0 12px 30px rgba(0, 0, 0, 0.35)',
+                  background: 'rgba(0, 0, 0, 0.45)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '12px',
                 }}
               >
                 <img
@@ -202,8 +206,10 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
                   alt={caseStudy.title}
                   style={{
                     width: '100%',
-                    height: '260px',
-                    objectFit: 'cover',
+                    height: 'auto',
+                    maxHeight: '420px',
+                    objectFit: 'contain',
+                    borderRadius: '10px',
                     display: 'block',
                   }}
                 />
