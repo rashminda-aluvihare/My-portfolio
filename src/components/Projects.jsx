@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ExternalLink, Calendar, BookOpen, ArrowUpRight } from 'lucide-react';
+import { ExternalLink, BookOpen, ArrowUpRight } from 'lucide-react';
 import ProjectDemoModal from './ProjectDemoModal';
 import CaseStudyModal from './CaseStudyModal';
 import { caseStudiesData } from '../data/caseStudiesData';
@@ -188,21 +188,7 @@ export default function Projects() {
                 </div>
               )}
 
-              {/* Card Header Area */}
-              <div
-                style={{
-                  padding: '20px 24px 12px 24px',
-                  borderBottom: '1px solid var(--card-border)',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                }}
-              >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text-muted)' }}>
-                  <Calendar size={14} />
-                  <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>{project.date}</span>
-                </div>
-              </div>
+
 
               {/* Card Body Area */}
               <div style={{ padding: '24px', flex: 1, display: 'flex', flexDirection: 'column', gap: '16px' }}>
