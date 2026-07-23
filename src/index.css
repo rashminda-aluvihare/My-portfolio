@@ -7,7 +7,7 @@
   --accent-cyan: #00f2fe;
   --accent-purple: #9b51e0;
   --accent-blue: #0070f3;
-  --text-primary: #f3f4f6;
+  --text-primary: #ffffff;
   --text-secondary: #9ca3af;
   --text-muted: #6b7280;
   --card-bg: rgba(10, 13, 20, 0.45);
@@ -15,6 +15,7 @@
   --card-glow: rgba(0, 242, 254, 0.15);
   --nav-bg: rgba(5, 7, 10, 0.7);
   --shadow-color: rgba(0, 0, 0, 0.5);
+  --gradient-end: #ffffff;
 
   --font-display: 'Outfit', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
@@ -37,6 +38,7 @@
   --card-glow: rgba(2, 132, 199, 0.15);
   --nav-bg: rgba(248, 250, 252, 0.8);
   --shadow-color: rgba(15, 23, 42, 0.08);
+  --gradient-end: #0f172a;
 }
 
 * {
@@ -122,7 +124,7 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Gradient Text */
 .gradient-text {
-  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--accent-purple) 100%);
+  background: linear-gradient(135deg, var(--accent-cyan) 0%, var(--gradient-end) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
