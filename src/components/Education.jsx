@@ -23,7 +23,7 @@ export default function Education() {
     {
       degree: 'Higher National Diploma in Information Technology (HNDIT)',
       institution: 'Sri Lanka Institute of Advanced Technological Education (SLIATE)',
-      specialization: 'Business Analysis & Project Management, Software Engineering, Quality Assurance',
+      specialization: 'Project Management, Business Analysis, Software Engineering & Quality Assurance',
       logo: sliateLogo,
       location: 'Matale / Colombo, Sri Lanka',
       duration: 'Aug 2024 - Aug 2026',
