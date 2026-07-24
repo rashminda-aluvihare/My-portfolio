@@ -262,6 +262,7 @@ export default function Hero() {
 
         {/* Right Column: Creative Profile Frame */}
         <div
+          className="hero-profile-column"
           style={{
             position: 'relative',
             display: 'flex',
@@ -274,10 +275,10 @@ export default function Hero() {
           <div
             style={{
               position: 'absolute',
-              width: '320px',
-              height: '320px',
-              background: 'radial-gradient(circle, rgba(0, 242, 254, 0.25) 0%, rgba(155, 81, 224, 0.2) 40%, transparent 70%)',
-              filter: 'blur(40px)',
+              width: '280px',
+              height: '280px',
+              background: 'radial-gradient(circle, rgba(0, 242, 254, 0.22) 0%, rgba(155, 81, 224, 0.18) 45%, transparent 70%)',
+              filter: 'blur(35px)',
               zIndex: 0,
               pointerEvents: 'none',
             }}
@@ -290,13 +291,13 @@ export default function Hero() {
               position: 'relative',
               zIndex: 1,
               width: '100%',
-              maxWidth: '350px',
-              borderRadius: '28px',
-              padding: '12px',
-              background: 'linear-gradient(135deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0.02) 100%)',
-              backdropFilter: 'blur(20px)',
-              border: '1px solid rgba(255, 255, 255, 0.15)',
-              boxShadow: '0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(0, 242, 254, 0.15)',
+              maxWidth: '280px',
+              borderRadius: '24px',
+              padding: '10px',
+              background: 'var(--card-bg)',
+              backdropFilter: 'blur(16px)',
+              border: '1px solid var(--card-border)',
+              boxShadow: '0 15px 35px rgba(0, 0, 0, 0.25), 0 0 25px rgba(0, 242, 254, 0.12)',
               transition: 'transform 0.4s ease, box-shadow 0.4s ease',
             }}
           >
@@ -304,15 +305,15 @@ export default function Hero() {
             <div
               style={{
                 position: 'relative',
-                borderRadius: '20px',
+                borderRadius: '18px',
                 overflow: 'hidden',
                 background: 'linear-gradient(135deg, var(--accent-cyan), var(--accent-purple))',
-                padding: '3px',
+                padding: '2.5px',
               }}
             >
               <div
                 style={{
-                  borderRadius: '17px',
+                  borderRadius: '15px',
                   overflow: 'hidden',
                   background: 'var(--bg-primary)',
                   display: 'block',
@@ -325,10 +326,10 @@ export default function Hero() {
                   style={{
                     width: '100%',
                     height: 'auto',
-                    aspectRatio: '4/4.5',
+                    aspectRatio: '1 / 1.15',
                     objectFit: 'cover',
-                    objectPosition: 'center top',
-                    borderRadius: '17px',
+                    objectPosition: '68% 25%',
+                    borderRadius: '15px',
                     display: 'block',
                     transition: 'transform 0.5s ease',
                   }}
@@ -341,24 +342,24 @@ export default function Hero() {
             <div
               style={{
                 position: 'absolute',
-                top: '-14px',
-                left: '-16px',
-                padding: '8px 14px',
-                background: 'rgba(13, 17, 23, 0.85)',
+                top: '-12px',
+                left: '-12px',
+                padding: '6px 12px',
+                background: 'var(--bg-primary)',
                 backdropFilter: 'blur(12px)',
-                border: '1px solid rgba(0, 242, 254, 0.4)',
-                borderRadius: '14px',
+                border: '1px solid var(--accent-cyan)',
+                borderRadius: '12px',
                 color: 'var(--text-primary)',
-                fontSize: '0.78rem',
+                fontSize: '0.75rem',
                 fontWeight: 700,
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 12px rgba(0, 242, 254, 0.2)',
+                gap: '6px',
+                boxShadow: '0 6px 16px rgba(0, 0, 0, 0.2)',
                 zIndex: 2,
               }}
             >
-              <Sparkles size={14} style={{ color: 'var(--accent-cyan)' }} />
+              <Sparkles size={13} style={{ color: 'var(--accent-cyan)' }} />
               <span>Project Manager & BA</span>
             </div>
 
@@ -366,24 +367,24 @@ export default function Hero() {
             <div
               style={{
                 position: 'absolute',
-                bottom: '-14px',
-                right: '-16px',
-                padding: '8px 14px',
-                background: 'rgba(13, 17, 23, 0.85)',
+                bottom: '-12px',
+                right: '-12px',
+                padding: '6px 12px',
+                background: 'var(--bg-primary)',
                 backdropFilter: 'blur(12px)',
-                border: '1px solid rgba(155, 81, 224, 0.4)',
-                borderRadius: '14px',
+                border: '1px solid var(--accent-purple)',
+                borderRadius: '12px',
                 color: 'var(--text-primary)',
-                fontSize: '0.78rem',
+                fontSize: '0.75rem',
                 fontWeight: 700,
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px',
-                boxShadow: '0 8px 20px rgba(0, 0, 0, 0.4), 0 0 12px rgba(155, 81, 224, 0.2)',
+                gap: '6px',
+                boxShadow: '0 6px 16px rgba(0, 0, 0, 0.2)',
                 zIndex: 2,
               }}
             >
-              <Code2 size={14} style={{ color: 'var(--accent-purple)' }} />
+              <Code2 size={13} style={{ color: 'var(--accent-purple)' }} />
               <span>Full-Stack & FinTech</span>
             </div>
           </div>
@@ -392,8 +393,8 @@ export default function Hero() {
 
       <style>{`
         .hero-profile-card:hover {
-          transform: translateY(-6px) rotate(0.5deg);
-          box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 242, 254, 0.3) !important;
+          transform: translateY(-4px);
+          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35), 0 0 30px rgba(0, 242, 254, 0.25) !important;
         }
         .hero-profile-card:hover .profile-img-hover {
           transform: scale(1.03);
@@ -402,11 +403,17 @@ export default function Hero() {
           .hero-container-grid {
             grid-template-columns: 1fr !important;
             text-align: center;
-            gap: 40px !important;
+            gap: 32px !important;
           }
-          .hero-container-grid div:first-child {
+          .hero-profile-column {
+            order: -1 !important; /* Shows photo at the top on mobile screens */
+          }
+          .hero-container-grid > div {
             align-items: center !important;
             text-align: center !important;
+          }
+          .hero-container-grid h2 {
+            justify-content: center !important;
           }
           .hero-container-grid .btn-premium {
             justify-content: center;
