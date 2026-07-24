@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Mail, ArrowRight, ExternalLink, Download, Sparkles, Award, Code2 } from 'lucide-react';
+import { Mail, ArrowRight, ExternalLink, Download } from 'lucide-react';
 import HeroBlockchainCanvas from './HeroBlockchainCanvas';
 import profileImg from '../assets/profile.jpg';
 
@@ -50,8 +50,8 @@ export default function Hero() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingTop: '120px',
-        paddingBottom: '60px',
+        paddingTop: '130px',
+        paddingBottom: '50px',
         position: 'relative',
         overflow: 'hidden',
       }}
@@ -60,364 +60,258 @@ export default function Hero() {
       <HeroBlockchainCanvas />
 
       <div
-        className="container hero-container-grid"
+        className="container"
         style={{
-          maxWidth: '1140px',
+          maxWidth: '820px',
           margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: '1.15fr 0.85fr',
+          display: 'flex',
+          flexDirection: 'column',
           alignItems: 'center',
-          gap: '48px',
+          textAlign: 'center',
+          gap: '18px',
           position: 'relative',
           zIndex: 1,
         }}
       >
-        {/* Left Column: Bio & Action Callouts */}
+        {/* Compact Avatar Photo */}
         <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'flex-start',
-            textAlign: 'left',
-            gap: '20px',
-          }}
-        >
-          {/* Welcome Tag */}
-          <div
-            style={{
-              padding: '6px 16px',
-              borderRadius: '999px',
-              background: 'rgba(0, 242, 254, 0.1)',
-              border: '1px solid rgba(0, 242, 254, 0.25)',
-              fontSize: '0.85rem',
-              fontWeight: 700,
-              letterSpacing: '0.05em',
-              color: 'var(--accent-cyan)',
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-            }}
-          >
-            <span
-              style={{
-                width: '6px',
-                height: '6px',
-                borderRadius: '50%',
-                background: 'var(--accent-cyan)',
-                display: 'inline-block',
-                boxShadow: '0 0 8px var(--accent-cyan)',
-              }}
-            />
-            AVAILABLE FOR PROJECTS
-          </div>
-
-          <h1
-            style={{
-              fontSize: 'clamp(2.4rem, 4.5vw, 3.8rem)',
-              lineHeight: 1.15,
-              fontWeight: 800,
-            }}
-          >
-            Hi, I'm <span className="gradient-text">Rashminda Aluvihare</span>
-          </h1>
-
-          <h2
-            style={{
-              fontSize: 'clamp(1.3rem, 2.5vw, 1.9rem)',
-              color: 'var(--text-secondary)',
-              fontWeight: 500,
-              minHeight: '40px',
-              display: 'flex',
-              alignItems: 'center',
-            }}
-          >
-            I am a&nbsp;
-            <span style={{ color: 'var(--accent-purple)', borderRight: '2px solid var(--accent-purple)', paddingRight: '4px' }}>
-              {roleText}
-            </span>
-          </h2>
-
-          <p
-            style={{
-              color: 'var(--text-secondary)',
-              fontSize: '1.08rem',
-              maxWidth: '600px',
-              lineHeight: 1.65,
-            }}
-          >
-            HNDIT undergraduate specializing in Business Analysis and Project Management, with hands-on experience in full-stack development and fintech-oriented solutions.
-          </p>
-
-          {/* Call to Actions */}
-          <div
-            style={{
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '16px',
-              marginTop: '8px',
-            }}
-          >
-            <a href="#projects" className="btn-premium primary">
-              <span>View Projects</span>
-              <ArrowRight size={18} />
-            </a>
-            <button
-              onClick={() => alert("CV download will be available soon! In the meantime, feel free to reach out via the Contact section.")}
-              className="btn-premium secondary"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
-            >
-              <Download size={18} style={{ color: 'var(--accent-cyan)' }} />
-              <span>Download CV</span>
-            </button>
-            <a href="#contact" className="btn-premium secondary">
-              <span>Let's Talk</span>
-            </a>
-          </div>
-
-          {/* Highlighted Social Profiles */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '12px',
-              marginTop: '4px',
-              flexWrap: 'wrap',
-            }}
-          >
-            <a
-              href="https://linkedin.com/in/rashminda-aluvihare-98604532b"
-              target="_blank"
-              rel="noreferrer"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '10px',
-                padding: '10px 20px',
-                borderRadius: '12px',
-                background: 'rgba(10, 102, 194, 0.12)',
-                border: '1px solid rgba(10, 102, 194, 0.4)',
-                color: 'var(--text-primary)',
-                textDecoration: 'none',
-                fontWeight: 700,
-                fontSize: '0.88rem',
-                transition: 'all 0.2s ease',
-                boxShadow: '0 4px 15px rgba(10, 102, 194, 0.2)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(10, 102, 194, 0.25)';
-                e.currentTarget.style.borderColor = '#0A66C2';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 8px 25px rgba(10, 102, 194, 0.45)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(10, 102, 194, 0.12)';
-                e.currentTarget.style.borderColor = 'rgba(10, 102, 194, 0.4)';
-                e.currentTarget.style.transform = 'none';
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(10, 102, 194, 0.2)';
-              }}
-            >
-              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#0A66C2' }}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
-              <span>LinkedIn</span>
-              <ExternalLink size={13} style={{ opacity: 0.7 }} />
-            </a>
-
-            <a
-              href="https://github.com/rashminda-aluvihare"
-              target="_blank"
-              rel="noreferrer"
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '10px',
-                padding: '10px 20px',
-                borderRadius: '12px',
-                background: 'rgba(255, 255, 255, 0.04)',
-                border: '1px solid rgba(0, 242, 254, 0.3)',
-                color: 'var(--text-primary)',
-                textDecoration: 'none',
-                fontWeight: 700,
-                fontSize: '0.88rem',
-                transition: 'all 0.2s ease',
-                boxShadow: '0 4px 15px rgba(0, 242, 254, 0.15)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(0, 242, 254, 0.15)';
-                e.currentTarget.style.borderColor = 'var(--accent-cyan)';
-                e.currentTarget.style.transform = 'translateY(-2px)';
-                e.currentTarget.style.boxShadow = '0 8px 25px rgba(0, 242, 254, 0.35)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 255, 255, 0.04)';
-                e.currentTarget.style.borderColor = 'rgba(0, 242, 254, 0.3)';
-                e.currentTarget.style.transform = 'none';
-                e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 242, 254, 0.15)';
-              }}
-            >
-              <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--accent-cyan)' }}><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
-              <span>GitHub</span>
-              <ExternalLink size={13} style={{ opacity: 0.7 }} />
-            </a>
-          </div>
-        </div>
-
-        {/* Right Column: Creative Profile Frame */}
-        <div
-          className="hero-profile-column"
           style={{
             position: 'relative',
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            width: '100%',
+            marginBottom: '4px',
           }}
         >
-          {/* Ambient Radial Background Glow */}
+          {/* Ambient Glow */}
           <div
             style={{
               position: 'absolute',
-              width: '280px',
-              height: '280px',
-              background: 'radial-gradient(circle, rgba(0, 242, 254, 0.22) 0%, rgba(155, 81, 224, 0.18) 45%, transparent 70%)',
-              filter: 'blur(35px)',
-              zIndex: 0,
+              top: '50%',
+              left: '50%',
+              transform: 'translate(-50%, -50%)',
+              width: '110px',
+              height: '110px',
+              borderRadius: '50%',
+              background: 'radial-gradient(circle, rgba(0, 242, 254, 0.35) 0%, rgba(155, 81, 224, 0.25) 60%, transparent 75%)',
+              filter: 'blur(15px)',
               pointerEvents: 'none',
             }}
           />
 
-          {/* Main Portrait Card Container */}
+          {/* Avatar Ring */}
           <div
-            className="hero-profile-card"
             style={{
+              width: '96px',
+              height: '96px',
+              borderRadius: '50%',
+              padding: '3px',
+              background: 'linear-gradient(135deg, var(--accent-cyan), var(--accent-purple))',
+              boxShadow: '0 8px 24px rgba(0, 242, 254, 0.25)',
               position: 'relative',
               zIndex: 1,
-              width: '100%',
-              maxWidth: '280px',
-              borderRadius: '24px',
-              padding: '10px',
-              background: 'var(--card-bg)',
-              backdropFilter: 'blur(16px)',
-              border: '1px solid var(--card-border)',
-              boxShadow: '0 15px 35px rgba(0, 0, 0, 0.25), 0 0 25px rgba(0, 242, 254, 0.12)',
-              transition: 'transform 0.4s ease, box-shadow 0.4s ease',
+              transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+              cursor: 'pointer',
+            }}
+            className="hero-avatar-ring"
+          >
+            <img
+              src={profileImg}
+              alt="Rashminda Aluvihare"
+              style={{
+                width: '100%',
+                height: '100%',
+                borderRadius: '50%',
+                objectFit: 'cover',
+                objectPosition: '68% 25%',
+                display: 'block',
+              }}
+            />
+          </div>
+        </div>
+
+        {/* Welcome Tag */}
+        <div
+          style={{
+            padding: '6px 16px',
+            borderRadius: '999px',
+            background: 'rgba(0, 242, 254, 0.1)',
+            border: '1px solid rgba(0, 242, 254, 0.25)',
+            fontSize: '0.82rem',
+            fontWeight: 700,
+            letterSpacing: '0.05em',
+            color: 'var(--accent-cyan)',
+            display: 'inline-flex',
+            alignItems: 'center',
+            gap: '8px',
+          }}
+        >
+          <span
+            style={{
+              width: '6px',
+              height: '6px',
+              borderRadius: '50%',
+              background: 'var(--accent-cyan)',
+              display: 'inline-block',
+              boxShadow: '0 0 8px var(--accent-cyan)',
+            }}
+          />
+          AVAILABLE FOR PROJECTS
+        </div>
+
+        <h1
+          style={{
+            fontSize: 'clamp(2.4rem, 5.5vw, 4.2rem)',
+            lineHeight: 1.15,
+            fontWeight: 800,
+          }}
+        >
+          Hi, I'm <span className="gradient-text">Rashminda Aluvihare</span>
+        </h1>
+
+        <h2
+          style={{
+            fontSize: 'clamp(1.3rem, 2.8vw, 2.1rem)',
+            color: 'var(--text-secondary)',
+            fontWeight: 500,
+            minHeight: '40px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
+          I am a&nbsp;
+          <span style={{ color: 'var(--accent-purple)', borderRight: '2px solid var(--accent-purple)', paddingRight: '4px' }}>
+            {roleText}
+          </span>
+        </h2>
+
+        <p
+          style={{
+            color: 'var(--text-secondary)',
+            fontSize: '1.1rem',
+            maxWidth: '640px',
+            lineHeight: 1.6,
+          }}
+        >
+          HNDIT undergraduate specializing in Business Analysis and Project Management, with hands-on experience in full-stack development and fintech-oriented solutions.
+        </p>
+
+        {/* Call to Actions */}
+        <div
+          style={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            justifyContent: 'center',
+            gap: '14px',
+            marginTop: '6px',
+          }}
+        >
+          <a href="#projects" className="btn-premium primary">
+            <span>View Projects</span>
+            <ArrowRight size={18} />
+          </a>
+          <button
+            onClick={() => alert("CV download will be available soon! In the meantime, feel free to reach out via the Contact section.")}
+            className="btn-premium secondary"
+            style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}
+          >
+            <Download size={18} style={{ color: 'var(--accent-cyan)' }} />
+            <span>Download CV</span>
+          </button>
+          <a href="#contact" className="btn-premium secondary">
+            <span>Let's Talk</span>
+          </a>
+        </div>
+
+        {/* Highlighted Social Profiles */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '12px',
+            marginTop: '4px',
+            flexWrap: 'wrap',
+          }}
+        >
+          <a
+            href="https://linkedin.com/in/rashminda-aluvihare-98604532b"
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '10px',
+              padding: '10px 20px',
+              borderRadius: '12px',
+              background: 'rgba(10, 102, 194, 0.12)',
+              border: '1px solid rgba(10, 102, 194, 0.4)',
+              color: 'var(--text-primary)',
+              textDecoration: 'none',
+              fontWeight: 700,
+              fontSize: '0.88rem',
+              transition: 'all 0.2s ease',
+              boxShadow: '0 4px 15px rgba(10, 102, 194, 0.2)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(10, 102, 194, 0.25)';
+              e.currentTarget.style.borderColor = '#0A66C2';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(10, 102, 194, 0.45)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(10, 102, 194, 0.12)';
+              e.currentTarget.style.borderColor = 'rgba(10, 102, 194, 0.4)';
+              e.currentTarget.style.transform = 'none';
+              e.currentTarget.style.boxShadow = '0 4px 15px rgba(10, 102, 194, 0.2)';
             }}
           >
-            {/* Image Inner Wrapper with Gradient Border Ring */}
-            <div
-              style={{
-                position: 'relative',
-                borderRadius: '18px',
-                overflow: 'hidden',
-                background: 'linear-gradient(135deg, var(--accent-cyan), var(--accent-purple))',
-                padding: '2.5px',
-              }}
-            >
-              <div
-                style={{
-                  borderRadius: '15px',
-                  overflow: 'hidden',
-                  background: 'var(--bg-primary)',
-                  display: 'block',
-                  lineHeight: 0,
-                }}
-              >
-                <img
-                  src={profileImg}
-                  alt="Rashminda Aluvihare"
-                  style={{
-                    width: '100%',
-                    height: 'auto',
-                    aspectRatio: '1 / 1.15',
-                    objectFit: 'cover',
-                    objectPosition: '68% 25%',
-                    borderRadius: '15px',
-                    display: 'block',
-                    transition: 'transform 0.5s ease',
-                  }}
-                  className="profile-img-hover"
-                />
-              </div>
-            </div>
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2.5" fill="none" strokeLinecap="round" strokeLinejoin="round" style={{ color: '#0A66C2' }}><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+            <span>LinkedIn</span>
+            <ExternalLink size={13} style={{ opacity: 0.7 }} />
+          </a>
 
-            {/* Floating Glassmorphic Badge - Top Left */}
-            <div
-              style={{
-                position: 'absolute',
-                top: '-12px',
-                left: '-12px',
-                padding: '6px 12px',
-                background: 'var(--bg-primary)',
-                backdropFilter: 'blur(12px)',
-                border: '1px solid var(--accent-cyan)',
-                borderRadius: '12px',
-                color: 'var(--text-primary)',
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                boxShadow: '0 6px 16px rgba(0, 0, 0, 0.2)',
-                zIndex: 2,
-              }}
-            >
-              <Sparkles size={13} style={{ color: 'var(--accent-cyan)' }} />
-              <span>Project Manager & BA</span>
-            </div>
-
-            {/* Floating Glassmorphic Badge - Bottom Right */}
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '-12px',
-                right: '-12px',
-                padding: '6px 12px',
-                background: 'var(--bg-primary)',
-                backdropFilter: 'blur(12px)',
-                border: '1px solid var(--accent-purple)',
-                borderRadius: '12px',
-                color: 'var(--text-primary)',
-                fontSize: '0.75rem',
-                fontWeight: 700,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                boxShadow: '0 6px 16px rgba(0, 0, 0, 0.2)',
-                zIndex: 2,
-              }}
-            >
-              <Code2 size={13} style={{ color: 'var(--accent-purple)' }} />
-              <span>Full-Stack & FinTech</span>
-            </div>
-          </div>
+          <a
+            href="https://github.com/rashminda-aluvihare"
+            target="_blank"
+            rel="noreferrer"
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '10px',
+              padding: '10px 20px',
+              borderRadius: '12px',
+              background: 'rgba(255, 255, 255, 0.04)',
+              border: '1px solid rgba(0, 242, 254, 0.3)',
+              color: 'var(--text-primary)',
+              textDecoration: 'none',
+              fontWeight: 700,
+              fontSize: '0.88rem',
+              transition: 'all 0.2s ease',
+              boxShadow: '0 4px 15px rgba(0, 242, 254, 0.15)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = 'rgba(0, 242, 254, 0.15)';
+              e.currentTarget.style.borderColor = 'var(--accent-cyan)';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+              e.currentTarget.style.boxShadow = '0 8px 25px rgba(0, 242, 254, 0.35)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = 'rgba(255, 255, 255, 0.04)';
+              e.currentTarget.style.borderColor = 'rgba(0, 242, 254, 0.3)';
+              e.currentTarget.style.transform = 'none';
+              e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 242, 254, 0.15)';
+            }}
+          >
+            <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" style={{ color: 'var(--accent-cyan)' }}><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>
+            <span>GitHub</span>
+            <ExternalLink size={13} style={{ opacity: 0.7 }} />
+          </a>
         </div>
       </div>
 
       <style>{`
-        .hero-profile-card:hover {
-          transform: translateY(-4px);
-          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35), 0 0 30px rgba(0, 242, 254, 0.25) !important;
-        }
-        .hero-profile-card:hover .profile-img-hover {
-          transform: scale(1.03);
-        }
-        @media (max-width: 900px) {
-          .hero-container-grid {
-            grid-template-columns: 1fr !important;
-            text-align: center;
-            gap: 32px !important;
-          }
-          .hero-profile-column {
-            order: -1 !important; /* Shows photo at the top on mobile screens */
-          }
-          .hero-container-grid > div {
-            align-items: center !important;
-            text-align: center !important;
-          }
-          .hero-container-grid h2 {
-            justify-content: center !important;
-          }
-          .hero-container-grid .btn-premium {
-            justify-content: center;
-          }
+        .hero-avatar-ring:hover {
+          transform: scale(1.06);
+          box-shadow: 0 12px 30px rgba(0, 242, 254, 0.45) !important;
         }
       `}</style>
     </section>
