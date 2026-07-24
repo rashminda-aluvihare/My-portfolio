@@ -201,9 +201,9 @@ export default function Hero() {
           width: 380px;
           height: 380px;
           border-radius: 50%;
-          padding: 5px;
+          padding: 2.5px;
           background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-          box-shadow: 0 12px 35px rgba(0, 242, 254, 0.25);
+          box-shadow: 0 6px 18px rgba(0, 242, 254, 0.15);
           position: relative;
           z-index: 1;
           transition: transform 0.3s ease, box-shadow 0.3s ease;
