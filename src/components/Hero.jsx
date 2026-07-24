@@ -62,12 +62,6 @@ export default function Hero() {
       <div className="container hero-grid-container">
         {/* Left Column: Text & CTAs */}
         <div className="hero-text-content">
-          {/* Welcome Tag */}
-          <div className="hero-welcome-badge">
-            <span className="badge-dot" />
-            AVAILABLE FOR PROJECTS
-          </div>
-
           <h1 className="hero-title">
             Hi, I'm <span className="gradient-text">Rashminda Aluvihare</span>
           </h1>
@@ -163,29 +157,6 @@ export default function Hero() {
           align-items: flex-start;
           text-align: left;
           gap: 18px;
-        }
-
-        .hero-welcome-badge {
-          padding: 6px 16px;
-          border-radius: 999px;
-          background: rgba(0, 242, 254, 0.1);
-          border: 1px solid rgba(0, 242, 254, 0.25);
-          font-size: 0.82rem;
-          font-weight: 700;
-          letter-spacing: 0.05em;
-          color: var(--accent-cyan);
-          display: inline-flex;
-          align-items: center;
-          gap: 8px;
-        }
-
-        .badge-dot {
-          width: 6px;
-          height: 6px;
-          border-radius: 50%;
-          background: var(--accent-cyan);
-          display: inline-block;
-          box-shadow: 0 0 8px var(--accent-cyan);
         }
 
         .hero-title {
