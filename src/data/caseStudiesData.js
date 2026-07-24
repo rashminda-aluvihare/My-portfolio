@@ -18,21 +18,22 @@ export const caseStudiesData = {
     tags: ['Next.js 16 (App Router)', 'React 19', 'TypeScript', 'Python FastAPI', 'Scikit-Learn ML', 'Zustand', 'Recharts', 'Node.js/Express'],
     problem: {
       title: 'The Challenge & Industry Problem',
-      description: 'Micro-entrepreneurs, farmers, and low-income individuals in emerging economies like Sri Lanka lack formal bank accounts and traditional credit histories. Consequently, legacy financial institutions deny them affordable capital, forcing business owners to rely on predatory informal lenders with exorbitant interest rates.',
+      description: 'Micro-entrepreneurs, farmers, and low-income individuals in Sri Lanka have no formal credit records (CRIB scores), so banks systematically deny them affordable low-interest loans. Cut off from the formal financial system, they are pushed into the hands of predatory informal lenders charging exorbitant rates — a cycle that entrenches poverty and stifles entrepreneurship.',
       points: [
-        'Credit History Exclusion: Absence of formal credit records (e.g., CRIB scores) excludes micro-entrepreneurs from low-interest commercial loans.',
-        'High Default Risk Uncertainty: Financial institutions struggle to evaluate risk for unbanked individuals due to asymmetric and insufficient financial data.',
-        'Language & Accessibility Barriers: Traditional banking portals lack localized multi-language support (Sinhala/Tamil/English) and intuitive mobile interfaces suited for rural communities.'
+        'No Formal Credit Records: Micro-entrepreneurs and farmers lack CRIB scores, making them ineligible for any commercial bank loan regardless of actual repayment behaviour.',
+        'Predatory Informal Lending: Without bank access, rural borrowers are forced to take high-interest informal loans from money-lenders, compounding financial vulnerability.',
+        'Asymmetric & Incomplete Data: Financial institutions cannot assess risk for unbanked individuals — traditional credit bureaus hold no data on their financial behaviour, creating a blind spot that prevents fair evaluation.',
+        'Language & Accessibility Barriers: Traditional banking portals have no Sinhala or Tamil language support and no mobile-friendly interfaces, further excluding rural communities from financial services.'
       ]
     },
     process: {
-      title: 'AI Micro-Credit Engine & Modern Stack Architecture',
-      description: 'Engineered a modern web platform leveraging Next.js 16 (App Router) and Zustand for dynamic state management, paired with a dual-layer AI credit assessment architecture. FinBridge calculates transparent alternative credit scores (300–850) by evaluating non-traditional financial indicators such as utility payment timeliness, peer ratings, and debt-to-income (DTI) metrics.',
+      title: 'AI Micro-Credit Engine & Modern Full-Stack Architecture',
+      description: 'Built an alternative credit scoring engine (300–850) powered by non-traditional financial indicators, a Python FastAPI ML microservice, and a real-time What-If simulator — all wrapped in a trilingual, multi-role web platform deployed on Vercel. The platform spans a Next.js 16 frontend, a Node.js/Express API layer, and a Python FastAPI ML service, unified under a Zustand state management architecture.',
       points: [
-        'Multi-Factor Alternative Risk Algorithm: Integrates quantitative scoring weighted across DTI ratio (45%), Utility Bill Timeliness (20%), Savings Ratio (15%), Community Peer Ratings (10%), and Loan Burden Ratio (10%).',
-        'Dual-Layer Machine Learning Microservice: Features a Python FastAPI backend utilizing Scikit-Learn (RandomForestRegressor & RandomForestClassifier with StandardScaler) providing Explainable AI (XAI) feature analysis alongside real-time client-side TypeScript calculations.',
-        'Interactive "What-If" Credit Simulator: Real-time parameter sliders allowing users to visualize credit score variations, interest rate adjustments (8%–32%), and risk category banding (Low, Medium, High, Very High).',
-        'Trilingual & Multi-Role Architecture: Full Sinhala, English, and Tamil localization (i18n) with dedicated dashboards for Borrowers (digital wallet & loans), Lenders (portfolio yields & NPL metrics), and Admins (fraud anomaly logs & approval queues).'
+        'Multi-Factor Alternative Credit Scoring: Proprietary scoring algorithm (300–850) weighted across DTI Ratio (45%), Utility Bill Timeliness (20%), Savings Ratio (15%), Community Peer Ratings (10%), and Loan Burden Ratio (10%) — no CRIB score required.',
+        'Python FastAPI ML Microservice with XAI: Integrated RandomForestRegressor and RandomForestClassifier (Scikit-Learn) served via FastAPI; Explainable AI (XAI) feature-importance output tells users exactly which factors are raising or lowering their credit score.',
+        'Real-Time "What-If" Credit Simulator: Interactive sliders let users instantly model how improving a single factor (e.g., reducing DTI or paying utility bills on time) shifts their credit score and adjusts their applicable interest rate band (8%–32%).',
+        'Trilingual & Multi-Role Dashboards: Full English, Sinhala, and Tamil i18n support with dedicated role-specific dashboards — Borrowers (digital wallet & loan tracking), Lenders (portfolio yields & NPL metrics), and Admins (fraud anomaly logs & approval queues).'
       ]
     },
     outcome: {
