@@ -127,7 +127,6 @@ export default function Hero() {
         {/* Right Column: Profile Avatar Photo */}
         <div className="hero-avatar-column">
           <div className="hero-avatar-wrapper">
-            <div className="hero-avatar-glow" />
             <div className="hero-avatar-ring">
               <img
                 src={profileImg}
@@ -144,7 +143,7 @@ export default function Hero() {
           max-width: 1150px;
           margin: 0 auto;
           display: grid;
-          grid-template-columns: 1.2fr 0.8fr;
+          grid-template-columns: 1.1fr 0.9fr;
           align-items: center;
           gap: 40px;
           position: relative;
@@ -198,26 +197,13 @@ export default function Hero() {
           position: relative;
         }
 
-        .hero-avatar-glow {
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-          width: 280px;
-          height: 280px;
-          border-radius: 50%;
-          background: radial-gradient(circle, rgba(0, 242, 254, 0.35) 0%, rgba(155, 81, 224, 0.25) 60%, transparent 75%);
-          filter: blur(25px);
-          pointer-events: none;
-        }
-
         .hero-avatar-ring {
-          width: 240px;
-          height: 240px;
+          width: 380px;
+          height: 380px;
           border-radius: 50%;
-          padding: 4px;
+          padding: 5px;
           background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-          box-shadow: 0 12px 35px rgba(0, 242, 254, 0.3);
+          box-shadow: 0 12px 35px rgba(0, 242, 254, 0.25);
           position: relative;
           z-index: 1;
           transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -225,8 +211,8 @@ export default function Hero() {
         }
 
         .hero-avatar-ring:hover {
-          transform: scale(1.04);
-          box-shadow: 0 16px 45px rgba(0, 242, 254, 0.5) !important;
+          transform: scale(1.03);
+          box-shadow: 0 16px 45px rgba(0, 242, 254, 0.4) !important;
         }
 
         .hero-avatar-img {
@@ -324,15 +310,9 @@ export default function Hero() {
             order: -1;
           }
 
-          .hero-avatar-glow {
-            width: 160px;
-            height: 160px;
-            filter: blur(15px);
-          }
-
           .hero-avatar-ring {
-            width: 130px;
-            height: 130px;
+            width: 240px;
+            height: 240px;
           }
 
           .hero-text-content {
