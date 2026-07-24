@@ -92,9 +92,6 @@ export default function Projects() {
           <h2 style={{ fontSize: '2.5rem', fontWeight: 800 }} className="gradient-text">
             Featured Projects
           </h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginTop: '10px' }}>
-            A curated selection of my academic work, web systems, and system applications. Click <strong style={{ color: 'var(--accent-cyan)' }}>View Case Study</strong> for full details.
-          </p>
         </div>
 
         {/* Filter Tabs */}

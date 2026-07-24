@@ -54,9 +54,6 @@ export default function Experience() {
           <h2 style={{ fontSize: '2.5rem', fontWeight: 800 }} className="gradient-text">
             Professional Experience
           </h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginTop: '10px' }}>
-            My internship journey in software engineering and banking operations.
-          </p>
         </div>
 
         {/* Experience List */}

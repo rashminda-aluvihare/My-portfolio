@@ -47,9 +47,6 @@ export default function Education() {
           <h2 style={{ fontSize: '2.5rem', fontWeight: 800 }} className="gradient-text">
             Education & Academic Background
           </h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginTop: '10px' }}>
-            My theoretical study paths and specialized software engineering courses.
-          </p>
         </div>
 
         {/* Education List */}
