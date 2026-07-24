@@ -234,7 +234,7 @@ export default function Hero() {
           height: 100%;
           border-radius: 50%;
           object-fit: cover;
-          object-position: 68% 25%;
+          object-position: center;
           display: block;
         }
 
