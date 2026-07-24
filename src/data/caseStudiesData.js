@@ -99,11 +99,14 @@ export const caseStudiesData = {
     tags: ['JavaScript ES6+', 'HTML5 Custom Elements', 'CSS3 Grid/Flexbox', 'Interactive Visuals'],
     problem: {
       title: 'The Agricultural Challenge',
-      description: 'Small-scale farmers and agricultural supervisors lack modern visual tools to track crop planting schedules, monitor seasonal yield forecasts, and optimize resource allocation across different land plots.',
+      description: 'Sri Lanka\'s agricultural sector continues to rely heavily on manual and informal processes for crop sales, equipment rentals, and transport services. This results in significant dependence on intermediaries, with farmers often receiving only 20–30% of the final consumer price — while post-harvest losses for vegetables reach 30–40%, largely driven by inadequate handling and fragmented supply chains.',
       points: [
-        'Inefficient tracking of harvest schedules leading to crop waste.',
-        'Absence of simplified visual dashboards tailored for mobile devices.',
-        'Over-complicated enterprise tools unsuited for local farm sizes.'
+        'Intermediary Dependency: Farmers receive only 20–30% of the final consumer price due to heavy reliance on middlemen across the supply chain.',
+        'Pricing Opacity: No transparent pricing system exists, leading to unfair price manipulation and limited bargaining power for farmers.',
+        'Limited Resource Access: Fragmented access to crop sales markets, equipment rentals, and crop transport service providers.',
+        'Poor Supply Chain Traceability: Absence of digital traceability leads to accountability gaps throughout the agricultural supply chain.',
+        'Post-Harvest Loss Crisis: Vegetable post-harvest losses estimated at 30–40%, mainly occurring during transportation due to poor handling practices.',
+        'Fragmented & Inefficient Logistics: No centralized platform for coordinating crop transport, resulting in delayed deliveries and increased spoilage.'
       ]
     },
     process: {
