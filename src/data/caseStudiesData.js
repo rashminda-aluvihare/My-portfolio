@@ -99,7 +99,7 @@ export const caseStudiesData = {
     tags: ['JavaScript ES6+', 'HTML5 Custom Elements', 'CSS3 Grid/Flexbox', 'Interactive Visuals'],
     problem: {
       title: 'The Agricultural Challenge',
-      description: 'Sri Lanka\'s agricultural sector continues to rely heavily on manual and informal processes for crop sales, equipment rentals, and transport services. This results in significant dependence on intermediaries, with farmers often receiving only 20–30% of the final consumer price — while post-harvest losses for vegetables reach 30–40%, largely driven by inadequate handling and fragmented supply chains.',
+
       points: [
         'Intermediary Dependency: Farmers receive only 20–30% of the final consumer price due to heavy reliance on middlemen across the supply chain.',
         'Pricing Opacity: No transparent pricing system exists, leading to unfair price manipulation and limited bargaining power for farmers.',
