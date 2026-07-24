@@ -96,7 +96,7 @@ export const caseStudiesData = {
     image: agronexaImg,
     github: 'https://github.com/rashminda-aluvihare/agronexa-lk',
     demo: 'https://agronexa-lk.vercel.app',
-    tags: ['JavaScript ES6+', 'HTML5 Custom Elements', 'CSS3 Grid/Flexbox', 'Interactive Visuals'],
+    tags: ['React.js (TypeScript)', 'Node.js & Express.js', 'PostgreSQL (Railway)', 'Socket.IO Live Chat', 'Twilio SMS API', 'SHA-256 Crypto Ledger', 'Cloudinary CDN', 'Leaflet.js Maps', 'Tailwind CSS', 'Vercel'],
     problem: {
       title: 'The Agricultural Challenge',
 
@@ -110,22 +110,27 @@ export const caseStudiesData = {
       ]
     },
     process: {
-      title: 'Lightweight ES6+ Modular Workflow Engine',
-      description: 'Designed a lightweight, responsive single-page web app built with modular ES6+ JavaScript modules. Features interactive crop tracking cards, visual yield projections, and simple resource input calculators.',
+      title: 'Full-Stack Agricultural Marketplace with Blockchain-Inspired Integrity',
+      description: 'AgroNexa LK was built as a modern full-stack web platform using React.js (TypeScript), Node.js, Express.js, and PostgreSQL — directly connecting farmers and buyers without intermediaries. The system follows an MVC architecture and was developed under the Prototype Software Development Model for continuous iterative improvement.',
       points: [
-        'Constructed modular JS components for crop growth timeline calculation.',
-        'Implemented mobile-first CSS layout with high contrast and smooth transitions.',
-        'Integrated local storage persistence for offline-friendly farm data access.'
+        'Direct Farmer–Buyer Marketplace: Farmers publish crop listings with name, category, quantity, price & location; buyers browse, filter by district, and submit purchase requests directly — eliminating intermediaries entirely.',
+        'OTP-Gated Authentication & KYC Pipeline: Users register via Twilio SMS OTP verification and upload front/back NIC photos to Cloudinary. Admins manually approve accounts through a dedicated KYC verification panel before granting access.',
+        'Immutable SHA-256 Cryptographic Ledger: All confirmed equipment rental bookings are chained using blockchain-inspired SHA-256 hash blocks stored in PostgreSQL — any database tampering breaks the chain and triggers a real-time admin alert.',
+        'SMS Broadcast Request Network: Corporate buyers publish bulk procurement requests (commodity, volume, budget, district) which automatically trigger Twilio SMS notifications to matching registered farmers in that region.',
+        'Socket.IO Real-Time Live Chat: Buyers and farmers negotiate directly via WebSocket-powered instant messaging with read receipts, double-tick indicators, voice message playback, and offline message queuing in the database.',
+        'Equipment Rental Booking Engine: Farmers list machinery for rent; the backend uses SQL date-interval overlap checks to prevent double bookings and auto-calculates rental costs before writing ledger records.',
+        'HARTI Price Index Scraper & Fallback: Daily wholesale crop prices are auto-scraped from Sri Lanka\'s HARTI portal using Axios + Cheerio. If the portal is offline, a statistical ±3% price simulator maintains system continuity.',
+        'Multilingual Interface (EN / SI / TA): The UI dynamically switches between English, Sinhala, and Tamil without page reloads using a custom DOM localization engine backed by localStorage preference persistence.'
       ]
     },
     outcome: {
-      title: 'Results & Usability',
-      description: 'Created a sleek, accessible agricultural planning utility with rapid load times and zero dependency overhead.',
+      title: 'Results & Impact',
+      description: 'Delivered a production-deployed, full-stack agricultural marketplace with blockchain-inspired transaction integrity, real-time communication, and multilingual support — modernizing Sri Lanka\'s agricultural trading ecosystem.',
       metrics: [
-        { label: 'Page Load Speed', value: '< 0.8s', subtext: 'Ultra lightweight' },
-        { label: 'Tracking Gain', value: '+40%', subtext: 'Efficiency increase' },
-        { label: 'Responsiveness', value: '100%', subtext: 'Mobile & Desktop' },
-        { label: 'Dependencies', value: 'Zero', subtext: 'Vanilla JS execution' }
+        { label: 'Ledger Security', value: 'SHA-256', subtext: 'Blockchain-inspired chain' },
+        { label: 'Languages', value: '3 Lang', subtext: 'Sinhala / Tamil / English' },
+        { label: 'Architecture', value: 'Full-Stack', subtext: 'React + Node + PostgreSQL' },
+        { label: 'Deployment', value: 'Live', subtext: 'Vercel + Railway cloud' }
       ]
     }
   },
