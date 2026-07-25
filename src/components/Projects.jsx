@@ -182,6 +182,10 @@ export default function Projects() {
                   <img
                     src={project.image}
                     alt={project.title}
+                    loading="lazy"
+                    decoding="async"
+                    width="400"
+                    height="200"
                     style={{
                       width: '100%',
                       height: '100%',

@@ -95,6 +95,10 @@ export default function Education() {
                       <img
                         src={edu.logo}
                         alt={edu.institution}
+                        loading="lazy"
+                        decoding="async"
+                        width="48"
+                        height="48"
                         style={{
                           width: '100%',
                           height: '100%',

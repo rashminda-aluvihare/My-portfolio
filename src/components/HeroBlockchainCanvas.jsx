@@ -7,8 +7,14 @@ export default function HeroBlockchainCanvas() {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
+    // Respect reduced motion preference
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return;
+    }
+
     const ctx = canvas.getContext('2d');
     let animationFrameId;
+    let isVisible = true;
 
     // Helper to get current theme colors
     const getColors = () => {
@@ -41,24 +47,27 @@ export default function HeroBlockchainCanvas() {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Create blockchain nodes
-    const nodeCount = Math.min(Math.floor((canvas.width * canvas.height) / 18000), 45);
+    // Create blockchain nodes (Mobile optimized count)
+    const isMobile = window.innerWidth < 768;
+    const densityFactor = isMobile ? 35000 : 20000;
+    const maxNodeCount = isMobile ? 18 : 38;
+    const nodeCount = Math.min(Math.floor((canvas.width * canvas.height) / densityFactor), maxNodeCount);
     const nodes = [];
 
     for (let i = 0; i < nodeCount; i++) {
       nodes.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * 0.6,
-        vy: (Math.random() - 0.5) * 0.6,
-        radius: Math.random() * 2.5 + 1.5,
+        vx: (Math.random() - 0.5) * (isMobile ? 0.4 : 0.6),
+        vy: (Math.random() - 0.5) * (isMobile ? 0.4 : 0.6),
+        radius: Math.random() * 2 + 1.2,
         isAlt: Math.random() > 0.6,
       });
     }
 
     // Active data pulses in blockchain network
     const pulses = [];
-    const maxPulses = 4;
+    const maxPulses = isMobile ? 2 : 4;
 
     const createPulse = (n1, n2) => {
       if (pulses.length >= maxPulses) return;
@@ -74,6 +83,7 @@ export default function HeroBlockchainCanvas() {
 
     // Animation Loop
     const draw = () => {
+      if (!isVisible) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       // Update & Draw Nodes
@@ -98,7 +108,7 @@ export default function HeroBlockchainCanvas() {
           const dx = target.x - node.x;
           const dy = target.y - node.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          const maxDist = 130;
+          const maxDist = isMobile ? 100 : 130;
 
           if (dist < maxDist) {
             ctx.beginPath();
@@ -130,9 +140,9 @@ export default function HeroBlockchainCanvas() {
         const py = pulse.y1 + (pulse.y2 - pulse.y1) * pulse.progress;
 
         ctx.beginPath();
-        ctx.arc(px, py, 2.5, 0, Math.PI * 2);
+        ctx.arc(px, py, 2, 0, Math.PI * 2);
         ctx.fillStyle = colors.pulseColor;
-        ctx.shadowBlur = 8;
+        ctx.shadowBlur = 6;
         ctx.shadowColor = colors.pulseColor;
         ctx.fill();
         ctx.shadowBlur = 0; // reset shadow
@@ -141,12 +151,28 @@ export default function HeroBlockchainCanvas() {
       animationFrameId = requestAnimationFrame(draw);
     };
 
-    draw();
+    // Pause rendering when canvas is not visible on screen
+    const intersectionObserver = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+        isVisible = entry.isIntersecting;
+        if (isVisible) {
+          cancelAnimationFrame(animationFrameId);
+          draw();
+        } else {
+          cancelAnimationFrame(animationFrameId);
+        }
+      },
+      { threshold: 0.05 }
+    );
+
+    intersectionObserver.observe(canvas);
 
     return () => {
       cancelAnimationFrame(animationFrameId);
       window.removeEventListener('resize', resizeCanvas);
       observer.disconnect();
+      intersectionObserver.disconnect();
     };
   }, []);
 
@@ -164,3 +190,4 @@ export default function HeroBlockchainCanvas() {
     />
   );
 }
+

@@ -132,6 +132,11 @@ export default function Hero() {
                 src={profileImg}
                 alt="Rashminda Aluvihare"
                 className="hero-avatar-img"
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
+                width="380"
+                height="380"
               />
             </div>
           </div>

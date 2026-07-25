@@ -102,6 +102,10 @@ export default function Experience() {
                       <img
                         src={exp.logo}
                         alt={exp.company}
+                        loading="lazy"
+                        decoding="async"
+                        width="48"
+                        height="48"
                         style={{
                           width: '100%',
                           height: '100%',

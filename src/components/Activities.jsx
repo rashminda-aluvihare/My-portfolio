@@ -160,6 +160,8 @@ export default function Activities() {
                         <img
                           src={allImages[0]}
                           alt={item.title}
+                          loading="lazy"
+                          decoding="async"
                           style={{
                             width: '100%',
                             height: '100%',
@@ -221,6 +223,8 @@ export default function Activities() {
                             <img
                               src={imgSrc}
                               alt={`${item.title} ${idx + 1}`}
+                              loading="lazy"
+                              decoding="async"
                               style={{
                                 width: '100%',
                                 height: '100%',
@@ -268,6 +272,8 @@ export default function Activities() {
                           <img
                             src={allImages[0]}
                             alt={`${item.title} main`}
+                            loading="lazy"
+                            decoding="async"
                             style={{
                               width: '100%',
                               height: '100%',
@@ -286,6 +292,8 @@ export default function Activities() {
                             <img
                               src={allImages[1]}
                               alt={`${item.title} 2`}
+                              loading="lazy"
+                              decoding="async"
                               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                             />
                           </div>
@@ -297,6 +305,8 @@ export default function Activities() {
                             <img
                               src={allImages[2]}
                               alt={`${item.title} 3`}
+                              loading="lazy"
+                              decoding="async"
                               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                             />
 
