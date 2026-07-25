@@ -37,7 +37,7 @@ export default function Projects() {
     {
       id: 'finbridge',
       title: 'FinBridge – AI-Based Personal Financial Health & Loan Risk Assessment Platform',
-      description: 'Empower your financial future with automated health scores, risk profiling, and AI recommendations.',
+      description: 'An AI-powered fintech platform that helps individuals analyze their financial health, assess loan risk, monitor debts, and improve financial decision-making through personalized insights.',
       tags: ['Next.js 16', 'React 19', 'TypeScript', 'Python FastAPI (Scikit-Learn)', 'Express.js', 'Zustand', 'Recharts', 'Trilingual i18n'],
       category: 'web',
       github: 'https://github.com/rashminda-aluvihare/finbridge',
