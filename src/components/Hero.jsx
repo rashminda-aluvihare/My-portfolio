@@ -6,10 +6,10 @@ import profileImg from '../assets/profile.jpg';
 export default function Hero() {
   const [roleText, setRoleText] = useState('');
   const roles = [
-    'IT Undergraduate',
-    'Aspiring Project Manager',
-    'Business Analyst',
+    'HNDIT Undergraduate',
+    'Aspiring Business Analyst',
     'Full Stack Developer',
+    'FinTech Enthusiast',
   ];
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
@@ -74,7 +74,7 @@ export default function Hero() {
           </h2>
 
           <p className="hero-description">
-            HNDIT undergraduate specializing in Business Analysis and Project Management, with hands-on experience in full-stack development and fintech-oriented solutions.
+            HNDIT undergraduate specializing in Business Analysis and Full-Stack Development, with hands-on experience in FinTech-oriented solutions and Agile project delivery.
           </p>
 
           {/* Call to Actions & Social Profiles */}

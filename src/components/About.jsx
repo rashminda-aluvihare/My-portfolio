@@ -61,7 +61,7 @@ export default function About() {
             <div className="glass-panel" style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '16px', height: '100%', justifyContent: 'center' }}>
               <h4 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>Quick Profile</h4>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.6 }}>
-                <strong style={{ color: 'var(--accent-cyan)' }}>Role:</strong> Aspiring Project Manager & Business Analyst
+                <strong style={{ color: 'var(--accent-cyan)' }}>Role:</strong> Aspiring Business Analyst & Full Stack Developer
               </p>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.6 }}>
                 <strong style={{ color: 'var(--accent-cyan)' }}>Core Focus:</strong> Requirements Engineering, Agile Scrum, System Analysis, FinTech
