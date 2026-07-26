@@ -31,14 +31,14 @@ export default function Hero() {
       const currentProgress = easeOutQuad(progress);
 
       setCounts({
-        projects: Math.min(10, Math.floor(currentProgress * 10)),
-        stacks: Math.min(5, Math.floor(currentProgress * 5)),
+        projects: Math.min(7, Math.floor(currentProgress * 7)),
+        stacks: Math.min(10, Math.floor(currentProgress * 10)),
         agile: Math.min(100, Math.floor(currentProgress * 100)),
       });
 
       if (step >= steps) {
         clearInterval(timer);
-        setCounts({ projects: 10, stacks: 5, agile: 100 });
+        setCounts({ projects: 7, stacks: 10, agile: 100 });
       }
     }, intervalTime);
 
