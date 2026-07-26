@@ -178,27 +178,9 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Column: Profile Avatar Photo & Floating Tech Badges */}
+        {/* Right Column: Profile Avatar Photo */}
         <div className="hero-avatar-column">
           <div className="hero-avatar-wrapper">
-            {/* Floating Tech Badges */}
-            <div className="floating-badge badge-react">
-              <Code2 size={14} style={{ color: '#61dafb' }} />
-              <span>React 19</span>
-            </div>
-            <div className="floating-badge badge-node">
-              <Terminal size={14} style={{ color: '#38ef7d' }} />
-              <span>Node.js</span>
-            </div>
-            <div className="floating-badge badge-sql">
-              <Database size={14} style={{ color: '#00f2fe' }} />
-              <span>SQL / Agile</span>
-            </div>
-            <div className="floating-badge badge-next">
-              <Sparkles size={14} style={{ color: '#9b51e0' }} />
-              <span>Next.js</span>
-            </div>
-
             <div className="hero-avatar-ring">
               <img
                 src={profileImg}
