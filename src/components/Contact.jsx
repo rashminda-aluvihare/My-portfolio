@@ -94,7 +94,7 @@ export default function Contact() {
             {/* Direct Email Card */}
             <a
               href="mailto:rashmindaluvihare@gmail.com"
-              className="glass-panel"
+              className="glass-panel contact-card-email animate-slow-pop-1"
               style={{
                 padding: '16px 20px',
                 display: 'flex',
@@ -105,17 +105,16 @@ export default function Contact() {
                 background: 'rgba(155, 81, 224, 0.08)',
                 border: '1px solid rgba(155, 81, 224, 0.25)',
                 borderRadius: '16px',
-                transition: 'all 0.2s ease',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = 'rgba(155, 81, 224, 0.16)';
                 e.currentTarget.style.borderColor = 'var(--accent-purple)';
-                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 10px 25px rgba(155, 81, 224, 0.3)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = 'rgba(155, 81, 224, 0.08)';
                 e.currentTarget.style.borderColor = 'rgba(155, 81, 224, 0.25)';
-                e.currentTarget.style.transform = 'none';
+                e.currentTarget.style.boxShadow = 'none';
               }}
             >
               <div
@@ -144,7 +143,7 @@ export default function Contact() {
               href="https://wa.me/94779743901?text=Hi%20Rashminda,%20I%20saw%20your%20portfolio!"
               target="_blank"
               rel="noreferrer"
-              className="glass-panel"
+              className="glass-panel contact-card-whatsapp animate-slow-pop-2"
               style={{
                 padding: '16px 20px',
                 display: 'flex',
@@ -155,17 +154,16 @@ export default function Contact() {
                 background: 'rgba(37, 211, 102, 0.08)',
                 border: '1px solid rgba(37, 211, 102, 0.25)',
                 borderRadius: '16px',
-                transition: 'all 0.2s ease',
               }}
               onMouseEnter={(e) => {
                 e.currentTarget.style.background = 'rgba(37, 211, 102, 0.16)';
                 e.currentTarget.style.borderColor = '#25D366';
-                e.currentTarget.style.transform = 'translateY(-2px)';
+                e.currentTarget.style.boxShadow = '0 10px 25px rgba(37, 211, 102, 0.3)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.background = 'rgba(37, 211, 102, 0.08)';
                 e.currentTarget.style.borderColor = 'rgba(37, 211, 102, 0.25)';
-                e.currentTarget.style.transform = 'none';
+                e.currentTarget.style.boxShadow = 'none';
               }}
             >
               <div
