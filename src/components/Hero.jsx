@@ -14,6 +14,36 @@ export default function Hero() {
   const [roleIndex, setRoleIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [counts, setCounts] = useState({ projects: 0, stacks: 0, agile: 0 });
+
+  // Animated Numbers Counter effect
+  useEffect(() => {
+    const duration = 1800; // Total animation time in ms
+    const steps = 50;
+    const intervalTime = duration / steps;
+    let step = 0;
+
+    const timer = setInterval(() => {
+      step++;
+      const progress = step / steps;
+      // Easing function (easeOutQuad) for natural decelerating calculation speed
+      const easeOutQuad = (t) => t * (2 - t);
+      const currentProgress = easeOutQuad(progress);
+
+      setCounts({
+        projects: Math.min(10, Math.floor(currentProgress * 10)),
+        stacks: Math.min(5, Math.floor(currentProgress * 5)),
+        agile: Math.min(100, Math.floor(currentProgress * 100)),
+      });
+
+      if (step >= steps) {
+        clearInterval(timer);
+        setCounts({ projects: 10, stacks: 5, agile: 100 });
+      }
+    }, intervalTime);
+
+    return () => clearInterval(timer);
+  }, []);
 
   // Typewriter effect
   useEffect(() => {
@@ -131,17 +161,17 @@ export default function Hero() {
             {/* Quick Impact Stats Bar */}
             <div className="hero-stats-row">
               <div className="hero-stat-item">
-                <span className="hero-stat-number gradient-text">10+</span>
+                <span className="hero-stat-number gradient-text">{counts.projects}+</span>
                 <span className="hero-stat-label">Projects Built</span>
               </div>
               <div className="hero-stat-divider"></div>
               <div className="hero-stat-item">
-                <span className="hero-stat-number gradient-text">5+</span>
+                <span className="hero-stat-number gradient-text">{counts.stacks}+</span>
                 <span className="hero-stat-label">Tech Stacks</span>
               </div>
               <div className="hero-stat-divider"></div>
               <div className="hero-stat-item">
-                <span className="hero-stat-number gradient-text">100%</span>
+                <span className="hero-stat-number gradient-text">{counts.agile}%</span>
                 <span className="hero-stat-label">Agile & Responsive</span>
               </div>
             </div>
