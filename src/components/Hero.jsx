@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Mail, ArrowRight, ExternalLink, Download } from 'lucide-react';
+import { Mail, ArrowRight, ExternalLink, Download, Code2, Terminal, Database, Sparkles } from 'lucide-react';
 import HeroBlockchainCanvas from './HeroBlockchainCanvas';
 import profileImg from '../assets/profile.jpg';
 
@@ -7,8 +7,8 @@ export default function Hero() {
   const [roleText, setRoleText] = useState('');
   const roles = [
     'HNDIT Undergraduate',
-    'Aspiring Business Analyst',
     'Full Stack Developer',
+    'Aspiring Business Analyst',
     'FinTech Enthusiast',
   ];
   const [roleIndex, setRoleIndex] = useState(0);
@@ -62,6 +62,12 @@ export default function Hero() {
       <div className="container hero-grid-container">
         {/* Left Column: Text & CTAs */}
         <div className="hero-text-content">
+          {/* Live Availability Pill */}
+          <div className="hero-status-pill">
+            <span className="hero-status-dot"></span>
+            <span className="hero-status-text">Open for Full-Time Roles & Projects</span>
+          </div>
+
           <h1 className="hero-title">
             Hi, I'm <span className="gradient-text">Rashminda Aluvihare</span>
           </h1>
@@ -74,7 +80,7 @@ export default function Hero() {
           </h2>
 
           <p className="hero-description">
-            HNDIT undergraduate specializing in Business Analysis and Full-Stack Development, with hands-on experience in FinTech-oriented solutions and Agile project delivery.
+            HNDIT undergraduate specializing in Full-Stack Development and Business Analysis, with hands-on experience building FinTech-oriented solutions and Agile software delivery.
           </p>
 
           {/* Call to Actions & Social Profiles */}
@@ -121,12 +127,48 @@ export default function Hero() {
                 <ExternalLink size={13} style={{ opacity: 0.7 }} />
               </a>
             </div>
+
+            {/* Quick Impact Stats Bar */}
+            <div className="hero-stats-row">
+              <div className="hero-stat-item">
+                <span className="hero-stat-number gradient-text">10+</span>
+                <span className="hero-stat-label">Projects Built</span>
+              </div>
+              <div className="hero-stat-divider"></div>
+              <div className="hero-stat-item">
+                <span className="hero-stat-number gradient-text">5+</span>
+                <span className="hero-stat-label">Tech Stacks</span>
+              </div>
+              <div className="hero-stat-divider"></div>
+              <div className="hero-stat-item">
+                <span className="hero-stat-number gradient-text">100%</span>
+                <span className="hero-stat-label">Agile & Responsive</span>
+              </div>
+            </div>
           </div>
         </div>
 
-        {/* Right Column: Profile Avatar Photo */}
+        {/* Right Column: Profile Avatar Photo & Floating Tech Badges */}
         <div className="hero-avatar-column">
           <div className="hero-avatar-wrapper">
+            {/* Floating Tech Badges */}
+            <div className="floating-badge badge-react">
+              <Code2 size={14} style={{ color: '#61dafb' }} />
+              <span>React 19</span>
+            </div>
+            <div className="floating-badge badge-node">
+              <Terminal size={14} style={{ color: '#38ef7d' }} />
+              <span>Node.js</span>
+            </div>
+            <div className="floating-badge badge-sql">
+              <Database size={14} style={{ color: '#00f2fe' }} />
+              <span>SQL / Agile</span>
+            </div>
+            <div className="floating-badge badge-next">
+              <Sparkles size={14} style={{ color: '#9b51e0' }} />
+              <span>Next.js</span>
+            </div>
+
             <div className="hero-avatar-ring">
               <img
                 src={profileImg}
@@ -160,7 +202,36 @@ export default function Hero() {
           flex-direction: column;
           align-items: flex-start;
           text-align: left;
-          gap: 18px;
+          gap: 16px;
+        }
+
+        .hero-status-pill {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 6px 16px;
+          background: rgba(37, 211, 102, 0.08);
+          border: 1px solid rgba(37, 211, 102, 0.3);
+          border-radius: 999px;
+          font-size: 0.82rem;
+          font-weight: 700;
+          color: #25D366;
+          box-shadow: 0 4px 15px rgba(37, 211, 102, 0.15);
+          backdrop-filter: blur(10px);
+        }
+
+        .hero-status-dot {
+          width: 8px;
+          height: 8px;
+          background: #25D366;
+          border-radius: 50%;
+          box-shadow: 0 0 10px #25D366;
+          animation: pulseDot 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseDot {
+          0%, 100% { transform: scale(1); opacity: 1; }
+          50% { transform: scale(1.4); opacity: 0.5; }
         }
 
         .hero-title {
@@ -202,6 +273,63 @@ export default function Hero() {
           position: relative;
         }
 
+        /* Floating Tech Badges */
+        .floating-badge {
+          position: absolute;
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 6px 14px;
+          background: rgba(10, 13, 20, 0.85);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid var(--card-border);
+          border-radius: 999px;
+          font-size: 0.8rem;
+          font-weight: 700;
+          color: var(--text-primary);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+          z-index: 3;
+        }
+
+        .badge-react {
+          top: 15px;
+          left: -20px;
+          animation: floatBadge1 4s ease-in-out infinite;
+          border-color: rgba(97, 218, 251, 0.4);
+        }
+
+        .badge-node {
+          bottom: 25px;
+          left: -25px;
+          animation: floatBadge2 4.5s ease-in-out infinite 0.5s;
+          border-color: rgba(56, 239, 125, 0.4);
+        }
+
+        .badge-sql {
+          top: 35px;
+          right: -25px;
+          animation: floatBadge1 5s ease-in-out infinite 1s;
+          border-color: rgba(0, 242, 254, 0.4);
+        }
+
+        .badge-next {
+          bottom: 15px;
+          right: -20px;
+          animation: floatBadge2 4s ease-in-out infinite 1.5s;
+          border-color: rgba(155, 81, 224, 0.4);
+        }
+
+        @keyframes floatBadge1 {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-8px) rotate(2deg); }
+        }
+
+        @keyframes floatBadge2 {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(8px) rotate(-2deg); }
+        }
+
         .hero-avatar-ring {
           width: 380px;
           height: 380px;
@@ -233,7 +361,7 @@ export default function Hero() {
           display: flex;
           flex-direction: column;
           align-items: flex-start;
-          gap: 12px;
+          gap: 16px;
           width: 100%;
           max-width: 600px;
           margin-top: 6px;
@@ -248,13 +376,47 @@ export default function Hero() {
           flex-wrap: wrap;
         }
 
-        .hero-social-group {
+        /* Quick Impact Stats Row */
+        .hero-stats-row {
           display: flex;
           align-items: center;
-          justify-content: flex-start;
-          gap: 12px;
+          justify-content: space-around;
+          gap: 16px;
+          margin-top: 8px;
+          padding: 14px 20px;
+          background: var(--card-bg);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
+          border: 1px solid var(--card-border);
+          border-radius: 16px;
           width: 100%;
-          flex-wrap: wrap;
+          box-shadow: 0 10px 30px -10px var(--shadow-color);
+        }
+
+        .hero-stat-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-align: center;
+        }
+
+        .hero-stat-number {
+          font-size: 1.35rem;
+          font-weight: 800;
+          line-height: 1.1;
+        }
+
+        .hero-stat-label {
+          font-size: 0.75rem;
+          color: var(--text-secondary);
+          font-weight: 600;
+          margin-top: 2px;
+        }
+
+        .hero-stat-divider {
+          width: 1px;
+          height: 28px;
+          background: var(--card-border);
         }
 
         .hero-btn {
@@ -308,7 +470,7 @@ export default function Hero() {
           .hero-grid-container {
             grid-template-columns: 1fr;
             text-align: center;
-            gap: 24px;
+            gap: 28px;
           }
 
           .hero-avatar-column {
@@ -316,9 +478,19 @@ export default function Hero() {
           }
 
           .hero-avatar-ring {
-            width: 240px;
-            height: 240px;
+            width: 260px;
+            height: 260px;
           }
+
+          .floating-badge {
+            font-size: 0.72rem;
+            padding: 4px 10px;
+          }
+
+          .badge-react { top: 0px; left: -10px; }
+          .badge-node { bottom: 0px; left: -10px; }
+          .badge-sql { top: 0px; right: -10px; }
+          .badge-next { bottom: 0px; right: -10px; }
 
           .hero-text-content {
             align-items: center;
@@ -339,6 +511,19 @@ export default function Hero() {
 
           .hero-social-group {
             justify-content: center;
+          }
+
+          .hero-stats-row {
+            padding: 10px 12px;
+            gap: 8px;
+          }
+
+          .hero-stat-number {
+            font-size: 1.1rem;
+          }
+
+          .hero-stat-label {
+            font-size: 0.68rem;
           }
         }
 
@@ -377,5 +562,3 @@ export default function Hero() {
     </section>
   );
 }
-
-
