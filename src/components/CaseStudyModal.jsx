@@ -2,10 +2,10 @@ import { useEffect } from 'react';
 import { X, AlertTriangle, Layers, ExternalLink, Calendar, CheckCircle2 } from 'lucide-react';
 
 export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
-  if (!caseStudy) return null;
-
   // Handle ESC key press to close modal
   useEffect(() => {
+    if (!caseStudy) return;
+
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
         onClose();
@@ -19,7 +19,9 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
       window.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = 'unset';
     };
-  }, [onClose]);
+  }, [caseStudy, onClose]);
+
+  if (!caseStudy) return null;
 
   return (
     <div

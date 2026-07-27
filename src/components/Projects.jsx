@@ -10,6 +10,7 @@ import fundManagementImg from '../assets/fund_management.png';
 import agronexaImg from '../assets/agronexa.png';
 import fixedDepositImg from '../assets/fixed_deposit.png';
 import loanSavingsImg from '../assets/loan_savings.png';
+import portfolioProjectImg from '../assets/portfolioproject.png';
 
 export default function Projects() {
   const [filter, setFilter] = useState('all');
@@ -23,6 +24,17 @@ export default function Projects() {
   ];
 
   const projectsList = [
+    {
+      id: 'portfolio-website',
+      title: 'Personal Developer Portfolio & Interactive Showcase',
+      description: 'A modern, high-performance developer portfolio and finance engine built with React 19, Vite, and custom CSS design systems, featuring interactive financial calculators, case study modal systems, and responsive dark aesthetics.',
+      tags: ['React 19', 'Vite', 'JavaScript (ES6+)', 'CSS3', 'Lucide Icons', 'Vercel'],
+      category: 'web',
+      github: 'https://github.com/rashminda-aluvihare/My-portfolio',
+      demo: 'https://rashmindaluvihare.vercel.app/',
+      date: 'Personal Portfolio Project',
+      image: portfolioProjectImg,
+    },
     {
       id: 'agronexa',
       title: 'AgroNexa LK – Smart Agriculture Marketplace',

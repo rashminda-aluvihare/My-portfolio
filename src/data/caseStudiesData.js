@@ -4,6 +4,7 @@ import fundManagementImg from '../assets/fund_management.png';
 import agronexaImg from '../assets/agronexa.png';
 import fixedDepositImg from '../assets/fixed_deposit.png';
 import loanSavingsImg from '../assets/loan_savings.png';
+import portfolioProjectImg from '../assets/portfolioproject.png';
 
 export const caseStudiesData = {
   'finbridge': {
@@ -212,6 +213,47 @@ export const caseStudiesData = {
         { label: 'Schedule Depth', value: 'Up to 30 Yrs', subtext: 'Full amortization' },
         { label: 'Savings Target', value: 'Dynamic', subtext: 'Compound growth model' },
         { label: 'Execution', value: '< 1ms', subtext: 'Instant calculations' }
+      ]
+    }
+  },
+
+  'portfolio-website': {
+    id: 'portfolio-website',
+    title: 'Personal Developer Portfolio & Interactive Showcase',
+    category: 'Web Development / UI UX',
+    subtitle: 'A high-performance interactive developer portfolio showcasing FinTech applications, case studies, and financial calculators.',
+    date: 'Personal Portfolio Project',
+    image: portfolioProjectImg,
+    github: 'https://github.com/rashminda-aluvihare/My-portfolio',
+    demo: 'https://rashmindaluvihare.vercel.app/',
+    tags: ['React 19', 'Vite', 'JavaScript (ES6+)', 'CSS3 Custom Properties', 'Lucide Icons', 'Vercel CDN'],
+    problem: {
+      title: 'The Challenge & Requirements',
+      description: 'Creating an impressive online identity for a Business Analyst & Full-Stack Developer that effectively showcases complex FinTech applications, academic projects, interactive financial tools, and detailed case studies in a seamless, high-performance UI.',
+      points: [
+        'Need for a fast, responsive dark-themed aesthetic with glassmorphism and modern micro-animations.',
+        'Integrating interactive modals for deep-dive case studies and Java financial calculator demos.',
+        'Optimizing lighthouse performance, accessibility, and structured SEO meta tags for search engines.'
+      ]
+    },
+    process: {
+      title: 'Component-Based Architecture & Responsive Design System',
+      description: 'Designed and engineered using React 19 and Vite for blazingly fast load times and clean component modularity. Built custom CSS design systems with CSS variables for dynamic color palettes, particle/blockchain canvas backgrounds, and smooth scroll navigation.',
+      points: [
+        'Modular React component structure separated into Hero, About, Skills, Projects, Experience, Education, and Contact sections.',
+        'Built custom Case Study and Interactive Financial Demo modal windows for rich interactive exploration.',
+        'Integrated HTML5 canvas background animations representing financial and blockchain network nodes.',
+        'Structured SEO meta tags, JSON-LD Schema.org microdata, and Twitter Open Graph properties.'
+      ]
+    },
+    outcome: {
+      title: 'Results & Performance',
+      description: 'Successfully deployed on Vercel with 100% SEO scores, instant load performance, and responsive layout across all device viewports.',
+      metrics: [
+        { label: 'Framework', value: 'React 19', subtext: 'Vite build engine' },
+        { label: 'SEO Score', value: '100%', subtext: 'Structured JSON-LD' },
+        { label: 'Design', value: 'Dark Glass', subtext: 'Custom CSS design system' },
+        { label: 'Deployment', value: 'Vercel', subtext: 'CI/CD pipeline' }
       ]
     }
   }
