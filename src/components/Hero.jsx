@@ -95,7 +95,7 @@ export default function Hero() {
           {/* Live Availability Pill */}
           <div className="hero-status-pill">
             <span className="hero-status-dot"></span>
-            <span className="hero-status-text">Open to Full-Time Roles, IT Projects & Business Analysis Opportunities</span>
+            <span className="hero-status-text">Open to Internship Opportunities & IT Projects</span>
           </div>
 
           <h1 className="hero-title">
