@@ -39,7 +39,7 @@ export default function Projects() {
       id: 'agronexa',
       title: 'AgroNexa LK – Smart Agriculture Marketplace',
       description: 'A blockchain-enabled agriculture platform connecting farmers and buyers with transparent pricing and verified transactions.',
-      tags: ['JavaScript', 'HTML5', 'CSS3', 'Blockchain Concepts', 'Smart Agriculture'],
+      tags: ['React', 'Node.js', 'PostgreSQL', 'Express.js', 'Railway', 'Smart Agriculture', 'Blockchain Concepts'],
       category: 'web',
       github: 'https://github.com/rashminda-aluvihare/agronexa-lk',
       demo: 'https://agronexa-lk.vercel.app',
