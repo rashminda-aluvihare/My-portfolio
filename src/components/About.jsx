@@ -28,7 +28,7 @@ export default function About() {
             </p>
 
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-              <strong style={{ color: 'var(--accent-cyan)' }}>Career Goal:</strong> Actively seeking a <strong style={{ color: 'var(--text-primary)' }}>Software Engineering, Business Analysis, or IT Project Management</strong> internship/junior role where I can contribute to building high-impact FinTech solutions and enterprise web applications.
+              <strong style={{ color: 'var(--accent-cyan)' }}>Career Goal:</strong> Actively seeking a <strong style={{ color: 'var(--text-primary)' }}>Business Analyst or IT Project Management</strong> internship/junior role where I can contribute to building high-impact FinTech solutions and enterprise web applications.
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
@@ -55,7 +55,7 @@ export default function About() {
             <div className="glass-panel" style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '16px', height: '100%', justifyContent: 'center' }}>
               <h4 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>Key Snapshot</h4>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.6 }}>
-                <strong style={{ color: 'var(--accent-cyan)' }}>Target Opportunity:</strong> Software Engineering / BA / IT PM Intern
+                <strong style={{ color: 'var(--accent-cyan)' }}>Target Opportunity:</strong> Business Analyst / IT Project Management Intern
               </p>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.6 }}>
                 <strong style={{ color: 'var(--accent-cyan)' }}>Key Specializations:</strong> FinTech Engines, Requirements Engineering, BPMN 2.0, Web Apps
