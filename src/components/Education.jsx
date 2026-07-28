@@ -1,4 +1,4 @@
-import { GraduationCap, Calendar, BookOpen, CheckCircle2, Award } from 'lucide-react';
+import { GraduationCap, Calendar } from 'lucide-react';
 import ibslLogo from '../assets/ibsl.png';
 import sliateLogo from '../assets/SLIATE_LOGO2.png';
 
@@ -13,13 +13,6 @@ export default function Education() {
       duration: 'Aug 2024 - Aug 2026',
       status: 'Undergraduate',
       academicProjects: 'Key Course Projects: FundManagementSystem-v2 (PHP/MySQL), Java SE Banking & Loan Amortization Engine, AgroNexa LK Marketplace',
-      modules: [
-        'Software Engineering Methods & System Analysis (BPMN 2.0 / SRS / BRD)',
-        'Object-Oriented Programming (Java SE & OOP Design Patterns)',
-        'Database Management Systems (MySQL RDBMS, Normalization & Query Design)',
-        'Web Application Development (PHP 8, HTML5, CSS3, JavaScript ES6+)',
-        'Network Infrastructure, Information Security & Data Communication',
-      ],
       color: '#00f2fe',
     },
     {
@@ -31,13 +24,6 @@ export default function Education() {
       duration: 'Reading / Ongoing',
       status: 'Banking & Finance Student',
       academicProjects: 'Practical Application: FinBridge AI Credit Scoring Engine & People\'s Bank Banking Operational Studies',
-      modules: [
-        'IT, Digital Banking and Settlement Systems (Passed Subject)',
-        'Financial Systems & Commercial Banking Operations',
-        'International Trade & Digital Banking Regulations',
-        'Credit Management, Loan Risk & Financial Analysis',
-        'Monetary Economics & Financial Services Infrastructure',
-      ],
       color: '#9b51e0',
     },
   ];
@@ -169,75 +155,6 @@ export default function Education() {
                     {edu.duration}
                   </span>
                 </div>
-              </div>
-
-              {/* Modules */}
-              <div style={{ borderTop: '1px solid var(--card-border)', paddingTop: '20px' }}>
-                <h4
-                  style={{
-                    fontSize: '1rem',
-                    fontWeight: 700,
-                    marginBottom: '12px',
-                    color: 'var(--text-primary)',
-                  }}
-                >
-                  Specialized Modules & Technologies Studied:
-                </h4>
-                <ul
-                  style={{
-                    listStyle: 'none',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '10px',
-                  }}
-                >
-                  {edu.modules.map((mod, mIdx) => {
-                    const isPassed = mod.includes('(Passed Subject)');
-                    return (
-                      <li
-                        key={mIdx}
-                        style={{
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'space-between',
-                          gap: '10px',
-                          color: isPassed ? '#38ef7d' : 'var(--text-secondary)',
-                          fontWeight: isPassed ? 700 : 500,
-                          fontSize: '0.95rem',
-                          lineHeight: 1.5,
-                          background: isPassed ? 'rgba(56, 239, 125, 0.06)' : 'transparent',
-                          border: isPassed ? '1px solid rgba(56, 239, 125, 0.25)' : 'none',
-                          padding: isPassed ? '8px 12px' : '0',
-                          borderRadius: isPassed ? '8px' : '0',
-                        }}
-                      >
-                        <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                          {isPassed ? (
-                            <CheckCircle2 size={18} style={{ color: '#38ef7d', flexShrink: 0 }} />
-                          ) : (
-                            <BookOpen size={16} style={{ color: 'var(--accent-cyan)', flexShrink: 0 }} />
-                          )}
-                          <span>{isPassed ? mod.replace(' (Passed Subject)', '') : mod}</span>
-                        </div>
-                        {isPassed && (
-                          <span
-                            style={{
-                              fontSize: '0.75rem',
-                              fontWeight: 800,
-                              color: '#38ef7d',
-                              background: 'rgba(56, 239, 125, 0.15)',
-                              border: '1px solid rgba(56, 239, 125, 0.4)',
-                              padding: '3px 10px',
-                              borderRadius: '999px',
-                            }}
-                          >
-                            PASSED SUBJECT
-                          </span>
-                        )}
-                      </li>
-                    );
-                  })}
-                </ul>
               </div>
             </div>
           ))}
