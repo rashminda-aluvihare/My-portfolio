@@ -13,61 +13,58 @@ export default function About() {
         {/* Grid Layout */}
         <div className="about-grid" style={{ display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '40px' }}>
 
-          {/* Left Column: Philosophy */}
+          {/* Left Column: Philosophy & Career Direction */}
           <div className="glass-panel" style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '20px' }}>
             <h3 style={{ fontSize: '1.5rem', fontWeight: 700 }}>
-              My Management & Technical Philosophy
+              Professional Profile & Career Direction
             </h3>
 
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-              As an HNDIT undergraduate aspiring to build a career in Project Management and Business Analysis, I am passionate about connecting business goals with technology-driven solutions. I enjoy analyzing business needs, gathering requirements, and transforming them into clear functional specifications, UML/BPMN models, user stories, and well-structured Agile backlogs.
+              I am an <strong style={{ color: 'var(--text-primary)' }}>HNDIT Undergraduate (SLIATE)</strong> and <strong style={{ color: 'var(--text-primary)' }}>IBSL Banking & Finance Student</strong> specializing in Full-Stack Software Development and Technical Business Analysis. My objective is to bridge business strategy with technical implementation by translating complex domain requirements into robust, user-centric software applications.
             </p>
 
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-              My technical foundation in Next.js, React, Java, PHP, and SQL enables me to communicate effectively with development teams, understand technical constraints, and support informed decision-making throughout the project lifecycle. I believe successful projects are driven by effective communication, stakeholder collaboration, structured planning, and continuous improvement.
+              Having gained hands-on experience in banking operations at <strong style={{ color: 'var(--accent-cyan)' }}>People's Bank Sri Lanka</strong> and full-stack software delivery at <strong style={{ color: 'var(--accent-cyan)' }}>Decodelabs</strong>, I possess a unique blend of financial domain knowledge and hands-on programming skills in <strong style={{ color: 'var(--text-primary)' }}>React 19, Next.js, Java SE, PHP, and MySQL RDBMS</strong>.
+            </p>
+
+            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+              <strong style={{ color: 'var(--accent-cyan)' }}>Career Goal:</strong> Actively seeking a <strong style={{ color: 'var(--text-primary)' }}>Software Engineering, Business Analysis, or IT Project Management</strong> internship/junior role where I can contribute to building high-impact FinTech solutions and enterprise web applications.
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
               <span style={{ padding: '6px 12px', background: 'rgba(0, 242, 254, 0.1)', border: '1px solid rgba(0, 242, 254, 0.25)', borderRadius: '8px', fontSize: '0.85rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>
-                IT Project Management
+                Full-Stack Web Dev
               </span>
               <span style={{ padding: '6px 12px', background: 'rgba(155, 81, 224, 0.1)', border: '1px solid rgba(155, 81, 224, 0.25)', borderRadius: '8px', fontSize: '0.85rem', color: 'var(--accent-purple)', fontWeight: 600 }}>
-                Business Analysis
+                Business Analysis (SRS/BRD)
               </span>
               <span style={{ padding: '6px 12px', background: 'rgba(0, 112, 243, 0.1)', border: '1px solid rgba(0, 112, 243, 0.25)', borderRadius: '8px', fontSize: '0.85rem', color: 'var(--accent-blue)', fontWeight: 600 }}>
-                Banking Technology
+                FinTech & Banking Ops
               </span>
               <span style={{ padding: '6px 12px', background: 'rgba(56, 239, 125, 0.1)', border: '1px solid rgba(56, 239, 125, 0.25)', borderRadius: '8px', fontSize: '0.85rem', color: '#38ef7d', fontWeight: 600 }}>
-                FinTech Solutions
+                Agile / Scrum Delivery
               </span>
               <span style={{ padding: '6px 12px', background: 'rgba(255, 170, 0, 0.1)', border: '1px solid rgba(255, 170, 0, 0.25)', borderRadius: '8px', fontSize: '0.85rem', color: '#ffaa00', fontWeight: 600 }}>
-                Agile Delivery
-              </span>
-              <span style={{ padding: '6px 12px', background: 'rgba(155, 81, 224, 0.1)', border: '1px solid rgba(155, 81, 224, 0.25)', borderRadius: '8px', fontSize: '0.85rem', color: 'var(--accent-purple)', fontWeight: 600 }}>
-                Agile / Scrum Facilitator
-              </span>
-              <span style={{ padding: '6px 12px', background: 'rgba(0, 242, 254, 0.1)', border: '1px solid rgba(0, 242, 254, 0.25)', borderRadius: '8px', fontSize: '0.85rem', color: 'var(--accent-cyan)', fontWeight: 600 }}>
-                Requirements Engineer
-              </span>
-              <span style={{ padding: '6px 12px', background: 'rgba(0, 112, 243, 0.1)', border: '1px solid rgba(0, 112, 243, 0.25)', borderRadius: '8px', fontSize: '0.85rem', color: 'var(--accent-blue)', fontWeight: 600 }}>
-                Technical BA & PM
+                Database Design (MySQL)
               </span>
             </div>
           </div>
 
-          {/* Right Column: Quick Info */}
+          {/* Right Column: Quick Profile Summary */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', justifyContent: 'center' }}>
-            {/* Quick Bio Info */}
             <div className="glass-panel" style={{ padding: '32px', display: 'flex', flexDirection: 'column', gap: '16px', height: '100%', justifyContent: 'center' }}>
-              <h4 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>Quick Profile</h4>
+              <h4 style={{ fontSize: '1.2rem', fontWeight: 700, color: 'var(--text-primary)' }}>Key Snapshot</h4>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.6 }}>
-                <strong style={{ color: 'var(--accent-cyan)' }}>Role:</strong> Aspiring Business Analyst & Full Stack Developer
+                <strong style={{ color: 'var(--accent-cyan)' }}>Target Opportunity:</strong> Software Engineering / BA / IT PM Intern
               </p>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.6 }}>
-                <strong style={{ color: 'var(--accent-cyan)' }}>Core Focus:</strong> Requirements Engineering, Agile Scrum, System Analysis, FinTech
+                <strong style={{ color: 'var(--accent-cyan)' }}>Key Specializations:</strong> FinTech Engines, Requirements Engineering, BPMN 2.0, Web Apps
               </p>
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.6 }}>
-                <strong style={{ color: 'var(--accent-cyan)' }}>Technical Depth:</strong> Next.js, React 19, TypeScript, PHP, MySQL, Java SE
+                <strong style={{ color: 'var(--accent-cyan)' }}>Core Tech Stack:</strong> React 19, Next.js, Node.js, Java SE, PHP, MySQL, REST APIs
+              </p>
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.6 }}>
+                <strong style={{ color: 'var(--accent-cyan)' }}>Education:</strong> HNDIT (SLIATE) & DBF (IBSL)
               </p>
             </div>
           </div>

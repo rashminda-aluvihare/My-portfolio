@@ -5,37 +5,40 @@ import sliateLogo from '../assets/SLIATE_LOGO2.png';
 export default function Education() {
   const educations = [
     {
-      degree: 'Diploma in Banking & Finance (DBF Level I)',
-      institution: 'Institute of Bankers of Sri Lanka (IBSL)',
-      logo: ibslLogo,
-      location: 'Sri Lanka',
-      duration: 'Reading / Ongoing',
-      status: 'Banking & Finance Student',
-      modules: [
-        'IT, Digital Banking and Settlements (Passed Subject)',
-        'Financial Systems & Commercial Banking Operations',
-        'International Trade & Digital Banking Regulations',
-        'Credit Management & Risk Analysis',
-        'Monetary Economics & Financial Services',
-      ],
-      color: '#9b51e0',
-    },
-    {
       degree: 'Higher National Diploma in Information Technology (HNDIT)',
       institution: 'Sri Lanka Institute of Advanced Technological Education (SLIATE)',
-      specialization: 'Project Management, Business Analysis, Software Engineering & Quality Assurance',
+      specialization: 'Software Engineering, Business Analysis, IT Project Management & Database Architecture',
       logo: sliateLogo,
       location: 'Matale / Colombo, Sri Lanka',
       duration: 'Aug 2024 - Aug 2026',
       status: 'Undergraduate',
+      academicProjects: 'Key Course Projects: FundManagementSystem-v2 (PHP/MySQL), Java SE Banking & Loan Amortization Engine, AgroNexa LK Marketplace',
       modules: [
-        'Software Engineering Methods & System Analysis',
-        'Object-Oriented Programming (Java SE & OOP Logic)',
-        'Database Management Systems (MySQL RDBMS & Query Design)',
-        'Web Application Development (PHP, HTML, CSS, JavaScript)',
-        'Network Infrastructure & Data Communication',
+        'Software Engineering Methods & System Analysis (BPMN 2.0 / SRS / BRD)',
+        'Object-Oriented Programming (Java SE & OOP Design Patterns)',
+        'Database Management Systems (MySQL RDBMS, Normalization & Query Design)',
+        'Web Application Development (PHP 8, HTML5, CSS3, JavaScript ES6+)',
+        'Network Infrastructure, Information Security & Data Communication',
       ],
       color: '#00f2fe',
+    },
+    {
+      degree: 'Diploma in Banking & Finance (DBF Level I)',
+      institution: 'Institute of Bankers of Sri Lanka (IBSL)',
+      specialization: 'Commercial Banking Operations, Digital Financial Systems & Credit Management',
+      logo: ibslLogo,
+      location: 'Sri Lanka',
+      duration: 'Reading / Ongoing',
+      status: 'Banking & Finance Student',
+      academicProjects: 'Practical Application: FinBridge AI Credit Scoring Engine & People\'s Bank Banking Operational Studies',
+      modules: [
+        'IT, Digital Banking and Settlement Systems (Passed Subject)',
+        'Financial Systems & Commercial Banking Operations',
+        'International Trade & Digital Banking Regulations',
+        'Credit Management, Loan Risk & Financial Analysis',
+        'Monetary Economics & Financial Services Infrastructure',
+      ],
+      color: '#9b51e0',
     },
   ];
 
@@ -120,6 +123,11 @@ export default function Education() {
                     {edu.specialization && (
                       <p style={{ fontSize: '0.88rem', color: 'var(--accent-cyan)', fontWeight: 600, marginTop: '4px' }}>
                         <span style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>Specialization:</span> {edu.specialization}
+                      </p>
+                    )}
+                    {edu.academicProjects && (
+                      <p style={{ fontSize: '0.85rem', color: '#38ef7d', fontWeight: 600, marginTop: '6px' }}>
+                        <span style={{ color: 'var(--text-primary)', fontWeight: 700 }}>Academic Projects & Applied Work:</span> {edu.academicProjects}
                       </p>
                     )}
                   </div>

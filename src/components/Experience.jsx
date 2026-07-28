@@ -5,41 +5,44 @@ import decodeLogo from '../assets/decode.png';
 export default function Experience() {
   const experiences = [
     {
-      role: 'Full Stack Developer',
+      role: 'Full Stack Developer Intern',
       company: 'Decodelabs',
       logo: decodeLogo,
-      companyType: 'Internship',
+      companyType: 'Software Agency / Tech Internship',
       location: 'Remote',
       duration: 'Jun 2026 · 1 mo',
       type: 'Developer Internship',
-      skills: 'Full-Stack Development and MERN Stack',
+      skills: 'Full-Stack Development, REST API Integration & MERN Architecture',
       certificate: 'Internship Certificate',
+      personalContribution: 'Engineered responsive web component interfaces using React 19, designed REST API endpoints, integrated MongoDB database models, and optimized front-end state management.',
+      tools: ['React 19', 'JavaScript (ES6+)', 'Node.js', 'Express', 'MongoDB', 'Git / GitHub', 'REST APIs'],
       responsibilities: [
-        'Analyzed user requirements and converted them into technical solutions.',
-        'Designed database structures and API workflows.',
-        'Collaborated with teams using Agile development practices.',
-        'Improved system usability through UI/UX enhancements.',
+        'Translated client user requirements into technical web architecture and functional specifications.',
+        'Designed normalized database schemas and implemented REST API endpoints for seamless frontend data consumption.',
+        'Collaborated with senior engineers using Agile Scrum sprint workflows, code reviews, and Git version control.',
+        'Diagnosed and fixed UI responsiveness bugs and optimized rendering performance across desktop and mobile viewports.',
       ],
       badgeColor: 'var(--accent-cyan)',
       bgAlpha: 'rgba(0, 242, 254, 0.1)',
       borderAlpha: 'rgba(0, 242, 254, 0.25)',
     },
     {
-      role: 'Internship Trainee',
+      role: 'Internship Trainee - Branch Banking Operations',
       company: "People's Bank Sri Lanka",
       logo: peoplesBankLogo,
-      companyType: 'Internship',
+      companyType: 'Commercial Banking Institution',
       location: 'Ukuwela Branch, Sri Lanka',
       duration: 'Jan 2024 - Jul 2024 · 7 mos',
       type: 'Bank Internship',
-      skills: 'Branch Banking Operations',
+      skills: 'Branch Banking Operations & Core Financial Workflows',
       certificate: 'Service Letter',
+      personalContribution: 'Assisted branch staff with daily core banking operations, customer onboarding verification, savings & loan document audits, and digital settlement queries.',
+      tools: ['Core Banking Terminal', 'Customer Onboarding Systems', 'KYC Compliance Protocols', 'Financial Clearing Systems'],
       responsibilities: [
-        'Supported end-to-end daily branch banking operations.',
-        'Assisted with customer onboarding and account management.',
-        'Followed banking procedures and compliance requirements.',
-        'Collaborated with cross-functional branch teams.',
-        'Strengthened knowledge of banking operations and customer service.',
+        'Supported end-to-end daily branch banking transactions, cash settlement protocols, and account management.',
+        'Assisted retail and business customers with digital banking app onboarding and branch service resolution.',
+        'Enforced strict banking regulatory compliance, Know Your Customer (KYC) guidelines, and document verification.',
+        'Gained deep domain knowledge in Sri Lankan retail banking, fixed deposit management, and credit processes (leveraged directly in building FinTech software projects).',
       ],
       badgeColor: 'var(--accent-purple)',
       bgAlpha: 'rgba(155, 81, 224, 0.1)',
@@ -200,10 +203,47 @@ export default function Experience() {
                 </div>
               )}
 
+              {/* Individual Contribution Highlight */}
+              {exp.personalContribution && (
+                <div
+                  style={{
+                    background: 'rgba(0, 242, 254, 0.04)',
+                    borderLeft: `3px solid ${exp.badgeColor}`,
+                    padding: '12px 16px',
+                    borderRadius: '0 10px 10px 0',
+                    fontSize: '0.92rem',
+                    color: 'var(--text-secondary)',
+                    lineHeight: 1.5,
+                  }}
+                >
+                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '4px' }}>
+                    My Individual Contribution:
+                  </strong>
+                  {exp.personalContribution}
+                </div>
+              )}
 
-
-
-              {/* Responsibilities */}
+              {/* Technologies & Tools Used */}
+              {exp.tools && exp.tools.length > 0 && (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                  {exp.tools.map((tool, tIdx) => (
+                    <span
+                      key={tIdx}
+                      style={{
+                        fontSize: '0.78rem',
+                        fontWeight: 600,
+                        color: exp.badgeColor,
+                        background: exp.bgAlpha,
+                        border: `1px solid ${exp.borderAlpha}`,
+                        padding: '4px 10px',
+                        borderRadius: '6px',
+                      }}
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              )}
               <div style={{ borderTop: '1px solid var(--card-border)', paddingTop: '16px' }}>
                 <h4
                   style={{

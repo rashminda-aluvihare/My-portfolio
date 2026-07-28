@@ -386,6 +386,21 @@ export default function Activities() {
                   {item.description}
                 </p>
 
+                {/* Role & Personal Contribution */}
+                {item.contribution && (
+                  <div style={{ background: 'rgba(155, 81, 224, 0.05)', borderLeft: '3px solid var(--accent-purple)', padding: '10px 14px', borderRadius: '0 8px 8px 0', fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
+                    <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '2px' }}>Role & Contribution:</strong>
+                    {item.contribution}
+                  </div>
+                )}
+
+                {/* Key Outcome / Learning */}
+                {item.outcome && (
+                  <div style={{ fontSize: '0.84rem', color: '#38ef7d', fontWeight: 600 }}>
+                    <span style={{ color: 'var(--text-primary)', fontWeight: 700 }}>Key Outcome:</span> {item.outcome}
+                  </div>
+                )}
+
                 {/* Tags */}
                 {item.tags && item.tags.length > 0 && (
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '4px' }}>

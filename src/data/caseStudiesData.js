@@ -16,7 +16,10 @@ export const caseStudiesData = {
     image: finbridgeImg,
     github: 'https://github.com/rashminda-aluvihare/finbridge',
     demo: 'https://finbridge-xi.vercel.app',
-    tags: ['Next.js 16 (App Router)', 'React 19', 'TypeScript', 'Python FastAPI', 'Scikit-Learn ML', 'Zustand', 'Recharts', 'Node.js/Express'],
+    contribution: {
+      title: 'My Individual Contribution',
+      description: 'I engineered the Next.js 16 frontend architecture, integrated Zustand global state management, designed the multi-role Borrower/Lender/Admin dashboards, and implemented the interactive credit scoring "What-If" simulator. Additionally, I built the Python FastAPI integration layer to deliver Explainable AI (XAI) feature importance breakdowns directly to users.'
+    },
     problem: {
       title: 'The Challenge & Industry Problem',
       description: 'Micro-entrepreneurs, farmers, and low-income individuals in Sri Lanka have no formal credit records (CRIB scores), so banks systematically deny them affordable low-interest loans. Cut off from the formal financial system, they are pushed into the hands of predatory informal lenders charging exorbitant rates — a cycle that entrenches poverty and stifles entrepreneurship.',
@@ -59,6 +62,10 @@ export const caseStudiesData = {
     github: 'https://github.com/suneththivanka128/FundManagementSystem-v2',
     demo: null,
     tags: ['PHP 8', 'MySQL Database', 'Chart.js', 'Bootstrap 5', 'JavaScript', 'HTML5/CSS3'],
+    contribution: {
+      title: 'My Individual Contribution',
+      description: 'I personally designed the normalized MySQL relational schema, implemented the PHP 8 backend authentication & session handling, built the invoice/voucher PDF generator, and integrated Chart.js visual analytics for expenditure tracking.'
+    },
     problem: {
       title: 'The Challenge & Academic Needs',
       description: 'Managing batch student financial contributions and monthly project expenditures manually using physical ledgers created accounting errors, untracked cash receipts, and a lack of real-time auditability for batch representatives.',
@@ -99,6 +106,10 @@ export const caseStudiesData = {
     github: 'https://github.com/rashminda-aluvihare/agronexa-lk',
     demo: 'https://agronexa-lk.vercel.app',
     tags: ['React.js (TypeScript)', 'Node.js & Express.js', 'PostgreSQL (Railway)', 'Socket.IO Live Chat', 'Twilio SMS API', 'SHA-256 Crypto Ledger', 'Cloudinary CDN', 'Leaflet.js Maps', 'Tailwind CSS', 'Vercel'],
+    contribution: {
+      title: 'My Individual Contribution',
+      description: 'I architected the entire full-stack web application using React.js (TypeScript), Node.js, and PostgreSQL. I personally developed the SHA-256 cryptographic transaction chain for equipment rentals, the Socket.IO real-time chat module, the HARTI crop price scraper with dynamic fallbacks, and the SMS OTP authentication system via Twilio.'
+    },
     problem: {
       title: 'The Agricultural Challenge',
 
@@ -147,6 +158,10 @@ export const caseStudiesData = {
     github: 'https://github.com/rashminda-aluvihare/FixedDepositCalculation-System',
     demo: 'fixed-deposit',
     tags: ['Java SE', 'OOP Architecture', 'Financial Mathematics', 'Compounding Algorithms', 'Tax Math'],
+    contribution: {
+      title: 'My Individual Contribution',
+      description: 'I designed and implemented the OOP Java class structure, compounding calculation engine, and withholding tax deduction rules. Additionally, I authored the CLI interface and ported the calculation logic into a web-accessible modal simulator inside this portfolio.'
+    },
     problem: {
       title: 'Financial Math Problem',
       description: 'Computing long-term fixed deposit interest rates across various compounding intervals (monthly, quarterly, annually) with applicable withholding tax deductions requires precise numerical algorithms free of floating-point precision loss.',
@@ -187,6 +202,10 @@ export const caseStudiesData = {
     github: 'https://github.com/rashminda-aluvihare/Savingaccounts-LoancalculationSystem',
     demo: 'loan-savings',
     tags: ['Java SE', 'EMI Algorithms', 'Amortization Tables', 'OOP Principles', 'Console UI'],
+    contribution: {
+      title: 'My Individual Contribution',
+      description: 'I authored the core Java logic for reducing-balance loan EMI calculations, built the amortization schedule generator detailing monthly principal vs. interest components, and developed the compound savings growth projection algorithm.'
+    },
     problem: {
       title: 'Loan Amortization & Target Savings Challenge',
       description: 'Borrowers and account holders often struggle to understand how interest accrual affects their monthly loan EMIs over time, or how recurring monthly deposits compound into target savings goals.',
@@ -227,6 +246,10 @@ export const caseStudiesData = {
     github: 'https://github.com/rashminda-aluvihare/My-portfolio',
     demo: 'https://rashmindaluvihare.vercel.app/',
     tags: ['React 19', 'Vite', 'JavaScript (ES6+)', 'CSS3 Custom Properties', 'Lucide Icons', 'Vercel CDN'],
+    contribution: {
+      title: 'My Individual Contribution',
+      description: 'I designed and engineered this entire portfolio using React 19 and Vite. I authored the custom CSS glassmorphism theme, built the interactive case study modal engines and Java calculators, and optimized Lighthouse SEO performance to 100%.'
+    },
     problem: {
       title: 'The Challenge & Requirements',
       description: 'Creating an impressive online identity for a Business Analyst & Full-Stack Developer that effectively showcases complex FinTech applications, academic projects, interactive financial tools, and detailed case studies in a seamless, high-performance UI.',

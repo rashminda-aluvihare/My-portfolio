@@ -5,34 +5,44 @@ export default function Skills() {
   const [activeCategory, setActiveCategory] = useState('all');
 
   const categories = [
-    { id: 'all', label: 'All Tech & Skills' },
-    { id: 'dev', label: 'Software & Web Dev' },
-    { id: 'ba', label: 'BA & Management' },
-    { id: 'db', label: 'Data & System Architecture' },
+    { id: 'all', label: 'All Skills' },
+    { id: 'lang', label: 'Programming Languages' },
+    { id: 'frontend', label: 'Frontend Dev' },
+    { id: 'backend', label: 'Backend & Databases' },
+    { id: 'ba', label: 'Business Analysis & PM' },
+    { id: 'tools', label: 'Tools & Platforms' },
   ];
 
   const skills = [
-    // Project Management & Business Analysis
-    { name: 'Agile Methodology', type: 'Methodology', level: 92, category: 'ba', color: '#9b51e0', icon: <Workflow size={18} /> },
-    { name: 'Scrum Framework', type: 'Agile', level: 90, category: 'ba', color: '#00f2fe', icon: <Workflow size={18} /> },
-    { name: 'Project Planning', type: 'Management', level: 85, category: 'ba', color: '#ff6384', icon: <Target size={18} /> },
-    { name: 'Requirement Engineering', type: 'Business Analysis', level: 88, category: 'ba', color: '#38ef7d', icon: <FileCheck size={18} /> },
-    { name: 'Business Process Modeling', type: 'BPMN 2.0', level: 86, category: 'ba', color: '#00758F', icon: <LayoutList size={18} /> },
-    { name: 'Requirements Gathering', type: 'SRS / BRD', level: 90, category: 'ba', color: '#00f2fe', icon: <FileCheck size={18} /> },
+    // Programming Languages
+    { name: 'JavaScript (ES6+)', type: 'Core Language', level: 95, category: 'lang', color: '#f7df1e', icon: <Code2 size={18} />, evidence: 'Used in: FinBridge, AgroNexa, Portfolio' },
+    { name: 'Java SE (OOP)', type: 'Core Language', level: 88, category: 'lang', color: '#b07219', icon: <Cpu size={18} />, evidence: 'Used in: Banking Engines & Loan Calculators' },
+    { name: 'PHP 8', type: 'Backend Language', level: 86, category: 'lang', color: '#4F5D95', icon: <Terminal size={18} />, evidence: 'Used in: FundManagementSystem-v2' },
+    { name: 'SQL', type: 'Database Query', level: 90, category: 'lang', color: '#f1e05a', icon: <Database size={18} />, evidence: 'Used in: MySQL & PostgreSQL Architectures' },
 
-    // Software Development
-    { name: 'Next.js & TypeScript', type: 'Fullstack Stack', level: 90, category: 'dev', color: '#0070f3', icon: <Code2 size={18} /> },
-    { name: 'React 19 & Zustand', type: 'Frontend Logic', level: 94, category: 'dev', color: '#61dafb', icon: <Code2 size={18} /> },
-    { name: 'Tailwind & Framer Motion', type: 'UI & Animations', level: 92, category: 'dev', color: '#38bdf8', icon: <Code2 size={18} /> },
-    { name: 'JavaScript (ES6+)', type: 'Core Language', level: 95, category: 'dev', color: '#f7df1e', icon: <Code2 size={18} /> },
-    { name: 'PHP & MySQL', type: 'Backend Stack', level: 88, category: 'dev', color: '#4F5D95', icon: <Terminal size={18} /> },
-    { name: 'Java SE (OOP)', type: 'Core Language', level: 85, category: 'dev', color: '#b07219', icon: <Cpu size={18} /> },
+    // Frontend Development
+    { name: 'React 19 & Zustand', type: 'Frontend Framework', level: 94, category: 'frontend', color: '#61dafb', icon: <Code2 size={18} />, evidence: 'Used in: FinBridge & Portfolio' },
+    { name: 'Next.js 16 (App Router)', type: 'Fullstack React', level: 90, category: 'frontend', color: '#0070f3', icon: <Code2 size={18} />, evidence: 'Used in: FinBridge AI Platform' },
+    { name: 'HTML5 & CSS3', type: 'UI Structure', level: 95, category: 'frontend', color: '#e34f26', icon: <Code2 size={18} />, evidence: 'Used in: All Web Applications' },
+    { name: 'Tailwind CSS', type: 'Styling Engine', level: 92, category: 'frontend', color: '#38bdf8', icon: <Code2 size={18} />, evidence: 'Used in: AgroNexa LK Marketplace' },
 
-    // Database & Architecture
-    { name: 'SQL & Database Design', type: 'Query Language', level: 90, category: 'db', color: '#f1e05a', icon: <Database size={18} /> },
-    { name: 'MySQL RDBMS', type: 'Database', level: 88, category: 'db', color: '#00758F', icon: <Database size={18} /> },
-    { name: 'System Analysis & UML', type: 'Architecture', level: 87, category: 'db', color: '#00f2fe', icon: <Cpu size={18} /> },
-    { name: 'RESTful APIs', type: 'Integration', level: 92, category: 'dev', color: '#38ef7d', icon: <Layers size={18} /> },
+    // Backend Development & Databases
+    { name: 'Node.js & Express.js', type: 'Backend Runtime', level: 89, category: 'backend', color: '#339933', icon: <Terminal size={18} />, evidence: 'Used in: AgroNexa LK & FinBridge APIs' },
+    { name: 'MySQL RDBMS', type: 'Relational DB', level: 88, category: 'backend', color: '#00758F', icon: <Database size={18} />, evidence: 'Used in: FundManagement & Banking Apps' },
+    { name: 'PostgreSQL', type: 'Relational DB', level: 85, category: 'backend', color: '#336791', icon: <Database size={18} />, evidence: 'Used in: AgroNexa LK Crypto Ledger' },
+    { name: 'RESTful API Design', type: 'Web Service', level: 92, category: 'backend', color: '#38ef7d', icon: <Layers size={18} />, evidence: 'Used in: Decodelabs & FinBridge' },
+
+    // Business Analysis & Project Management
+    { name: 'Requirements Engineering', type: 'SRS / BRD', level: 90, category: 'ba', color: '#38ef7d', icon: <FileCheck size={18} />, evidence: 'Applied in: HNDIT Modules & Decodelabs' },
+    { name: 'BPMN 2.0 & UML Modeling', type: 'Process Modeling', level: 88, category: 'ba', color: '#00f2fe', icon: <LayoutList size={18} />, evidence: 'Applied in: System Analysis & Banking Specs' },
+    { name: 'Agile & Scrum Framework', type: 'Delivery Method', level: 92, category: 'ba', color: '#9b51e0', icon: <Workflow size={18} />, evidence: 'Applied in: Decodelabs Internship' },
+    { name: 'IT Project Planning', type: 'Backlog & Sprints', level: 86, category: 'ba', color: '#ff6384', icon: <Target size={18} />, evidence: 'Applied in: Academic & Industry Projects' },
+
+    // Tools & Platforms
+    { name: 'Git & GitHub', type: 'Version Control', level: 94, category: 'tools', color: '#f05032', icon: <Terminal size={18} />, evidence: 'Applied in: All Project Repositories' },
+    { name: 'Vite & Webpack', type: 'Build Tool', level: 90, category: 'tools', color: '#646cff', icon: <Cpu size={18} />, evidence: 'Applied in: Portfolio & React Apps' },
+    { name: 'Postman', type: 'API Testing', level: 88, category: 'tools', color: '#ff6c37', icon: <Layers size={18} />, evidence: 'Applied in: REST API Integration' },
+    { name: 'Vercel Deployment', type: 'Cloud Hosting', level: 92, category: 'tools', color: '#ffffff', icon: <Layers size={18} />, evidence: 'Applied in: Production Deployments' },
   ];
 
   const filteredSkills = activeCategory === 'all' 
@@ -171,6 +181,13 @@ export default function Skills() {
                   />
                 </div>
               </div>
+
+              {/* Evidence Tag */}
+              {skill.evidence && (
+                <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', fontWeight: 600, marginTop: '2px', borderTop: '1px solid var(--card-border)', paddingTop: '8px' }}>
+                  <span style={{ color: skill.color }}>✓</span> {skill.evidence}
+                </div>
+              )}
             </div>
           ))}
         </div>

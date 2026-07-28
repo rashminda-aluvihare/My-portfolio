@@ -219,6 +219,48 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
             )}
           </div>
 
+          {/* MY INDIVIDUAL CONTRIBUTION HIGHLIGHT */}
+          {caseStudy.contribution && (
+            <div
+              style={{
+                background: 'rgba(0, 242, 254, 0.05)',
+                border: '1px solid rgba(0, 242, 254, 0.3)',
+                borderRadius: '18px',
+                padding: '24px',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '12px',
+                boxShadow: '0 4px 20px rgba(0, 242, 254, 0.08)',
+              }}
+            >
+              <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div
+                  style={{
+                    background: 'rgba(0, 242, 254, 0.15)',
+                    color: 'var(--accent-cyan)',
+                    padding: '10px',
+                    borderRadius: '12px',
+                    display: 'flex',
+                  }}
+                >
+                  <Layers size={22} />
+                </div>
+                <div>
+                  <span style={{ fontSize: '0.75rem', fontWeight: 800, textTransform: 'uppercase', letterSpacing: '0.08em', color: 'var(--accent-cyan)' }}>
+                    Personal Contribution & Technical Role
+                  </span>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--text-primary)', marginTop: '2px' }}>
+                    {caseStudy.contribution.title}
+                  </h3>
+                </div>
+              </div>
+
+              <p style={{ color: 'var(--text-secondary)', fontSize: '0.96rem', lineHeight: 1.65 }}>
+                {caseStudy.contribution.description}
+              </p>
+            </div>
+          )}
+
           {/* SECTION 1: CHALLENGE & PROBLEM */}
           <div
             style={{
