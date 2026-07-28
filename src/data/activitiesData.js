@@ -33,7 +33,7 @@ export const activitiesData = [
     description: 'Engaged in high-level sessions on digital public infrastructure, open-banking API protocols, Sri Lanka Central Bank regulatory frameworks, and AI-driven credit scoring solutions.',
     contribution: 'Networked with Sri Lankan FinTech founders and digital banking specialists, gathering technical insights on micro-credit scoring algorithms and instant payment gateways.',
     outcome: 'Applied open-banking API standards and alternative credit scoring concepts directly into the architecture of the FinBridge AI project.',
-    tags: ['FinTech', 'Digital Banking', 'Open Banking APIs', 'Financial Inclusion', 'Credit Scoring'],
+    tags: ['FinTech', 'Digital Banking', 'Open Banking APIs', 'Financial Inclusion', 'Blockchain'],
     images: [fintech1, fintech2, fintech3, fintech4, fintech5],
   },
 ];
