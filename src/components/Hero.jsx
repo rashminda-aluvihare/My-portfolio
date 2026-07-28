@@ -365,7 +365,7 @@ export default function Hero() {
           height: 100%;
           border-radius: 50%;
           object-fit: cover;
-          object-position: center;
+          object-position: center 12%;
           display: block;
         }
 
