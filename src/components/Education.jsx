@@ -1,4 +1,4 @@
-import { GraduationCap, Calendar } from 'lucide-react';
+import { GraduationCap, Calendar, CheckCircle2 } from 'lucide-react';
 import ibslLogo from '../assets/ibsl.png';
 import sliateLogo from '../assets/SLIATE_LOGO2.png';
 
@@ -12,7 +12,6 @@ export default function Education() {
       location: 'Matale / Colombo, Sri Lanka',
       duration: 'Aug 2024 - Aug 2026',
       status: 'Undergraduate',
-      academicProjects: 'Key Course Projects: FundManagementSystem-v2 (PHP/MySQL), Java SE Banking & Loan Amortization Engine, AgroNexa LK Marketplace',
       color: '#00f2fe',
     },
     {
@@ -23,7 +22,7 @@ export default function Education() {
       location: 'Sri Lanka',
       duration: 'Reading / Ongoing',
       status: 'Banking & Finance Student',
-      academicProjects: 'Practical Application: FinBridge AI Credit Scoring Engine & People\'s Bank Banking Operational Studies',
+      passedSubject: 'IT, Digital Banking and Settlements',
       color: '#9b51e0',
     },
   ];
@@ -111,10 +110,24 @@ export default function Education() {
                         <span style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>Specialization:</span> {edu.specialization}
                       </p>
                     )}
-                    {edu.academicProjects && (
-                      <p style={{ fontSize: '0.85rem', color: '#38ef7d', fontWeight: 600, marginTop: '6px' }}>
-                        <span style={{ color: 'var(--text-primary)', fontWeight: 700 }}>Academic Projects & Applied Work:</span> {edu.academicProjects}
-                      </p>
+                    {edu.passedSubject && (
+                      <div
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '8px',
+                          background: 'rgba(56, 239, 125, 0.1)',
+                          border: '1px solid rgba(56, 239, 125, 0.35)',
+                          padding: '6px 14px',
+                          borderRadius: '8px',
+                          marginTop: '10px',
+                        }}
+                      >
+                        <CheckCircle2 size={16} style={{ color: '#38ef7d', flexShrink: 0 }} />
+                        <span style={{ fontSize: '0.86rem', fontWeight: 700, color: '#38ef7d' }}>
+                          Passed Subject: <span style={{ color: 'var(--text-primary)' }}>{edu.passedSubject}</span>
+                        </span>
+                      </div>
                     )}
                   </div>
                 </div>
