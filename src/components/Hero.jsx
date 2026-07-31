@@ -181,6 +181,23 @@ export default function Hero() {
         {/* Right Column: Profile Avatar Photo */}
         <div className="hero-avatar-column">
           <div className="hero-avatar-wrapper">
+            <div className="floating-badge badge-react">
+              <Sparkles size={14} style={{ color: '#61dafb' }} />
+              <span>Full-Stack Dev</span>
+            </div>
+            <div className="floating-badge badge-node">
+              <Code2 size={14} style={{ color: '#38ef7d' }} />
+              <span>React & Java</span>
+            </div>
+            <div className="floating-badge badge-sql">
+              <Database size={14} style={{ color: '#00f2fe' }} />
+              <span>FinTech</span>
+            </div>
+            <div className="floating-badge badge-next">
+              <Terminal size={14} style={{ color: '#9b51e0' }} />
+              <span>Business Analyst</span>
+            </div>
+
             <div className="hero-avatar-ring">
               <img
                 src={profileImg}
@@ -189,8 +206,8 @@ export default function Hero() {
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"
-                width="380"
-                height="380"
+                width="360"
+                height="480"
               />
             </div>
           </div>
@@ -283,6 +300,7 @@ export default function Hero() {
 
         .hero-avatar-wrapper {
           position: relative;
+          padding: 10px;
         }
 
         /* Floating Tech Badges */
@@ -343,29 +361,31 @@ export default function Hero() {
         }
 
         .hero-avatar-ring {
-          width: 380px;
-          height: 380px;
-          border-radius: 50%;
-          padding: 2.5px;
-          background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple));
-          box-shadow: 0 6px 18px rgba(0, 242, 254, 0.15);
+          width: 360px;
+          max-width: 90vw;
+          aspect-ratio: 898 / 1200;
+          border-radius: 28px;
+          padding: 3.5px;
+          background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), rgba(0, 242, 254, 0.5));
+          box-shadow: 0 12px 35px rgba(0, 242, 254, 0.22), 0 0 25px rgba(155, 81, 224, 0.2);
           position: relative;
           z-index: 1;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
+          transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
           cursor: pointer;
+          overflow: hidden;
         }
 
         .hero-avatar-ring:hover {
-          transform: scale(1.03);
-          box-shadow: 0 16px 45px rgba(0, 242, 254, 0.4) !important;
+          transform: translateY(-6px) scale(1.02);
+          box-shadow: 0 22px 50px rgba(0, 242, 254, 0.4), 0 0 35px rgba(155, 81, 224, 0.3) !important;
         }
 
         .hero-avatar-img {
           width: 100%;
           height: 100%;
-          border-radius: 50%;
+          border-radius: 25px;
           object-fit: cover;
-          object-position: center 12%;
+          object-position: center center;
           display: block;
         }
 
@@ -490,8 +510,9 @@ export default function Hero() {
           }
 
           .hero-avatar-ring {
-            width: 260px;
-            height: 260px;
+            width: 280px;
+            aspect-ratio: 898 / 1200;
+            height: auto;
           }
 
           .floating-badge {
