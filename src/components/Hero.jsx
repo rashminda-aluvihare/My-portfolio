@@ -189,8 +189,8 @@ export default function Hero() {
                 loading="eager"
                 decoding="async"
                 fetchPriority="high"
-                width="360"
-                height="480"
+                width="270"
+                height="360"
               />
             </div>
           </div>
@@ -344,7 +344,7 @@ export default function Hero() {
         }
 
         .hero-avatar-ring {
-          width: 360px;
+          width: 270px;
           max-width: 90vw;
           aspect-ratio: 898 / 1200;
           border-radius: 28px;
@@ -493,7 +493,7 @@ export default function Hero() {
           }
 
           .hero-avatar-ring {
-            width: 280px;
+            width: 230px;
             aspect-ratio: 898 / 1200;
             height: auto;
           }
