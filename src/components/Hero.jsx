@@ -347,26 +347,49 @@ export default function Hero() {
           width: 270px;
           max-width: 90vw;
           aspect-ratio: 898 / 1200;
-          border-radius: 28px;
-          padding: 3.5px;
-          background: linear-gradient(135deg, var(--accent-cyan), var(--accent-purple), rgba(0, 242, 254, 0.5));
-          box-shadow: 0 12px 35px rgba(0, 242, 254, 0.22), 0 0 25px rgba(155, 81, 224, 0.2);
+          border-radius: 24px;
+          padding: 0;
+          background: transparent;
+          border: none;
+          box-shadow: 0 16px 38px rgba(0, 0, 0, 0.35);
           position: relative;
           z-index: 1;
-          transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
-          cursor: pointer;
           overflow: hidden;
+          animation: avatarPopIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+                     avatarFloat 5s ease-in-out infinite 0.8s;
+          transition: transform 0.35s ease, box-shadow 0.35s ease;
+          cursor: pointer;
         }
 
         .hero-avatar-ring:hover {
-          transform: translateY(-6px) scale(1.02);
-          box-shadow: 0 22px 50px rgba(0, 242, 254, 0.4), 0 0 35px rgba(155, 81, 224, 0.3) !important;
+          transform: translateY(-8px) scale(1.03);
+          box-shadow: 0 22px 48px rgba(0, 242, 254, 0.25) !important;
+        }
+
+        @keyframes avatarPopIn {
+          0% {
+            opacity: 0;
+            transform: scale(0.5) translateY(40px);
+          }
+          100% {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+          }
+        }
+
+        @keyframes avatarFloat {
+          0%, 100% {
+            transform: translateY(0px);
+          }
+          50% {
+            transform: translateY(-10px);
+          }
         }
 
         .hero-avatar-img {
           width: 100%;
           height: 100%;
-          border-radius: 25px;
+          border-radius: 24px;
           object-fit: cover;
           object-position: center center;
           display: block;

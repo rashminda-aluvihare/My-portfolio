@@ -20,10 +20,10 @@ export default function HeroBlockchainCanvas() {
     const getColors = () => {
       const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
       return {
-        nodeColor: isDark ? 'rgba(0, 242, 254, 0.6)' : 'rgba(10, 102, 194, 0.45)',
-        nodeColorAlt: isDark ? 'rgba(155, 81, 224, 0.6)' : 'rgba(155, 81, 224, 0.45)',
-        lineColor: isDark ? 'rgba(0, 242, 254, 0.12)' : 'rgba(10, 102, 194, 0.12)',
-        pulseColor: isDark ? 'rgba(0, 242, 254, 0.9)' : 'rgba(10, 102, 194, 0.8)',
+        nodeColor: isDark ? 'rgba(0, 242, 254, 0.8)' : 'rgba(10, 102, 194, 0.7)',
+        nodeColorAlt: isDark ? 'rgba(155, 81, 224, 0.8)' : 'rgba(155, 81, 224, 0.7)',
+        lineColor: isDark ? 'rgba(0, 242, 254, 0.22)' : 'rgba(10, 102, 194, 0.22)',
+        pulseColor: isDark ? 'rgba(0, 242, 254, 0.95)' : 'rgba(10, 102, 194, 0.9)',
       };
     };
 
@@ -47,19 +47,21 @@ export default function HeroBlockchainCanvas() {
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Create blockchain nodes (Mobile optimized count)
+    // Create blockchain nodes (Mobile optimized count with guaranteed minimum floor)
     const isMobile = window.innerWidth < 768;
-    const densityFactor = isMobile ? 35000 : 20000;
-    const maxNodeCount = isMobile ? 18 : 38;
-    const nodeCount = Math.min(Math.floor((canvas.width * canvas.height) / densityFactor), maxNodeCount);
+    const densityFactor = isMobile ? 12000 : 20000;
+    const minNodeCount = isMobile ? 18 : 24;
+    const maxNodeCount = isMobile ? 28 : 42;
+    const calculatedNodes = Math.floor((canvas.width * canvas.height) / densityFactor);
+    const nodeCount = Math.max(minNodeCount, Math.min(calculatedNodes, maxNodeCount));
     const nodes = [];
 
     for (let i = 0; i < nodeCount; i++) {
       nodes.push({
-        x: Math.random() * canvas.width,
-        y: Math.random() * canvas.height,
-        vx: (Math.random() - 0.5) * (isMobile ? 0.4 : 0.6),
-        vy: (Math.random() - 0.5) * (isMobile ? 0.4 : 0.6),
+        x: Math.random() * (canvas.width || 360),
+        y: Math.random() * (canvas.height || 600),
+        vx: (Math.random() - 0.5) * (isMobile ? 0.5 : 0.6),
+        vy: (Math.random() - 0.5) * (isMobile ? 0.5 : 0.6),
         radius: Math.random() * 2 + 1.2,
         isAlt: Math.random() > 0.6,
       });
@@ -67,7 +69,7 @@ export default function HeroBlockchainCanvas() {
 
     // Active data pulses in blockchain network
     const pulses = [];
-    const maxPulses = isMobile ? 2 : 4;
+    const maxPulses = isMobile ? 3 : 5;
 
     const createPulse = (n1, n2) => {
       if (pulses.length >= maxPulses) return;
@@ -77,7 +79,7 @@ export default function HeroBlockchainCanvas() {
         x2: n2.x,
         y2: n2.y,
         progress: 0,
-        speed: 0.015 + Math.random() * 0.015,
+        speed: 0.015 + Math.random() * 0.018,
       });
     };
 
@@ -85,6 +87,8 @@ export default function HeroBlockchainCanvas() {
     const draw = () => {
       if (!isVisible) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      const maxDist = isMobile ? 130 : 140;
 
       // Update & Draw Nodes
       for (let i = 0; i < nodes.length; i++) {
@@ -108,18 +112,17 @@ export default function HeroBlockchainCanvas() {
           const dx = target.x - node.x;
           const dy = target.y - node.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          const maxDist = isMobile ? 100 : 130;
 
           if (dist < maxDist) {
             ctx.beginPath();
             ctx.moveTo(node.x, node.y);
             ctx.lineTo(target.x, target.y);
             ctx.strokeStyle = colors.lineColor;
-            ctx.lineWidth = (1 - dist / maxDist) * 1.2;
+            ctx.lineWidth = (1 - dist / maxDist) * (isMobile ? 1.4 : 1.2);
             ctx.stroke();
 
             // Randomly trigger data pulse
-            if (Math.random() < 0.0008) {
+            if (Math.random() < (isMobile ? 0.0025 : 0.001)) {
               createPulse(node, target);
             }
           }
