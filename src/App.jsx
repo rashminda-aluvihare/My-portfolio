@@ -9,13 +9,9 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Activities from './components/Activities';
 import Contact from './components/Contact';
-import SplashScreen from './components/SplashScreen';
 import { ArrowUp } from 'lucide-react';
 
 export default function App() {
-  // Splash screen: show once per session
-  const [splashDone, setSplashDone] = useState(false);
-
   // Theme state
   const [theme, setTheme] = useState(() => {
     const saved = localStorage.getItem('theme');
@@ -84,9 +80,6 @@ export default function App() {
 
   return (
     <>
-      {/* Splash Screen — shown once on load */}
-      {!splashDone && <SplashScreen onComplete={() => setSplashDone(true)} />}
-
       {/* Background animated canvas */}
       <Background />
 
