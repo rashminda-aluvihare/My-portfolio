@@ -1,4 +1,4 @@
-# Rashminda Aluvihare — Personal Portfolio & Web Applications
+# Rashminda Aluvihare - Personal Portfolio 
 
 🌐 **Live Demo**: [https://rashmindaluvihare.vercel.app/](https://rashmindaluvihare.vercel.app/)
 
@@ -19,34 +19,7 @@ A modern, responsive, and high-performance portfolio web application built with 
 - **Icons**: Lucide React
 - **Linter**: Oxlint
 
-## 🚀 Getting Started
 
-### Prerequisites
-- Node.js (v18 or higher recommended)
-- npm or yarn
-
-### Installation & Local Setup
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/rashminda-aluvihare/portfolio.git
-   cd portfolio
-   ```
-
-2. **Install dependencies**:
-   ```bash
-   npm install
-   ```
-
-3. **Run local development server**:
-   ```bash
-   npm run dev
-   ```
-
-4. **Build for production**:
-   ```bash
-   npm run build
-   ```
 
 ---
 © 2026 Rashminda Aluvihare. All Rights Reserved.
