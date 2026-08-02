@@ -8,181 +8,192 @@ export default function HeroBlockchainCanvas() {
     if (!canvas) return;
 
     // Respect reduced motion preference
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      return;
-    }
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
     const ctx = canvas.getContext('2d');
     let animationFrameId;
     let isRunning = true;
-    let width = 0;
-    let height = 0;
 
-    // Helper to get current theme colors
+    // ── Theme-aware colors ─────────────────────────────────────────────────
     const getColors = () => {
       const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
       return {
-        nodeColor: isDark ? 'rgba(0, 242, 254, 0.85)' : 'rgba(10, 102, 194, 0.8)',
+        nodeColor:    isDark ? 'rgba(0, 242, 254, 0.85)' : 'rgba(10, 102, 194, 0.8)',
         nodeColorAlt: isDark ? 'rgba(155, 81, 224, 0.85)' : 'rgba(155, 81, 224, 0.8)',
-        lineColor: isDark ? 'rgba(0, 242, 254, 0.32)' : 'rgba(10, 102, 194, 0.28)',
-        pulseColor: isDark ? '#00f2fe' : '#0a66c2',
+        lineColor:    isDark ? 'rgba(0, 242, 254, 0.32)'  : 'rgba(10, 102, 194, 0.28)',
+        pulseColor:   isDark ? '#00f2fe' : '#0a66c2',
       };
     };
 
     let colors = getColors();
 
-    // Listen to theme changes
-    const observer = new MutationObserver(() => {
-      colors = getColors();
+    const observer = new MutationObserver(() => { colors = getColors(); });
+    observer.observe(document.documentElement, {
+      attributes: true,
+      attributeFilter: ['data-theme'],
     });
-    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
-    // Handle canvas resizing with Retina / High-DPI support
+    // ── Canvas dimensions (logical, not physical pixels) ──────────────────
+    let W = 0;
+    let H = 0;
+
     const resizeCanvas = () => {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      // Use the section element's size, not the canvas itself
       const parent = canvas.parentElement;
-      if (parent) {
-        const dpr = Math.min(window.devicePixelRatio || 1, 2);
-        width = parent.clientWidth || window.innerWidth || 360;
-        height = parent.clientHeight || window.innerHeight || 600;
-        canvas.width = width * dpr;
-        canvas.height = height * dpr;
-        ctx.scale(dpr, dpr);
+      W = parent ? parent.clientWidth  : window.innerWidth;
+      H = parent ? parent.clientHeight : window.innerHeight;
+
+      // Physical pixel resolution
+      canvas.width  = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+
+      // IMPORTANT: reset transform before scaling to avoid accumulation
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    };
+
+    // ── Nodes ──────────────────────────────────────────────────────────────
+    let nodes = [];
+    let pulses = [];
+
+    const buildNodes = () => {
+      const isMobile = W < 768;
+      const density  = isMobile ? 10000 : 20000;
+      const minCount = isMobile ? 20 : 28;
+      const maxCount = isMobile ? 32 : 50;
+      const count    = Math.max(minCount, Math.min(Math.floor((W * H) / density), maxCount));
+
+      nodes  = [];
+      pulses = [];
+
+      const speed = isMobile ? 0.55 : 0.65;
+      for (let i = 0; i < count; i++) {
+        nodes.push({
+          x:      Math.random() * W,
+          y:      Math.random() * H,
+          vx:     (Math.random() - 0.5) * speed,
+          vy:     (Math.random() - 0.5) * speed,
+          radius: Math.random() * 2.2 + 1.4,
+          isAlt:  Math.random() > 0.6,
+        });
       }
     };
 
-    resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
-
-    // Create blockchain nodes (Mobile optimized count)
-    const isMobile = window.innerWidth < 768;
-    const densityFactor = isMobile ? 10000 : 18000;
-    const minNodeCount = isMobile ? 20 : 26;
-    const maxNodeCount = isMobile ? 32 : 45;
-    const calculatedNodes = Math.floor((width * height) / densityFactor);
-    const nodeCount = Math.max(minNodeCount, Math.min(calculatedNodes, maxNodeCount));
-    const nodes = [];
-
-    for (let i = 0; i < nodeCount; i++) {
-      nodes.push({
-        x: Math.random() * (width || 360),
-        y: Math.random() * (height || 600),
-        vx: (Math.random() - 0.5) * (isMobile ? 0.6 : 0.7),
-        vy: (Math.random() - 0.5) * (isMobile ? 0.6 : 0.7),
-        radius: Math.random() * 2.2 + 1.4,
-        isAlt: Math.random() > 0.6,
-      });
-    }
-
-    // Active data pulses in blockchain network
-    const pulses = [];
-    const maxPulses = isMobile ? 4 : 6;
+    // ── Pulses ─────────────────────────────────────────────────────────────
+    const MAX_PULSES = 6;
 
     const createPulse = (n1, n2) => {
-      if (pulses.length >= maxPulses) return;
+      if (pulses.length >= MAX_PULSES) return;
       pulses.push({
-        x1: n1.x,
-        y1: n1.y,
-        x2: n2.x,
-        y2: n2.y,
+        x1: n1.x, y1: n1.y,
+        x2: n2.x, y2: n2.y,
         progress: 0,
-        speed: 0.018 + Math.random() * 0.02,
+        speed: 0.016 + Math.random() * 0.022,
       });
     };
 
-    // Animation Loop
+    // ── Animation loop ─────────────────────────────────────────────────────
     const draw = () => {
       if (!isRunning) return;
-      ctx.clearRect(0, 0, width, height);
 
-      const maxDist = isMobile ? 140 : 150;
+      ctx.clearRect(0, 0, W, H);
 
-      // Update & Draw Nodes
+      const isMobile = W < 768;
+      const maxDist  = isMobile ? 140 : 155;
+
+      // Update & draw nodes
       for (let i = 0; i < nodes.length; i++) {
-        const node = nodes[i];
-        node.x += node.vx;
-        node.y += node.vy;
+        const n = nodes[i];
+        n.x += n.vx;
+        n.y += n.vy;
+        if (n.x < 0 || n.x > W) n.vx *= -1;
+        if (n.y < 0 || n.y > H) n.vy *= -1;
 
-        // Bounce off canvas edges
-        if (node.x < 0 || node.x > width) node.vx *= -1;
-        if (node.y < 0 || node.y > height) node.vy *= -1;
-
-        // Draw Node point
         ctx.beginPath();
-        ctx.arc(node.x, node.y, node.radius, 0, Math.PI * 2);
-        ctx.fillStyle = node.isAlt ? colors.nodeColorAlt : colors.nodeColor;
+        ctx.arc(n.x, n.y, n.radius, 0, Math.PI * 2);
+        ctx.fillStyle = n.isAlt ? colors.nodeColorAlt : colors.nodeColor;
         ctx.fill();
 
-        // Connect nearby nodes (Blockchain Mesh)
+        // Connect nearby nodes
         for (let j = i + 1; j < nodes.length; j++) {
-          const target = nodes[j];
-          const dx = target.x - node.x;
-          const dy = target.y - node.y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
+          const t  = nodes[j];
+          const dx = t.x - n.x;
+          const dy = t.y - n.y;
+          const d  = Math.sqrt(dx * dx + dy * dy);
 
-          if (dist < maxDist) {
+          if (d < maxDist) {
             ctx.beginPath();
-            ctx.moveTo(node.x, node.y);
-            ctx.lineTo(target.x, target.y);
+            ctx.moveTo(n.x, n.y);
+            ctx.lineTo(t.x, t.y);
             ctx.strokeStyle = colors.lineColor;
-            ctx.lineWidth = (1 - dist / maxDist) * (isMobile ? 1.5 : 1.2);
+            ctx.lineWidth   = (1 - d / maxDist) * 1.3;
             ctx.stroke();
 
-            // Randomly trigger data pulse
-            if (Math.random() < (isMobile ? 0.003 : 0.0015)) {
-              createPulse(node, target);
-            }
+            if (Math.random() < 0.002) createPulse(n, t);
           }
         }
       }
 
-      // Draw & Update Data Pulses along network
+      // Draw pulses
       for (let p = pulses.length - 1; p >= 0; p--) {
         const pulse = pulses[p];
         pulse.progress += pulse.speed;
 
-        if (pulse.progress >= 1) {
-          pulses.splice(p, 1);
-          continue;
-        }
+        if (pulse.progress >= 1) { pulses.splice(p, 1); continue; }
 
         const px = pulse.x1 + (pulse.x2 - pulse.x1) * pulse.progress;
         const py = pulse.y1 + (pulse.y2 - pulse.y1) * pulse.progress;
 
         ctx.beginPath();
-        ctx.arc(px, py, 2.5, 0, Math.PI * 2);
-        ctx.fillStyle = colors.pulseColor;
-        ctx.shadowBlur = 8;
-        ctx.shadowColor = colors.pulseColor;
+        ctx.arc(px, py, 2.8, 0, Math.PI * 2);
+        ctx.fillStyle    = colors.pulseColor;
+        ctx.shadowBlur   = 10;
+        ctx.shadowColor  = colors.pulseColor;
         ctx.fill();
-        ctx.shadowBlur = 0; // reset shadow
+        ctx.shadowBlur   = 0;
       }
 
       animationFrameId = requestAnimationFrame(draw);
     };
 
-    // Start Animation Loop immediately
+    // ── Init & resize handler ──────────────────────────────────────────────
+    const init = () => {
+      resizeCanvas();
+      buildNodes();
+    };
+
+    let resizeTimer;
+    const handleResize = () => {
+      // Debounce: avoid rebuilding nodes on every pixel of resize
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        init();
+      }, 150);
+    };
+
+    init();
     draw();
 
-    // Handle tab visibility change
-    const handleVisibilityChange = () => {
+    window.addEventListener('resize', handleResize);
+
+    // Pause when tab is hidden
+    const handleVisibility = () => {
       if (document.hidden) {
         isRunning = false;
         cancelAnimationFrame(animationFrameId);
-      } else {
-        if (!isRunning) {
-          isRunning = true;
-          draw();
-        }
+      } else if (!isRunning) {
+        isRunning = true;
+        draw();
       }
     };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
+    document.addEventListener('visibilitychange', handleVisibility);
 
     return () => {
       isRunning = false;
       cancelAnimationFrame(animationFrameId);
-      window.removeEventListener('resize', resizeCanvas);
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      clearTimeout(resizeTimer);
+      window.removeEventListener('resize', handleResize);
+      document.removeEventListener('visibilitychange', handleVisibility);
       observer.disconnect();
     };
   }, []);
@@ -190,6 +201,7 @@ export default function HeroBlockchainCanvas() {
   return (
     <canvas
       ref={canvasRef}
+      aria-hidden="true"
       style={{
         position: 'absolute',
         inset: 0,
@@ -197,6 +209,7 @@ export default function HeroBlockchainCanvas() {
         height: '100%',
         pointerEvents: 'none',
         zIndex: 0,
+        display: 'block',
       }}
     />
   );
