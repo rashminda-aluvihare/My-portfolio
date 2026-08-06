@@ -10,6 +10,7 @@ import Projects from './components/Projects';
 import Activities from './components/Activities';
 import Contact from './components/Contact';
 import SplashScreen from './components/SplashScreen';
+import Chatbot from './components/Chatbot';
 import { ArrowUp } from 'lucide-react';
 
 export default function App() {
@@ -156,6 +157,9 @@ export default function App() {
           <ArrowUp size={20} />
         </button>
       )}
+
+      {/* AI Assistant Floating Chatbot */}
+      <Chatbot />
     </>
   );
 }
