@@ -3,7 +3,7 @@ import { Mail, ArrowRight, ExternalLink, Download, Code2, Terminal, Database, Sp
 import HeroBlockchainCanvas from './HeroBlockchainCanvas';
 import profileImg from '../assets/profile.jpg';
 
-export default function Hero({ onOpenHiringModal }) {
+export default function Hero() {
   const [roleText, setRoleText] = useState('');
   const roles = [
     'HNDIT Undergraduate',
@@ -93,14 +93,9 @@ export default function Hero({ onOpenHiringModal }) {
         {/* Left Column: Text & CTAs */}
         <div className="hero-text-content">
           {/* Live Availability Pill */}
-          <div
-            className="hero-status-pill"
-            onClick={onOpenHiringModal}
-            style={{ cursor: 'pointer', transition: 'all 0.2s' }}
-            title="Click to send quick hiring inquiry"
-          >
+          <div className="hero-status-pill">
             <span className="hero-status-dot"></span>
-            <span className="hero-status-text">Open to Internship Opportunities & IT Projects ↗</span>
+            <span className="hero-status-text">Open to Internship Opportunities & IT Projects</span>
           </div>
 
           <h1 className="hero-title">
@@ -133,9 +128,9 @@ export default function Hero({ onOpenHiringModal }) {
                 <Download size={18} style={{ color: 'var(--accent-cyan)' }} />
                 <span>Download CV</span>
               </button>
-              <button onClick={onOpenHiringModal} className="btn-premium secondary hero-btn hero-btn-talk">
-                <span>Hire / Connect</span>
-              </button>
+              <a href="#contact" className="btn-premium secondary hero-btn hero-btn-talk">
+                <span>Let's Talk</span>
+              </a>
             </div>
 
             {/* Social Profiles */}
