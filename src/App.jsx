@@ -11,11 +11,13 @@ import Activities from './components/Activities';
 import Contact from './components/Contact';
 import SplashScreen from './components/SplashScreen';
 import Chatbot from './components/Chatbot';
+import HiringModal from './components/HiringModal';
 import { ArrowUp } from 'lucide-react';
 
 export default function App() {
   // Splash screen: show once per session
   const [splashDone, setSplashDone] = useState(false);
+  const [isHiringOpen, setIsHiringOpen] = useState(false);
 
   // Theme state
   const [theme, setTheme] = useState(() => {
@@ -96,7 +98,7 @@ export default function App() {
 
       {/* Page Sections */}
       <main style={{ position: 'relative' }}>
-        <Hero />
+        <Hero onOpenHiringModal={() => setIsHiringOpen(true)} />
         <About />
         <Experience />
         <Projects />
@@ -160,6 +162,9 @@ export default function App() {
 
       {/* AI Assistant Floating Chatbot */}
       <Chatbot />
+
+      {/* Live Hiring & Inquiry Modal */}
+      <HiringModal isOpen={isHiringOpen} onClose={() => setIsHiringOpen(false)} />
     </>
   );
 }
