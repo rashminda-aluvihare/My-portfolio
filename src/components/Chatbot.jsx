@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { Bot, X, Send, Sparkles, RefreshCw, MessageSquare, ArrowRight, User, ExternalLink, Mail, Phone } from 'lucide-react';
+import chatbotAvatar from '../assets/chatbot_avatar.png';
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -214,30 +215,31 @@ export default function Chatbot() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            boxShadow: isOpen
-              ? '0 0 25px rgba(0, 242, 254, 0.8)'
-              : '0 6px 20px rgba(0, 242, 254, 0.45)',
             transition: 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
             outline: 'none',
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'scale(1.08)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'scale(1)';
           }}
         >
           {isOpen ? (
             <X size={26} style={{ transition: 'transform 0.3s' }} />
           ) : (
-            <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-              <Bot size={28} />
+            <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%' }}>
+              <img
+                src={chatbotAvatar}
+                alt="AI Chatbot Logo"
+                style={{
+                  width: '38px',
+                  height: '38px',
+                  borderRadius: '50%',
+                  objectFit: 'cover',
+                  filter: 'drop-shadow(0 0 6px rgba(0, 242, 254, 0.8))'
+                }}
+              />
               <Sparkles
                 size={14}
                 style={{
                   position: 'absolute',
-                  top: '-4px',
-                  right: '-6px',
+                  top: '2px',
+                  right: '2px',
                   color: '#ffd700',
                   animation: 'pulse 1.5s infinite alternate'
                 }}
@@ -332,22 +334,28 @@ export default function Chatbot() {
               <div
                 style={{
                   position: 'relative',
-                  width: '40px',
-                  height: '40px',
+                  width: '42px',
+                  height: '42px',
                   borderRadius: '12px',
                   background: 'linear-gradient(135deg, var(--accent-cyan), var(--accent-purple))',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  color: '#ffffff',
+                  overflow: 'hidden',
+                  padding: '2px',
+                  boxShadow: '0 0 12px rgba(0, 242, 254, 0.4)'
                 }}
               >
-                <Bot size={22} />
+                <img
+                  src={chatbotAvatar}
+                  alt="AI Assistant Logo"
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '10px' }}
+                />
                 <span
                   style={{
                     position: 'absolute',
-                    bottom: '-1px',
-                    right: '-1px',
+                    bottom: '2px',
+                    right: '2px',
                     width: '10px',
                     height: '10px',
                     borderRadius: '50%',
