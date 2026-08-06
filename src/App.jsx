@@ -128,21 +128,21 @@ export default function App() {
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           style={{
             position: 'fixed',
-            bottom: '30px',
-            right: '30px',
+            bottom: '95px',
+            right: '34px',
             background: 'var(--accent-cyan)',
             color: '#fff',
             border: 'none',
             borderRadius: '50%',
-            width: '45px',
-            height: '45px',
+            width: '44px',
+            height: '44px',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
             boxShadow: '0 4px 15px rgba(0, 242, 254, 0.4)',
             transition: 'var(--transition-bounce)',
-            zIndex: 99,
+            zIndex: 999,
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'translateY(-5px)';

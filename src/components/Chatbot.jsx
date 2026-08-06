@@ -195,7 +195,7 @@ export default function Chatbot() {
         style={{
           position: 'fixed',
           bottom: '30px',
-          right: '85px', // Next to scroll-top button
+          right: '30px', // Bottom right corner
           zIndex: 1000,
         }}
         className="chatbot-trigger-wrapper"
@@ -633,8 +633,8 @@ export default function Chatbot() {
             height: 480px !important;
           }
           .chatbot-trigger-wrapper {
-            right: 20px !important;
-            bottom: 20px !important;
+            right: 30px !important;
+            bottom: 30px !important;
           }
           .chatbot-tooltip {
             display: none !important;
