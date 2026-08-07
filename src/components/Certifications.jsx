@@ -623,19 +623,52 @@ export default function Certifications() {
             </button>
           </div>
 
-          {/* Modal Footer info */}
+          {/* Modal Footer Controls */}
           <div
             style={{
-              textAlign: 'center',
-              color: 'var(--text-muted)',
-              fontSize: '0.85rem',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '18px',
               zIndex: 10,
+              flexWrap: 'wrap',
+              marginTop: '6px',
             }}
             onClick={(e) => e.stopPropagation()}
           >
-            <span>Instructor: <strong style={{ color: '#fff' }}>{currentCert.instructor}</strong></span>
-            <span style={{ margin: '0 10px' }}>•</span>
-            <span>Use Left/Right keys to switch • Esc to exit</span>
+            <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+              Instructor: <strong style={{ color: '#ffffff' }}>{currentCert.instructor}</strong>
+            </span>
+
+            <button
+              onClick={closeModal}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '8px',
+                padding: '8px 20px',
+                borderRadius: '999px',
+                background: 'rgba(255, 68, 68, 0.2)',
+                border: '1px solid rgba(255, 68, 68, 0.45)',
+                color: '#ff6b6b',
+                fontWeight: 700,
+                fontSize: '0.88rem',
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+                boxShadow: '0 4px 15px rgba(255, 68, 68, 0.2)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = 'rgba(255, 68, 68, 0.35)';
+                e.currentTarget.style.transform = 'scale(1.04)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = 'rgba(255, 68, 68, 0.2)';
+                e.currentTarget.style.transform = 'scale(1)';
+              }}
+            >
+              <X size={18} />
+              <span>Close Preview</span>
+            </button>
           </div>
         </div>
       )}
