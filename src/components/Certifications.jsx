@@ -79,6 +79,42 @@ export default function Certifications() {
   const [activeCertIndex, setActiveCertIndex] = useState(null); // index or null
   const [zoomLevel, setZoomLevel] = useState(1);
 
+  const openModal = (index) => {
+    setActiveCertIndex(index);
+    setZoomLevel(1);
+    document.body.style.overflow = 'hidden';
+
+    // Push browser history state so pressing Back button or swipe back closes modal instead of leaving page
+    window.history.pushState({ modalType: 'cert-preview' }, '');
+  };
+
+  const closeModal = () => {
+    if (activeCertIndex !== null) {
+      setActiveCertIndex(null);
+      setZoomLevel(1);
+      document.body.style.overflow = 'auto';
+
+      // Clean up browser history state if modal state exists
+      if (window.history.state?.modalType === 'cert-preview') {
+        window.history.back();
+      }
+    }
+  };
+
+  // Popstate event listener for browser Back button / mobile swipe gesture
+  useEffect(() => {
+    const handlePopState = () => {
+      if (activeCertIndex !== null) {
+        setActiveCertIndex(null);
+        setZoomLevel(1);
+        document.body.style.overflow = 'auto';
+      }
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, [activeCertIndex]);
+
   // Close lightbox on Escape key & Arrow navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -94,18 +130,6 @@ export default function Certifications() {
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [activeCertIndex]);
-
-  const openModal = (index) => {
-    setActiveCertIndex(index);
-    setZoomLevel(1);
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeModal = () => {
-    setActiveCertIndex(null);
-    setZoomLevel(1);
-    document.body.style.overflow = 'auto';
-  };
 
   const nextCert = () => {
     if (activeCertIndex === null) return;
@@ -519,8 +543,26 @@ export default function Certifications() {
                 <ZoomOut size={18} />
               </button>
 
-              <button onClick={closeModal} style={{ ...modalControlBtnStyle, background: 'rgba(255, 68, 68, 0.25)', color: '#ff4444' }} title="Close (Esc)">
-                <X size={20} />
+              <button
+                onClick={closeModal}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '6px',
+                  padding: '8px 14px',
+                  borderRadius: '10px',
+                  background: 'rgba(255, 68, 68, 0.25)',
+                  border: '1px solid rgba(255, 68, 68, 0.45)',
+                  color: '#ff6b6b',
+                  fontWeight: 700,
+                  fontSize: '0.85rem',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                }}
+                title="Close (Esc / Back button)"
+              >
+                <X size={18} />
+                <span>Close</span>
               </button>
             </div>
           </div>
