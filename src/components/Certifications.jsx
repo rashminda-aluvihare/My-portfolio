@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import {
   Award,
   CheckCircle2,
@@ -473,205 +474,207 @@ export default function Certifications() {
         </div>
       </div>
 
-      {/* FULLSCREEN PREVIEW LIGHTBOX MODAL */}
-      {currentCert && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 99999,
-            background: 'rgba(5, 7, 10, 0.92)',
-            backdropFilter: 'blur(16px)',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'space-between',
-            padding: 'clamp(12px, 3vw, 24px)',
-            animation: 'fadeIn 0.25s ease forwards',
-          }}
-          onClick={closeModal}
-        >
-          {/* Modal Header Controls */}
+      {/* FULLSCREEN PREVIEW LIGHTBOX MODAL (PORTAL TO DOCUMENT.BODY) */}
+      {currentCert &&
+        createPortal(
           <div
             style={{
+              position: 'fixed',
+              inset: 0,
+              zIndex: 9999999,
+              background: 'rgba(5, 7, 10, 0.95)',
+              backdropFilter: 'blur(16px)',
               display: 'flex',
-              alignItems: 'center',
+              flexDirection: 'column',
               justifyContent: 'space-between',
-              width: '100%',
-              maxWidth: '1200px',
-              margin: '0 auto',
-              zIndex: 10,
-              gap: '12px',
+              padding: 'clamp(12px, 3vw, 24px)',
+              animation: 'fadeIn 0.25s ease forwards',
             }}
-            onClick={(e) => e.stopPropagation()}
+            onClick={closeModal}
           >
-            <div>
-              <h3 style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)', fontWeight: 800, color: '#ffffff' }}>
-                {currentCert.fullTitle}
-              </h3>
-              <p style={{ fontSize: '0.85rem', color: currentCert.badgeColor, fontWeight: 600 }}>
-                {currentCert.offeredBy} • Issued {currentCert.completionDate}
-              </p>
+            {/* Modal Header Controls */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                width: '100%',
+                maxWidth: '1200px',
+                margin: '0 auto',
+                zIndex: 10,
+                gap: '12px',
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div>
+                <h3 style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)', fontWeight: 800, color: '#ffffff' }}>
+                  {currentCert.fullTitle}
+                </h3>
+                <p style={{ fontSize: '0.85rem', color: currentCert.badgeColor, fontWeight: 600 }}>
+                  {currentCert.offeredBy} • Issued {currentCert.completionDate}
+                </p>
+              </div>
+
+              {/* Action Bar */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <button
+                  onClick={() => setZoomLevel((prev) => Math.min(prev + 0.3, 2.5))}
+                  style={modalControlBtnStyle}
+                  title="Zoom In"
+                >
+                  <ZoomIn size={18} />
+                </button>
+
+                <button
+                  onClick={() => setZoomLevel((prev) => Math.max(prev - 0.3, 1))}
+                  style={modalControlBtnStyle}
+                  title="Zoom Out"
+                >
+                  <ZoomOut size={18} />
+                </button>
+
+                <button
+                  onClick={closeModal}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '6px',
+                    padding: '8px 14px',
+                    borderRadius: '10px',
+                    background: 'rgba(255, 68, 68, 0.25)',
+                    border: '1px solid rgba(255, 68, 68, 0.45)',
+                    color: '#ff6b6b',
+                    fontWeight: 700,
+                    fontSize: '0.85rem',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                  }}
+                  title="Close (Esc / Back button)"
+                >
+                  <X size={18} />
+                  <span>Close</span>
+                </button>
+              </div>
             </div>
 
-            {/* Action Bar */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+            {/* Modal Main View (Image + Prev/Next controls) */}
+            <div
+              style={{
+                position: 'relative',
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                margin: '16px 0',
+                overflow: 'hidden',
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Prev Button */}
               <button
-                onClick={() => setZoomLevel((prev) => Math.min(prev + 0.3, 2.5))}
-                style={modalControlBtnStyle}
-                title="Zoom In"
+                onClick={prevCert}
+                style={{
+                  ...navArrowStyle,
+                  left: 'max(10px, 2vw)',
+                }}
+                aria-label="Previous Certificate"
               >
-                <ZoomIn size={18} />
+                <ChevronLeft size={28} />
               </button>
 
-              <button
-                onClick={() => setZoomLevel((prev) => Math.max(prev - 0.3, 1))}
-                style={modalControlBtnStyle}
-                title="Zoom Out"
+              {/* Certificate Display Area */}
+              <div
+                style={{
+                  maxWidth: '1000px',
+                  maxHeight: '75vh',
+                  width: '100%',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  overflow: 'auto',
+                  padding: '10px',
+                }}
               >
-                <ZoomOut size={18} />
+                <img
+                  src={currentCert.image}
+                  alt={`${currentCert.title} High Resolution Certificate`}
+                  style={{
+                    maxWidth: '100%',
+                    maxHeight: '72vh',
+                    objectFit: 'contain',
+                    borderRadius: '12px',
+                    boxShadow: '0 20px 60px rgba(0, 0, 0, 0.8)',
+                    border: '1px solid rgba(255, 255, 255, 0.15)',
+                    transform: `scale(${zoomLevel})`,
+                    transition: 'transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
+                    cursor: zoomLevel > 1 ? 'grab' : 'default',
+                  }}
+                />
+              </div>
+
+              {/* Next Button */}
+              <button
+                onClick={nextCert}
+                style={{
+                  ...navArrowStyle,
+                  right: 'max(10px, 2vw)',
+                }}
+                aria-label="Next Certificate"
+              >
+                <ChevronRight size={28} />
               </button>
+            </div>
+
+            {/* Modal Footer Controls */}
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: '18px',
+                zIndex: 10,
+                flexWrap: 'wrap',
+                marginTop: '6px',
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+                Instructor: <strong style={{ color: '#ffffff' }}>{currentCert.instructor}</strong>
+              </span>
 
               <button
                 onClick={closeModal}
                 style={{
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
-                  gap: '6px',
-                  padding: '8px 14px',
-                  borderRadius: '10px',
-                  background: 'rgba(255, 68, 68, 0.25)',
+                  gap: '8px',
+                  padding: '8px 20px',
+                  borderRadius: '999px',
+                  background: 'rgba(255, 68, 68, 0.2)',
                   border: '1px solid rgba(255, 68, 68, 0.45)',
                   color: '#ff6b6b',
                   fontWeight: 700,
-                  fontSize: '0.85rem',
+                  fontSize: '0.88rem',
                   cursor: 'pointer',
                   transition: 'all 0.2s ease',
+                  boxShadow: '0 4px 15px rgba(255, 68, 68, 0.2)',
                 }}
-                title="Close (Esc / Back button)"
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = 'rgba(255, 68, 68, 0.35)';
+                  e.currentTarget.style.transform = 'scale(1.04)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = 'rgba(255, 68, 68, 0.2)';
+                  e.currentTarget.style.transform = 'scale(1)';
+                }}
               >
                 <X size={18} />
-                <span>Close</span>
+                <span>Close Preview</span>
               </button>
             </div>
-          </div>
-
-          {/* Modal Main View (Image + Prev/Next controls) */}
-          <div
-            style={{
-              position: 'relative',
-              flex: 1,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              margin: '16px 0',
-              overflow: 'hidden',
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Prev Button */}
-            <button
-              onClick={prevCert}
-              style={{
-                ...navArrowStyle,
-                left: 'max(10px, 2vw)',
-              }}
-              aria-label="Previous Certificate"
-            >
-              <ChevronLeft size={28} />
-            </button>
-
-            {/* Certificate Display Area */}
-            <div
-              style={{
-                maxWidth: '1000px',
-                maxHeight: '75vh',
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                overflow: 'auto',
-                padding: '10px',
-              }}
-            >
-              <img
-                src={currentCert.image}
-                alt={`${currentCert.title} High Resolution Certificate`}
-                style={{
-                  maxWidth: '100%',
-                  maxHeight: '72vh',
-                  objectFit: 'contain',
-                  borderRadius: '12px',
-                  boxShadow: '0 20px 60px rgba(0, 0, 0, 0.8)',
-                  border: '1px solid rgba(255, 255, 255, 0.15)',
-                  transform: `scale(${zoomLevel})`,
-                  transition: 'transform 0.2s cubic-bezier(0.4, 0, 0.2, 1)',
-                  cursor: zoomLevel > 1 ? 'grab' : 'default',
-                }}
-              />
-            </div>
-
-            {/* Next Button */}
-            <button
-              onClick={nextCert}
-              style={{
-                ...navArrowStyle,
-                right: 'max(10px, 2vw)',
-              }}
-              aria-label="Next Certificate"
-            >
-              <ChevronRight size={28} />
-            </button>
-          </div>
-
-          {/* Modal Footer Controls */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              gap: '18px',
-              zIndex: 10,
-              flexWrap: 'wrap',
-              marginTop: '6px',
-            }}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-              Instructor: <strong style={{ color: '#ffffff' }}>{currentCert.instructor}</strong>
-            </span>
-
-            <button
-              onClick={closeModal}
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '8px',
-                padding: '8px 20px',
-                borderRadius: '999px',
-                background: 'rgba(255, 68, 68, 0.2)',
-                border: '1px solid rgba(255, 68, 68, 0.45)',
-                color: '#ff6b6b',
-                fontWeight: 700,
-                fontSize: '0.88rem',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-                boxShadow: '0 4px 15px rgba(255, 68, 68, 0.2)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 68, 68, 0.35)';
-                e.currentTarget.style.transform = 'scale(1.04)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(255, 68, 68, 0.2)';
-                e.currentTarget.style.transform = 'scale(1)';
-              }}
-            >
-              <X size={18} />
-              <span>Close Preview</span>
-            </button>
-          </div>
-        </div>
-      )}
+          </div>,
+          document.body
+        )}
 
       {/* Embedded CSS for Cert hover overlay and responsive styling */}
       <style>{`
