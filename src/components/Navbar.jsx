@@ -12,6 +12,7 @@ export default function Navbar({ theme, toggleTheme }) {
     { label: 'Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
     { label: 'Education', href: '#education' },
+    { label: 'Certifications', href: '#certifications' },
     { label: 'Skills', href: '#skills' },
     { label: 'Activities', href: '#activities' },
     { label: 'Contact', href: '#contact' },
@@ -28,7 +29,7 @@ export default function Navbar({ theme, toggleTheme }) {
       }
 
       // Check current section
-      const sections = ['home', 'about', 'experience', 'projects', 'education', 'skills', 'activities', 'contact'];
+      const sections = ['home', 'about', 'experience', 'projects', 'education', 'certifications', 'skills', 'activities', 'contact'];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {

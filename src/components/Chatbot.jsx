@@ -83,7 +83,16 @@ export default function Chatbot() {
     if (text.match(/(education|degree|sliate|ibsl|study|hndit|diploma|qualification|school)/i)) {
       return {
         text: "🎓 **Educational Qualifications**:\n\n• 🎓 **HNDIT (Higher National Diploma in Information Technology)** — SLIATE (Sri Lanka Institute of Advanced Technological Education)\n• 🏛️ **Diploma in Banking & Finance (DBF)** — IBSL (Institute of Bankers of Sri Lanka)",
-        suggestions: ['⚡ Skills', '💼 Work Experience', '📩 Contact Info']
+        suggestions: ['🏆 Certifications', '⚡ Skills', '💼 Work Experience', '📩 Contact Info']
+      };
+    }
+
+    // 4.5. Certifications & Credentials
+    if (text.match(/(certif|cisco|netacad|essential|networking essential|it essential)/i)) {
+      return {
+        text: "🏆 **Professional Certifications**:\n\n1. 💻 **Cisco IT Essentials** — Cisco Networking Academy\n   - PC Hardware, OS Installation, IT Troubleshooting, Cybersecurity & Systems.\n2. 🌐 **Networking Essentials** — Cisco Networking Academy\n   - IP Addressing (IPv4/IPv6), Subnetting, Router & Switch Configuration, Network Security.",
+        actionBtn: { label: 'View Certifications Section', targetId: 'certifications' },
+        suggestions: ['🎓 Education', '⚡ Skills', '🚀 View Projects']
       };
     }
 
