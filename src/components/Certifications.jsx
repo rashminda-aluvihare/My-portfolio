@@ -38,14 +38,7 @@ export default function Certifications() {
       status: 'Verified Credential',
       description:
         'Comprehensive technical certification covering computer hardware architecture, OS installation and maintenance (Windows & Linux), operational safety, cybersecurity, and IT troubleshooting.',
-      skills: [
-        'Hardware Architecture',
-        'OS Installation & Maintenance',
-        'IT System Troubleshooting',
-        'Cybersecurity Fundamentals',
-        'Network Configuration',
-        'Mobile & Virtualization',
-      ],
+
     },
     {
       id: 'cisco-networking-essentials',
@@ -64,14 +57,7 @@ export default function Certifications() {
       status: 'Verified Credential',
       description:
         'In-depth networking certification covering core principles of network architecture, IPv4 & IPv6 addressing, router and switch configuration, network security protocols, and OSI model operations.',
-      skills: [
-        'IPv4 & IPv6 Subnetting',
-        'Router & Switch Configuration',
-        'Network Architecture & Topologies',
-        'OSI & TCP/IP Protocols',
-        'Network Security & Firewalls',
-        'Packet Diagnostics & Analysis',
-      ],
+
     },
   ];
 
@@ -411,38 +397,40 @@ export default function Certifications() {
                   </p>
 
                   {/* Skills Covered Tags */}
-                  <div>
-                    <h4
-                      style={{
-                        fontSize: '0.78rem',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.05em',
-                        color: 'var(--text-muted)',
-                        marginBottom: '10px',
-                        fontWeight: 700,
-                      }}
-                    >
-                      Key Competencies:
-                    </h4>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                      {cert.skills.map((skill, idx) => (
-                        <span
-                          key={idx}
-                          style={{
-                            fontSize: '0.78rem',
-                            fontWeight: 600,
-                            color: 'var(--text-primary)',
-                            background: 'var(--card-bg)',
-                            border: '1px solid var(--card-border)',
-                            padding: '4px 10px',
-                            borderRadius: '8px',
-                          }}
-                        >
-                          {skill}
-                        </span>
-                      ))}
+                  {cert.skills && cert.skills.length > 0 && (
+                    <div>
+                      <h4
+                        style={{
+                          fontSize: '0.78rem',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.05em',
+                          color: 'var(--text-muted)',
+                          marginBottom: '10px',
+                          fontWeight: 700,
+                        }}
+                      >
+                        Key Competencies:
+                      </h4>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                        {cert.skills.map((skill, idx) => (
+                          <span
+                            key={idx}
+                            style={{
+                              fontSize: '0.78rem',
+                              fontWeight: 600,
+                              color: 'var(--text-primary)',
+                              background: 'var(--card-bg)',
+                              border: '1px solid var(--card-border)',
+                              padding: '4px 10px',
+                              borderRadius: '8px',
+                            }}
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
 
