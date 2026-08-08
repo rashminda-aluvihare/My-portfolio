@@ -88,9 +88,9 @@ export default function Chatbot() {
     }
 
     // 4.5. Certifications & Credentials
-    if (text.match(/(certif|cisco|netacad|essential|networking essential|it essential)/i)) {
+    if (text.match(/(certif|cisco|netacad|essential|networking essential|it essential|alison|mis|management information)/i)) {
       return {
-        text: "🏆 **Professional Certifications**:\n\n1. 💻 **Cisco IT Essentials** — Cisco Networking Academy\n   - PC Hardware, OS Installation, IT Troubleshooting, Cybersecurity & Systems.\n2. 🌐 **Networking Essentials** — Cisco Networking Academy\n   - IP Addressing (IPv4/IPv6), Subnetting, Router & Switch Configuration, Network Security.",
+        text: "🏆 **Professional Certifications & Credentials**:\n\n1. 📊 **Management Information Systems (MIS)** — Alison (CPD Certified)\n   - IT Systems Management, Enterprise Systems, Data Analytics, Business Intelligence & IT Governance.\n2. 💻 **Cisco IT Essentials** — Cisco Networking Academy\n   - PC Hardware Architecture, OS Maintenance, IT Troubleshooting & Cybersecurity.\n3. 🌐 **Networking Essentials** — Cisco Networking Academy\n   - Network Architecture, IPv4/IPv6 Subnetting, Router & Switch Config, Security Protocols.",
         actionBtn: { label: 'View Certifications Section', targetId: 'certifications' },
         suggestions: ['🎓 Education', '⚡ Skills', '🚀 View Projects']
       };

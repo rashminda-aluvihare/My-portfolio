@@ -16,15 +16,39 @@ import {
   ZoomIn,
   ZoomOut,
   Maximize2,
+  Database,
+  ExternalLink,
 } from 'lucide-react';
 import ciscoItEssentials from '../assets/cisco_it_essentials.png';
 import ciscoNetworkingEssentials from '../assets/cisco_networking_essentials.png';
+import alisonMis from '../assets/alison_management_information_systems.png';
 
 export default function Certifications() {
   const certifications = [
     {
-      id: 'cisco-it-essentials',
+      id: 'alison-mis',
       order: 1,
+      title: 'Management Information Systems',
+      fullTitle: 'Management Information Systems (MIS)',
+      issuer: 'Alison (CPD Certified)',
+      offeredBy: 'Alison Empower Yourself',
+      instructor: 'Maeve Richardson (Director of Certification)',
+      completionDate: '02 Feb 2025',
+      image: alisonMis,
+      badgeColor: '#10b981',
+      gradient: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(5, 150, 105, 0.04) 100%)',
+      borderColor: 'rgba(16, 185, 129, 0.35)',
+      icon: <Database size={24} />,
+      status: 'Verified Credential',
+      credentialId: '3274-46019840',
+      verifyUrl: 'https://alison.com/certification/check/3163b669af',
+      description:
+        'Professional certification in Management Information Systems (MIS), covering information technology management, enterprise information systems, data analytics, business intelligence, IT governance, and strategic decision making.',
+      skills: ['Information Systems', 'Enterprise IT Strategy', 'Data Analytics', 'Business Intelligence', 'Systems Analysis', 'Database Management'],
+    },
+    {
+      id: 'cisco-it-essentials',
+      order: 2,
       title: 'IT Essentials',
       fullTitle: 'Cisco IT Essentials',
       issuer: 'Cisco Networking Academy',
@@ -39,11 +63,11 @@ export default function Certifications() {
       status: 'Verified Credential',
       description:
         'Comprehensive technical certification covering computer hardware architecture, OS installation and maintenance (Windows & Linux), operational safety, cybersecurity, and IT troubleshooting.',
-
+      skills: ['Hardware Architecture', 'OS Installation & Config', 'Cybersecurity Basics', 'IT Troubleshooting', 'System Maintenance'],
     },
     {
       id: 'cisco-networking-essentials',
-      order: 2,
+      order: 3,
       title: 'Networking Essentials',
       fullTitle: 'Cisco Networking Essentials',
       issuer: 'Cisco Networking Academy',
@@ -58,7 +82,7 @@ export default function Certifications() {
       status: 'Verified Credential',
       description:
         'In-depth networking certification covering core principles of network architecture, IPv4 & IPv6 addressing, router and switch configuration, network security protocols, and OSI model operations.',
-
+      skills: ['Network Architecture', 'IPv4 & IPv6 Subnetting', 'Router & Switch Config', 'OSI & TCP/IP Models', 'Network Security'],
     },
   ];
 
@@ -153,7 +177,7 @@ export default function Certifications() {
             }}
           >
             <Award size={16} />
-            <span>CISCO NETWORKING ACADEMY</span>
+            <span>GLOBAL CERTIFICATIONS & CREDENTIALS</span>
           </div>
 
           <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800 }} className="gradient-text">
@@ -169,7 +193,7 @@ export default function Certifications() {
               padding: '0 15px',
             }}
           >
-            Official certificates awarded through the Cisco Networking Academy program. Click any certificate to open the high-resolution interactive preview.
+            Official certificates awarded through recognized global bodies including Alison (CPD Certified) and Cisco Networking Academy. Click any certificate to open the high-resolution interactive preview.
           </p>
         </div>
 
@@ -257,7 +281,7 @@ export default function Certifications() {
                   >
                     <div
                       style={{
-                        background: 'var(--accent-cyan)',
+                        background: cert.badgeColor,
                         color: '#05070a',
                         borderRadius: '50%',
                         width: '48px',
@@ -265,7 +289,7 @@ export default function Certifications() {
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        boxShadow: '0 0 20px rgba(0, 242, 254, 0.6)',
+                        boxShadow: `0 0 20px ${cert.borderColor}`,
                       }}
                     >
                       <Eye size={24} />
@@ -380,7 +404,7 @@ export default function Certifications() {
                     <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
                       <User size={15} style={{ color: 'var(--text-muted)' }} />
                       <span>
-                        Instructor: <strong style={{ color: 'var(--text-primary)' }}>{cert.instructor}</strong>
+                        Instructor / Signatory: <strong style={{ color: 'var(--text-primary)' }}>{cert.instructor}</strong>
                       </span>
                     </div>
                   </div>
@@ -435,12 +459,12 @@ export default function Certifications() {
                 </div>
               </div>
 
-              {/* Action Button at bottom */}
-              <div style={{ padding: '0 24px 24px' }}>
+              {/* Action Buttons at bottom */}
+              <div style={{ padding: '0 24px 24px', display: 'flex', gap: '10px' }}>
                 <button
                   onClick={() => openModal(index)}
                   style={{
-                    width: '100%',
+                    flex: 1,
                     padding: '12px',
                     borderRadius: '12px',
                     background: cert.badgeColor,
@@ -466,8 +490,43 @@ export default function Certifications() {
                   }}
                 >
                   <Eye size={18} />
-                  <span>Preview Full Certificate</span>
+                  <span>Preview</span>
                 </button>
+
+                {cert.verifyUrl && (
+                  <a
+                    href={cert.verifyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      padding: '12px 16px',
+                      borderRadius: '12px',
+                      background: 'rgba(255, 255, 255, 0.06)',
+                      border: `1px solid ${cert.borderColor}`,
+                      color: cert.badgeColor,
+                      fontWeight: 700,
+                      fontSize: '0.88rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '6px',
+                      textDecoration: 'none',
+                      transition: 'all 0.2s ease',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)';
+                      e.currentTarget.style.transform = 'scale(1.02)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                    title="Verify online at Alison.com"
+                  >
+                    <ExternalLink size={16} />
+                    <span>Verify</span>
+                  </a>
+                )}
               </div>
             </div>
           ))}
@@ -517,6 +576,32 @@ export default function Certifications() {
 
               {/* Action Bar */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                {currentCert.verifyUrl && (
+                  <a
+                    href={currentCert.verifyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: '6px',
+                      padding: '8px 14px',
+                      borderRadius: '10px',
+                      background: 'rgba(16, 185, 129, 0.2)',
+                      border: '1px solid rgba(16, 185, 129, 0.4)',
+                      color: '#10b981',
+                      fontWeight: 700,
+                      fontSize: '0.85rem',
+                      textDecoration: 'none',
+                      transition: 'all 0.2s ease',
+                    }}
+                    title="Verify online"
+                  >
+                    <ExternalLink size={16} />
+                    <span>Verify Online</span>
+                  </a>
+                )}
+
                 <button
                   onClick={() => setZoomLevel((prev) => Math.min(prev + 0.3, 2.5))}
                   style={modalControlBtnStyle}
