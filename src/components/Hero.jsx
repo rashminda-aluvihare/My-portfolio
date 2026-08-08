@@ -121,13 +121,16 @@ export default function Hero() {
                 <span>View Projects</span>
                 <ArrowRight size={18} />
               </a>
-              <button
-                onClick={() => alert("CV download will be available soon! In the meantime, feel free to reach out via the Contact section.")}
+              <a
+                href="/assets/Rashminda Aluvihare CV.pdf"
+                download="Rashminda Aluvihare CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="btn-premium secondary hero-btn"
               >
                 <Download size={18} style={{ color: 'var(--accent-cyan)' }} />
                 <span>Download CV</span>
-              </button>
+              </a>
               <a href="#contact" className="btn-premium secondary hero-btn hero-btn-talk">
                 <span>Let's Talk</span>
               </a>
