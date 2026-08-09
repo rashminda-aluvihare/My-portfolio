@@ -353,20 +353,6 @@ export default function Certifications() {
                       <Award size={16} />
                       <span>{cert.issuer}</span>
                     </div>
-
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <Building2 size={15} style={{ color: 'var(--text-muted)' }} />
-                      <span>
-                        Offered by: <strong style={{ color: 'var(--text-primary)' }}>{cert.offeredBy}</strong>
-                      </span>
-                    </div>
-
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
-                      <User size={15} style={{ color: 'var(--text-muted)' }} />
-                      <span>
-                        Instructor / Signatory: <strong style={{ color: 'var(--text-primary)' }}>{cert.instructor}</strong>
-                      </span>
-                    </div>
                   </div>
 
                   {/* Description */}
