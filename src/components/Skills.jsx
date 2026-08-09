@@ -57,9 +57,6 @@ export default function Skills() {
           <h2 style={{ fontSize: '2.5rem', fontWeight: 800 }} className="gradient-text">
             Skills & Tech Competencies
           </h2>
-          <p style={{ color: 'var(--text-secondary)', marginTop: '8px', fontSize: '1rem' }}>
-            Technical proficiency spanning modern full-stack web development, database management, and agile software delivery.
-          </p>
         </div>
 
         {/* Skill Category Filter Tabs */}

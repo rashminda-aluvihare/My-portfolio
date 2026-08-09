@@ -8,8 +8,6 @@ import {
   ShieldCheck,
   Eye,
   Calendar,
-  User,
-  Building2,
   X,
   ChevronLeft,
   ChevronRight,
@@ -31,8 +29,6 @@ export default function Certifications() {
       title: 'Management Information Systems',
       fullTitle: 'Management Information Systems (MIS)',
       issuer: 'Alison (CPD Certified)',
-      offeredBy: 'Alison Empower Yourself',
-      instructor: 'Maeve Richardson (Director of Certification)',
       completionDate: '02 Feb 2025',
       image: alisonMis,
       badgeColor: '#00f2fe',
@@ -44,7 +40,6 @@ export default function Certifications() {
       verifyUrl: 'https://alison.com/certification/check/3163b669af',
       description:
         'Professional certification in Management Information Systems (MIS), covering information technology management, enterprise information systems, data analytics, business intelligence, IT governance, and strategic decision making.',
-      skills: ['Information Systems', 'Enterprise IT Strategy', 'Data Analytics', 'Business Intelligence', 'Systems Analysis', 'Database Management'],
     },
     {
       id: 'cisco-it-essentials',
@@ -52,8 +47,6 @@ export default function Certifications() {
       title: 'IT Essentials',
       fullTitle: 'Cisco IT Essentials',
       issuer: 'Cisco Networking Academy',
-      offeredBy: 'Invictus Systems',
-      instructor: 'Indrajith Bandara',
       completionDate: '28 Jul 2025',
       image: ciscoItEssentials,
       badgeColor: '#00f2fe',
@@ -64,7 +57,6 @@ export default function Certifications() {
       verifyUrl: 'https://www.credly.com/badges/22d6a0fd-20df-465d-b2db-998b431f3e6d/public_url',
       description:
         'Comprehensive technical certification covering computer hardware architecture, OS installation and maintenance (Windows & Linux), operational safety, cybersecurity, and IT troubleshooting.',
-      skills: ['Hardware Architecture', 'OS Installation & Config', 'Cybersecurity Basics', 'IT Troubleshooting', 'System Maintenance'],
     },
     {
       id: 'cisco-networking-essentials',
@@ -72,8 +64,6 @@ export default function Certifications() {
       title: 'Networking Essentials',
       fullTitle: 'Cisco Networking Essentials',
       issuer: 'Cisco Networking Academy',
-      offeredBy: 'Innovate IT Institute',
-      instructor: 'K.K.Chameera Jayarukshan Pradeep',
       completionDate: '24 Jan 2025',
       image: ciscoNetworkingEssentials,
       badgeColor: '#00f2fe',
@@ -84,7 +74,6 @@ export default function Certifications() {
       verifyUrl: 'https://www.credly.com/badges/5a80766c-2f83-4444-ad34-d87d74868f79/public_url',
       description:
         'In-depth networking certification covering core principles of network architecture, IPv4 & IPv6 addressing, router and switch configuration, network security protocols, and OSI model operations.',
-      skills: ['Network Architecture', 'IPv4 & IPv6 Subnetting', 'Router & Switch Config', 'OSI & TCP/IP Models', 'Network Security'],
     },
   ];
 
@@ -163,40 +152,9 @@ export default function Certifications() {
       <div className="container">
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '6px 16px',
-              borderRadius: '999px',
-              background: 'rgba(0, 242, 254, 0.1)',
-              border: '1px solid rgba(0, 242, 254, 0.25)',
-              fontSize: '0.85rem',
-              fontWeight: 700,
-              color: 'var(--accent-cyan)',
-              marginBottom: '12px',
-            }}
-          >
-            <Award size={16} />
-            <span>GLOBAL CERTIFICATIONS & CREDENTIALS</span>
-          </div>
-
           <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800 }} className="gradient-text">
             Certifications & Qualifications
           </h2>
-          <p
-            style={{
-              color: 'var(--text-secondary)',
-              marginTop: '8px',
-              fontSize: '1rem',
-              maxWidth: '650px',
-              margin: '8px auto 0',
-              padding: '0 15px',
-            }}
-          >
-            Official certificates awarded through recognized global bodies including Alison (CPD Certified) and Cisco Networking Academy. Click any certificate to open the high-resolution interactive preview.
-          </p>
         </div>
 
         {/* Certifications Cards Grid */}
@@ -422,42 +380,6 @@ export default function Certifications() {
                   >
                     {cert.description}
                   </p>
-
-                  {/* Skills Covered Tags */}
-                  {cert.skills && cert.skills.length > 0 && (
-                    <div>
-                      <h4
-                        style={{
-                          fontSize: '0.78rem',
-                          textTransform: 'uppercase',
-                          letterSpacing: '0.05em',
-                          color: 'var(--text-muted)',
-                          marginBottom: '10px',
-                          fontWeight: 700,
-                        }}
-                      >
-                        Key Competencies:
-                      </h4>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                        {cert.skills.map((skill, idx) => (
-                          <span
-                            key={idx}
-                            style={{
-                              fontSize: '0.78rem',
-                              fontWeight: 600,
-                              color: 'var(--text-primary)',
-                              background: 'var(--card-bg)',
-                              border: '1px solid var(--card-border)',
-                              padding: '4px 10px',
-                              borderRadius: '8px',
-                            }}
-                          >
-                            {skill}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
                 </div>
               </div>
 

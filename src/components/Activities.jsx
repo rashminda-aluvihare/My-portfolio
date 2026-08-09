@@ -86,27 +86,9 @@ export default function Activities() {
       <div className="container">
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-          <div
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              padding: '6px 16px',
-              borderRadius: '999px',
-              background: 'rgba(155, 81, 224, 0.1)',
-              border: '1px solid rgba(155, 81, 224, 0.25)',
-              fontSize: '0.85rem',
-              fontWeight: 700,
-              color: 'var(--accent-purple)',
-              marginBottom: '12px',
-            }}
-          >
-            <span>EXPOSURE & FIELD VISITS</span>
-          </div>
-
           <h2 style={{ fontSize: '2.5rem', fontWeight: 800 }} className="gradient-text">
             Activities & Industry Visits
           </h2>
-
         </div>
 
         {/* Activities Grid */}
