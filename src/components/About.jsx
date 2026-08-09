@@ -24,11 +24,11 @@ export default function About() {
             </p>
 
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-              Having gained hands-on experience in banking operations at <strong style={{ color: 'var(--accent-cyan)' }}>People's Bank Sri Lanka</strong> and full-stack software delivery at <strong style={{ color: 'var(--accent-cyan)' }}>Decodelabs</strong>, I possess a unique blend of financial domain knowledge and hands-on programming skills in <strong style={{ color: 'var(--text-primary)' }}>React 19, Next.js, Java SE, PHP, and MySQL RDBMS</strong>.
+              Having gained hands-on experience in banking operations at <strong style={{ color: 'var(--accent-cyan)' }}>People's Bank Sri Lanka</strong>
             </p>
 
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-              <strong style={{ color: 'var(--accent-cyan)' }}>Career Goal:</strong> Actively seeking a <strong style={{ color: 'var(--text-primary)' }}>Business Analyst or IT Project Management</strong> internship/junior role where I can contribute to building high-impact FinTech solutions and enterprise web applications.
+              <strong style={{ color: 'var(--accent-cyan)' }}>Career Goal:</strong> Actively seeking a <strong style={{ color: 'var(--text-primary)' }}>Business Analyst / IT Project Management</strong> internship/junior role where I can contribute to building high-impact FinTech solutions and enterprise web applications.
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>
