@@ -35,9 +35,9 @@ export default function Certifications() {
       instructor: 'Maeve Richardson (Director of Certification)',
       completionDate: '02 Feb 2025',
       image: alisonMis,
-      badgeColor: '#10b981',
-      gradient: 'linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(5, 150, 105, 0.04) 100%)',
-      borderColor: 'rgba(16, 185, 129, 0.35)',
+      badgeColor: '#00f2fe',
+      gradient: 'linear-gradient(135deg, rgba(0, 242, 254, 0.12) 0%, rgba(0, 188, 235, 0.04) 100%)',
+      borderColor: 'rgba(0, 242, 254, 0.35)',
       icon: <Database size={24} />,
       status: 'Verified Credential',
       credentialId: '3274-46019840',
@@ -56,11 +56,12 @@ export default function Certifications() {
       instructor: 'Indrajith Bandara',
       completionDate: '28 Jul 2025',
       image: ciscoItEssentials,
-      badgeColor: '#00bceb',
-      gradient: 'linear-gradient(135deg, rgba(0, 188, 235, 0.12) 0%, rgba(0, 112, 243, 0.04) 100%)',
-      borderColor: 'rgba(0, 188, 235, 0.35)',
+      badgeColor: '#00f2fe',
+      gradient: 'linear-gradient(135deg, rgba(0, 242, 254, 0.12) 0%, rgba(0, 188, 235, 0.04) 100%)',
+      borderColor: 'rgba(0, 242, 254, 0.35)',
       icon: <Cpu size={24} />,
       status: 'Verified Credential',
+      verifyUrl: 'https://www.credly.com/badges/22d6a0fd-20df-465d-b2db-998b431f3e6d/public_url',
       description:
         'Comprehensive technical certification covering computer hardware architecture, OS installation and maintenance (Windows & Linux), operational safety, cybersecurity, and IT troubleshooting.',
       skills: ['Hardware Architecture', 'OS Installation & Config', 'Cybersecurity Basics', 'IT Troubleshooting', 'System Maintenance'],
@@ -76,10 +77,11 @@ export default function Certifications() {
       completionDate: '24 Jan 2025',
       image: ciscoNetworkingEssentials,
       badgeColor: '#00f2fe',
-      gradient: 'linear-gradient(135deg, rgba(0, 242, 254, 0.12) 0%, rgba(155, 81, 224, 0.04) 100%)',
+      gradient: 'linear-gradient(135deg, rgba(0, 242, 254, 0.12) 0%, rgba(0, 188, 235, 0.04) 100%)',
       borderColor: 'rgba(0, 242, 254, 0.35)',
       icon: <Network size={24} />,
       status: 'Verified Credential',
+      verifyUrl: 'https://www.credly.com/badges/5a80766c-2f83-4444-ad34-d87d74868f79/public_url',
       description:
         'In-depth networking certification covering core principles of network architecture, IPv4 & IPv6 addressing, router and switch configuration, network security protocols, and OSI model operations.',
       skills: ['Network Architecture', 'IPv4 & IPv6 Subnetting', 'Router & Switch Config', 'OSI & TCP/IP Models', 'Network Security'],
@@ -521,7 +523,7 @@ export default function Certifications() {
                       e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)';
                       e.currentTarget.style.transform = 'scale(1)';
                     }}
-                    title="Verify online at Alison.com"
+                    title={`Verify online credential issued by ${cert.issuer}`}
                   >
                     <ExternalLink size={16} />
                     <span>Verify</span>
@@ -587,15 +589,15 @@ export default function Certifications() {
                       gap: '6px',
                       padding: '8px 14px',
                       borderRadius: '10px',
-                      background: 'rgba(16, 185, 129, 0.2)',
-                      border: '1px solid rgba(16, 185, 129, 0.4)',
-                      color: '#10b981',
+                      background: 'rgba(0, 242, 254, 0.15)',
+                      border: '1px solid rgba(0, 242, 254, 0.35)',
+                      color: '#00f2fe',
                       fontWeight: 700,
                       fontSize: '0.85rem',
                       textDecoration: 'none',
                       transition: 'all 0.2s ease',
                     }}
-                    title="Verify online"
+                    title="Verify online credential"
                   >
                     <ExternalLink size={16} />
                     <span>Verify Online</span>
