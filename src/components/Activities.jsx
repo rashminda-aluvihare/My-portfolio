@@ -11,11 +11,6 @@ import {
   ZoomIn,
   ZoomOut,
   Maximize2,
-  Brain,
-  Boxes,
-  ShieldCheck,
-  Smartphone,
-  Users,
 } from 'lucide-react';
 import { activitiesData } from '../data/activitiesData';
 
@@ -407,64 +402,6 @@ export default function Activities() {
                       >
                         {tag}
                       </span>
-                    ))}
-                  </div>
-                )}
-
-                {/* FinTech Core Pillars Feature Bar (Sri Lanka FinTech Summit) */}
-                {item.title.toLowerCase().includes('fintech') && (
-                  <div
-                    style={{
-                      marginTop: '16px',
-                      padding: '16px 10px',
-                      background: 'linear-gradient(180deg, rgba(6, 8, 14, 0.95) 0%, rgba(3, 4, 8, 0.98) 100%)',
-                      border: '1px solid rgba(255, 255, 255, 0.1)',
-                      borderRadius: '12px',
-                      display: 'grid',
-                      gridTemplateColumns: 'repeat(5, 1fr)',
-                      alignItems: 'center',
-                      gap: '8px',
-                      boxShadow: '0 10px 30px rgba(0, 0, 0, 0.5)',
-                      overflowX: 'auto',
-                    }}
-                  >
-                    {[
-                      { label: 'AI-DRIVEN FINANCE', color: '#c084fc', icon: <Brain size={30} /> },
-                      { label: 'BLOCKCHAIN', color: '#38bdf8', icon: <Boxes size={30} /> },
-                      { label: 'CYBERSECURITY', color: '#2dd4bf', icon: <ShieldCheck size={30} /> },
-                      { label: 'PAYMENTS INNOVATION', color: '#f472b6', icon: <Smartphone size={30} /> },
-                      { label: 'FINANCIAL INCLUSION', color: '#fbbf24', icon: <Users size={30} /> },
-                    ].map((topic, idx, arr) => (
-                      <div
-                        key={idx}
-                        style={{
-                          display: 'flex',
-                          flexDirection: 'column',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          gap: '8px',
-                          padding: '6px 4px',
-                          borderRight: idx < arr.length - 1 ? '1px solid rgba(255, 255, 255, 0.1)' : 'none',
-                          color: topic.color,
-                          textAlign: 'center',
-                          minWidth: '85px',
-                        }}
-                      >
-                        <div style={{ filter: `drop-shadow(0 0 8px ${topic.color}88)` }}>
-                          {topic.icon}
-                        </div>
-                        <span
-                          style={{
-                            fontSize: '0.68rem',
-                            fontWeight: 800,
-                            letterSpacing: '0.04em',
-                            lineHeight: 1.25,
-                            textTransform: 'uppercase',
-                          }}
-                        >
-                          {topic.label}
-                        </span>
-                      </div>
                     ))}
                   </div>
                 )}
