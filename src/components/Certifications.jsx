@@ -558,7 +558,7 @@ export default function Certifications() {
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                justifyContent: 'space-between',
+                justifyContent: 'flex-end',
                 width: '100%',
                 maxWidth: '1200px',
                 margin: '0 auto',
@@ -567,15 +567,6 @@ export default function Certifications() {
               }}
               onClick={(e) => e.stopPropagation()}
             >
-              <div>
-                <h3 style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.5rem)', fontWeight: 800, color: '#ffffff' }}>
-                  {currentCert.fullTitle}
-                </h3>
-                <p style={{ fontSize: '0.85rem', color: currentCert.badgeColor, fontWeight: 600 }}>
-                  {currentCert.offeredBy} • Issued {currentCert.completionDate}
-                </p>
-              </div>
-
               {/* Action Bar */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 {currentCert.verifyUrl && (
@@ -618,28 +609,6 @@ export default function Certifications() {
                   title="Zoom Out"
                 >
                   <ZoomOut size={18} />
-                </button>
-
-                <button
-                  onClick={closeModal}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '6px',
-                    padding: '8px 14px',
-                    borderRadius: '10px',
-                    background: 'rgba(255, 68, 68, 0.25)',
-                    border: '1px solid rgba(255, 68, 68, 0.45)',
-                    color: '#ff6b6b',
-                    fontWeight: 700,
-                    fontSize: '0.85rem',
-                    cursor: 'pointer',
-                    transition: 'all 0.2s ease',
-                  }}
-                  title="Close (Esc / Back button)"
-                >
-                  <X size={18} />
-                  <span>Close</span>
                 </button>
               </div>
             </div>
@@ -725,10 +694,6 @@ export default function Certifications() {
               }}
               onClick={(e) => e.stopPropagation()}
             >
-              <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                Instructor: <strong style={{ color: '#ffffff' }}>{currentCert.instructor}</strong>
-              </span>
-
               <button
                 onClick={closeModal}
                 style={{
