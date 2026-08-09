@@ -113,6 +113,7 @@ export default function Activities() {
                   flexDirection: 'column',
                   gap: '16px',
                   borderRadius: '16px',
+                  height: '100%',
                   transition: 'all 0.2s ease',
                   overflow: 'hidden',
                 }}
@@ -340,13 +341,13 @@ export default function Activities() {
                   </div>
                 </div>
 
-                {/* Title & Organization */}
-                <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '4px' }}>
+                {/* Title & Organization Header Container */}
+                <div style={{ minHeight: '75px', display: 'flex', flexDirection: 'column', justifyContent: 'flex-start' }}>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: 700, color: 'var(--text-primary)', marginBottom: '6px', lineHeight: '1.3' }}>
                     {item.title}
                   </h3>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--text-secondary)', fontSize: '0.85rem', flexWrap: 'wrap' }}>
                     {item.organization && (
                       <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
                         <Building2 size={14} style={{ color: 'var(--accent-purple)' }} />
@@ -363,29 +364,31 @@ export default function Activities() {
                   </div>
                 </div>
 
-                {/* Description */}
-                <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6, flex: 1 }}>
-                  {item.description}
-                </p>
+                {/* Description (if present) */}
+                {item.description && (
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.92rem', lineHeight: 1.6 }}>
+                    {item.description}
+                  </p>
+                )}
 
                 {/* Role & Personal Contribution */}
                 {item.contribution && (
-                  <div style={{ background: 'rgba(155, 81, 224, 0.05)', borderLeft: '3px solid var(--accent-purple)', padding: '10px 14px', borderRadius: '0 8px 8px 0', fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
+                  <div style={{ minHeight: '110px', display: 'flex', flexDirection: 'column', background: 'rgba(155, 81, 224, 0.05)', borderLeft: '3px solid var(--accent-purple)', padding: '10px 14px', borderRadius: '0 8px 8px 0', fontSize: '0.86rem', color: 'var(--text-secondary)' }}>
                     <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '2px' }}>Role & Contribution:</strong>
-                    {item.contribution}
+                    <span>{item.contribution}</span>
                   </div>
                 )}
 
                 {/* Key Outcome / Learning */}
                 {item.outcome && (
-                  <div style={{ fontSize: '0.84rem', color: '#38ef7d', fontWeight: 600 }}>
+                  <div style={{ minHeight: '65px', fontSize: '0.84rem', color: '#38ef7d', fontWeight: 600 }}>
                     <span style={{ color: 'var(--text-primary)', fontWeight: 700 }}>Key Outcome:</span> {item.outcome}
                   </div>
                 )}
 
                 {/* Tags */}
                 {item.tags && item.tags.length > 0 && (
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: '4px' }}>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px', marginTop: 'auto', paddingTop: '4px' }}>
                     {item.tags.map((tag, tIdx) => (
                       <span
                         key={tIdx}
