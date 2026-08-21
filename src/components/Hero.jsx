@@ -122,8 +122,8 @@ export default function Hero() {
                 <ArrowRight size={18} />
               </a>
               <a
-                href="/assets/Rashminda Aluvihare CV.pdf"
-                download="Rashminda Aluvihare CV.pdf"
+                href="/assets/Rashminda Aluvihare.pdf"
+                download="Rashminda Aluvihare.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-premium secondary hero-btn"

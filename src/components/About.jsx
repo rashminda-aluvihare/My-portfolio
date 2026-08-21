@@ -71,8 +71,8 @@ export default function About() {
 
               <div style={{ marginTop: '12px', paddingTop: '16px', borderTop: '1px solid var(--card-border)' }}>
                 <a
-                  href="/assets/Rashminda Aluvihare CV.pdf"
-                  download="Rashminda Aluvihare CV.pdf"
+                  href="/assets/Rashminda Aluvihare.pdf"
+                  download="Rashminda Aluvihare.pdf"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="btn-premium secondary"
