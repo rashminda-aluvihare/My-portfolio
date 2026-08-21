@@ -30,12 +30,12 @@ export default function Skills() {
     { name: 'Node.js & Express.js', type: 'Backend Runtime', level: 89, category: 'backend', color: '#339933', icon: <Terminal size={18} />, evidence: 'Used in: AgroNexa LK & FinBridge APIs' },
     { name: 'MySQL', type: 'Relational DB', level: 88, category: 'backend', color: '#00758F', icon: <Database size={18} />, evidence: 'Used in: Fund Management System' },
     { name: 'PostgreSQL', type: 'Relational DB', level: 85, category: 'backend', color: '#336791', icon: <Database size={18} />, evidence: 'Used in: AgroNexa LK Crypto Ledger' },
-    { name: 'RESTful API Design', type: 'Web Service', level: 92, category: 'backend', color: '#38ef7d', icon: <Layers size={18} />, evidence: 'Used in: Decodelabs & FinBridge' },
+    { name: 'RESTful API Design', type: 'Web Service', level: 92, category: 'backend', color: '#38ef7d', icon: <Layers size={18} />, evidence: 'Used in: AgroNexa LK & FinBridge' },
 
     // Business Analysis & Project Management
     { name: 'Requirements Engineering', type: 'SRS / BRD', level: 90, category: 'ba', color: '#38ef7d', icon: <FileCheck size={18} />, evidence: 'Applied in: HNDIT Modules' },
     { name: 'BPMN & UML Modeling', type: 'Process Modeling', level: 88, category: 'ba', color: '#00f2fe', icon: <LayoutList size={18} />, evidence: 'Applied in: System Analysis & Banking Specs' },
-    { name: 'Agile & Scrum Framework', type: 'Delivery Method', level: 92, category: 'ba', color: '#9b51e0', icon: <Workflow size={18} />, evidence: 'Applied in: Decodelabs Internship' },
+    { name: 'Agile & Scrum Framework', type: 'Delivery Method', level: 92, category: 'ba', color: '#9b51e0', icon: <Workflow size={18} />, evidence: 'Applied in: HNDIT & FinTech Projects' },
     { name: 'IT Project Planning', type: 'Backlog & Sprints', level: 86, category: 'ba', color: '#ff6384', icon: <Target size={18} />, evidence: 'Applied in: Academic & Industry Projects' },
 
     // Tools & Platforms

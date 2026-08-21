@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, Sun, Moon, Download } from 'lucide-react';
 
 export default function Navbar({ theme, toggleTheme }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -95,14 +95,14 @@ export default function Navbar({ theme, toggleTheme }) {
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '24px',
+          gap: '20px',
         }}
       >
         <ul
           style={{
             display: 'flex',
             listStyle: 'none',
-            gap: '20px',
+            gap: '18px',
           }}
         >
           {navItems.map((item) => {
@@ -150,6 +150,40 @@ export default function Navbar({ theme, toggleTheme }) {
 
         {/* Vertical divider */}
         <span style={{ height: '20px', width: '1px', background: 'var(--card-border)' }} />
+
+        {/* Download CV Nav Action */}
+        <a
+          href="/assets/Rashminda Aluvihare CV.pdf"
+          download="Rashminda Aluvihare CV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            padding: '6px 14px',
+            borderRadius: '10px',
+            background: 'linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(155, 81, 224, 0.15))',
+            border: '1px solid rgba(0, 242, 254, 0.3)',
+            color: 'var(--accent-cyan)',
+            fontSize: '0.85rem',
+            fontWeight: 700,
+            textDecoration: 'none',
+            transition: 'var(--transition-smooth)',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'linear-gradient(135deg, rgba(0, 242, 254, 0.25), rgba(155, 81, 224, 0.25))';
+            e.currentTarget.style.boxShadow = '0 0 15px rgba(0, 242, 254, 0.3)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'linear-gradient(135deg, rgba(0, 242, 254, 0.15), rgba(155, 81, 224, 0.15))';
+            e.currentTarget.style.boxShadow = 'none';
+          }}
+          title="Download CV (PDF)"
+        >
+          <Download size={15} />
+          <span>CV</span>
+        </a>
 
         {/* Theme switcher */}
         <button
@@ -280,6 +314,31 @@ export default function Navbar({ theme, toggleTheme }) {
                 </li>
               );
             })}
+            <li style={{ marginTop: '8px', paddingTop: '8px', borderTop: '1px solid var(--card-border)' }}>
+              <a
+                href="/assets/Rashminda Aluvihare CV.pdf"
+                download="Rashminda Aluvihare CV.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setIsOpen(false)}
+                style={{
+                  color: 'var(--accent-cyan)',
+                  background: 'rgba(0, 242, 254, 0.12)',
+                  border: '1px solid rgba(0, 242, 254, 0.3)',
+                  textDecoration: 'none',
+                  fontWeight: 700,
+                  fontSize: '1rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '10px',
+                  padding: '12px 16px',
+                  borderRadius: '10px',
+                }}
+              >
+                <Download size={18} />
+                <span>Download CV (PDF)</span>
+              </a>
+            </li>
           </ul>
         </div>
       )}

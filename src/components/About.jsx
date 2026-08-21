@@ -1,3 +1,5 @@
+import { Download } from 'lucide-react';
+
 export default function About() {
   return (
     <section id="about" className="section" style={{ background: 'var(--bg-secondary)', position: 'relative' }}>
@@ -66,6 +68,20 @@ export default function About() {
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.98rem', lineHeight: 1.6 }}>
                 <strong style={{ color: 'var(--accent-cyan)' }}>Education:</strong> HNDIT (SLIATE) & DBF (IBSL)
               </p>
+
+              <div style={{ marginTop: '12px', paddingTop: '16px', borderTop: '1px solid var(--card-border)' }}>
+                <a
+                  href="/assets/Rashminda Aluvihare CV.pdf"
+                  download="Rashminda Aluvihare CV.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-premium secondary"
+                  style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', padding: '10px 20px', borderRadius: '10px', fontSize: '0.9rem', fontWeight: 700, textDecoration: 'none' }}
+                >
+                  <Download size={18} style={{ color: 'var(--accent-cyan)' }} />
+                  <span>Download Full CV</span>
+                </a>
+              </div>
             </div>
           </div>
 

@@ -1,31 +1,8 @@
 import { Briefcase, Calendar, CheckSquare, Award, FileText, Globe, Layers } from 'lucide-react';
 import peoplesBankLogo from '../assets/peoplesbank.jpg';
-import decodeLogo from '../assets/decode.png';
 
 export default function Experience() {
   const experiences = [
-    {
-      role: 'Full Stack Developer Intern',
-      company: 'Decodelabs',
-      logo: decodeLogo,
-      companyType: 'Software Agency / Tech Internship',
-      location: 'Remote',
-      duration: 'Jun 2026 · 1 mo',
-      type: 'Developer Internship',
-      skills: 'Full-Stack Development, REST API Integration & MERN Architecture',
-      certificate: 'Internship Certificate',
-      personalContribution: 'Engineered responsive web component interfaces using React 19, designed REST API endpoints, integrated MongoDB database models, and optimized front-end state management.',
-      tools: ['React 19', 'JavaScript (ES6+)', 'Node.js', 'Express', 'MongoDB', 'Git / GitHub', 'REST APIs'],
-      responsibilities: [
-        'Translated client user requirements into technical web architecture and functional specifications.',
-        'Designed normalized database schemas and implemented REST API endpoints for seamless frontend data consumption.',
-        'Collaborated with senior engineers using Agile Scrum sprint workflows, code reviews, and Git version control.',
-        'Diagnosed and fixed UI responsiveness bugs and optimized rendering performance across desktop and mobile viewports.',
-      ],
-      badgeColor: 'var(--accent-cyan)',
-      bgAlpha: 'rgba(0, 242, 254, 0.1)',
-      borderAlpha: 'rgba(0, 242, 254, 0.25)',
-    },
     {
       role: 'Internship Trainee - Branch Banking Operations',
       company: "People's Bank Sri Lanka",

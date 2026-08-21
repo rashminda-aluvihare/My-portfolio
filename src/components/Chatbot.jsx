@@ -72,9 +72,9 @@ export default function Chatbot() {
     }
 
     // 3. Work Experience / Employment
-    if (text.match(/(experience|job|bank|peoples|decode|decodelabs|work history|role)/i)) {
+    if (text.match(/(experience|job|bank|peoples|work history|role)/i)) {
       return {
-        text: "💼 **Professional Experience**:\n\n• 🏢 **Decodelabs** — Full-Stack Software Developer\n  - Built responsive React & Next.js frontend interfaces and integrated backend REST APIs.\n\n• 🏦 **People's Bank Sri Lanka** — Banking Operations Trainee / Assistant\n  - Hands-on experience with customer financial workflows, account management, and core banking operations.",
+        text: "💼 **Professional Experience**:\n\n• 🏦 **People's Bank Sri Lanka** — Banking Operations Trainee / Assistant\n  - Hands-on experience with customer financial workflows, account management, and core banking operations.",
         suggestions: ['🎓 Education', '🚀 View Projects', '📩 Get in Touch']
       };
     }
@@ -108,7 +108,7 @@ export default function Chatbot() {
     // 6. Who is Rashminda / About / Profile / Overview
     if (text.match(/(who|about|profile|wishtr|wisthra|wisathara|kauda|kuda|bio|developer|rashminda)/i)) {
       return {
-        text: "👨‍💻 **About Rashminda Aluvihare**:\n\n• **Current Role**: HNDIT Undergraduate at **SLIATE** & Banking & Finance Student at **IBSL**.\n• **Specialization**: Full-Stack Web Development, FinTech Systems, and Technical Business Analysis (SRS/BRD).\n• **Experience**: Banking operations at **People's Bank Sri Lanka** & Full-Stack Development at **Decodelabs**.\n• **Career Goal**: Seeking a **Business Analyst / IT Project Management / Full-Stack Developer** opportunity to build impactful solutions.",
+        text: "👨‍💻 **About Rashminda Aluvihare**:\n\n• **Current Role**: HNDIT Undergraduate at **SLIATE** & Banking & Finance Student at **IBSL**.\n• **Specialization**: Full-Stack Web Development, FinTech Systems, and Technical Business Analysis (SRS/BRD).\n• **Experience**: Branch Banking Operations Internship at **People's Bank Sri Lanka**.\n• **Career Goal**: Seeking a **Business Analyst / IT Project Management / Full-Stack Developer** opportunity to build impactful solutions.",
         suggestions: ['⚡ Key Skills', '🚀 Explore Projects', '💼 Work History', '🎓 Education']
       };
     }

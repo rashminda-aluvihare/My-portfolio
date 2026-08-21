@@ -78,8 +78,6 @@ Built with **React 19** and **Vite**, the application features a custom **Glassm
   - Passed: IT, Digital Banking and Settlements.
 
 ### 💼 Professional Experience
-- **Full-Stack Software Developer** — *Decodelabs*
-  - Developed responsive React/Next.js frontends and integrated RESTful APIs.
 - **Banking Operations Assistant / Trainee** — *People's Bank Sri Lanka*
   - Gained hands-on experience in customer financial workflows, credit management, and core banking operations.
 
