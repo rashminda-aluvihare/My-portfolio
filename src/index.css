@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-  /* Dark Theme Variables (Default) */
-  --bg-primary: #05070a;
-  --bg-secondary: #0a0d14;
-  --accent-cyan: #00f2fe;
-  --accent-purple: #9b51e0;
-  --accent-blue: #0070f3;
-  --text-primary: #ffffff;
+  /* Dark Theme Variables - Emerald & Electric Mint (FinTech & Trust) */
+  --bg-primary: #030712;
+  --bg-secondary: #0b1329;
+  --accent-cyan: #34d399;   /* Electric Mint */
+  --accent-purple: #10b981; /* Emerald Green */
+  --accent-blue: #06b6d4;   /* Electric Cyan */
+  --text-primary: #f9fafb;
   --text-secondary: #9ca3af;
   --text-muted: #6b7280;
-  --card-bg: rgba(10, 13, 20, 0.45);
-  --card-border: rgba(255, 255, 255, 0.06);
-  --card-glow: rgba(0, 242, 254, 0.15);
-  --nav-bg: rgba(5, 7, 10, 0.7);
-  --shadow-color: rgba(0, 0, 0, 0.5);
-  --gradient-end: #ffffff;
+  --card-bg: rgba(11, 19, 41, 0.55);
+  --card-border: rgba(52, 211, 153, 0.12);
+  --card-glow: rgba(16, 185, 129, 0.2);
+  --nav-bg: rgba(3, 7, 18, 0.85);
+  --shadow-color: rgba(0, 0, 0, 0.6);
+  --gradient-end: #34d399;
 
   --font-display: 'Outfit', sans-serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
@@ -24,21 +24,21 @@
 }
 
 [data-theme="light"] {
-  /* Light Theme Variables */
-  --bg-primary: #f8fafc;
-  --bg-secondary: #f1f5f9;
-  --accent-cyan: #0284c7;
-  --accent-purple: #7c3aed;
-  --accent-blue: #2563eb;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
-  --card-bg: rgba(255, 255, 255, 0.7);
-  --card-border: rgba(0, 0, 0, 0.06);
-  --card-glow: rgba(2, 132, 199, 0.15);
-  --nav-bg: rgba(248, 250, 252, 0.8);
-  --shadow-color: rgba(15, 23, 42, 0.08);
-  --gradient-end: #0f172a;
+  /* Light Theme Variables - Crisp Emerald & Slate */
+  --bg-primary: #f0fdf4;    /* Mint Tinted Crisp Snow */
+  --bg-secondary: #e6f4ea;  /* Crisp Light Slate */
+  --accent-cyan: #059669;   /* Deep Emerald */
+  --accent-purple: #047857; /* Deep Forest Green */
+  --accent-blue: #0284c7;   /* Oceanic Cyan Blue */
+  --text-primary: #064e3b;  /* Deep Emerald Charcoal Text */
+  --text-secondary: #334155;
+  --text-muted: #64748b;
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(5, 150, 105, 0.15);
+  --card-glow: rgba(5, 150, 105, 0.18);
+  --nav-bg: rgba(240, 253, 244, 0.85);
+  --shadow-color: rgba(6, 78, 59, 0.08);
+  --gradient-end: #059669;
 }
 
 * {

@@ -21,7 +21,7 @@ export default function Background() {
           width: '500px',
           height: '500px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(155, 81, 224, 0.08) 0%, rgba(0, 0, 0, 0) 70%)',
+          background: 'radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(0, 0, 0, 0) 70%)',
           filter: 'blur(40px)',
         }}
       />
@@ -34,7 +34,7 @@ export default function Background() {
           width: '600px',
           height: '600px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(0, 242, 254, 0.06) 0%, rgba(0, 0, 0, 0) 70%)',
+          background: 'radial-gradient(circle, rgba(52, 211, 153, 0.06) 0%, rgba(0, 0, 0, 0) 70%)',
           filter: 'blur(50px)',
         }}
       />
