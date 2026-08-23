@@ -435,3 +435,52 @@ input[type="range"]::-moz-range-thumb {
   background: var(--accent-cyan);
 }
 
+/* Infinite Horizontal Marquee Ticker for Skills */
+@keyframes marqueeLeft {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marqueeRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
+.marquee-container {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  padding: 12px 0;
+  mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+}
+
+.marquee-track-left {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: marqueeLeft 38s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track-right {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: marqueeRight 38s linear infinite;
+  will-change: transform;
+}
+
+.marquee-container:hover .marquee-track-left,
+.marquee-container:hover .marquee-track-right {
+  animation-play-state: paused;
+}
+

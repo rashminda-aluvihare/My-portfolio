@@ -45,150 +45,247 @@ export default function Skills() {
     { name: 'Vercel Deployment', type: 'Frontend Hosting', level: 92, category: 'tools', color: '#ffffff', icon: <Layers size={18} />, evidence: 'Applied in: Production Deployments' },
   ];
 
+  const [viewMode, setViewMode] = useState('marquee'); // 'marquee' | 'grid'
+
   const filteredSkills = activeCategory === 'all'
     ? skills
     : skills.filter(s => s.category === activeCategory);
 
+  // Split skills into two balanced rows for marquee
+  const halfIndex = Math.ceil(filteredSkills.length / 2);
+  const row1Skills = filteredSkills.slice(0, halfIndex);
+  const row2Skills = filteredSkills.slice(halfIndex);
+
+  // Duplicate arrays to create seamless infinite scroll loops
+  const marqueeRow1 = [...row1Skills, ...row1Skills, ...row1Skills, ...row1Skills];
+  const marqueeRow2 = [...row2Skills, ...row2Skills, ...row2Skills, ...row2Skills];
+
+  const renderSkillCard = (skill, index, isMarquee = false) => (
+    <div
+      key={`${skill.name}-${index}`}
+      className="glass-panel"
+      style={{
+        padding: '20px 22px',
+        display: 'flex',
+        flexDirection: 'column',
+        gap: '14px',
+        position: 'relative',
+        overflow: 'hidden',
+        minWidth: isMarquee ? '290px' : 'auto',
+        maxWidth: isMarquee ? '310px' : 'none',
+        flexShrink: 0,
+        transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.transform = 'translateY(-5px) scale(1.02)';
+        e.currentTarget.style.boxShadow = `0 15px 30px rgba(0,0,0,0.25), 0 0 20px -3px ${skill.color}60`;
+        e.currentTarget.style.borderColor = skill.color;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.transform = 'none';
+        e.currentTarget.style.boxShadow = 'none';
+        e.currentTarget.style.borderColor = 'var(--card-border)';
+      }}
+    >
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '10px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+          <div
+            style={{
+              background: `${skill.color}18`,
+              color: skill.color,
+              padding: '10px',
+              borderRadius: '10px',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexShrink: 0,
+            }}
+          >
+            {skill.icon}
+          </div>
+          <span style={{ fontWeight: 700, fontSize: '0.98rem', color: 'var(--text-primary)' }}>{skill.name}</span>
+        </div>
+        <span
+          style={{
+            fontSize: '0.70rem',
+            fontWeight: 700,
+            color: skill.color,
+            background: `${skill.color}15`,
+            padding: '4px 10px',
+            borderRadius: '999px',
+            border: `1px solid ${skill.color}35`,
+            whiteSpace: 'nowrap',
+          }}
+        >
+          {skill.type}
+        </span>
+      </div>
+
+      {/* Animated Progress Bar */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '4px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
+          <span>Proficiency</span>
+          <span style={{ color: skill.color, fontWeight: 700 }}>{skill.level}%</span>
+        </div>
+        <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.06)', borderRadius: '999px', overflow: 'hidden' }}>
+          <div
+            style={{
+              width: `${skill.level}%`,
+              height: '100%',
+              background: `linear-gradient(90deg, ${skill.color}, ${skill.color}cc)`,
+              borderRadius: '999px',
+              boxShadow: `0 0 10px ${skill.color}80`,
+              transition: 'width 1s ease-in-out',
+            }}
+          />
+        </div>
+      </div>
+
+      {/* Evidence Tag */}
+      {skill.evidence && (
+        <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', fontWeight: 600, marginTop: '2px', borderTop: '1px solid var(--card-border)', paddingTop: '8px' }}>
+          <span style={{ color: skill.color }}>✓</span> {skill.evidence}
+        </div>
+      )}
+    </div>
+  );
+
   return (
-    <section id="skills" className="section">
+    <section id="skills" className="section" style={{ overflow: 'hidden' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+        <div style={{ textAlign: 'center', marginBottom: '32px' }}>
           <h2 style={{ fontSize: '2.5rem', fontWeight: 800 }} className="gradient-text">
             Skills & Tech Competencies
           </h2>
+          <p style={{ color: 'var(--text-secondary)', marginTop: '8px', fontSize: '0.95rem' }}>
+            Hover over any card to pause auto-scrolling & view details
+          </p>
         </div>
 
-        {/* Skill Category Filter Tabs */}
+        {/* Controls Bar: Category Filters + View Mode Switcher */}
         <div
           style={{
             display: 'flex',
-            justifyContent: 'center',
-            gap: '10px',
+            justifyContent: 'space-between',
+            alignItems: 'center',
             flexWrap: 'wrap',
-            marginBottom: '40px',
+            gap: '16px',
+            marginBottom: '32px',
           }}
         >
-          {categories.map((cat) => (
+          {/* Category Filter Tabs */}
+          <div
+            style={{
+              display: 'flex',
+              gap: '8px',
+              flexWrap: 'wrap',
+            }}
+          >
+            {categories.map((cat) => (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                style={{
+                  background: activeCategory === cat.id ? 'var(--accent-emerald)' : 'var(--card-bg)',
+                  color: activeCategory === cat.id ? '#ffffff' : 'var(--text-secondary)',
+                  border: '1px solid',
+                  borderColor: activeCategory === cat.id ? 'var(--accent-emerald)' : 'var(--card-border)',
+                  borderRadius: '12px',
+                  padding: '8px 18px',
+                  fontSize: '0.84rem',
+                  fontWeight: 700,
+                  cursor: 'pointer',
+                  transition: 'all 0.25s ease',
+                  boxShadow: activeCategory === cat.id ? '0 0 14px rgba(16, 185, 129, 0.35)' : 'none',
+                }}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+
+          {/* View Switcher: Auto-Marquee vs Grid */}
+          <div
+            style={{
+              display: 'inline-flex',
+              background: 'var(--card-bg)',
+              border: '1px solid var(--card-border)',
+              borderRadius: '12px',
+              padding: '4px',
+              gap: '4px',
+            }}
+          >
             <button
-              key={cat.id}
-              onClick={() => setActiveCategory(cat.id)}
+              onClick={() => setViewMode('marquee')}
               style={{
-                background: activeCategory === cat.id ? 'var(--accent-cyan)' : 'var(--card-bg)',
-                color: activeCategory === cat.id ? '#05070a' : 'var(--text-secondary)',
-                border: '1px solid',
-                borderColor: activeCategory === cat.id ? 'var(--accent-cyan)' : 'var(--card-border)',
-                borderRadius: '12px',
-                padding: '10px 22px',
-                fontSize: '0.88rem',
+                background: viewMode === 'marquee' ? 'var(--accent-cyan)' : 'transparent',
+                color: viewMode === 'marquee' ? '#030712' : 'var(--text-secondary)',
+                border: 'none',
+                borderRadius: '8px',
+                padding: '6px 14px',
+                fontSize: '0.8rem',
                 fontWeight: 700,
                 cursor: 'pointer',
-                transition: 'all 0.25s ease',
-                boxShadow: activeCategory === cat.id ? '0 0 15px rgba(0, 242, 254, 0.3)' : 'none',
+                transition: 'all 0.2s ease',
               }}
             >
-              {cat.label}
+              🔄 Auto-Slider
             </button>
-          ))}
-        </div>
-
-        {/* Unified Skills Grid */}
-        <div
-          className="skills-grid"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
-            gap: '20px',
-          }}
-        >
-          {filteredSkills.map((skill, index) => (
-            <div
-              key={index}
-              className="glass-panel"
+            <button
+              onClick={() => setViewMode('grid')}
               style={{
-                padding: '20px 22px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '14px',
-                position: 'relative',
-                overflow: 'hidden',
-                transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-5px) scale(1.015)';
-                e.currentTarget.style.boxShadow = `0 15px 30px rgba(0,0,0,0.2), 0 0 20px -5px ${skill.color}50`;
-                e.currentTarget.style.borderColor = skill.color;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'none';
-                e.currentTarget.style.boxShadow = 'none';
-                e.currentTarget.style.borderColor = 'var(--card-border)';
+                background: viewMode === 'grid' ? 'var(--accent-cyan)' : 'transparent',
+                color: viewMode === 'grid' ? '#030712' : 'var(--text-secondary)',
+                border: 'none',
+                borderRadius: '8px',
+                padding: '6px 14px',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
               }}
             >
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <div
-                    style={{
-                      background: `${skill.color}15`,
-                      color: skill.color,
-                      padding: '10px',
-                      borderRadius: '10px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0,
-                    }}
-                  >
-                    {skill.icon}
-                  </div>
-                  <span style={{ fontWeight: 700, fontSize: '1rem', color: 'var(--text-primary)' }}>{skill.name}</span>
-                </div>
-                <span
-                  style={{
-                    fontSize: '0.72rem',
-                    fontWeight: 700,
-                    color: skill.color,
-                    background: `${skill.color}12`,
-                    padding: '4px 10px',
-                    borderRadius: '999px',
-                    border: `1px solid ${skill.color}30`,
-                    whiteSpace: 'nowrap',
-                  }}
-                >
-                  {skill.type}
-                </span>
-              </div>
-
-              {/* Animated Progress Bar */}
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '4px' }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
-                  <span>Proficiency</span>
-                  <span style={{ color: skill.color }}>{skill.level}%</span>
-                </div>
-                <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.06)', borderRadius: '999px', overflow: 'hidden' }}>
-                  <div
-                    style={{
-                      width: `${skill.level}%`,
-                      height: '100%',
-                      background: `linear-gradient(90deg, ${skill.color}, ${skill.color}bb)`,
-                      borderRadius: '999px',
-                      boxShadow: `0 0 10px ${skill.color}80`,
-                      transition: 'width 1s ease-in-out',
-                    }}
-                  />
-                </div>
-              </div>
-
-              {/* Evidence Tag */}
-              {skill.evidence && (
-                <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', fontWeight: 600, marginTop: '2px', borderTop: '1px solid var(--card-border)', paddingTop: '8px' }}>
-                  <span style={{ color: skill.color }}>✓</span> {skill.evidence}
-                </div>
-              )}
-            </div>
-          ))}
+              ▦ Grid View
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* Marquee View: Full-width infinite horizontal auto-scrolling slider */}
+      {viewMode === 'marquee' ? (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+          {/* Top Marquee Row: Moves Left */}
+          <div className="marquee-container">
+            <div className="marquee-track-left">
+              {marqueeRow1.map((skill, idx) => renderSkillCard(skill, idx, true))}
+            </div>
+          </div>
+
+          {/* Bottom Marquee Row: Moves Right */}
+          {marqueeRow2.length > 0 && (
+            <div className="marquee-container">
+              <div className="marquee-track-right">
+                {marqueeRow2.map((skill, idx) => renderSkillCard(skill, idx, true))}
+              </div>
+            </div>
+          )}
+        </div>
+      ) : (
+        /* Grid View Fallback */
+        <div className="container">
+          <div
+            className="skills-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+              gap: '20px',
+            }}
+          >
+            {filteredSkills.map((skill, index) => renderSkillCard(skill, index, false))}
+          </div>
+        </div>
+      )}
     </section>
   );
 }
