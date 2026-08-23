@@ -467,7 +467,7 @@ input[type="range"]::-moz-range-thumb {
   display: flex;
   gap: 20px;
   width: max-content;
-  animation: marqueeLeft 38s linear infinite;
+  animation: marqueeLeft 70s linear infinite;
   will-change: transform;
 }
 
@@ -475,7 +475,7 @@ input[type="range"]::-moz-range-thumb {
   display: flex;
   gap: 20px;
   width: max-content;
-  animation: marqueeRight 38s linear infinite;
+  animation: marqueeRight 70s linear infinite;
   will-change: transform;
 }
 
