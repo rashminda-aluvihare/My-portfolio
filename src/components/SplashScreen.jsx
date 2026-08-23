@@ -15,7 +15,7 @@ export default function SplashScreen({ onComplete }) {
   const [exiting, setExiting] = useState(false);      // trigger fade-out
 
   const fullName = 'Rashminda Aluvihare';
-  const subtitle = 'Full Stack Developer · FinTech Enthusiast';
+  const subtitle = 'Business Analyst · FinTech Enthusiast';
   const onCompleteRef = useRef(onComplete);
   onCompleteRef.current = onComplete;
 
@@ -85,7 +85,7 @@ export default function SplashScreen({ onComplete }) {
         position: 'fixed',
         inset: 0,
         zIndex: 9999,
-        background: '#05070a',
+        background: '#030712',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -99,9 +99,9 @@ export default function SplashScreen({ onComplete }) {
       }}
     >
       {/* Ambient glow orbs */}
-      <div style={orb('#00f2fe', '-18%', '-12%', '480px', '9s')} />
-      <div style={orb('#9b51e0', '72%', '70%', '420px', '11s')} />
-      <div style={orb('#0070f3', '78%', '-8%', '360px', '13s')} />
+      <div style={orb('#06b6d4', '-18%', '-12%', '480px', '9s')} />
+      <div style={orb('#10b981', '72%', '70%', '420px', '11s')} />
+      <div style={orb('#34d399', '78%', '-8%', '360px', '13s')} />
 
       {/* ── Name + Subtitle section ── */}
       <div
@@ -135,7 +135,7 @@ export default function SplashScreen({ onComplete }) {
           {/* Gradient name */}
           <span
             style={{
-              background: 'linear-gradient(135deg, #00f2fe 0%, #9b51e0 100%)',
+              background: 'linear-gradient(135deg, #06b6d4 0%, #10b981 50%, #34d399 100%)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
@@ -149,7 +149,7 @@ export default function SplashScreen({ onComplete }) {
               display: 'inline-block',
               width: '3px',
               height: '1em',
-              background: '#00f2fe',
+              background: '#06b6d4',
               marginLeft: '5px',
               verticalAlign: 'middle',
               borderRadius: '2px',
@@ -195,10 +195,10 @@ export default function SplashScreen({ onComplete }) {
           style={{
             height: '100%',
             width: `${progress}%`,
-            background: 'linear-gradient(90deg, #00f2fe, #9b51e0)',
+            background: 'linear-gradient(90deg, #06b6d4, #10b981, #34d399)',
             borderRadius: '99px',
             transition: 'width 0.05s linear',
-            boxShadow: '0 0 12px rgba(0,242,254,0.65)',
+            boxShadow: '0 0 12px rgba(6,182,212,0.65)',
           }}
         />
       </div>

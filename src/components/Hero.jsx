@@ -6,9 +6,9 @@ import profileImg from '../assets/profile.jpg';
 export default function Hero() {
   const [roleText, setRoleText] = useState('');
   const roles = [
+    'Business Analyst',
     'HNDIT Undergraduate',
-    'Full Stack Developer',
-    'Aspiring Business Analyst',
+    'IT Project Management',
     'FinTech Enthusiast',
   ];
   const [roleIndex, setRoleIndex] = useState(0);
