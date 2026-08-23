@@ -22,15 +22,15 @@ export default function About() {
             </h3>
 
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-              I am an <strong style={{ color: 'var(--text-primary)' }}>HNDIT Undergraduate (SLIATE)</strong> and <strong style={{ color: 'var(--text-primary)' }}>IBSL Banking & Finance Student</strong> specializing in Full-Stack Software Development and Technical Business Analysis. My objective is to bridge business strategy with technical implementation by translating complex domain requirements into robust, user-centric software applications.
+              I am an <strong style={{ color: 'var(--text-primary)' }}>HNDIT Undergraduate (SLIATE)</strong> and <strong style={{ color: 'var(--text-primary)' }}>IBSL Banking & Finance Student</strong>, specializing in Business Analysis with a strong technical foundation in full-stack development. My objective is to bridge business strategy with technical implementation by translating complex domain requirements into robust, user-centric software applications.
             </p>
 
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-              Having gained hands-on experience in banking operations at <strong style={{ color: 'var(--accent-cyan)' }}>People's Bank Sri Lanka</strong>
+              Hands-on banking operations experience at <strong style={{ color: 'var(--accent-cyan)' }}>People's Bank Sri Lanka</strong> has strengthened my requirements analysis and stakeholder-communication skills, giving me practical insight into financial workflows and processes.
             </p>
 
             <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-              <strong style={{ color: 'var(--accent-cyan)' }}>Career Goal:</strong> Actively seeking a <strong style={{ color: 'var(--text-primary)' }}>Business Analyst / IT Project Management</strong> internship/junior role where I can contribute to building high-impact FinTech solutions and enterprise web applications.
+              <strong style={{ color: 'var(--accent-cyan)' }}>Career Goal:</strong> Actively seeking a <strong style={{ color: 'var(--text-primary)' }}>Business Analyst / IT Project Management</strong> internship or junior role where I can contribute to building high-impact FinTech solutions and enterprise web applications.
             </p>
 
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginTop: '10px' }}>

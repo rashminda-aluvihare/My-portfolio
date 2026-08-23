@@ -108,7 +108,7 @@ export default function Chatbot() {
     // 6. Who is Rashminda / About / Profile / Overview
     if (text.match(/(who|about|profile|wishtr|wisthra|wisathara|kauda|kuda|bio|developer|rashminda)/i)) {
       return {
-        text: "👨‍💻 **About Rashminda Aluvihare**:\n\n• **Current Role**: HNDIT Undergraduate at **SLIATE** & Banking & Finance Student at **IBSL**.\n• **Specialization**: Full-Stack Web Development, FinTech Systems, and Technical Business Analysis (SRS/BRD).\n• **Experience**: Branch Banking Operations Internship at **People's Bank Sri Lanka**.\n• **Career Goal**: Seeking a **Business Analyst / IT Project Management / Full-Stack Developer** opportunity to build impactful solutions.",
+        text: "👨‍💻 **About Rashminda Aluvihare**:\n\n• **Background**: HNDIT Undergraduate (**SLIATE**) & Banking & Finance Student (**IBSL**).\n• **Objective**: Bridging business strategy with technical implementation through Full-Stack Development and Business Analysis.\n• **Experience**: Banking Operations at **People's Bank Sri Lanka** (strengthening requirements analysis & financial workflows).\n• **Career Goal**: Actively seeking a **Business Analyst / IT Project Management** internship or junior role for FinTech and enterprise web apps.",
         suggestions: ['⚡ Key Skills', '🚀 Explore Projects', '💼 Work History', '🎓 Education']
       };
     }

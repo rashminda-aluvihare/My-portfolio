@@ -110,7 +110,7 @@ export default function Hero() {
           </h2>
 
           <p className="hero-description">
-            HNDIT undergraduate specializing in Full-Stack Development and Business Analysis, with hands-on experience building FinTech-oriented solutions and Agile software delivery.
+            HNDIT (SLIATE) & IBSL Banking student specializing in Business Analysis with a strong full-stack foundation. Bridging business strategy with technical implementation for high-impact FinTech solutions.
           </p>
 
           {/* Call to Actions & Social Profiles */}
