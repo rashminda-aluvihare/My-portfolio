@@ -18,10 +18,10 @@ export default function HeroBlockchainCanvas() {
     const getColors = () => {
       const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
       return {
-        nodeColor:    isDark ? 'rgba(52, 211, 153, 0.85)' : 'rgba(5, 150, 105, 0.85)',
-        nodeColorAlt: isDark ? 'rgba(16, 185, 129, 0.85)' : 'rgba(4, 120, 87, 0.85)',
-        lineColor:    isDark ? 'rgba(52, 211, 153, 0.30)' : 'rgba(5, 150, 105, 0.25)',
-        pulseColor:   isDark ? '#34d399' : '#059669',
+        nodeColor:    isDark ? 'rgba(16, 185, 129, 0.85)' : 'rgba(5, 150, 105, 0.85)',
+        nodeColorAlt: isDark ? 'rgba(52, 211, 153, 0.85)' : 'rgba(16, 185, 129, 0.85)',
+        lineColor:    isDark ? 'rgba(6, 182, 212, 0.28)'  : 'rgba(2, 132, 199, 0.25)',
+        pulseColor:   isDark ? '#06b6d4' : '#0284c7',
       };
     };
 
