@@ -16,10 +16,9 @@ export default function Experience() {
       personalContribution: 'Assisted branch staff with daily core banking operations, customer onboarding verification, savings & loan document audits, and digital settlement queries.',
       tools: ['Core Banking Terminal', 'Customer Onboarding Systems', 'KYC Compliance Protocols', 'Financial Clearing Systems'],
       responsibilities: [
-        'Supported end-to-end daily branch banking transactions, cash settlement protocols, and account management.',
-        'Assisted retail and business customers with digital banking app onboarding and branch service resolution.',
-        'Enforced strict banking regulatory compliance, Know Your Customer (KYC) guidelines, and document verification.',
-        'Gained deep domain knowledge in Sri Lankan retail banking, fixed deposit management, and credit processes (leveraged directly in building FinTech software projects).',
+        'Assisted with day-to-day branch banking operations including customer service, account handling, and transaction processing',
+        'Gained practical exposure to core banking workflows, operational processes, and customer interaction patterns',
+        'Developed a strong understanding of financial processes relevant to Business Analysis in the banking sector.',
       ],
       badgeColor: 'var(--accent-purple)',
       bgAlpha: 'rgba(155, 81, 224, 0.1)',
