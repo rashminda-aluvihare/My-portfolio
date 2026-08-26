@@ -109,9 +109,7 @@ export default function Hero() {
             </span>
           </h2>
 
-          <p className="hero-description">
-            HNDIT (SLIATE) & IBSL Banking student specializing in Business Analysis with a strong full-stack foundation. Bridging business strategy with technical implementation for high-impact FinTech solutions.
-          </p>
+
 
           {/* Call to Actions & Social Profiles */}
           <div className="hero-buttons-wrapper">
