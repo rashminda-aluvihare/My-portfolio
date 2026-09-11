@@ -44,37 +44,34 @@
 }
 
 [data-theme="light"] {
-  /* Light Mode Variables Flip */
-  --bg-primary: #f9fafb;
-  /* Crisp White / Off-White */
+  /* Premium Ice-Glass Light Theme */
+  --bg-primary: #f8fafc;
+  /* Frosted Ice Slate */
   --bg-secondary: #f1f5f9;
-  /* Light Slate */
+  /* Light Slate Layer */
 
   --color-emerald: #059669;
-  /* Emerald for Headings & Primary CTA */
   --color-mint: #10b981;
-  /* Mint Success */
   --color-cyan: #0284c7;
-  /* Electric Cyan Links/Hover */
 
   --accent-emerald: #059669;
   --accent-mint: #10b981;
   --accent-cyan: #0284c7;
-  --accent-purple: #059669;
-  --accent-blue: #10b981;
+  --accent-purple: #7c3aed;
+  --accent-blue: #0284c7;
 
-  --text-primary: #030712;
-  /* Deep Obsidian Text */
-  --text-secondary: #374151;
-  /* Slate Charcoal Text */
-  --text-muted: #6b7280;
+  --text-primary: #0f172a;
+  /* Deep Slate Charcoal */
+  --text-secondary: #475569;
+  /* Medium Slate Text */
+  --text-muted: #64748b;
 
-  --card-bg: rgba(255, 255, 255, 0.85);
-  --card-border: rgba(5, 150, 105, 0.18);
-  --card-glow: rgba(2, 132, 199, 0.18);
-  --nav-bg: rgba(249, 250, 251, 0.88);
-  --shadow-color: rgba(3, 7, 18, 0.08);
-  --gradient-end: #059669;
+  --card-bg: rgba(255, 255, 255, 0.92);
+  --card-border: rgba(5, 150, 105, 0.22);
+  --card-glow: rgba(2, 132, 199, 0.25);
+  --nav-bg: rgba(255, 255, 255, 0.92);
+  --shadow-color: rgba(15, 23, 42, 0.09);
+  --gradient-end: #0284c7;
 }
 
 * {

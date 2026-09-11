@@ -80,15 +80,15 @@ export default function FloatingControls() {
           display: flex;
           align-items: center;
           justify-content: center;
-          background: rgba(11, 18, 32, 0.75);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
+          background: var(--card-bg);
+          backdrop-filter: blur(14px);
+          -webkit-backdrop-filter: blur(14px);
           border: 1.5px solid var(--card-border);
           color: var(--text-primary);
           text-decoration: none;
           position: relative;
           transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-          box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 6px 20px var(--shadow-color);
         }
 
         .floating-social-link.linkedin:hover {
@@ -120,9 +120,9 @@ export default function FloatingControls() {
           content: attr(data-tooltip);
           position: absolute;
           right: 56px;
-          background: rgba(3, 7, 18, 0.92);
+          background: var(--bg-primary);
           backdrop-filter: blur(10px);
-          color: #ffffff;
+          color: var(--text-primary);
           padding: 6px 12px;
           border-radius: 8px;
           font-size: 0.78rem;
@@ -132,7 +132,7 @@ export default function FloatingControls() {
           pointer-events: none;
           transition: all 0.25s ease;
           border: 1px solid var(--card-border);
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+          box-shadow: 0 4px 15px var(--shadow-color);
         }
 
         .floating-social-link:hover::after {
@@ -152,10 +152,10 @@ export default function FloatingControls() {
           padding: 10px 20px;
           border: 2px solid var(--accent-emerald);
           border-radius: 999px;
-          background: rgba(11, 18, 32, 0.85);
+          background: var(--card-bg);
           backdrop-filter: blur(14px);
           -webkit-backdrop-filter: blur(14px);
-          color: #ffffff;
+          color: var(--text-primary);
           font-size: 0.88rem;
           font-weight: 700;
           text-decoration: none;

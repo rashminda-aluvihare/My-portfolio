@@ -38,10 +38,10 @@ export default function StarDotsBackground() {
       stars.push({
         x: Math.random() * W,
         y: Math.random() * H,
-        radius: Math.random() * 1.5 + 0.5,
+        radius: Math.random() * 1.6 + 0.6,
         alpha: Math.random(),
         speed: Math.random() * 0.015 + 0.005,
-        isPurple: Math.random() > 0.6,
+        isPurple: Math.random() > 0.5,
       });
     }
 
@@ -49,6 +49,8 @@ export default function StarDotsBackground() {
       if (!isRunning) return;
 
       ctx.clearRect(0, 0, W, H);
+
+      const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
 
       for (let i = 0; i < stars.length; i++) {
         const s = stars[i];
@@ -59,13 +61,21 @@ export default function StarDotsBackground() {
 
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-        ctx.fillStyle = s.isPurple
-          ? `rgba(145, 94, 255, ${Math.max(0.1, s.alpha * 0.85)})`
-          : `rgba(255, 255, 255, ${Math.max(0.1, s.alpha * 0.75)})`;
+
+        if (isDark) {
+          ctx.fillStyle = s.isPurple
+            ? `rgba(145, 94, 255, ${Math.max(0.1, s.alpha * 0.85)})`
+            : `rgba(255, 255, 255, ${Math.max(0.1, s.alpha * 0.75)})`;
+        } else {
+          // High-contrast vibrant dots for Light Mode
+          ctx.fillStyle = s.isPurple
+            ? `rgba(124, 58, 237, ${Math.max(0.15, s.alpha * 0.65)})`
+            : `rgba(2, 132, 199, ${Math.max(0.15, s.alpha * 0.65)})`;
+        }
 
         if (s.radius > 1.2) {
-          ctx.shadowBlur = 8;
-          ctx.shadowColor = s.isPurple ? '#915eff' : '#ffffff';
+          ctx.shadowBlur = isDark ? 8 : 4;
+          ctx.shadowColor = s.isPurple ? '#915eff' : '#0284c7';
         }
         ctx.fill();
         ctx.shadowBlur = 0;
