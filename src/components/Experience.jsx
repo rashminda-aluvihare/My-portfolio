@@ -36,8 +36,22 @@ export default function Experience() {
           </h2>
         </div>
 
-        {/* Experience List */}
-        <div style={{ maxWidth: '850px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '32px' }}>
+        {/* Experience Timeline */}
+        <div style={{ maxWidth: '850px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '32px', position: 'relative' }}>
+          {/* Vertical Glowing Connector Line */}
+          <div
+            style={{
+              position: 'absolute',
+              left: '-24px',
+              top: '20px',
+              bottom: '20px',
+              width: '3px',
+              background: 'linear-gradient(180deg, var(--accent-emerald) 0%, var(--accent-cyan) 100%)',
+              borderRadius: '999px',
+              boxShadow: '0 0 12px rgba(6, 182, 212, 0.4)',
+            }}
+          />
+
           {experiences.map((exp, idx) => (
             <div
               key={idx}
@@ -48,8 +62,35 @@ export default function Experience() {
                 flexDirection: 'column',
                 gap: '20px',
                 position: 'relative',
+                borderRadius: '20px',
+                transition: 'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-6px) scale(1.01)';
+                e.currentTarget.style.borderColor = 'var(--accent-emerald)';
+                e.currentTarget.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.3), 0 0 25px rgba(16, 185, 129, 0.3)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'none';
+                e.currentTarget.style.borderColor = 'var(--card-border)';
+                e.currentTarget.style.boxShadow = 'none';
               }}
             >
+              {/* Timeline Node Ring */}
+              <div
+                style={{
+                  position: 'absolute',
+                  left: '-32px',
+                  top: '36px',
+                  width: '18px',
+                  height: '18px',
+                  borderRadius: '50%',
+                  background: 'var(--accent-emerald)',
+                  border: '4px solid var(--bg-primary)',
+                  boxShadow: '0 0 14px var(--accent-emerald)',
+                  zIndex: 2,
+                }}
+              />
               {/* Header */}
               <div
                 style={{

@@ -12,6 +12,7 @@ import Activities from './components/Activities';
 import Contact from './components/Contact';
 import SplashScreen from './components/SplashScreen';
 import Chatbot from './components/Chatbot';
+import FloatingControls from './components/FloatingControls';
 import { ArrowUp } from 'lucide-react';
 
 export default function App() {
@@ -162,6 +163,9 @@ export default function App() {
 
       {/* AI Assistant Floating Chatbot */}
       <Chatbot />
+
+      {/* Floating Quick Action Controls (Social bar & CV Button) */}
+      <FloatingControls />
     </>
   );
 }

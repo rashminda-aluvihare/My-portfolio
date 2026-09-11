@@ -158,26 +158,39 @@ export default function Projects() {
             display: 'grid',
             gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))',
             gap: '30px',
+            perspective: '1000px',
           }}
         >
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="glass-panel"
+              className="glass-panel project-3d-card"
               style={{
-                borderRadius: '16px',
+                borderRadius: '20px',
                 overflow: 'hidden',
                 display: 'flex',
                 flexDirection: 'column',
                 height: '100%',
-                transition: 'var(--transition-bounce)',
+                transition: 'transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease, border-color 0.35s ease',
                 position: 'relative',
+                transformStyle: 'preserve-3d',
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-6px)';
+              onMouseMove={(e) => {
+                const rect = e.currentTarget.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = ((y - centerY) / centerY) * -8;
+                const rotateY = ((x - centerX) / centerX) * 8;
+                e.currentTarget.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px) scale(1.02)`;
+                e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(6, 182, 212, 0.35)';
+                e.currentTarget.style.borderColor = 'var(--accent-cyan)';
               }}
               onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'none';
+                e.currentTarget.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0) scale(1)';
+                e.currentTarget.style.boxShadow = 'none';
+                e.currentTarget.style.borderColor = 'var(--card-border)';
               }}
             >
               {/* Card Image Area */}

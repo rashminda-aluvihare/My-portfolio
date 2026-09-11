@@ -45,7 +45,7 @@ export default function Skills() {
     { name: 'Vercel Deployment', type: 'Frontend Hosting', level: 92, category: 'tools', color: '#ffffff', icon: <Layers size={18} />, evidence: 'Applied in: Production Deployments' },
   ];
 
-  const [viewMode, setViewMode] = useState('marquee'); // 'marquee' | 'grid'
+  const [viewMode, setViewMode] = useState('bento'); // 'bento' | 'marquee' | 'grid'
 
   const filteredSkills = activeCategory === 'all'
     ? skills
@@ -60,25 +60,29 @@ export default function Skills() {
   const marqueeRow1 = [...row1Skills, ...row1Skills, ...row1Skills, ...row1Skills];
   const marqueeRow2 = [...row2Skills, ...row2Skills, ...row2Skills, ...row2Skills];
 
-  const renderSkillCard = (skill, index, isMarquee = false) => (
+  const renderSkillCard = (skill, index, isMarquee = false, isBentoHero = false) => (
     <div
       key={`${skill.name}-${index}`}
-      className="glass-panel"
+      className={`glass-panel ${isBentoHero ? 'bento-hero-card' : ''}`}
       style={{
-        padding: '20px 22px',
+        padding: isBentoHero ? '24px 26px' : '20px 22px',
         display: 'flex',
         flexDirection: 'column',
+        justifyContent: 'space-between',
         gap: '14px',
         position: 'relative',
         overflow: 'hidden',
         minWidth: isMarquee ? '290px' : 'auto',
         maxWidth: isMarquee ? '310px' : 'none',
         flexShrink: 0,
-        transition: 'all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        transition: 'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
+        background: isBentoHero
+          ? `linear-gradient(135deg, rgba(11, 18, 32, 0.9) 0%, ${skill.color}15 100%)`
+          : 'var(--card-bg)',
       }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.transform = 'translateY(-5px) scale(1.02)';
-        e.currentTarget.style.boxShadow = `0 15px 30px rgba(0,0,0,0.25), 0 0 20px -3px ${skill.color}60`;
+        e.currentTarget.style.transform = 'translateY(-6px) scale(1.02)';
+        e.currentTarget.style.boxShadow = `0 18px 36px rgba(0,0,0,0.3), 0 0 25px -2px ${skill.color}70`;
         e.currentTarget.style.borderColor = skill.color;
       }}
       onMouseLeave={(e) => {
@@ -91,50 +95,54 @@ export default function Skills() {
         <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
           <div
             style={{
-              background: `${skill.color}18`,
+              background: `${skill.color}22`,
               color: skill.color,
-              padding: '10px',
-              borderRadius: '10px',
+              padding: isBentoHero ? '12px' : '10px',
+              borderRadius: '12px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
               flexShrink: 0,
+              boxShadow: `0 0 12px ${skill.color}40`,
             }}
           >
             {skill.icon}
           </div>
-          <span style={{ fontWeight: 700, fontSize: '0.98rem', color: 'var(--text-primary)' }}>{skill.name}</span>
+          <div>
+            <div style={{ fontWeight: 800, fontSize: isBentoHero ? '1.1rem' : '0.98rem', color: 'var(--text-primary)' }}>{skill.name}</div>
+            <div style={{ fontSize: '0.74rem', color: 'var(--text-secondary)', fontWeight: 600 }}>{skill.type}</div>
+          </div>
         </div>
         <span
           style={{
-            fontSize: '0.70rem',
+            fontSize: '0.72rem',
             fontWeight: 700,
             color: skill.color,
-            background: `${skill.color}15`,
-            padding: '4px 10px',
+            background: `${skill.color}18`,
+            padding: '4px 12px',
             borderRadius: '999px',
-            border: `1px solid ${skill.color}35`,
+            border: `1px solid ${skill.color}40`,
             whiteSpace: 'nowrap',
           }}
         >
-          {skill.type}
+          {skill.level}% Proficient
         </span>
       </div>
 
       {/* Animated Progress Bar */}
       <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', marginTop: '4px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.75rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
-          <span>Proficiency</span>
+          <span>Mastery Level</span>
           <span style={{ color: skill.color, fontWeight: 700 }}>{skill.level}%</span>
         </div>
-        <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.06)', borderRadius: '999px', overflow: 'hidden' }}>
+        <div style={{ width: '100%', height: isBentoHero ? '8px' : '6px', background: 'rgba(255,255,255,0.06)', borderRadius: '999px', overflow: 'hidden' }}>
           <div
             style={{
               width: `${skill.level}%`,
               height: '100%',
               background: `linear-gradient(90deg, ${skill.color}, ${skill.color}cc)`,
               borderRadius: '999px',
-              boxShadow: `0 0 10px ${skill.color}80`,
+              boxShadow: `0 0 12px ${skill.color}90`,
               transition: 'width 1s ease-in-out',
             }}
           />
@@ -143,7 +151,7 @@ export default function Skills() {
 
       {/* Evidence Tag */}
       {skill.evidence && (
-        <div style={{ fontSize: '0.74rem', color: 'var(--text-muted)', fontWeight: 600, marginTop: '2px', borderTop: '1px solid var(--card-border)', paddingTop: '8px' }}>
+        <div style={{ fontSize: '0.76rem', color: 'var(--text-muted)', fontWeight: 600, marginTop: '2px', borderTop: '1px solid var(--card-border)', paddingTop: '8px' }}>
           <span style={{ color: skill.color }}>✓</span> {skill.evidence}
         </div>
       )}
@@ -159,7 +167,7 @@ export default function Skills() {
             Skills & Tech Competencies
           </h2>
           <p style={{ color: 'var(--text-secondary)', marginTop: '8px', fontSize: '0.95rem' }}>
-            Hover over any card to pause auto-scrolling & view details
+            Interactive Bento Grid & Competency Index
           </p>
         </div>
 
@@ -205,7 +213,7 @@ export default function Skills() {
             ))}
           </div>
 
-          {/* View Switcher: Auto-Marquee vs Grid */}
+          {/* View Switcher */}
           <div
             style={{
               display: 'inline-flex',
@@ -216,6 +224,22 @@ export default function Skills() {
               gap: '4px',
             }}
           >
+            <button
+              onClick={() => setViewMode('bento')}
+              style={{
+                background: viewMode === 'bento' ? 'var(--accent-cyan)' : 'transparent',
+                color: viewMode === 'bento' ? '#030712' : 'var(--text-secondary)',
+                border: 'none',
+                borderRadius: '8px',
+                padding: '6px 14px',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                cursor: 'pointer',
+                transition: 'all 0.2s ease',
+              }}
+            >
+              🍱 Bento Grid
+            </button>
             <button
               onClick={() => setViewMode('marquee')}
               style={{
@@ -252,8 +276,26 @@ export default function Skills() {
         </div>
       </div>
 
-      {/* Marquee View: Full-width infinite horizontal auto-scrolling slider */}
-      {viewMode === 'marquee' ? (
+      {/* Bento Grid View (Default) */}
+      {viewMode === 'bento' ? (
+        <div className="container">
+          <div
+            className="bento-skills-grid"
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+              gap: '20px',
+            }}
+          >
+            {filteredSkills.map((skill, index) => {
+              // Highlight top mastery skills as Hero cards in Bento layout
+              const isHeroCard = skill.level >= 92;
+              return renderSkillCard(skill, index, false, isHeroCard);
+            })}
+          </div>
+        </div>
+      ) : viewMode === 'marquee' ? (
+        /* Marquee View: Full-width infinite horizontal auto-scrolling slider */
         <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           {/* Top Marquee Row: Moves Left */}
           <div className="marquee-container">
@@ -272,7 +314,7 @@ export default function Skills() {
           )}
         </div>
       ) : (
-        /* Grid View Fallback */
+        /* Standard Grid View Fallback */
         <div className="container">
           <div
             className="skills-grid"
@@ -282,7 +324,7 @@ export default function Skills() {
               gap: '20px',
             }}
           >
-            {filteredSkills.map((skill, index) => renderSkillCard(skill, index, false))}
+            {filteredSkills.map((skill, index) => renderSkillCard(skill, index, false, false))}
           </div>
         </div>
       )}

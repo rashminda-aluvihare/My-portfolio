@@ -179,9 +179,23 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Right Column: Profile Avatar Photo */}
+        {/* Right Column: Profile Avatar Photo with Floating Badges */}
         <div className="hero-avatar-column">
           <div className="hero-avatar-wrapper">
+            {/* Floating Tech Badges around avatar */}
+            <div className="floating-badge badge-react">
+              <span style={{ color: '#61DAFB' }}>⚛</span> React
+            </div>
+            <div className="floating-badge badge-node">
+              <span style={{ color: '#38EF7D' }}>⚡</span> Node.js
+            </div>
+            <div className="floating-badge badge-sql">
+              <span style={{ color: '#00F2FE' }}>🗄️</span> SQL & DB
+            </div>
+            <div className="floating-badge badge-next">
+              <span style={{ color: '#9B51E0' }}>🌐</span> Web Dev
+            </div>
+
             <div className="hero-avatar-ring">
               <img
                 src={profileImg}
@@ -349,22 +363,45 @@ export default function Hero() {
           max-width: 90vw;
           aspect-ratio: 898 / 1200;
           border-radius: 24px;
-          padding: 0;
-          background: transparent;
-          border: none;
-          box-shadow: 0 16px 38px rgba(0, 0, 0, 0.35);
+          padding: 3px;
+          background: linear-gradient(135deg, var(--accent-emerald) 0%, var(--accent-cyan) 50%, #9B51E0 100%);
+          box-shadow: 0 16px 38px rgba(16, 185, 129, 0.25), 0 0 30px rgba(6, 182, 212, 0.2);
           position: relative;
           z-index: 1;
           overflow: hidden;
           animation: avatarPopIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
                      avatarFloat 5s ease-in-out infinite 0.8s;
-          transition: transform 0.35s ease, box-shadow 0.35s ease;
+          transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
           cursor: pointer;
         }
 
+        .hero-avatar-ring::before {
+          content: '';
+          position: absolute;
+          top: -50%;
+          left: -50%;
+          width: 200%;
+          height: 200%;
+          background: linear-gradient(
+            45deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.2) 50%,
+            transparent 100%
+          );
+          transform: rotate(45deg);
+          animation: avatarShine 4s linear infinite;
+          z-index: 2;
+          pointer-events: none;
+        }
+
+        @keyframes avatarShine {
+          0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+          100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
         .hero-avatar-ring:hover {
-          transform: translateY(-8px) scale(1.03);
-          box-shadow: 0 22px 48px rgba(0, 242, 254, 0.25) !important;
+          transform: translateY(-8px) scale(1.04);
+          box-shadow: 0 22px 50px rgba(6, 182, 212, 0.4), 0 0 40px rgba(16, 185, 129, 0.3) !important;
         }
 
         @keyframes avatarPopIn {
