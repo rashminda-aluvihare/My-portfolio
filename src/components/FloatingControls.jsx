@@ -1,5 +1,6 @@
 import React from 'react';
 import { Download, Mail } from 'lucide-react';
+import profileImg from '../assets/profile.jpg';
 
 export default function FloatingControls() {
   return (
@@ -45,6 +46,17 @@ export default function FloatingControls() {
         </a>
       </aside>
 
+      {/* Floating Profile Photo & Status Badge Pill (Woujoud Style) */}
+      <div className="floating-profile-widget">
+        <div className="floating-avatar-circle">
+          <img src={profileImg} alt="Rashminda Aluvihare" className="floating-avatar-img" />
+        </div>
+        <div className="floating-status-pill">
+          <span className="status-ping-dot" />
+          <span>Available for work</span>
+        </div>
+      </div>
+
       {/* Floating CV Download Pill Button */}
       <a
         href="/assets/Rashminda Aluvihare.pdf"
@@ -64,7 +76,7 @@ export default function FloatingControls() {
         /* Floating Social Bar */
         .floating-social-bar {
           position: fixed;
-          bottom: 220px;
+          bottom: 270px;
           right: 24px;
           z-index: 998;
           display: flex;
@@ -140,6 +152,78 @@ export default function FloatingControls() {
           right: 52px;
         }
 
+        /* Floating Profile Avatar & Status Pill (Woujoud Placement) */
+        .floating-profile-widget {
+          position: fixed;
+          bottom: 95px;
+          right: 24px;
+          z-index: 998;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .floating-avatar-circle {
+          width: 72px;
+          height: 72px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 3px solid var(--accent-purple);
+          box-shadow: 0 8px 25px rgba(145, 94, 255, 0.45);
+          cursor: pointer;
+          transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+          animation: avatarFloat 4s ease-in-out infinite;
+        }
+
+        .floating-avatar-circle:hover {
+          transform: scale(1.15) rotate(5deg);
+          border-color: var(--accent-cyan);
+          box-shadow: 0 12px 35px rgba(6, 182, 212, 0.6);
+        }
+
+        .floating-avatar-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+
+        .floating-status-pill {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          padding: 5px 12px;
+          background: rgba(11, 18, 32, 0.85);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border-radius: 20px;
+          border: 1px solid rgba(16, 185, 129, 0.4);
+          font-size: 0.72rem;
+          color: #10b981;
+          font-weight: 600;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .status-ping-dot {
+          width: 7px;
+          height: 7px;
+          background: #10b981;
+          border-radius: 50%;
+          box-shadow: 0 0 8px #10b981;
+          animation: blinkDot 2s infinite;
+        }
+
+        @keyframes blinkDot {
+          0%, 100% { opacity: 1; transform: scale(1); }
+          50% { opacity: 0.3; transform: scale(1.3); }
+        }
+
+        @keyframes avatarFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+
         /* Floating CV Button */
         .floating-cv-btn {
           position: fixed;
@@ -161,7 +245,7 @@ export default function FloatingControls() {
           text-decoration: none;
           cursor: pointer;
           transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-          box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);
+          box-shadow: 0 6px 20px var(--shadow-color);
           animation: floatPulse 3s ease-in-out infinite;
         }
 
@@ -223,6 +307,10 @@ export default function FloatingControls() {
           }
 
           .floating-social-link::after {
+            display: none;
+          }
+
+          .floating-profile-widget {
             display: none;
           }
 
