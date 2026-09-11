@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { Mail, Send, Sparkles, CheckCircle2 } from 'lucide-react';
+import Globe3DCanvas from './Globe3DCanvas';
+import StarDotsBackground from './StarDotsBackground';
 
 // To receive client messages in your email, get a free Access Key from https://web3forms.com
 // Enter your email on their home page, copy the key from your inbox, and paste it below:
@@ -75,8 +77,11 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section" style={{ background: 'var(--bg-secondary)', position: 'relative' }}>
-      <div className="container">
+    <section id="contact" className="section" style={{ background: 'var(--bg-secondary)', position: 'relative', overflow: 'hidden' }}>
+      {/* Animated Star Dots Space Background */}
+      <StarDotsBackground />
+
+      <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         {/* Section Header */}
         <div style={{ textAlign: 'center', marginBottom: '50px' }}>
           <h2 style={{ fontSize: '2.5rem', fontWeight: 800 }} className="gradient-text">
@@ -87,8 +92,10 @@ export default function Contact() {
           </p>
         </div>
 
-        {/* Contact Form Container */}
-        <div style={{ maxWidth: '750px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        {/* 2-Column Layout: Contact Form (Left) & 3D Rotating Globe (Right) */}
+        <div className="contact-main-grid">
+          {/* Left Column: Form & Direct Cards */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
           {/* Direct Email & WhatsApp Contact Options */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }} className="contact-direct-grid">
             {/* Direct Email Card */}
@@ -382,12 +389,43 @@ export default function Contact() {
             )}
           </div>
 
+          </div>
+
+          {/* Right Column: 3D Rotating Globe & Orbiting Atmosphere Rings */}
+          <div className="contact-globe-column">
+            <Globe3DCanvas />
+          </div>
         </div>
       </div>
+
       <style>{`
-        @media (max-width: 850px) {
-          .contact-grid {
-            grid-template-columns: 1fr !important;
+        .contact-main-grid {
+          display: grid;
+          grid-template-columns: 1.15fr 0.85fr;
+          gap: 40px;
+          align-items: center;
+          max-width: 1150px;
+          margin: 0 auto;
+        }
+
+        .contact-globe-column {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+          height: 100%;
+          min-height: 420px;
+        }
+
+        @media (max-width: 992px) {
+          .contact-main-grid {
+            grid-template-columns: 1fr;
+            gap: 30px;
+          }
+
+          .contact-globe-column {
+            order: -1;
+            min-height: 320px;
           }
         }
       `}</style>
