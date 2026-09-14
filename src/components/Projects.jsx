@@ -244,12 +244,9 @@ export default function Projects() {
             <div className="section-label" style={{ marginBottom: '10px' }}>
               SELECTED WORK / 03
             </div>
-            <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
-              Featured Platforms &amp; Case Studies
+            <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
+              Projects
             </h2>
-            <p style={{ color: '#475569', fontSize: '1rem', marginTop: '8px', lineHeight: 1.6 }}>
-              The end-to-end software deliverables, business requirement specifications, and interactive banking platforms businesses depend on.
-            </p>
           </div>
 
           {/* Top-Right: 'View all projects ↗' link & Slider Arrow Controls */}

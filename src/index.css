@@ -136,28 +136,29 @@ h6 {
   }
 }
 
-/* ── SECTION STYLES (Light Modern Editorial) ── */
+/* ── SECTION STYLES (Light Modern Editorial with Ambient Flow) ── */
 .section {
   padding: 85px 0;
   position: relative;
   z-index: 2;
+  background-color: transparent;
 }
 
 .section-white {
-  background-color: #FFFFFF;
+  background-color: transparent;
 }
 
 .section-light {
-  background-color: #F8FAFC;
+  background-color: rgba(248, 250, 252, 0.5);
 }
 
 .section-soft {
-  background-color: #F0F5FF;
+  background-color: rgba(240, 245, 255, 0.55);
 }
 
 /* Legacy mapped to light sections */
 .section-dark {
-  background-color: #F8FAFC;
+  background-color: transparent;
   color: var(--color-text-primary);
 }
 

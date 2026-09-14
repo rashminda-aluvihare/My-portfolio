@@ -86,7 +86,7 @@ export default function Activities() {
             ACTIVITIES &amp; LEADERSHIP / 07
           </div>
           <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.4rem)', fontWeight: 900, color: '#0B0C0E', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
-            Extracurricular &amp; Leadership Engagements
+            Extracurricular Activities
           </h2>
           <p style={{ color: '#6B7280', fontSize: '1.05rem', marginTop: '10px', maxWidth: '750px' }}>
             Active participation in technology communities, industrial site visits, and school-level leadership initiatives.

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Send, CheckCircle2, Mail, MessageCircle, ArrowRight } from 'lucide-react';
+import { Send, CheckCircle2 } from 'lucide-react';
 import WorldConnectingGlobe from './WorldConnectingGlobe';
 
 
@@ -274,55 +274,18 @@ export default function Contact() {
             )}
           </div>
 
-          {/* Right Column: Direct Channels & Interactive 3D Real Earth Globe */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '18px', width: '100%' }}>
-            {/* Direct Channel Cards (Email & WhatsApp) */}
-            <div className="direct-channels-grid">
-              {/* Direct Email */}
-              <a
-                href="mailto:rashmindaluvihare@gmail.com"
-                className="channel-card-link"
-              >
-                <div className="channel-icon-box box-blue">
-                  <Mail size={20} />
-                </div>
-                <div style={{ minWidth: 0, flex: 1 }}>
-                  <span className="channel-label">Direct Email</span>
-                  <p className="channel-val">rashmindaluvihare@gmail.com</p>
-                </div>
-                <ArrowRight size={15} className="channel-arrow" />
-              </a>
-
-              {/* WhatsApp */}
-              <a
-                href="https://wa.me/94779743901?text=Hi%20Rashminda,%20I%20saw%20your%20portfolio!"
-                target="_blank"
-                rel="noreferrer"
-                className="channel-card-link"
-              >
-                <div className="channel-icon-box box-emerald">
-                  <MessageCircle size={20} />
-                </div>
-                <div style={{ minWidth: 0, flex: 1 }}>
-                  <span className="channel-label">WhatsApp Chat</span>
-                  <p className="channel-val">+94 77 974 3901</p>
-                </div>
-                <ArrowRight size={15} className="channel-arrow" />
-              </a>
-            </div>
-
-            {/* Interactive 3D Real World Earth Animation */}
-            <div
-              style={{
-                width: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                position: 'relative',
-              }}
-            >
-              <WorldConnectingGlobe />
-            </div>
+          {/* Right Column: Interactive 3D Real Earth Globe */}
+          <div
+            className="contact-globe-column"
+            style={{
+              width: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              position: 'relative',
+            }}
+          >
+            <WorldConnectingGlobe />
           </div>
         </div>
       </div>

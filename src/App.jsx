@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import Navbar from './components/Navbar';
+import FullPortfolioBackground from './components/FullPortfolioBackground';
 import Hero from './components/Hero';
 import About from './components/About';
 import Experience from './components/Experience';
@@ -50,6 +51,9 @@ export default function App() {
 
   return (
     <>
+      {/* Full Portfolio Ambient Background Animation */}
+      <FullPortfolioBackground />
+
       {/* Fixed top Navbar dock */}
       <Navbar />
 
