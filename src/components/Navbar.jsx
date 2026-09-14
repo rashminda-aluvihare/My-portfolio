@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Sun, Moon } from 'lucide-react';
+import { Menu, X, ArrowUpRight } from 'lucide-react';
 
-export default function Navbar({ theme, toggleTheme }) {
+export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [scrolled, setScrolled] = useState(false);
@@ -21,14 +21,12 @@ export default function Navbar({ theme, toggleTheme }) {
   // Track active section and scroll state
   useEffect(() => {
     const handleScroll = () => {
-      // Scroll state for translucent background
-      if (window.scrollY > 50) {
+      if (window.scrollY > 30) {
         setScrolled(true);
       } else {
         setScrolled(false);
       }
 
-      // Check current section
       const sections = ['home', 'about', 'experience', 'projects', 'education', 'certifications', 'skills', 'activities', 'contact'];
       const scrollPos = window.scrollY + 200;
 
@@ -51,58 +49,44 @@ export default function Navbar({ theme, toggleTheme }) {
 
   return (
     <nav
-      className={`glass-panel`}
       style={{
         position: 'fixed',
-        top: '20px',
+        top: '16px',
         left: '50%',
         transform: 'translateX(-50%)',
-        width: '90%',
-        maxWidth: '1100px',
+        width: 'max-content',
+        maxWidth: '92%',
         zIndex: 1000,
-        borderRadius: '16px',
-        padding: scrolled ? '10px 24px' : '16px 24px',
-        background: scrolled ? 'var(--nav-bg)' : 'rgba(10, 13, 20, 0.25)',
-        backdropFilter: 'blur(20px)',
-        border: '1px solid var(--card-border)',
-        boxShadow: scrolled ? '0 10px 30px rgba(0, 0, 0, 0.4)' : 'none',
+        borderRadius: '999px',
+        padding: scrolled ? '7px 18px' : '9px 22px',
+        background: scrolled ? 'rgba(255, 255, 255, 0.95)' : 'rgba(255, 255, 255, 0.88)',
+        backdropFilter: 'blur(16px)',
+        WebkitBackdropFilter: 'blur(16px)',
+        border: '1px solid rgba(226, 232, 240, 0.95)',
+        boxShadow: scrolled ? '0 10px 30px rgba(15, 23, 42, 0.08)' : '0 4px 18px rgba(15, 23, 42, 0.04)',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'space-between',
-        transition: 'var(--transition-smooth)',
+        justifyContent: 'center',
+        gap: '16px',
+        transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
       }}
     >
-      {/* Brand logo */}
-      <a
-        href="#home"
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          textDecoration: 'none',
-          color: 'var(--text-primary)',
-          fontWeight: 800,
-          fontSize: '1.25rem',
-          letterSpacing: '-0.02em',
-        }}
-      >
-        <span className="gradient-text">Rashminda Aluvihare</span>
-      </a>
-
       {/* Desktop Navigation Items */}
       <div
         className="nav-links-desktop"
         style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '20px',
+          gap: '18px',
         }}
       >
         <ul
           style={{
             display: 'flex',
             listStyle: 'none',
-            gap: '18px',
+            gap: '14px',
+            margin: 0,
+            padding: 0,
           }}
         >
           {navItems.map((item) => {
@@ -114,17 +98,19 @@ export default function Navbar({ theme, toggleTheme }) {
                 <a
                   href={item.href}
                   style={{
-                    color: isActive ? 'var(--accent-cyan)' : 'var(--text-secondary)',
+                    color: isActive ? '#2563EB' : '#475569',
                     textDecoration: 'none',
-                    fontWeight: 600,
-                    fontSize: '0.9rem',
-                    transition: 'var(--transition-smooth)',
+                    fontWeight: isActive ? 700 : 500,
+                    fontSize: '0.88rem',
+                    transition: 'all 0.2s ease',
                     position: 'relative',
-                    padding: '8px 4px',
+                    padding: '6px 4px',
+                    fontFamily: 'var(--font-display)',
+                    letterSpacing: '0.01em',
                   }}
-                  onMouseEnter={(e) => (e.target.style.color = 'var(--accent-cyan)')}
+                  onMouseEnter={(e) => (e.target.style.color = '#2563EB')}
                   onMouseLeave={(e) =>
-                    (e.target.style.color = isActive ? 'var(--accent-cyan)' : 'var(--text-secondary)')
+                    (e.target.style.color = isActive ? '#2563EB' : '#475569')
                   }
                 >
                   {item.label}
@@ -132,13 +118,13 @@ export default function Navbar({ theme, toggleTheme }) {
                     <span
                       style={{
                         position: 'absolute',
-                        bottom: 0,
+                        bottom: '-2px',
                         left: '4px',
                         right: '4px',
                         height: '2px',
-                        background: 'linear-gradient(90deg, var(--accent-cyan), var(--accent-purple))',
+                        background: '#2563EB',
                         borderRadius: '2px',
-                        boxShadow: '0 0 8px var(--accent-cyan)',
+                        boxShadow: '0 0 8px rgba(37, 99, 235, 0.5)',
                       }}
                     />
                   )}
@@ -148,149 +134,222 @@ export default function Navbar({ theme, toggleTheme }) {
           })}
         </ul>
 
-
-
-        {/* Theme switcher */}
-        <button
-          onClick={toggleTheme}
+        {/* Right Nav Action: Get In Touch Pill Button */}
+        <a
+          href="#contact"
           style={{
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            color: 'var(--text-primary)',
-            display: 'flex',
+            display: 'inline-flex',
             alignItems: 'center',
-            justifyContent: 'center',
-            padding: '6px',
-            borderRadius: '8px',
-            transition: 'var(--transition-smooth)',
+            gap: '6px',
+            background: 'linear-gradient(135deg, #2563EB 0%, #4F46E5 50%, #7C3AED 100%)',
+            color: '#FFFFFF',
+            textDecoration: 'none',
+            fontSize: '0.82rem',
+            fontWeight: 700,
+            padding: '8px 18px',
+            borderRadius: '999px',
+            transition: 'all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1)',
+            boxShadow: '0 3px 12px rgba(37, 99, 235, 0.35)',
+            fontFamily: 'var(--font-display)',
           }}
           onMouseEnter={(e) => {
-            e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
-            e.currentTarget.style.color = 'var(--accent-cyan)';
+            e.currentTarget.style.transform = 'scale(1.04)';
+            e.currentTarget.style.boxShadow = '0 6px 18px rgba(37, 99, 235, 0.5)';
           }}
           onMouseLeave={(e) => {
-            e.currentTarget.style.background = 'none';
-            e.currentTarget.style.color = 'var(--text-primary)';
+            e.currentTarget.style.transform = 'none';
+            e.currentTarget.style.boxShadow = '0 3px 12px rgba(37, 99, 235, 0.35)';
           }}
-          aria-label="Toggle Theme"
         >
-          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
+          <span>Get in Touch</span>
+          <ArrowUpRight size={14} />
+        </a>
       </div>
 
-      {/* Mobile menu controls */}
-      <div
-        className="nav-mobile-controls"
-        style={{
-          display: 'none',
-          alignItems: 'center',
-          gap: '12px',
-        }}
-      >
-        <button
-          onClick={toggleTheme}
+      {/* Mobile Bar: Brand Logo & Hamburger */}
+      <div className="mobile-bar-wrapper" style={{ display: 'none', alignItems: 'center', justifyContent: 'space-between', width: '100%', gap: '16px' }}>
+        <a
+          href="#home"
           style={{
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            color: 'var(--text-primary)',
-            padding: '6px',
-            borderRadius: '8px',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
+            gap: '8px',
+            textDecoration: 'none',
+            color: '#0F172A',
+            fontFamily: 'var(--font-display)',
+            fontWeight: 800,
+            fontSize: '1rem',
           }}
-          aria-label="Toggle Theme Mobile"
+          onClick={() => setIsOpen(false)}
         >
-          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
-        </button>
-        
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          style={{
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            color: 'var(--text-primary)',
-            padding: '6px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          }}
-          aria-label="Toggle Menu"
-        >
-          {isOpen ? <X size={22} /> : <Menu size={22} />}
-        </button>
+          <span
+            style={{
+              width: '32px',
+              height: '32px',
+              borderRadius: '999px',
+              background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+              color: '#FFFFFF',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              fontSize: '0.82rem',
+              fontWeight: 900,
+              boxShadow: '0 2px 8px rgba(37, 99, 235, 0.3)',
+            }}
+          >
+            RA
+          </span>
+          <span style={{ letterSpacing: '-0.02em' }}>Rashminda</span>
+        </a>
+
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+          <a
+            href="#contact"
+            onClick={() => setIsOpen(false)}
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '4px',
+              background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+              color: '#FFFFFF',
+              textDecoration: 'none',
+              fontSize: '0.74rem',
+              fontWeight: 700,
+              padding: '6px 12px',
+              borderRadius: '999px',
+              fontFamily: 'var(--font-display)',
+            }}
+          >
+            <span>Contact</span>
+            <ArrowUpRight size={12} />
+          </a>
+
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            style={{
+              background: '#F1F5F9',
+              border: '1px solid rgba(226, 232, 240, 0.9)',
+              cursor: 'pointer',
+              color: '#0F172A',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '34px',
+              height: '34px',
+              borderRadius: '50%',
+              transition: 'all 0.2s ease',
+            }}
+            aria-label="Toggle Menu"
+          >
+            {isOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
+      {/* Mobile Navigation Drawer */}
       {isOpen && (
         <div
           style={{
-            position: 'absolute',
-            top: 'calc(100% + 10px)',
-            left: 0,
-            right: 0,
-            background: 'var(--bg-secondary)',
-            border: '1px solid var(--card-border)',
-            padding: '16px',
+            position: 'fixed',
+            top: '75px',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            width: 'calc(100vw - 32px)',
+            maxWidth: '390px',
+            maxHeight: 'calc(100vh - 90px)',
+            overflowY: 'auto',
+            background: '#FFFFFF',
+            border: '1px solid rgba(226, 232, 240, 0.95)',
+            borderRadius: '20px',
+            padding: '20px 18px',
+            boxShadow: '0 20px 45px rgba(15, 23, 42, 0.16)',
             display: 'flex',
             flexDirection: 'column',
-            gap: '8px',
-            borderRadius: '16px',
-            boxShadow: '0 20px 50px rgba(0, 0, 0, 0.6)',
-            zIndex: 9999,
+            gap: '12px',
+            zIndex: 1001,
           }}
         >
           <ul
             style={{
+              listStyle: 'none',
+              padding: 0,
+              margin: 0,
               display: 'flex',
               flexDirection: 'column',
-              listStyle: 'none',
-              gap: '4px',
-              margin: 0,
-              padding: 0,
+              gap: '6px',
             }}
           >
             {navItems.map((item) => {
               const sectionName = item.href.substring(1);
               const isActive = activeSection === sectionName;
+
               return (
                 <li key={item.label}>
                   <a
                     href={item.href}
                     onClick={() => setIsOpen(false)}
                     style={{
-                      color: isActive ? 'var(--accent-cyan)' : 'var(--text-primary)',
-                      background: isActive ? 'rgba(0, 242, 254, 0.12)' : 'transparent',
-                      textDecoration: 'none',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'space-between',
+                      color: isActive ? '#2563EB' : '#334155',
                       fontWeight: isActive ? 700 : 600,
-                      fontSize: '1rem',
-                      display: 'block',
-                      padding: '12px 16px',
+                      textDecoration: 'none',
+                      fontSize: '0.94rem',
+                      padding: '10px 14px',
                       borderRadius: '10px',
-                      transition: 'all 0.2s ease',
-                      border: isActive ? '1px solid rgba(0, 242, 254, 0.3)' : '1px solid transparent',
+                      background: isActive ? '#EFF6FF' : 'transparent',
+                      fontFamily: 'var(--font-display)',
+                      transition: 'all 0.15s ease',
                     }}
                   >
-                    {item.label}
+                    <span>{item.label}</span>
+                    {isActive && <span style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#2563EB' }} />}
                   </a>
                 </li>
               );
             })}
-
           </ul>
+
+          <div style={{ height: '1px', background: 'rgba(226, 232, 240, 0.9)', margin: '4px 0' }} />
+
+          <a
+            href="#contact"
+            onClick={() => setIsOpen(false)}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+              color: '#FFFFFF',
+              textDecoration: 'none',
+              fontWeight: 700,
+              fontSize: '0.92rem',
+              padding: '12px',
+              borderRadius: '999px',
+              textAlign: 'center',
+              fontFamily: 'var(--font-display)',
+              boxShadow: '0 4px 14px rgba(37, 99, 235, 0.35)',
+            }}
+          >
+            <span>Get in Touch</span>
+            <ArrowUpRight size={16} />
+          </a>
         </div>
       )}
 
-      {/* Injecting CSS specifically for responsive display toggle */}
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
+          nav {
+            width: calc(100% - 32px) !important;
+            max-width: 440px !important;
+            padding: 8px 16px !important;
+          }
           .nav-links-desktop {
             display: none !important;
           }
-          .nav-mobile-controls {
+          .mobile-bar-wrapper {
             display: flex !important;
           }
         }

@@ -1,327 +1,121 @@
-import React from 'react';
-import { Download, Mail } from 'lucide-react';
-import profileImg from '../assets/profile.jpg';
+import React, { useState, useEffect } from 'react';
+import { Mail, ArrowUp } from 'lucide-react';
 
 export default function FloatingControls() {
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 350) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <>
-      {/* Floating Vertical Social Bar on the Right Edge */}
-      <aside aria-label="Quick Social Links" className="floating-social-bar">
+      {/* Fixed Right-Side Vertical Floating Social Dock */}
+      <aside aria-label="Social Channels" className="floating-social-dock">
+        {/* LinkedIn */}
         <a
-          href="https://linkedin.com/in/rashminda-aluvihare-98604532b"
+          href="https://www.linkedin.com/in/rashminda-aluvihare/"
           target="_blank"
           rel="noreferrer"
-          className="floating-social-link linkedin"
-          data-tooltip="LinkedIn Profile"
-          aria-label="LinkedIn Profile"
+          className="floating-social-btn"
+          aria-label="LinkedIn"
         >
-          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
-            <rect x="2" y="9" width="4" height="12"></rect>
-            <circle cx="4" cy="4" r="2"></circle>
+          <svg viewBox="0 0 24 24" width="19" height="19" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect x="2" y="9" width="4" height="12" />
+            <circle cx="4" cy="4" r="2" />
           </svg>
+          <span className="floating-social-tooltip">LinkedIn</span>
         </a>
 
+        {/* GitHub */}
         <a
           href="https://github.com/rashminda-aluvihare"
           target="_blank"
           rel="noreferrer"
-          className="floating-social-link github"
-          data-tooltip="GitHub Projects"
-          aria-label="GitHub Projects"
+          className="floating-social-btn"
+          aria-label="GitHub"
         >
-          <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
-            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+          <svg viewBox="0 0 24 24" width="19" height="19" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+            <path d="M9 18c-4.51 2-5-2-7-2" />
           </svg>
+          <span className="floating-social-tooltip">GitHub</span>
         </a>
 
+        {/* Email */}
         <a
-          href="mailto:rashmindaaluvihare@gmail.com"
-          className="floating-social-link mail"
-          data-tooltip="Email Me"
-          aria-label="Send Email"
+          href="mailto:rashmindaluvihare@gmail.com"
+          className="floating-social-btn"
+          aria-label="Email"
         >
-          <Mail size={20} />
+          <Mail size={19} strokeWidth={2.2} />
+          <span className="floating-social-tooltip">Email</span>
+        </a>
+
+        {/* WhatsApp */}
+        <a
+          href="https://wa.me/94779743901?text=Hi%20Rashminda,%20I%20saw%20your%20portfolio!"
+          target="_blank"
+          rel="noreferrer"
+          className="floating-social-btn"
+          aria-label="WhatsApp"
+        >
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413" />
+          </svg>
+          <span className="floating-social-tooltip">WhatsApp</span>
         </a>
       </aside>
 
-      {/* Floating Profile Photo & Status Badge Pill (Woujoud Style) */}
-      <div className="floating-profile-widget">
-        <div className="floating-avatar-circle">
-          <img src={profileImg} alt="Rashminda Aluvihare" className="floating-avatar-img" />
-        </div>
-        <div className="floating-status-pill">
-          <span className="status-ping-dot" />
-          <span>Available for work</span>
-        </div>
-      </div>
-
-      {/* Floating CV Download Pill Button */}
-      <a
-        href="/assets/Rashminda Aluvihare.pdf"
-        download="Rashminda Aluvihare.pdf"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="floating-cv-btn"
-        aria-label="Download CV"
-      >
-        <div className="floating-cv-icon-wrapper">
-          <Download size={18} />
-        </div>
-        <span className="floating-cv-text">Get My CV</span>
-      </a>
-
-      <style>{`
-        /* Floating Social Bar */
-        .floating-social-bar {
-          position: fixed;
-          bottom: 270px;
-          right: 24px;
-          z-index: 998;
-          display: flex;
-          flex-direction: column;
-          gap: 12px;
-          animation: slideInRight 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
-
-        .floating-social-link {
-          width: 44px;
-          height: 44px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: var(--card-bg);
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
-          border: 1.5px solid var(--card-border);
-          color: var(--text-primary);
-          text-decoration: none;
-          position: relative;
-          transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-          box-shadow: 0 6px 20px var(--shadow-color);
-        }
-
-        .floating-social-link.linkedin:hover {
-          color: #0A66C2;
-          border-color: #0A66C2;
-          background: rgba(10, 102, 194, 0.15);
-          transform: translateX(-5px) rotate(360deg);
-          box-shadow: 0 8px 25px rgba(10, 102, 194, 0.4);
-        }
-
-        .floating-social-link.github:hover {
-          color: var(--accent-cyan);
-          border-color: var(--accent-cyan);
-          background: rgba(6, 182, 212, 0.15);
-          transform: translateX(-5px) rotate(360deg);
-          box-shadow: 0 8px 25px rgba(6, 182, 212, 0.4);
-        }
-
-        .floating-social-link.mail:hover {
-          color: var(--accent-emerald);
-          border-color: var(--accent-emerald);
-          background: rgba(16, 185, 129, 0.15);
-          transform: translateX(-5px) rotate(360deg);
-          box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
-        }
-
-        /* Tooltip */
-        .floating-social-link::after {
-          content: attr(data-tooltip);
-          position: absolute;
-          right: 56px;
-          background: var(--bg-primary);
-          backdrop-filter: blur(10px);
-          color: var(--text-primary);
-          padding: 6px 12px;
-          border-radius: 8px;
-          font-size: 0.78rem;
-          font-weight: 600;
-          white-space: nowrap;
-          opacity: 0;
-          pointer-events: none;
-          transition: all 0.25s ease;
-          border: 1px solid var(--card-border);
-          box-shadow: 0 4px 15px var(--shadow-color);
-        }
-
-        .floating-social-link:hover::after {
-          opacity: 1;
-          right: 52px;
-        }
-
-        /* Floating Profile Avatar & Status Pill (Woujoud Placement) */
-        .floating-profile-widget {
-          position: fixed;
-          bottom: 95px;
-          right: 24px;
-          z-index: 998;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          gap: 8px;
-        }
-
-        .floating-avatar-circle {
-          width: 72px;
-          height: 72px;
-          border-radius: 50%;
-          overflow: hidden;
-          border: 3px solid var(--accent-purple);
-          box-shadow: 0 8px 25px rgba(145, 94, 255, 0.45);
-          cursor: pointer;
-          transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-          animation: avatarFloat 4s ease-in-out infinite;
-        }
-
-        .floating-avatar-circle:hover {
-          transform: scale(1.15) rotate(5deg);
-          border-color: var(--accent-cyan);
-          box-shadow: 0 12px 35px rgba(6, 182, 212, 0.6);
-        }
-
-        .floating-avatar-img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          display: block;
-        }
-
-        .floating-status-pill {
-          display: flex;
-          align-items: center;
-          gap: 6px;
-          padding: 5px 12px;
-          background: rgba(11, 18, 32, 0.85);
-          backdrop-filter: blur(12px);
-          -webkit-backdrop-filter: blur(12px);
-          border-radius: 20px;
-          border: 1px solid rgba(16, 185, 129, 0.4);
-          font-size: 0.72rem;
-          color: #10b981;
-          font-weight: 600;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-        }
-
-        .status-ping-dot {
-          width: 7px;
-          height: 7px;
-          background: #10b981;
-          border-radius: 50%;
-          box-shadow: 0 0 8px #10b981;
-          animation: blinkDot 2s infinite;
-        }
-
-        @keyframes blinkDot {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.3; transform: scale(1.3); }
-        }
-
-        @keyframes avatarFloat {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-8px); }
-        }
-
-        /* Floating CV Button */
-        .floating-cv-btn {
-          position: fixed;
-          bottom: 24px;
-          right: 24px;
-          z-index: 998;
-          display: flex;
-          align-items: center;
-          gap: 10px;
-          padding: 10px 20px;
-          border: 2px solid var(--accent-emerald);
-          border-radius: 999px;
-          background: var(--card-bg);
-          backdrop-filter: blur(14px);
-          -webkit-backdrop-filter: blur(14px);
-          color: var(--text-primary);
-          font-size: 0.88rem;
-          font-weight: 700;
-          text-decoration: none;
-          cursor: pointer;
-          transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
-          box-shadow: 0 6px 20px var(--shadow-color);
-          animation: floatPulse 3s ease-in-out infinite;
-        }
-
-        .floating-cv-icon-wrapper {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: var(--accent-cyan);
-          transition: transform 0.3s ease;
-        }
-
-        .floating-cv-btn:hover {
-          background: linear-gradient(135deg, var(--accent-emerald) 0%, var(--accent-cyan) 100%);
-          border-color: var(--accent-cyan);
-          transform: translateY(-4px) scale(1.05);
-          box-shadow: 0 10px 30px rgba(6, 182, 212, 0.45);
-          animation: none;
-        }
-
-        .floating-cv-btn:hover .floating-cv-icon-wrapper {
-          transform: translateY(-2px) rotate(-10deg);
-          color: #ffffff;
-        }
-
-        @keyframes floatPulse {
-          0%, 100% {
-            box-shadow: 0 6px 20px rgba(16, 185, 129, 0.25);
-            transform: translateY(0);
-          }
-          50% {
-            box-shadow: 0 10px 28px rgba(6, 182, 212, 0.4);
-            transform: translateY(-5px);
-          }
-        }
-
-        @keyframes slideInRight {
-          from {
-            opacity: 0;
-            transform: translateX(40px);
-          }
-          to {
-            opacity: 1;
-            transform: translateX(0);
-          }
-        }
-
-        /* Mobile Adjustments */
-        @media (max-width: 768px) {
-          .floating-social-bar {
-            bottom: auto;
-            top: 40%;
-            right: 12px;
-            gap: 8px;
-          }
-
-          .floating-social-link {
-            width: 38px;
-            height: 38px;
-          }
-
-          .floating-social-link::after {
-            display: none;
-          }
-
-          .floating-profile-widget {
-            display: none;
-          }
-
-          .floating-cv-btn {
-            bottom: 20px;
-            right: 20px;
-            padding: 8px 16px;
-            font-size: 0.8rem;
-          }
-        }
-      `}</style>
+      {/* Floating Scroll to Top Pill */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          aria-label="Scroll to top"
+          style={{
+            position: 'fixed',
+            bottom: '24px',
+            right: '20px',
+            width: '42px',
+            height: '42px',
+            borderRadius: '50%',
+            background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+            color: '#FFFFFF',
+            border: 'none',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+            boxShadow: '0 6px 20px rgba(37, 99, 235, 0.4)',
+            zIndex: 99998,
+            transition: 'all 0.25s ease',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.transform = 'translateY(-3px) scale(1.08)';
+            e.currentTarget.style.boxShadow = '0 10px 24px rgba(37, 99, 235, 0.55)';
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.transform = 'none';
+            e.currentTarget.style.boxShadow = '0 6px 20px rgba(37, 99, 235, 0.4)';
+          }}
+        >
+          <ArrowUp size={18} strokeWidth={2.5} />
+        </button>
+      )}
     </>
   );
 }

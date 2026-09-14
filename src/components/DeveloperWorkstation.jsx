@@ -21,24 +21,24 @@ export default function DeveloperWorkstation() {
                 <span className="dot yellow" />
                 <span className="dot green" />
               </div>
-              <div className="tab-title">Hero.jsx — Rashminda's Workspace</div>
+              <div className="tab-title">Profile.jsx — Rashminda's Workspace</div>
             </div>
 
             {/* Monitor Screen Code Editor Content */}
             <div className="screen-code-body">
               <div className="code-line"><span className="code-kw">import</span> <span className="code-var">React</span> <span className="code-kw">from</span> <span className="code-str">'react'</span>;</div>
-              <div className="code-line"><span className="code-kw">import</span> &#123; <span className="code-var">Fullstack</span>, <span className="code-var">FinTech</span> &#125; <span className="code-kw">from</span> <span className="code-str">'@rashminda/skills'</span>;</div>
+              <div className="code-line"><span className="code-kw">import</span> &#123; <span className="code-var">BusinessAnalysis</span>, <span className="code-var">AgilePM</span>, <span className="code-var">FinTech</span> &#125; <span className="code-kw">from</span> <span className="code-str">'@rashminda/skills'</span>;</div>
               <div className="code-line">&nbsp;</div>
-              <div className="code-line"><span className="code-kw">const</span> <span className="code-fn">DeveloperProfile</span> = () =&gt; &#123;</div>
+              <div className="code-line"><span className="code-kw">const</span> <span className="code-fn">ProfessionalProfile</span> = () =&gt; &#123;</div>
               <div className="code-line indent"><span className="code-kw">return</span> (</div>
-              <div className="code-line indent-2">&lt;<span className="code-tag">Developer</span></div>
+              <div className="code-line indent-2">&lt;<span className="code-tag">Candidate</span></div>
               <div className="code-line indent-3"><span className="code-attr">name</span>=<span className="code-str">"Rashminda Aluvihare"</span></div>
-              <div className="code-line indent-3"><span className="code-attr">role</span>=<span className="code-str">"Software Engineer & HNDIT"</span></div>
-              <div className="code-line indent-3"><span className="code-attr">status</span>=<span className="code-str">"Building Scalable Solutions 🚀"</span></div>
+              <div className="code-line indent-3"><span className="code-attr">role</span>=<span className="code-str">"Business Analyst &amp; Project Management Intern"</span></div>
+              <div className="code-line indent-3"><span className="code-attr">status</span>=<span className="code-str">"Bridging Requirements &amp; Agile Delivery 🚀"</span></div>
               <div className="code-line indent-2">/&gt;</div>
               <div className="code-line indent">);</div>
               <div className="code-line">&#125;;</div>
-              <div className="code-line"><span className="code-kw">export default</span> <span className="code-fn">DeveloperProfile</span>;</div>
+              <div className="code-line"><span className="code-kw">export default</span> <span className="code-fn">ProfessionalProfile</span>;</div>
             </div>
           </div>
           <div className="monitor-stand-neck" />
@@ -55,7 +55,7 @@ export default function DeveloperWorkstation() {
               <div className="fan-blades" />
             </div>
             <div className="gpu-card">
-              <span className="gpu-text">RTX AI POWERED</span>
+              <span className="gpu-text">ORANGE CORE RTX</span>
             </div>
           </div>
         </div>
@@ -68,7 +68,7 @@ export default function DeveloperWorkstation() {
 
       {/* Sleek Desk Surface */}
       <div className="desk-surface">
-        {/* RGB Keyboard */}
+        {/* Keyboard */}
         <div className="keyboard-pad">
           <div className="rgb-glow-bar" />
         </div>
@@ -76,7 +76,7 @@ export default function DeveloperWorkstation() {
         <div className="mouse-device" />
       </div>
 
-      {/* Animated Scroll Down Mouse Pill Indicator (Matches Woujoud Image) */}
+      {/* Animated Scroll Down Mouse Pill Indicator */}
       <div className="scroll-indicator-wrapper">
         <a href="#about" aria-label="Scroll down to About section">
           <div className="scroll-mouse-pill">
@@ -110,8 +110,8 @@ export default function DeveloperWorkstation() {
         .speaker {
           width: 42px;
           height: 100px;
-          background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
-          border: 1px solid var(--card-border);
+          background: #141619;
+          border: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 10px;
           display: flex;
           flex-direction: column;
@@ -123,11 +123,11 @@ export default function DeveloperWorkstation() {
 
         .speaker-driver {
           border-radius: 50%;
-          border: 1.5px solid var(--accent-cyan);
-          box-shadow: 0 0 10px var(--accent-cyan);
+          border: 1.5px solid #FF4D2D;
+          box-shadow: 0 0 8px rgba(255, 77, 45, 0.4);
         }
-        .driver-top { width: 16px; height: 16px; background: rgba(6, 182, 212, 0.3); }
-        .driver-bottom { width: 24px; height: 24px; background: rgba(145, 94, 255, 0.3); border-color: var(--accent-purple); }
+        .driver-top { width: 16px; height: 16px; background: rgba(255, 77, 45, 0.2); }
+        .driver-bottom { width: 24px; height: 24px; background: rgba(255, 77, 45, 0.25); border-color: #FF4D2D; }
 
         /* Main Monitor */
         .monitor-wrapper {
@@ -140,15 +140,15 @@ export default function DeveloperWorkstation() {
 
         .monitor-frame {
           width: 100%;
-          background: #090d16;
-          border: 2px solid rgba(145, 94, 255, 0.35);
+          background: #0B0C0E;
+          border: 1.5px solid rgba(255, 77, 45, 0.35);
           border-radius: 12px;
           overflow: hidden;
-          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 30px rgba(145, 94, 255, 0.2);
+          box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6), 0 0 25px rgba(255, 77, 45, 0.15);
         }
 
         .screen-header {
-          background: #111827;
+          background: #141619;
           padding: 8px 14px;
           display: flex;
           align-items: center;
@@ -162,33 +162,33 @@ export default function DeveloperWorkstation() {
         }
 
         .dot { width: 9px; height: 9px; border-radius: 50%; }
-        .dot.red { background: #ef4444; }
+        .dot.red { background: #FF4D2D; }
         .dot.yellow { background: #f59e0b; }
         .dot.green { background: #10b981; }
 
         .tab-title {
           font-size: 0.72rem;
-          color: var(--text-secondary);
+          color: #9CA3AF;
           font-family: monospace;
           font-weight: 600;
         }
 
         .screen-code-body {
           padding: 16px 20px;
-          font-family: 'Fira Code', monospace, consolas;
+          font-family: 'JetBrains Mono', monospace, consolas;
           font-size: 0.8rem;
           line-height: 1.6;
           color: #e2e8f0;
-          background: #030712;
+          background: #0B0C0E;
           text-align: left;
           min-height: 220px;
         }
 
-        .code-kw { color: #f43f5e; font-weight: 700; }
+        .code-kw { color: #FF4D2D; font-weight: 700; }
         .code-var { color: #38bdf8; }
         .code-str { color: #34d399; }
-        .code-fn { color: #a78bfa; font-weight: 700; }
-        .code-tag { color: #fb7185; }
+        .code-fn { color: #FFAA33; font-weight: 700; }
+        .code-tag { color: #FF4D2D; }
         .code-attr { color: #fbbf24; }
         .indent { padding-left: 16px; }
         .indent-2 { padding-left: 32px; }
@@ -197,13 +197,13 @@ export default function DeveloperWorkstation() {
         .monitor-stand-neck {
           width: 48px;
           height: 18px;
-          background: linear-gradient(180deg, #334155 0%, #1e293b 100%);
+          background: linear-gradient(180deg, #1e293b 0%, #141619 100%);
         }
 
         .monitor-stand-base {
           width: 140px;
           height: 8px;
-          background: #334155;
+          background: #1e293b;
           border-radius: 4px 4px 0 0;
         }
 
@@ -211,11 +211,11 @@ export default function DeveloperWorkstation() {
         .pc-tower {
           width: 115px;
           height: 230px;
-          background: #0b1120;
-          border: 2px solid rgba(6, 182, 212, 0.4);
+          background: #141619;
+          border: 1.5px solid rgba(255, 77, 45, 0.3);
           border-radius: 12px;
           padding: 10px;
-          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 25px rgba(6, 182, 212, 0.25);
+          box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 77, 45, 0.15);
           display: flex;
           flex-direction: column;
           justify-content: space-around;
@@ -233,8 +233,8 @@ export default function DeveloperWorkstation() {
           width: 54px;
           height: 54px;
           border-radius: 50%;
-          border: 3px solid #06b6d4;
-          box-shadow: 0 0 15px #06b6d4, inset 0 0 10px #915eff;
+          border: 2px solid #FF4D2D;
+          box-shadow: 0 0 12px rgba(255, 77, 45, 0.6);
           display: flex;
           align-items: center;
           justify-content: center;
@@ -244,7 +244,7 @@ export default function DeveloperWorkstation() {
         .fan-blades {
           width: 24px;
           height: 24px;
-          background: radial-gradient(circle, #915eff 0%, transparent 70%);
+          background: radial-gradient(circle, #FF4D2D 0%, transparent 70%);
           border-radius: 50%;
         }
 
@@ -256,8 +256,8 @@ export default function DeveloperWorkstation() {
         .gpu-card {
           width: 90%;
           height: 22px;
-          background: rgba(145, 94, 255, 0.2);
-          border: 1px solid var(--accent-purple);
+          background: rgba(255, 77, 45, 0.15);
+          border: 1px solid rgba(255, 77, 45, 0.4);
           border-radius: 4px;
           display: flex;
           align-items: center;
@@ -265,9 +265,9 @@ export default function DeveloperWorkstation() {
         }
 
         .gpu-text {
-          font-size: 0.58rem;
+          font-size: 0.55rem;
           font-weight: 800;
-          color: #2563eb;
+          color: #FF4D2D;
           letter-spacing: 0.5px;
         }
 
@@ -275,8 +275,8 @@ export default function DeveloperWorkstation() {
         .desk-surface {
           width: 100%;
           height: 28px;
-          background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
-          border-top: 2px solid var(--card-border);
+          background: #141619;
+          border-top: 1px solid rgba(255, 255, 255, 0.1);
           border-radius: 6px;
           box-shadow: 0 15px 30px rgba(0, 0, 0, 0.6);
           display: flex;
@@ -289,7 +289,7 @@ export default function DeveloperWorkstation() {
         .keyboard-pad {
           width: 180px;
           height: 10px;
-          background: #090d16;
+          background: #0B0C0E;
           border-radius: 3px;
           position: relative;
           overflow: hidden;
@@ -298,8 +298,8 @@ export default function DeveloperWorkstation() {
         .rgb-glow-bar {
           position: absolute;
           inset: 0;
-          background: linear-gradient(90deg, #ef4444, #f59e0b, #10b981, #06b6d4, #915eff);
-          opacity: 0.7;
+          background: linear-gradient(90deg, #FF4D2D, #FFAA33, #FF4D2D);
+          opacity: 0.8;
           animation: rgbShift 5s linear infinite;
         }
 
@@ -325,25 +325,25 @@ export default function DeveloperWorkstation() {
         .scroll-mouse-pill {
           width: 24px;
           height: 40px;
-          border: 2px solid var(--accent-purple);
+          border: 2px solid #FF4D2D;
           border-radius: 20px;
           display: flex;
           justify-content: center;
           padding-top: 6px;
-          box-shadow: 0 0 15px rgba(145, 94, 255, 0.3);
+          box-shadow: 0 0 15px rgba(255, 77, 45, 0.35);
           transition: all 0.3s ease;
         }
 
         .scroll-mouse-pill:hover {
-          border-color: var(--accent-cyan);
-          box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+          border-color: #FF6647;
+          box-shadow: 0 0 20px rgba(255, 77, 45, 0.6);
           transform: translateY(3px);
         }
 
         .scroll-wheel-dot {
           width: 4px;
           height: 8px;
-          background: var(--accent-cyan);
+          background: #FF4D2D;
           border-radius: 2px;
           animation: mouseScroll 1.8s ease-in-out infinite;
         }
@@ -353,11 +353,47 @@ export default function DeveloperWorkstation() {
           100% { opacity: 0; transform: translateY(14px); }
         }
 
+        /* Fluid Device Responsiveness */
         @media (max-width: 768px) {
-          .speaker { display: none; }
-          .pc-tower { width: 90px; height: 180px; }
-          .rgb-fan { width: 40px; height: 40px; }
-          .screen-code-body { font-size: 0.72rem; padding: 12px; }
+          .workstation-scene {
+            gap: 10px;
+          }
+          .speaker {
+            width: 26px;
+            height: 65px;
+            padding: 4px 0;
+            border-radius: 6px;
+          }
+          .driver-top { width: 10px; height: 10px; }
+          .driver-bottom { width: 14px; height: 14px; }
+
+          .pc-tower { width: 85px; height: 170px; padding: 6px; }
+          .rgb-fan { width: 36px; height: 36px; border-width: 2px; }
+          .fan-blades { width: 16px; height: 16px; }
+          .gpu-card { height: 16px; }
+          .gpu-text { font-size: 0.45rem; }
+
+          .screen-code-body { font-size: 0.68rem; padding: 10px; min-height: 170px; }
+          .tab-title { font-size: 0.65rem; }
+
+          .keyboard-pad { width: 130px; height: 8px; }
+          .mouse-device { width: 12px; height: 10px; }
+        }
+
+        @media (max-width: 480px) {
+          .workstation-scene {
+            gap: 6px;
+          }
+          .speaker {
+            width: 20px;
+            height: 52px;
+          }
+          .driver-top { width: 8px; height: 8px; }
+          .driver-bottom { width: 11px; height: 11px; }
+
+          .pc-tower { width: 70px; height: 145px; }
+          .rgb-fan { width: 30px; height: 30px; }
+          .screen-code-body { font-size: 0.58rem; padding: 8px; min-height: 140px; }
         }
       `}</style>
     </div>

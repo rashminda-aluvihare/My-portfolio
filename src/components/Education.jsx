@@ -1,82 +1,101 @@
-import { GraduationCap, Calendar, CheckCircle2 } from 'lucide-react';
+import React from 'react';
+import { GraduationCap, Calendar, Globe, Layers, Award } from 'lucide-react';
 import ibslLogo from '../assets/ibsl.png';
 import sliateLogo from '../assets/SLIATE_LOGO2.png';
+import stcLogo from '../assets/stc.png';
 
 export default function Education() {
   const educations = [
     {
       degree: 'Higher National Diploma in Information Technology (HNDIT)',
-      institution: 'Sri Lanka Institute of Advanced Technological Education (SLIATE)',
-      specialization: 'Software Engineering, Business Analysis, IT Project Management & Database Architecture',
+      institution: 'Advanced Technological Institute (ATI), Dehiwala - SLIATE',
+      institutionType: 'Tertiary Higher Education Institution',
+      location: 'Dehiwala / Colombo, Sri Lanka',
+      duration: '2024 - 2026',
+      qualificationLevel: 'NVQ Level 6 Equivalent • Full-Stack & BA Track',
       logo: sliateLogo,
-      location: 'Matale / Colombo, Sri Lanka',
-      duration: 'Aug 2024 - Aug 2026',
-      status: 'Undergraduate',
-      color: '#00f2fe',
     },
     {
-      degree: 'Diploma in Banking & Finance (DBF Level I)',
-      institution: 'Institute of Bankers of Sri Lanka (IBSL)',
-      specialization: 'Commercial Banking Operations, Digital Financial Systems & Credit Management',
+      degree: 'Diploma in Banking & Finance (DBF)',
+      institution: 'Institute of Bankers of Sri Lanka - IBSL',
+      institutionType: 'Professional Banking Qualification Authority',
+      location: 'Colombo, Sri Lanka',
+      duration: '2025 - Present',
+      status: 'Ongoing Studies',
+      qualificationLevel: 'Passed: IT, Digital Banking & Electronic Settlements',
       logo: ibslLogo,
-      location: 'Sri Lanka',
-      duration: 'Reading / Ongoing',
-      status: 'Banking & Finance Student',
-      passedSubject: 'IT, Digital Banking and Settlements',
-      color: '#9b51e0',
+    },
+    {
+      degree: 'G.C.E Advanced Level – Bio System Technology Stream',
+      institution: "St. Thomas' College, Matale",
+      institutionType: 'Secondary Academic Education',
+      location: 'Matale, Sri Lanka',
+      duration: '2022 - 2023',
+      status: 'Completed',
+      result: 'B1 C2',
+      qualificationLevel: 'Bio System Technology • Science for Technology • ICT',
+      logo: stcLogo,
     },
   ];
 
   return (
-    <section id="education" className="section" style={{ position: 'relative' }}>
+    <section id="education" className="section section-white" style={{ backgroundColor: '#FFFFFF', position: 'relative' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 800 }} className="gradient-text">
-            Education & Academic Background
+        <div style={{ marginBottom: '44px' }}>
+          <div className="section-label" style={{ marginBottom: '12px' }}>
+            ACADEMIC BACKGROUND / 05
+          </div>
+          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
+            Education &amp; Qualifications
           </h2>
+          <p style={{ color: '#475569', fontSize: '1.05rem', marginTop: '10px', maxWidth: '750px', lineHeight: 1.6 }}>
+            A strong multidisciplinary academic foundation in Information Technology, Software Engineering, and Commercial Banking &amp; Finance.
+          </p>
         </div>
 
-        {/* Education List */}
-        <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '32px' }}>
+        {/* Education Cards */}
+        <div style={{ maxWidth: '960px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '24px' }}>
           {educations.map((edu, idx) => (
             <div
               key={idx}
-              className="glass-panel"
+              className="card-flat"
               style={{
-                padding: '32px',
+                padding: '30px 34px',
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '20px',
-                position: 'relative',
+                background: '#FFFFFF',
+                border: '1px solid rgba(226, 232, 240, 0.9)',
+                borderRadius: '20px',
+                boxShadow: '0 4px 20px rgba(15, 23, 42, 0.04)',
               }}
             >
-              {/* Header */}
+              {/* Header Row */}
               <div
                 style={{
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'flex-start',
+                  gap: '16px',
                   flexWrap: 'wrap',
-                  gap: '12px',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flex: '1 1 500px', minWidth: 0 }}>
                   <div
                     style={{
-                      background: edu.logo ? '#ffffff' : 'rgba(0, 242, 254, 0.1)',
-                      border: '1px solid rgba(0, 242, 254, 0.3)',
+                      background: '#FFFFFF',
+                      border: '1px solid rgba(226, 232, 240, 0.9)',
                       borderRadius: '14px',
-                      padding: edu.logo ? '6px' : '12px',
-                      width: '54px',
-                      height: '54px',
-                      color: 'var(--accent-cyan)',
+                      padding: '4px',
+                      width: '56px',
+                      height: '56px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0,
-                      boxShadow: '0 4px 14px rgba(0, 0, 0, 0.15)',
                       overflow: 'hidden',
+                      boxShadow: '0 2px 8px rgba(15, 23, 42, 0.04)',
                     }}
                   >
                     {edu.logo ? (
@@ -85,8 +104,8 @@ export default function Education() {
                         alt={edu.institution}
                         loading="lazy"
                         decoding="async"
-                        width="48"
-                        height="48"
+                        width="50"
+                        height="50"
                         style={{
                           width: '100%',
                           height: '100%',
@@ -95,79 +114,90 @@ export default function Education() {
                         }}
                       />
                     ) : (
-                      <GraduationCap size={24} />
+                      <GraduationCap size={28} color="#2563EB" />
                     )}
                   </div>
-                  <div>
-                    <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-primary)' }}>
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <h3 style={{ fontSize: 'clamp(1.15rem, 2vw, 1.35rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', margin: 0, lineHeight: 1.25 }}>
                       {edu.degree}
                     </h3>
-                    <h4 style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
-                      {edu.institution}
+                    <h4 style={{ fontSize: '0.98rem', color: '#475569', fontWeight: 600, marginTop: '4px', margin: 0 }}>
+                      {edu.institution} &bull; <span style={{ color: '#64748B' }}>{edu.institutionType}</span>
                     </h4>
-                    {edu.specialization && (
-                      <p style={{ fontSize: '0.88rem', color: 'var(--accent-cyan)', fontWeight: 600, marginTop: '4px' }}>
-                        <span style={{ color: 'var(--text-secondary)', fontWeight: 600 }}>Specialization:</span> {edu.specialization}
-                      </p>
-                    )}
-                    {edu.passedSubject && (
-                      <div
-                        style={{
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '8px',
-                          background: 'rgba(56, 239, 125, 0.1)',
-                          border: '1px solid rgba(56, 239, 125, 0.35)',
-                          padding: '6px 14px',
-                          borderRadius: '8px',
-                          marginTop: '10px',
-                        }}
-                      >
-                        <CheckCircle2 size={16} style={{ color: '#38ef7d', flexShrink: 0 }} />
-                        <span style={{ fontSize: '0.86rem', fontWeight: 700, color: '#38ef7d' }}>
-                          Passed Subject: <span style={{ color: 'var(--text-primary)' }}>{edu.passedSubject}</span>
-                        </span>
-                      </div>
-                    )}
                   </div>
                 </div>
 
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'flex-end',
-                    gap: '4px',
-                  }}
-                >
-                  <span
-                    style={{
-                      fontSize: '0.8rem',
-                      fontWeight: 700,
-                      color: 'var(--accent-cyan)',
-                      background: 'rgba(0, 242, 254, 0.1)',
-                      border: '1px solid rgba(0, 242, 254, 0.25)',
-                      padding: '4px 12px',
-                      borderRadius: '999px',
-                    }}
-                  >
-                    {edu.status}
-                  </span>
-                  <span
-                    style={{
-                      fontSize: '0.85rem',
-                      color: 'var(--text-muted)',
-                      fontWeight: 600,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '4px',
-                      marginTop: '4px',
-                    }}
-                  >
-                    <Calendar size={14} />
-                    {edu.duration}
-                  </span>
+                {edu.status && (
+                  <div style={{ display: 'flex', alignItems: 'center', flexShrink: 0, alignSelf: 'flex-start' }}>
+                    <span
+                      style={{
+                        fontSize: '0.78rem',
+                        fontWeight: 700,
+                        color: '#2563EB',
+                        background: '#EFF6FF',
+                        border: '1px solid rgba(37, 99, 235, 0.2)',
+                        padding: '5px 14px',
+                        borderRadius: '999px',
+                        fontFamily: 'var(--font-display)',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      {edu.status}
+                    </span>
+                  </div>
+                )}
+              </div>
+
+              {/* Meta information row (Duration, Location, Qualification Level in 2-tier layout) */}
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: '8px',
+                  padding: '12px 18px',
+                  background: '#F8FAFC',
+                  borderRadius: '10px',
+                  border: '1px solid rgba(226, 232, 240, 0.85)',
+                }}
+              >
+                <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '20px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: '#475569' }}>
+                    <Calendar size={15} style={{ color: '#2563EB', flexShrink: 0 }} />
+                    <span>{edu.duration}</span>
+                  </div>
+                  {edu.location && (
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: '#475569' }}>
+                      <Globe size={15} style={{ color: '#2563EB', flexShrink: 0 }} />
+                      <span>{edu.location}</span>
+                    </div>
+                  )}
+                  {edu.result && (
+                    <div
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px',
+                        fontSize: '0.82rem',
+                        fontWeight: 700,
+                        color: '#2563EB',
+                        background: '#EFF6FF',
+                        border: '1px solid rgba(37, 99, 235, 0.25)',
+                        padding: '3px 10px',
+                        borderRadius: '6px',
+                        fontFamily: 'var(--font-display)',
+                      }}
+                    >
+                      <Award size={14} style={{ color: '#2563EB', flexShrink: 0 }} />
+                      <span>Results: {edu.result}</span>
+                    </div>
+                  )}
                 </div>
+                {edu.qualificationLevel && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: '#0F172A', fontWeight: 600 }}>
+                    <Layers size={15} style={{ color: '#2563EB', flexShrink: 0 }} />
+                    <span>{edu.qualificationLevel}</span>
+                  </div>
+                )}
               </div>
             </div>
           ))}

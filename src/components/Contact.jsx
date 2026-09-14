@@ -1,10 +1,8 @@
 import { useState } from 'react';
-import { Mail, Send, Sparkles, CheckCircle2 } from 'lucide-react';
-import Globe3DCanvas from './Globe3DCanvas';
-import StarDotsBackground from './StarDotsBackground';
+import { Send, CheckCircle2, Mail, MessageCircle, ArrowRight } from 'lucide-react';
+import WorldConnectingGlobe from './WorldConnectingGlobe';
 
-// To receive client messages in your email, get a free Access Key from https://web3forms.com
-// Enter your email on their home page, copy the key from your inbox, and paste it below:
+
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
 
 export default function Contact() {
@@ -15,7 +13,7 @@ export default function Contact() {
     message: '',
   });
 
-  const [status, setStatus] = useState('idle'); // idle, sending, success, error
+  const [status, setStatus] = useState('idle');
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -28,7 +26,6 @@ export default function Contact() {
 
     setStatus('sending');
 
-    // If key is not configured, fallback to simulation for demo purposes
     if (WEB3FORMS_ACCESS_KEY === "YOUR_ACCESS_KEY_HERE" || !WEB3FORMS_ACCESS_KEY) {
       setTimeout(() => {
         setStatus('success');
@@ -77,123 +74,71 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="section" style={{ background: 'var(--bg-secondary)', position: 'relative', overflow: 'hidden' }}>
-      {/* Animated Star Dots Space Background */}
-      <StarDotsBackground />
+    <section
+      id="contact"
+      className="section section-light"
+      style={{
+        backgroundColor: '#FFFFFF',
+        position: 'relative',
+        overflow: 'hidden',
+        padding: '95px 0',
+      }}
+    >
+      {/* Soft Ambient Light Glows */}
+      <div
+        style={{
+          position: 'absolute',
+          top: '-10%',
+          right: '5%',
+          width: '500px',
+          height: '500px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(219, 234, 254, 0.45) 0%, rgba(255, 255, 255, 0) 70%)',
+          filter: 'blur(60px)',
+          pointerEvents: 'none',
+        }}
+      />
+      <div
+        style={{
+          position: 'absolute',
+          bottom: '-10%',
+          left: '5%',
+          width: '500px',
+          height: '500px',
+          borderRadius: '50%',
+          background: 'radial-gradient(circle, rgba(237, 233, 254, 0.45) 0%, rgba(255, 255, 255, 0) 70%)',
+          filter: 'blur(60px)',
+          pointerEvents: 'none',
+        }}
+      />
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 800 }} className="gradient-text">
-            Get In Touch
+        <div style={{ marginBottom: '46px' }}>
+          <div className="section-label" style={{ marginBottom: '12px' }}>
+            GET IN TOUCH / 08
+          </div>
+          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
+            Let's Build Something Together
           </h2>
-          <p style={{ color: 'var(--text-secondary)', fontSize: '1rem', marginTop: '10px' }}>
-            Have a project in mind, want to collaborate, or just say hello?
+          <p style={{ color: '#475569', fontSize: '1.05rem', marginTop: '12px', maxWidth: '750px', lineHeight: 1.6 }}>
+            Available for Business Analyst and Project Management Intern roles. Let's connect to discuss opportunities and collaborations.
           </p>
         </div>
 
-        {/* 2-Column Layout: Contact Form (Left) & 3D Rotating Globe (Right) */}
+        {/* 2-Column Clean Light Layout */}
         <div className="contact-main-grid">
-          {/* Left Column: Form & Direct Cards */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-          {/* Direct Email & WhatsApp Contact Options */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '16px' }} className="contact-direct-grid">
-            {/* Direct Email Card */}
-            <a
-              href="mailto:rashmindaluvihare@gmail.com"
-              className="glass-panel contact-card-email animate-slow-pop-1"
-              style={{
-                padding: '16px 20px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '14px',
-                textDecoration: 'none',
-                color: 'var(--text-primary)',
-                background: 'rgba(155, 81, 224, 0.08)',
-                border: '1px solid rgba(155, 81, 224, 0.25)',
-                borderRadius: '16px',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(155, 81, 224, 0.16)';
-                e.currentTarget.style.borderColor = 'var(--accent-purple)';
-                e.currentTarget.style.boxShadow = '0 10px 25px rgba(155, 81, 224, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(155, 81, 224, 0.08)';
-                e.currentTarget.style.borderColor = 'rgba(155, 81, 224, 0.25)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
-            >
-              <div
-                style={{
-                  background: 'rgba(155, 81, 224, 0.15)',
-                  padding: '10px',
-                  borderRadius: '12px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                }}
-              >
-                <Mail size={20} style={{ color: 'var(--accent-purple)' }} />
-              </div>
-              <div style={{ overflow: 'hidden' }}>
-                <h4 style={{ fontSize: '0.95rem', fontWeight: 800 }}>Send Direct Email</h4>
-                <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)', textOverflow: 'ellipsis', overflow: 'hidden', whiteSpace: 'nowrap' }}>
-                  rashmindaluvihare@gmail.com
-                </p>
-              </div>
-            </a>
-
-            {/* Direct WhatsApp Card */}
-            <a
-              href="https://wa.me/94779743901?text=Hi%20Rashminda,%20I%20saw%20your%20portfolio!"
-              target="_blank"
-              rel="noreferrer"
-              className="glass-panel contact-card-whatsapp animate-slow-pop-2"
-              style={{
-                padding: '16px 20px',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '14px',
-                textDecoration: 'none',
-                color: 'var(--text-primary)',
-                background: 'rgba(37, 211, 102, 0.08)',
-                border: '1px solid rgba(37, 211, 102, 0.25)',
-                borderRadius: '16px',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = 'rgba(37, 211, 102, 0.16)';
-                e.currentTarget.style.borderColor = '#25D366';
-                e.currentTarget.style.boxShadow = '0 10px 25px rgba(37, 211, 102, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = 'rgba(37, 211, 102, 0.08)';
-                e.currentTarget.style.borderColor = 'rgba(37, 211, 102, 0.25)';
-                e.currentTarget.style.boxShadow = 'none';
-              }}
-            >
-              <div
-                style={{
-                  background: 'rgba(37, 211, 102, 0.15)',
-                  padding: '10px',
-                  borderRadius: '12px',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  flexShrink: 0,
-                }}
-              >
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" style={{ color: '#25D366' }}><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413"/></svg>
-              </div>
-              <div style={{ overflow: 'hidden' }}>
-                <h4 style={{ fontSize: '0.95rem', fontWeight: 800 }}>Chat on WhatsApp</h4>
-                <p style={{ fontSize: '0.8rem', color: 'var(--text-secondary)' }}>Instant Direct Chat</p>
-              </div>
-            </a>
-          </div>
-
-          <div className="glass-panel" style={{ padding: '36px' }}>
+          {/* Left Column: Crisp Light Form Card */}
+          <div
+            className="contact-card-white"
+            style={{
+              padding: '38px',
+              background: '#FFFFFF',
+              border: '1px solid rgba(226, 232, 240, 0.95)',
+              borderRadius: '20px',
+              boxShadow: '0 8px 30px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02)',
+            }}
+          >
             {status === 'success' ? (
               <div
                 style={{
@@ -202,30 +147,31 @@ export default function Contact() {
                   alignItems: 'center',
                   justifyContent: 'center',
                   textAlign: 'center',
-                  padding: '40px 0',
+                  padding: '50px 20px',
                   gap: '16px',
                 }}
               >
                 <div
                   style={{
-                    background: 'rgba(0, 242, 254, 0.1)',
-                    padding: '16px',
+                    background: '#EFF6FF',
+                    padding: '18px',
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    animation: 'float 3s ease-in-out infinite',
+                    border: '1.5px solid rgba(37, 99, 235, 0.25)',
+                    boxShadow: '0 8px 24px rgba(37, 99, 235, 0.15)',
                   }}
                 >
-                  <CheckCircle2 size={48} style={{ color: 'var(--accent-cyan)' }} />
+                  <CheckCircle2 size={46} style={{ color: '#2563EB' }} />
                 </div>
-                <h3 style={{ fontSize: '1.6rem', fontWeight: 800 }}>Message Sent Successfully!</h3>
-                <p style={{ color: 'var(--text-secondary)', maxWidth: '400px' }}>
-                  Thank you for reaching out. I've received your message and will respond to you as soon as possible.
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0F172A', margin: 0 }}>Message Sent Successfully!</h3>
+                <p style={{ color: '#475569', maxWidth: '420px', fontSize: '0.96rem', lineHeight: 1.6 }}>
+                  Thank you for reaching out, Rashminda has received your message and will respond promptly.
                 </p>
                 <button
                   onClick={() => setStatus('idle')}
-                  className="btn-premium secondary"
+                  className="btn-primary"
                   style={{ marginTop: '12px' }}
                 >
                   Send Another Message
@@ -233,27 +179,34 @@ export default function Contact() {
               </div>
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                <h3 style={{ fontSize: '1.4rem', fontWeight: 700, marginBottom: '8px' }}>Send a Message</h3>
-                
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', margin: 0 }}>
+                    Send a Message
+                  </h3>
+                  <span style={{ fontSize: '0.78rem', color: '#2563EB', background: '#EFF6FF', padding: '4px 10px', borderRadius: '999px', fontWeight: 700 }}>
+                    Quick Form
+                  </span>
+                </div>
+
                 {status === 'error' && (
                   <div
                     style={{
                       padding: '12px 16px',
-                      background: 'rgba(239, 68, 68, 0.1)',
-                      border: '1px solid rgba(239, 68, 68, 0.2)',
-                      borderRadius: '8px',
-                      color: '#ef4444',
+                      background: '#FEF2F2',
+                      border: '1px solid #FECACA',
+                      borderRadius: '10px',
+                      color: '#DC2626',
                       fontSize: '0.9rem',
                       fontWeight: 600,
                     }}
                   >
-                    Error sending message. Please verify your access key or connection and try again.
+                    Error sending message. Please reach out directly via email or WhatsApp.
                   </div>
                 )}
-                
+
                 {/* Name */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label htmlFor="name" style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
+                  <label htmlFor="name" style={{ fontSize: '0.8rem', color: '#334155', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                     Your Name
                   </label>
                   <input
@@ -263,25 +216,14 @@ export default function Contact() {
                     required
                     value={formData.name}
                     onChange={handleInputChange}
-                    style={{
-                      background: 'rgba(255,255,255,0.03)',
-                      border: '1px solid var(--card-border)',
-                      color: 'var(--text-primary)',
-                      padding: '14px',
-                      borderRadius: '8px',
-                      outline: 'none',
-                      fontSize: '0.95rem',
-                      transition: 'var(--transition-smooth)',
-                    }}
-                    onFocus={(e) => (e.target.style.borderColor = 'var(--accent-cyan)')}
-                    onBlur={(e) => (e.target.style.borderColor = 'var(--card-border)')}
-                    placeholder="Enter your name"
+                    className="contact-input-light"
+                    placeholder="e.g. Kasun Perera"
                   />
                 </div>
 
                 {/* Email */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label htmlFor="email" style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
+                  <label htmlFor="email" style={{ fontSize: '0.8rem', color: '#334155', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                     Email Address
                   </label>
                   <input
@@ -291,25 +233,14 @@ export default function Contact() {
                     required
                     value={formData.email}
                     onChange={handleInputChange}
-                    style={{
-                      background: 'rgba(255,255,255,0.03)',
-                      border: '1px solid var(--card-border)',
-                      color: 'var(--text-primary)',
-                      padding: '14px',
-                      borderRadius: '8px',
-                      outline: 'none',
-                      fontSize: '0.95rem',
-                      transition: 'var(--transition-smooth)',
-                    }}
-                    onFocus={(e) => (e.target.style.borderColor = 'var(--accent-cyan)')}
-                    onBlur={(e) => (e.target.style.borderColor = 'var(--card-border)')}
-                    placeholder="name@example.com"
+                    className="contact-input-light"
+                    placeholder="e.g. kasun@example.com"
                   />
                 </div>
 
                 {/* Subject */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label htmlFor="subject" style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
+                  <label htmlFor="subject" style={{ fontSize: '0.8rem', color: '#334155', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                     Subject
                   </label>
                   <input
@@ -318,82 +249,90 @@ export default function Contact() {
                     name="subject"
                     value={formData.subject}
                     onChange={handleInputChange}
-                    style={{
-                      background: 'rgba(255,255,255,0.03)',
-                      border: '1px solid var(--card-border)',
-                      color: 'var(--text-primary)',
-                      padding: '14px',
-                      borderRadius: '8px',
-                      outline: 'none',
-                      fontSize: '0.95rem',
-                      transition: 'var(--transition-smooth)',
-                    }}
-                    onFocus={(e) => (e.target.style.borderColor = 'var(--accent-cyan)')}
-                    onBlur={(e) => (e.target.style.borderColor = 'var(--card-border)')}
-                    placeholder="Topic of discussion"
+                    className="contact-input-light"
                   />
                 </div>
 
                 {/* Message */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label htmlFor="message" style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
+                  <label htmlFor="message" style={{ fontSize: '0.8rem', color: '#334155', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                     Message
                   </label>
                   <textarea
                     id="message"
                     name="message"
                     required
-                    rows={5}
+                    rows={4}
                     value={formData.message}
                     onChange={handleInputChange}
-                    style={{
-                      background: 'rgba(255,255,255,0.03)',
-                      border: '1px solid var(--card-border)',
-                      color: 'var(--text-primary)',
-                      padding: '14px',
-                      borderRadius: '8px',
-                      outline: 'none',
-                      fontSize: '0.95rem',
-                      resize: 'none',
-                      fontFamily: 'inherit',
-                      transition: 'var(--transition-smooth)',
-                    }}
-                    onFocus={(e) => (e.target.style.borderColor = 'var(--accent-cyan)')}
-                    onBlur={(e) => (e.target.style.borderColor = 'var(--card-border)')}
+                    className="contact-input-light"
                     placeholder="Write your message here..."
+                    style={{ resize: 'vertical' }}
                   />
                 </div>
 
-                {/* Submit button */}
+                {/* Submit Button */}
                 <button
                   type="submit"
                   disabled={status === 'sending'}
-                  className="btn-premium primary"
-                  style={{
-                    alignSelf: 'flex-start',
-                    marginTop: '8px',
-                    width: '100%',
-                    justifyContent: 'center',
-                  }}
+                  className="contact-submit-btn"
                 >
-                  {status === 'sending' ? (
-                    <span>Sending Message...</span>
-                  ) : (
-                    <>
-                      <span>Send Message</span>
-                      <Send size={18} />
-                    </>
-                  )}
+                  <Send size={18} />
+                  <span>{status === 'sending' ? 'Sending Message...' : 'Send Message'}</span>
                 </button>
               </form>
             )}
           </div>
 
-          </div>
+          {/* Right Column: Direct Channels & Interactive 3D Real Earth Globe */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '18px', width: '100%' }}>
+            {/* Direct Channel Cards (Email & WhatsApp) */}
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }} className="direct-channels-grid">
+              {/* Direct Email */}
+              <a
+                href="mailto:rashmindaluvihare@gmail.com"
+                className="channel-card-link"
+              >
+                <div className="channel-icon-box box-blue">
+                  <Mail size={20} />
+                </div>
+                <div style={{ minWidth: 0, flex: 1 }}>
+                  <span className="channel-label">Direct Email</span>
+                  <p className="channel-val">rashmindaluvihare@gmail.com</p>
+                </div>
+                <ArrowRight size={15} className="channel-arrow" />
+              </a>
 
-          {/* Right Column: 3D Rotating Globe & Orbiting Atmosphere Rings */}
-          <div className="contact-globe-column">
-            <Globe3DCanvas />
+              {/* WhatsApp */}
+              <a
+                href="https://wa.me/94779743901?text=Hi%20Rashminda,%20I%20saw%20your%20portfolio!"
+                target="_blank"
+                rel="noreferrer"
+                className="channel-card-link"
+              >
+                <div className="channel-icon-box box-emerald">
+                  <MessageCircle size={20} />
+                </div>
+                <div style={{ minWidth: 0, flex: 1 }}>
+                  <span className="channel-label">WhatsApp Chat</span>
+                  <p className="channel-val">+94 77 974 3901</p>
+                </div>
+                <ArrowRight size={15} className="channel-arrow" />
+              </a>
+            </div>
+
+            {/* Interactive 3D Real World Earth Animation */}
+            <div
+              style={{
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                position: 'relative',
+              }}
+            >
+              <WorldConnectingGlobe />
+            </div>
           </div>
         </div>
       </div>
@@ -402,30 +341,148 @@ export default function Contact() {
         .contact-main-grid {
           display: grid;
           grid-template-columns: 1.15fr 0.85fr;
-          gap: 40px;
-          align-items: center;
-          max-width: 1150px;
-          margin: 0 auto;
+          gap: 36px;
+          align-items: start;
         }
 
-        .contact-globe-column {
+        .contact-input-light {
+          background: #F8FAFC;
+          border: 1.5px solid #E2E8F0;
+          color: #0F172A;
+          padding: 13px 16px;
+          border-radius: 12px;
+          outline: none;
+          font-size: 0.94rem;
+          font-family: inherit;
+          transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+        }
+
+        .contact-input-light:focus {
+          background: #FFFFFF;
+          border-color: #2563EB;
+          box-shadow: 0 0 0 3.5px rgba(37, 99, 235, 0.12);
+        }
+
+        .contact-submit-btn {
+          width: 100%;
+          padding: 15px;
+          font-size: 0.98rem;
+          font-weight: 700;
+          font-family: var(--font-display);
+          color: #FFFFFF;
+          background: linear-gradient(135deg, #2563EB 0%, #4F46E5 50%, #7C3AED 100%);
+          border: none;
+          border-radius: 12px;
+          cursor: pointer;
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 100%;
-          height: 100%;
-          min-height: 420px;
+          gap: 10px;
+          box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+          transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+          margin-top: 4px;
         }
 
-        @media (max-width: 992px) {
+        .contact-submit-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 12px 30px rgba(37, 99, 235, 0.48);
+        }
+
+        .contact-live-pulse {
+          width: 9px;
+          height: 9px;
+          border-radius: 50%;
+          background: #10B981;
+          box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+          animation: statusPing 2s infinite;
+        }
+
+        @keyframes statusPing {
+          0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
+          70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+
+        .channel-card-link {
+          background: #FFFFFF;
+          border: 1px solid rgba(226, 232, 240, 0.95);
+          border-radius: 16px;
+          padding: 18px 20px;
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          text-decoration: none;
+          color: #0F172A;
+          box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03);
+          transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+          position: relative;
+        }
+
+        .channel-card-link:hover {
+          transform: translateY(-3px);
+          border-color: #2563EB;
+          box-shadow: 0 10px 25px rgba(37, 99, 235, 0.12);
+        }
+
+        .channel-card-link:hover .channel-arrow {
+          transform: translateX(3px);
+          color: #2563EB;
+        }
+
+        .channel-icon-box {
+          width: 44px;
+          height: 44px;
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-shrink: 0;
+        }
+
+        .box-blue { background: #EFF6FF; color: #2563EB; }
+        .box-emerald { background: #ECFDF5; color: #10B981; }
+        .box-indigo { background: #F5F3FF; color: #7C3AED; }
+        .box-slate { background: #F1F5F9; color: #334155; }
+
+        .channel-label {
+          display: block;
+          font-family: var(--font-display);
+          font-size: 0.76rem;
+          font-weight: 700;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          color: #64748B;
+        }
+
+        .channel-val {
+          margin: 2px 0 0 0;
+          font-size: 0.88rem;
+          font-weight: 700;
+          color: #0F172A;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
+
+        .channel-arrow {
+          margin-left: auto;
+          color: #94A3B8;
+          transition: all 0.2s ease;
+          flex-shrink: 0;
+        }
+
+        @media (max-width: 960px) {
           .contact-main-grid {
             grid-template-columns: 1fr;
-            gap: 30px;
           }
+        }
 
-          .contact-globe-column {
-            order: -1;
-            min-height: 320px;
+        @media (max-width: 600px) {
+          .direct-channels-grid {
+            grid-template-columns: 1fr;
+          }
+          .contact-card-white {
+            padding: 24px;
           }
         }
       `}</style>

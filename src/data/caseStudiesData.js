@@ -17,8 +17,8 @@ export const caseStudiesData = {
     github: 'https://github.com/rashminda-aluvihare/finbridge',
     demo: 'https://finbridge-xi.vercel.app',
     contribution: {
-      title: 'My Individual Contribution',
-      description: 'I engineered the Next.js 16 frontend architecture, integrated Zustand global state management, designed the multi-role Borrower/Lender/Admin dashboards, and implemented the interactive credit scoring "What-If" simulator. Additionally, I built the Python FastAPI integration layer to deliver Explainable AI (XAI) feature importance breakdowns directly to users.'
+      title: 'BA & PM Delivery Leadership',
+      description: 'I planned and delivered the project independently, translating financial-inclusion problems into clear user roles, system requirements, and a delivery plan. I designed an alternative credit-scoring model (300–850) and Grameen-style group-lending workflows, coordinated the build-out of multi-role dashboards (Borrower, Lender, Admin) with a trilingual LKR-based interface, and documented end-to-end processes for the digital wallet, loan marketplace, and EMI repayment tracking.'
     },
     problem: {
       title: 'The Challenge & Industry Problem',
@@ -63,8 +63,8 @@ export const caseStudiesData = {
     demo: null,
     tags: ['PHP 8', 'MySQL Database', 'Chart.js', 'Bootstrap 5', 'JavaScript', 'HTML5/CSS3'],
     contribution: {
-      title: 'My Individual Contribution',
-      description: 'I personally designed the normalized MySQL relational schema, implemented the PHP 8 backend authentication & session handling, built the invoice/voucher PDF generator, and integrated Chart.js visual analytics for expenditure tracking.'
+      title: 'BA & Team Delivery Coordination',
+      description: 'I coordinated scope and delivery across a small team, gathering and documenting requirements for member contributions, expense tracking, and announcements. I designed and modeled role-based processes for Admin and User dashboards, modeled fund collection and expense workflows to ensure transparency and process clarity, and collaborated closely with team members to deliver a complete solution aligned with documented business requirements.'
     },
     problem: {
       title: 'The Challenge & Academic Needs',
@@ -107,8 +107,8 @@ export const caseStudiesData = {
     demo: 'https://agronexa-lk.vercel.app',
     tags: ['React.js (TypeScript)', 'Node.js & Express.js', 'PostgreSQL (Railway)', 'Socket.IO Live Chat', 'Twilio SMS API', 'SHA-256 Crypto Ledger', 'Cloudinary CDN', 'Leaflet.js Maps', 'Tailwind CSS', 'Vercel'],
     contribution: {
-      title: 'My Individual Contribution',
-      description: 'I architected the entire full-stack web application using React.js (TypeScript), Node.js, and PostgreSQL. I personally developed the SHA-256 cryptographic transaction chain for equipment rentals, the Socket.IO real-time chat module, the HARTI crop price scraper with dynamic fallbacks, and the SMS OTP authentication system via Twilio.'
+      title: 'BA + PM Leadership & Full-Lifecycle Delivery',
+      description: 'Led planning and delivery across the full lifecycle in a combined Business Analyst + Project Manager capacity, from requirements through architecture, testing, and reporting. Elicited and documented functional requirements across three stakeholder roles (Farmer, Buyer, Seller), modeled end-to-end business workflows and use cases for equipment rental, crop ordering, and KYC, designed the SHA-256 hash chaining ledger to ensure transaction integrity, defined key business rules including double-booking prevention, role-based access, and admin approval workflows, and tracked progress end-to-end to prepare an 18-slide viva defense deck and speaker script.'
     },
     problem: {
       title: 'The Agricultural Challenge',

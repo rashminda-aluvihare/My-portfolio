@@ -5,7 +5,6 @@ import {
   CheckCircle2,
   Network,
   Cpu,
-  ShieldCheck,
   Eye,
   Calendar,
   X,
@@ -13,7 +12,6 @@ import {
   ChevronRight,
   ZoomIn,
   ZoomOut,
-  Maximize2,
   Database,
   ExternalLink,
 } from 'lucide-react';
@@ -25,16 +23,13 @@ export default function Certifications() {
   const certifications = [
     {
       id: 'alison-mis',
-      order: 1,
+      order: '01',
       title: 'Management Information Systems',
       fullTitle: 'Management Information Systems (MIS)',
       issuer: 'Alison (CPD Certified)',
       completionDate: '02 Feb 2025',
       image: alisonMis,
-      badgeColor: '#00f2fe',
-      gradient: 'linear-gradient(135deg, rgba(0, 242, 254, 0.12) 0%, rgba(0, 188, 235, 0.04) 100%)',
-      borderColor: 'rgba(0, 242, 254, 0.35)',
-      icon: <Database size={24} />,
+      icon: <Database size={22} />,
       status: 'Verified Credential',
       credentialId: '3274-46019840',
       verifyUrl: 'https://alison.com/certification/check/3163b669af',
@@ -43,16 +38,13 @@ export default function Certifications() {
     },
     {
       id: 'cisco-it-essentials',
-      order: 2,
+      order: '02',
       title: 'IT Essentials',
       fullTitle: 'Cisco IT Essentials',
       issuer: 'Cisco Networking Academy',
       completionDate: '28 Jul 2025',
       image: ciscoItEssentials,
-      badgeColor: '#00f2fe',
-      gradient: 'linear-gradient(135deg, rgba(0, 242, 254, 0.12) 0%, rgba(0, 188, 235, 0.04) 100%)',
-      borderColor: 'rgba(0, 242, 254, 0.35)',
-      icon: <Cpu size={24} />,
+      icon: <Cpu size={22} />,
       status: 'Verified Credential',
       verifyUrl: 'https://www.credly.com/badges/22d6a0fd-20df-465d-b2db-998b431f3e6d/public_url',
       description:
@@ -60,16 +52,13 @@ export default function Certifications() {
     },
     {
       id: 'cisco-networking-essentials',
-      order: 3,
+      order: '03',
       title: 'Networking Essentials',
       fullTitle: 'Cisco Networking Essentials',
       issuer: 'Cisco Networking Academy',
       completionDate: '24 Jan 2025',
       image: ciscoNetworkingEssentials,
-      badgeColor: '#00f2fe',
-      gradient: 'linear-gradient(135deg, rgba(0, 242, 254, 0.12) 0%, rgba(0, 188, 235, 0.04) 100%)',
-      borderColor: 'rgba(0, 242, 254, 0.35)',
-      icon: <Network size={24} />,
+      icon: <Network size={22} />,
       status: 'Verified Credential',
       verifyUrl: 'https://www.credly.com/badges/5a80766c-2f83-4444-ad34-d87d74868f79/public_url',
       description:
@@ -78,15 +67,13 @@ export default function Certifications() {
   ];
 
   // Lightbox Modal state
-  const [activeCertIndex, setActiveCertIndex] = useState(null); // index or null
+  const [activeCertIndex, setActiveCertIndex] = useState(null);
   const [zoomLevel, setZoomLevel] = useState(1);
 
   const openModal = (index) => {
     setActiveCertIndex(index);
     setZoomLevel(1);
     document.body.style.overflow = 'hidden';
-
-    // Push browser history state so pressing Back button or swipe back closes modal instead of leaving page
     window.history.pushState({ modalType: 'cert-preview' }, '');
   };
 
@@ -96,14 +83,12 @@ export default function Certifications() {
       setZoomLevel(1);
       document.body.style.overflow = 'auto';
 
-      // Clean up browser history state if modal state exists
       if (window.history.state?.modalType === 'cert-preview') {
         window.history.back();
       }
     }
   };
 
-  // Popstate event listener for browser Back button / mobile swipe gesture
   useEffect(() => {
     const handlePopState = () => {
       if (activeCertIndex !== null) {
@@ -117,30 +102,14 @@ export default function Certifications() {
     return () => window.removeEventListener('popstate', handlePopState);
   }, [activeCertIndex]);
 
-  // Close lightbox on Escape key & Arrow navigation
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (activeCertIndex === null) return;
-      if (e.key === 'Escape') {
-        closeModal();
-      } else if (e.key === 'ArrowRight') {
-        nextCert();
-      } else if (e.key === 'ArrowLeft') {
-        prevCert();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [activeCertIndex]);
-
-  const nextCert = () => {
-    if (activeCertIndex === null) return;
+  const nextCert = (e) => {
+    e.stopPropagation();
     setActiveCertIndex((prev) => (prev + 1) % certifications.length);
     setZoomLevel(1);
   };
 
-  const prevCert = () => {
-    if (activeCertIndex === null) return;
+  const prevCert = (e) => {
+    e.stopPropagation();
     setActiveCertIndex((prev) => (prev - 1 + certifications.length) % certifications.length);
     setZoomLevel(1);
   };
@@ -148,49 +117,45 @@ export default function Certifications() {
   const currentCert = activeCertIndex !== null ? certifications[activeCertIndex] : null;
 
   return (
-    <section id="certifications" className="section" style={{ position: 'relative', overflow: 'hidden' }}>
+    <section id="certifications" className="section section-white" style={{ backgroundColor: '#FFFFFF', position: 'relative' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-          <h2 style={{ fontSize: 'clamp(2rem, 4vw, 2.75rem)', fontWeight: 800 }} className="gradient-text">
-            Certifications & Qualifications
+        <div style={{ marginBottom: '44px' }}>
+          <div className="section-label" style={{ marginBottom: '12px' }}>
+            CERTIFICATIONS / 06
+          </div>
+          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
+            Verified Professional Certifications
           </h2>
+          <p style={{ color: '#475569', fontSize: '1.05rem', marginTop: '10px', maxWidth: '750px', lineHeight: 1.6 }}>
+            Industry-standard qualifications validating enterprise management information systems, hardware architectures, and network protocols.
+          </p>
         </div>
 
         {/* Certifications Cards Grid */}
         <div
           style={{
-            maxWidth: '1050px',
+            maxWidth: '1100px',
             margin: '0 auto',
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(310px, 1fr))',
-            gap: '28px',
-            padding: '0 10px',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 300px), 1fr))',
+            gap: '24px',
           }}
         >
           {certifications.map((cert, index) => (
             <div
               key={cert.id}
-              className="glass-panel"
+              className="card-flat"
               style={{
-                borderRadius: '20px',
-                background: cert.gradient,
-                border: `1px solid ${cert.borderColor}`,
+                borderRadius: '18px',
+                background: '#FFFFFF',
+                border: '1px solid rgba(226, 232, 240, 0.9)',
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'space-between',
                 position: 'relative',
                 overflow: 'hidden',
-                transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
-                boxShadow: '0 10px 30px rgba(0, 0, 0, 0.25)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-6px)';
-                e.currentTarget.style.boxShadow = `0 16px 36px ${cert.borderColor}`;
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'none';
-                e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.25)';
+                boxShadow: '0 4px 20px rgba(15, 23, 42, 0.04)',
               }}
             >
               <div>
@@ -201,8 +166,8 @@ export default function Certifications() {
                     position: 'relative',
                     width: '100%',
                     aspectRatio: '1.4 / 1',
-                    background: '#0d1117',
-                    borderBottom: `1px solid ${cert.borderColor}`,
+                    background: '#F1F5F9',
+                    borderBottom: '1px solid rgba(226, 232, 240, 0.9)',
                     cursor: 'pointer',
                     overflow: 'hidden',
                   }}
@@ -217,7 +182,7 @@ export default function Certifications() {
                       width: '100%',
                       height: '100%',
                       objectFit: 'cover',
-                      transition: 'transform 0.5s ease',
+                      transition: 'transform 0.4s ease',
                     }}
                   />
 
@@ -227,7 +192,7 @@ export default function Certifications() {
                     style={{
                       position: 'absolute',
                       inset: 0,
-                      background: 'rgba(5, 7, 10, 0.65)',
+                      background: 'rgba(15, 23, 42, 0.72)',
                       backdropFilter: 'blur(4px)',
                       display: 'flex',
                       flexDirection: 'column',
@@ -235,26 +200,26 @@ export default function Certifications() {
                       justifyContent: 'center',
                       gap: '10px',
                       opacity: 0,
-                      transition: 'opacity 0.3s ease',
+                      transition: 'opacity 0.25s ease',
                       color: '#ffffff',
                     }}
                   >
                     <div
                       style={{
-                        background: cert.badgeColor,
-                        color: '#05070a',
+                        background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+                        color: '#FFFFFF',
                         borderRadius: '50%',
-                        width: '48px',
-                        height: '48px',
+                        width: '46px',
+                        height: '46px',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        boxShadow: `0 0 20px ${cert.borderColor}`,
+                        boxShadow: '0 0 20px rgba(37, 99, 235, 0.6)',
                       }}
                     >
-                      <Eye size={24} />
+                      <Eye size={22} />
                     </div>
-                    <span style={{ fontWeight: 700, fontSize: '0.9rem', letterSpacing: '0.02em' }}>
+                    <span style={{ fontWeight: 700, fontSize: '0.88rem', letterSpacing: '0.02em', fontFamily: 'var(--font-display)' }}>
                       Click to Preview Certificate
                     </span>
                   </div>
@@ -265,23 +230,24 @@ export default function Certifications() {
                       position: 'absolute',
                       top: '12px',
                       left: '12px',
-                      background: 'rgba(5, 7, 10, 0.85)',
-                      backdropFilter: 'blur(8px)',
-                      border: `1px solid ${cert.borderColor}`,
-                      color: cert.badgeColor,
+                      background: '#FFFFFF',
+                      border: '1px solid rgba(37, 99, 235, 0.25)',
+                      color: '#2563EB',
                       padding: '4px 10px',
-                      borderRadius: '8px',
+                      borderRadius: '6px',
                       fontSize: '0.75rem',
                       fontWeight: 800,
+                      fontFamily: 'var(--font-display)',
+                      boxShadow: '0 2px 8px rgba(15, 23, 42, 0.08)',
                     }}
                   >
-                    #{cert.order} Certificate
+                    #{cert.order}
                   </div>
                 </div>
 
                 {/* Card Content Body */}
                 <div style={{ padding: '24px' }}>
-                  {/* Status & Issuer */}
+                  {/* Status & Date */}
                   <div
                     style={{
                       display: 'flex',
@@ -294,26 +260,27 @@ export default function Certifications() {
                   >
                     <span
                       style={{
-                        fontSize: '0.78rem',
+                        fontSize: '0.76rem',
                         fontWeight: 700,
-                        color: '#38ef7d',
-                        background: 'rgba(56, 239, 125, 0.1)',
-                        border: '1px solid rgba(56, 239, 125, 0.3)',
-                        padding: '4px 12px',
+                        color: '#2563EB',
+                        background: '#EFF6FF',
+                        border: '1px solid rgba(37, 99, 235, 0.2)',
+                        padding: '3px 10px',
                         borderRadius: '999px',
                         display: 'inline-flex',
                         alignItems: 'center',
                         gap: '6px',
+                        fontFamily: 'var(--font-display)',
                       }}
                     >
-                      <CheckCircle2 size={13} />
+                      <CheckCircle2 size={12} />
                       {cert.status}
                     </span>
 
                     <span
                       style={{
-                        fontSize: '0.8rem',
-                        color: 'var(--text-muted)',
+                        fontSize: '0.78rem',
+                        color: '#64748B',
                         fontWeight: 600,
                         display: 'inline-flex',
                         alignItems: 'center',
@@ -325,43 +292,44 @@ export default function Certifications() {
                     </span>
                   </div>
 
-                  {/* Certificate Title */}
+                  {/* Title */}
                   <h3
                     style={{
-                      fontSize: '1.4rem',
+                      fontSize: '1.22rem',
                       fontWeight: 800,
-                      color: 'var(--text-primary)',
+                      color: '#0F172A',
                       lineHeight: '1.3',
                       marginBottom: '8px',
+                      letterSpacing: '-0.02em',
                     }}
                   >
                     {cert.title}
                   </h3>
 
-                  {/* Program & Institute info */}
+                  {/* Issuer */}
                   <div
                     style={{
                       display: 'flex',
-                      flexDirection: 'column',
+                      alignItems: 'center',
                       gap: '6px',
-                      marginBottom: '16px',
+                      color: '#2563EB',
+                      fontWeight: 700,
                       fontSize: '0.88rem',
-                      color: 'var(--text-secondary)',
+                      marginBottom: '12px',
+                      fontFamily: 'var(--font-display)',
                     }}
                   >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: cert.badgeColor, fontWeight: 700 }}>
-                      <Award size={16} />
-                      <span>{cert.issuer}</span>
-                    </div>
+                    <Award size={16} />
+                    <span>{cert.issuer}</span>
                   </div>
 
                   {/* Description */}
                   <p
                     style={{
-                      fontSize: '0.9rem',
-                      color: 'var(--text-secondary)',
+                      fontSize: '0.88rem',
+                      color: '#475569',
                       lineHeight: '1.6',
-                      marginBottom: '20px',
+                      marginBottom: '16px',
                     }}
                   >
                     {cert.description}
@@ -369,37 +337,18 @@ export default function Certifications() {
                 </div>
               </div>
 
-              {/* Action Buttons at bottom */}
+              {/* Action Buttons */}
               <div style={{ padding: '0 24px 24px', display: 'flex', gap: '10px' }}>
                 <button
                   onClick={() => openModal(index)}
+                  className="btn-primary"
                   style={{
                     flex: 1,
-                    padding: '12px',
-                    borderRadius: '12px',
-                    background: cert.badgeColor,
-                    color: '#05070a',
-                    border: 'none',
-                    fontWeight: 700,
-                    fontSize: '0.92rem',
-                    cursor: 'pointer',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '8px',
-                    transition: 'var(--transition-smooth)',
-                    boxShadow: `0 4px 14px ${cert.borderColor}`,
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.filter = 'brightness(1.15)';
-                    e.currentTarget.style.transform = 'scale(1.02)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.filter = 'none';
-                    e.currentTarget.style.transform = 'none';
+                    padding: '10px',
+                    fontSize: '0.88rem',
                   }}
                 >
-                  <Eye size={18} />
+                  <Eye size={16} />
                   <span>Preview</span>
                 </button>
 
@@ -408,32 +357,14 @@ export default function Certifications() {
                     href={cert.verifyUrl}
                     target="_blank"
                     rel="noopener noreferrer"
+                    className="btn-outline"
                     style={{
-                      padding: '12px 16px',
-                      borderRadius: '12px',
-                      background: 'rgba(255, 255, 255, 0.06)',
-                      border: `1px solid ${cert.borderColor}`,
-                      color: cert.badgeColor,
-                      fontWeight: 700,
-                      fontSize: '0.88rem',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '6px',
-                      textDecoration: 'none',
-                      transition: 'all 0.2s ease',
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.12)';
-                      e.currentTarget.style.transform = 'scale(1.02)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = 'rgba(255, 255, 255, 0.06)';
-                      e.currentTarget.style.transform = 'scale(1)';
+                      padding: '10px 16px',
+                      fontSize: '0.85rem',
                     }}
                     title={`Verify online credential issued by ${cert.issuer}`}
                   >
-                    <ExternalLink size={16} />
+                    <ExternalLink size={15} />
                     <span>Verify</span>
                   </a>
                 )}
@@ -443,7 +374,7 @@ export default function Certifications() {
         </div>
       </div>
 
-      {/* FULLSCREEN PREVIEW LIGHTBOX MODAL (PORTAL TO DOCUMENT.BODY) */}
+      {/* FULLSCREEN PREVIEW LIGHTBOX MODAL */}
       {currentCert &&
         createPortal(
           <div
@@ -451,7 +382,7 @@ export default function Certifications() {
               position: 'fixed',
               inset: 0,
               zIndex: 9999999,
-              background: 'rgba(5, 7, 10, 0.95)',
+              background: 'rgba(15, 23, 42, 0.92)',
               backdropFilter: 'blur(16px)',
               display: 'flex',
               flexDirection: 'column',
@@ -475,7 +406,6 @@ export default function Certifications() {
               }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Action Bar */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                 {currentCert.verifyUrl && (
                   <a
@@ -486,15 +416,16 @@ export default function Certifications() {
                       display: 'inline-flex',
                       alignItems: 'center',
                       gap: '6px',
-                      padding: '8px 14px',
-                      borderRadius: '10px',
-                      background: 'rgba(0, 242, 254, 0.15)',
-                      border: '1px solid rgba(0, 242, 254, 0.35)',
-                      color: '#00f2fe',
+                      padding: '8px 16px',
+                      borderRadius: '999px',
+                      background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+                      color: '#FFFFFF',
                       fontWeight: 700,
                       fontSize: '0.85rem',
                       textDecoration: 'none',
                       transition: 'all 0.2s ease',
+                      fontFamily: 'var(--font-display)',
+                      boxShadow: '0 2px 10px rgba(37, 99, 235, 0.4)',
                     }}
                     title="Verify online credential"
                   >
@@ -521,7 +452,7 @@ export default function Certifications() {
               </div>
             </div>
 
-            {/* Modal Main View (Image + Prev/Next controls) */}
+            {/* Modal Main View */}
             <div
               style={{
                 position: 'relative',
@@ -534,7 +465,6 @@ export default function Certifications() {
               }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Prev Button */}
               <button
                 onClick={prevCert}
                 style={{
@@ -543,10 +473,9 @@ export default function Certifications() {
                 }}
                 aria-label="Previous Certificate"
               >
-                <ChevronLeft size={28} />
+                <ChevronLeft size={26} />
               </button>
 
-              {/* Certificate Display Area */}
               <div
                 style={{
                   maxWidth: '1000px',
@@ -576,7 +505,6 @@ export default function Certifications() {
                 />
               </div>
 
-              {/* Next Button */}
               <button
                 onClick={nextCert}
                 style={{
@@ -585,7 +513,7 @@ export default function Certifications() {
                 }}
                 aria-label="Next Certificate"
               >
-                <ChevronRight size={28} />
+                <ChevronRight size={26} />
               </button>
             </div>
 
@@ -608,24 +536,24 @@ export default function Certifications() {
                   display: 'inline-flex',
                   alignItems: 'center',
                   gap: '8px',
-                  padding: '8px 20px',
+                  padding: '8px 22px',
                   borderRadius: '999px',
-                  background: 'rgba(255, 68, 68, 0.2)',
-                  border: '1px solid rgba(255, 68, 68, 0.45)',
-                  color: '#ff6b6b',
+                  background: 'rgba(255, 255, 255, 0.1)',
+                  border: '1px solid rgba(255, 255, 255, 0.2)',
+                  color: '#FFFFFF',
                   fontWeight: 700,
                   fontSize: '0.88rem',
                   cursor: 'pointer',
                   transition: 'all 0.2s ease',
-                  boxShadow: '0 4px 15px rgba(255, 68, 68, 0.2)',
+                  fontFamily: 'var(--font-display)',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 68, 68, 0.35)';
-                  e.currentTarget.style.transform = 'scale(1.04)';
+                  e.currentTarget.style.background = '#2563EB';
+                  e.currentTarget.style.borderColor = '#2563EB';
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 68, 68, 0.2)';
-                  e.currentTarget.style.transform = 'scale(1)';
+                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
+                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.2)';
                 }}
               >
                 <X size={18} />
@@ -636,7 +564,6 @@ export default function Certifications() {
           document.body
         )}
 
-      {/* Embedded CSS for Cert hover overlay and responsive styling */}
       <style>{`
         .cert-img-container:hover .cert-hover-overlay {
           opacity: 1 !important;
@@ -648,25 +575,18 @@ export default function Certifications() {
           from { opacity: 0; }
           to { opacity: 1; }
         }
-        @media (max-width: 600px) {
-          .modal-arrow-nav {
-            width: 38px !important;
-            height: 38px !important;
-          }
-        }
       `}</style>
     </section>
   );
 }
 
-// Button styles for Modal
 const modalControlBtnStyle = {
-  background: 'rgba(255, 255, 255, 0.08)',
-  border: '1px solid rgba(255, 255, 255, 0.15)',
+  background: 'rgba(255, 255, 255, 0.1)',
+  border: '1px solid rgba(255, 255, 255, 0.2)',
   color: '#ffffff',
   width: '38px',
   height: '38px',
-  borderRadius: '10px',
+  borderRadius: '50%',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
@@ -678,7 +598,7 @@ const navArrowStyle = {
   position: 'absolute',
   top: '50%',
   transform: 'translateY(-50%)',
-  background: 'rgba(10, 13, 20, 0.75)',
+  background: 'rgba(15, 23, 42, 0.88)',
   border: '1px solid rgba(255, 255, 255, 0.2)',
   color: '#ffffff',
   width: '46px',

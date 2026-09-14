@@ -1,11 +1,29 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X, Calculator, ShieldCheck, HelpCircle, Coins, Award, Info, Table } from 'lucide-react';
 
 export default function ProjectDemoModal({ demoType, onClose }) {
+  useEffect(() => {
+    if (!demoType) return;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e) => {
+      if (e.key === 'Escape') {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = 'unset';
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [demoType, onClose]);
+
   if (!demoType) return null;
 
   // Render modal content based on selected demo
-  return (
+  return createPortal(
     <div
       style={{
         position: 'fixed',
@@ -19,7 +37,7 @@ export default function ProjectDemoModal({ demoType, onClose }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        zIndex: 999999,
+        zIndex: 9999999,
         padding: '20px',
         animation: 'fadeIn 0.3s ease-out',
       }}
@@ -1142,6 +1160,7 @@ function SavingsCalculator() {
         </div>
       </div>
 
-    </div>
+    </div>,
+    document.body
   );
 }

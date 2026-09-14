@@ -1,5 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
-import Background from './components/Background';
+import { useEffect } from 'react';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -10,33 +9,14 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Activities from './components/Activities';
 import Contact from './components/Contact';
-import SplashScreen from './components/SplashScreen';
-import Chatbot from './components/Chatbot';
 import FloatingControls from './components/FloatingControls';
-import { ArrowUp } from 'lucide-react';
 
 export default function App() {
-  // Splash screen: show once per session
-  const [splashDone, setSplashDone] = useState(false);
-
-  // Theme state
-  const [theme, setTheme] = useState(() => {
-    const saved = localStorage.getItem('theme');
-    return saved || 'light'; // light default
-  });
-
-  const [showScrollTop, setShowScrollTop] = useState(false);
-
-  // Toggle theme
-  const toggleTheme = () => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
-  };
-
-  // Sync theme to document element and local storage
   useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('theme', theme);
-  }, [theme]);
+    // Force Light Mode permanently
+    document.documentElement.setAttribute('data-theme', 'light');
+    localStorage.setItem('theme', 'light');
+  }, []);
 
   // Intersection Observer for scroll-reveal animations
   useEffect(() => {
@@ -50,14 +30,13 @@ export default function App() {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
-          observer.unobserve(entry.target); // animate once
+          observer.unobserve(entry.target);
         }
       });
     };
 
     const observer = new IntersectionObserver(handleIntersect, observerOptions);
 
-    // Apply scroll reveal to all sections except home/hero (which loads instantly)
     const sections = document.querySelectorAll('section:not(#home)');
     sections.forEach((sec) => {
       sec.classList.add('reveal-on-scroll');
@@ -69,32 +48,10 @@ export default function App() {
     };
   }, []);
 
-  // Separate scroll threshold check for top button
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 400) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
-
   return (
     <>
-      {/* Splash Screen — shown once on load */}
-      {!splashDone && <SplashScreen onComplete={() => setSplashDone(true)} />}
-
-      {/* Background animated canvas */}
-      <Background />
-
-      {/* Navbar navigation dock */}
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
+      {/* Fixed top Navbar dock */}
+      <Navbar />
 
       {/* Page Sections */}
       <main style={{ position: 'relative' }}>
@@ -109,62 +66,8 @@ export default function App() {
         <Contact />
       </main>
 
-      {/* Footer Area */}
-      <footer
-        style={{
-          borderTop: '1px solid var(--card-border)',
-          background: 'var(--bg-secondary)',
-          padding: '40px 0',
-          position: 'relative',
-          zIndex: 2,
-          textAlign: 'center',
-          color: 'var(--text-secondary)',
-          fontSize: '0.9rem',
-        }}
-      >
 
-      </footer>
-
-      {/* Scroll to Top Trigger */}
-      {showScrollTop && (
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          style={{
-            position: 'fixed',
-            bottom: '95px',
-            right: '34px',
-            background: 'var(--accent-cyan)',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '50%',
-            width: '44px',
-            height: '44px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            cursor: 'pointer',
-            boxShadow: '0 4px 15px rgba(0, 242, 254, 0.4)',
-            transition: 'var(--transition-bounce)',
-            zIndex: 999,
-          }}
-          onMouseEnter={(e) => {
-            e.currentTarget.style.transform = 'translateY(-5px)';
-            e.currentTarget.style.boxShadow = '0 8px 25px rgba(0, 242, 254, 0.6)';
-          }}
-          onMouseLeave={(e) => {
-            e.currentTarget.style.transform = 'none';
-            e.currentTarget.style.boxShadow = '0 4px 15px rgba(0, 242, 254, 0.4)';
-          }}
-          aria-label="Scroll to top"
-        >
-          <ArrowUp size={20} />
-        </button>
-      )}
-
-      {/* AI Assistant Floating Chatbot */}
-      <Chatbot />
-
-      {/* Floating Quick Action Controls (Social bar & CV Button) */}
+      {/* Fixed Right-Side Social Dock & Scroll to Top */}
       <FloatingControls />
     </>
   );

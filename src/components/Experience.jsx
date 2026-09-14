@@ -1,122 +1,80 @@
-import { Briefcase, Calendar, CheckSquare, Award, FileText, Globe, Layers } from 'lucide-react';
+import React from 'react';
+import { Briefcase, Calendar, Globe, Layers } from 'lucide-react';
 import peoplesBankLogo from '../assets/peoplesbank.jpg';
 
 export default function Experience() {
   const experiences = [
     {
-      role: 'Internship Trainee - Branch Banking Operations',
+      index: '01',
+      role: 'Internship Trainee',
       company: "People's Bank Sri Lanka",
       logo: peoplesBankLogo,
       companyType: 'Commercial Banking Institution',
       location: 'Ukuwela Branch, Sri Lanka',
-      duration: 'Jan 2024 - Jul 2024 · 7 mos',
+      duration: 'Jan 2024 - Jul 2024',
       type: 'Bank Internship',
-      skills: 'Branch Banking Operations & Core Financial Workflows',
+      skills: 'Branch Banking Operations, Financial Workflows & Staff Coordination',
       certificate: 'Service Letter',
-      personalContribution: 'Assisted branch staff with daily core banking operations, customer onboarding verification, savings & loan document audits, and digital settlement queries.',
-      tools: ['Core Banking Terminal', 'Customer Onboarding Systems', 'KYC Compliance Protocols', 'Financial Clearing Systems'],
-      responsibilities: [
-        'Assisted with day-to-day branch banking operations including customer service, account handling, and transaction processing',
-        'Gained practical exposure to core banking workflows, operational processes, and customer interaction patterns',
-        'Developed a strong understanding of financial processes relevant to Business Analysis in the banking sector.',
-      ],
-      badgeColor: 'var(--accent-purple)',
-      bgAlpha: 'rgba(155, 81, 224, 0.1)',
-      borderAlpha: 'rgba(155, 81, 224, 0.25)',
     },
   ];
 
   return (
-    <section id="experience" className="section" style={{ background: 'var(--bg-secondary)', position: 'relative' }}>
+    <section id="experience" className="section section-white" style={{ backgroundColor: '#FFFFFF', position: 'relative' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 800 }} className="gradient-text">
-            Professional Experience
+        <div style={{ marginBottom: '44px' }}>
+          <div className="section-label" style={{ marginBottom: '12px' }}>
+            EXPERIENCE / 02
+          </div>
+          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
+            Professional Experience &amp; Practical Exposure
           </h2>
+          <p style={{ color: '#475569', fontSize: '1.05rem', marginTop: '10px', maxWidth: '750px', lineHeight: 1.6 }}>
+            Hands-on institutional experience within the commercial banking sector, bridging operational processes with technology delivery.
+          </p>
         </div>
 
-        {/* Experience Timeline */}
-        <div style={{ maxWidth: '850px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '32px', position: 'relative' }}>
-          {/* Vertical Glowing Connector Line */}
-          <div
-            style={{
-              position: 'absolute',
-              left: '-24px',
-              top: '20px',
-              bottom: '20px',
-              width: '3px',
-              background: 'linear-gradient(180deg, var(--accent-emerald) 0%, var(--accent-cyan) 100%)',
-              borderRadius: '999px',
-              boxShadow: '0 0 12px rgba(6, 182, 212, 0.4)',
-            }}
-          />
-
+        {/* Experience Cards */}
+        <div style={{ maxWidth: '960px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '28px' }}>
           {experiences.map((exp, idx) => (
             <div
               key={idx}
-              className="glass-panel"
+              className="card-flat"
               style={{
-                padding: '32px',
+                padding: '36px',
                 display: 'flex',
                 flexDirection: 'column',
-                gap: '20px',
-                position: 'relative',
-                borderRadius: '20px',
-                transition: 'all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1)',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-6px) scale(1.01)';
-                e.currentTarget.style.borderColor = 'var(--accent-emerald)';
-                e.currentTarget.style.boxShadow = '0 15px 35px rgba(0, 0, 0, 0.3), 0 0 25px rgba(16, 185, 129, 0.3)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'none';
-                e.currentTarget.style.borderColor = 'var(--card-border)';
-                e.currentTarget.style.boxShadow = 'none';
+                gap: '24px',
+                background: '#FFFFFF',
+                border: '1px solid rgba(226, 232, 240, 0.9)',
+                boxShadow: '0 4px 20px rgba(15, 23, 42, 0.04)',
               }}
             >
-              {/* Timeline Node Ring */}
-              <div
-                style={{
-                  position: 'absolute',
-                  left: '-32px',
-                  top: '36px',
-                  width: '18px',
-                  height: '18px',
-                  borderRadius: '50%',
-                  background: 'var(--accent-emerald)',
-                  border: '4px solid var(--bg-primary)',
-                  boxShadow: '0 0 14px var(--accent-emerald)',
-                  zIndex: 2,
-                }}
-              />
-              {/* Header */}
+              {/* Header Row */}
               <div
                 style={{
                   display: 'flex',
                   justifyContent: 'space-between',
                   alignItems: 'flex-start',
                   flexWrap: 'wrap',
-                  gap: '12px',
+                  gap: '16px',
                 }}
               >
-                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
                   <div
                     style={{
-                      background: exp.logo ? '#ffffff' : exp.bgAlpha,
-                      border: `1px solid ${exp.logo ? 'rgba(255, 255, 255, 0.2)' : exp.borderAlpha}`,
+                      background: '#FFFFFF',
+                      border: '1px solid rgba(226, 232, 240, 0.9)',
                       borderRadius: '14px',
-                      padding: exp.logo ? '4px' : '12px',
-                      width: '54px',
-                      height: '54px',
-                      color: exp.badgeColor,
+                      padding: '4px',
+                      width: '56px',
+                      height: '56px',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0,
-                      boxShadow: '0 4px 14px rgba(0, 0, 0, 0.15)',
                       overflow: 'hidden',
+                      boxShadow: '0 2px 8px rgba(15, 23, 42, 0.04)',
                     }}
                   >
                     {exp.logo ? (
@@ -125,8 +83,8 @@ export default function Experience() {
                         alt={exp.company}
                         loading="lazy"
                         decoding="async"
-                        width="48"
-                        height="48"
+                        width="50"
+                        height="50"
                         style={{
                           width: '100%',
                           height: '100%',
@@ -135,172 +93,58 @@ export default function Experience() {
                         }}
                       />
                     ) : (
-                      <Briefcase size={24} />
+                      <Briefcase size={26} color="#2563EB" />
                     )}
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--text-primary)' }}>
+                    <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em' }}>
                       {exp.role}
                     </h3>
-                    <h4 style={{ fontSize: '1.05rem', color: 'var(--text-secondary)', fontWeight: 600 }}>
-                      {exp.company} · <span style={{ opacity: 0.8 }}>{exp.companyType}</span>
+                    <h4 style={{ fontSize: '1.02rem', color: '#475569', fontWeight: 600, marginTop: '2px' }}>
+                      {exp.company} &bull; <span style={{ color: '#64748B' }}>{exp.companyType}</span>
                     </h4>
                   </div>
                 </div>
 
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'flex-end',
-                    gap: '4px',
-                  }}
-                >
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                   <span
                     style={{
-                      fontSize: '0.8rem',
+                      fontSize: '0.78rem',
                       fontWeight: 700,
-                      color: exp.badgeColor,
-                      background: exp.bgAlpha,
-                      border: `1px solid ${exp.borderAlpha}`,
-                      padding: '4px 12px',
+                      color: '#2563EB',
+                      background: '#EFF6FF',
+                      border: '1px solid rgba(37, 99, 235, 0.2)',
+                      padding: '5px 14px',
                       borderRadius: '999px',
+                      fontFamily: 'var(--font-display)',
                     }}
                   >
                     {exp.type}
                   </span>
-                  <span
-                    style={{
-                      fontSize: '0.85rem',
-                      color: 'var(--text-muted)',
-                      fontWeight: 600,
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '4px',
-                      marginTop: '4px',
-                    }}
-                  >
-                    <Calendar size={14} />
-                    {exp.duration}
-                  </span>
-                  {exp.location && (
-                    <span
-                      style={{
-                        fontSize: '0.8rem',
-                        color: 'var(--text-muted)',
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '4px',
-                      }}
-                    >
-                      <Globe size={13} />
-                      {exp.location}
-                    </span>
-                  )}
+                  <span className="card-index" style={{ color: '#2563EB' }}>{exp.index}</span>
                 </div>
               </div>
 
-              {/* Skill Specialization Badge */}
-              {exp.skills && (
-                <div
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    background: 'rgba(255, 255, 255, 0.02)',
-                    padding: '10px 14px',
-                    borderRadius: '10px',
-                    border: '1px solid var(--card-border)',
-                  }}
-                >
-                  <Layers size={15} style={{ color: exp.badgeColor }} />
-                  <span style={{ fontSize: '0.85rem', fontWeight: 600, color: 'var(--text-secondary)' }}>
-                    {exp.skills}
-                  </span>
+              {/* Meta information row (Duration, Location) */}
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', padding: '12px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid rgba(226, 232, 240, 0.8)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: '#475569' }}>
+                  <Calendar size={15} style={{ color: '#2563EB' }} />
+                  <span>{exp.duration}</span>
                 </div>
-              )}
-
-              {/* Individual Contribution Highlight */}
-              {exp.personalContribution && (
-                <div
-                  style={{
-                    background: 'rgba(0, 242, 254, 0.04)',
-                    borderLeft: `3px solid ${exp.badgeColor}`,
-                    padding: '12px 16px',
-                    borderRadius: '0 10px 10px 0',
-                    fontSize: '0.92rem',
-                    color: 'var(--text-secondary)',
-                    lineHeight: 1.5,
-                  }}
-                >
-                  <strong style={{ color: 'var(--text-primary)', display: 'block', marginBottom: '4px' }}>
-                    My Individual Contribution:
-                  </strong>
-                  {exp.personalContribution}
-                </div>
-              )}
-
-              {/* Technologies & Tools Used */}
-              {exp.tools && exp.tools.length > 0 && (
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                  {exp.tools.map((tool, tIdx) => (
-                    <span
-                      key={tIdx}
-                      style={{
-                        fontSize: '0.78rem',
-                        fontWeight: 600,
-                        color: exp.badgeColor,
-                        background: exp.bgAlpha,
-                        border: `1px solid ${exp.borderAlpha}`,
-                        padding: '4px 10px',
-                        borderRadius: '6px',
-                      }}
-                    >
-                      {tool}
-                    </span>
-                  ))}
-                </div>
-              )}
-              <div style={{ borderTop: '1px solid var(--card-border)', paddingTop: '16px' }}>
-                <h4
-                  style={{
-                    fontSize: '0.95rem',
-                    fontWeight: 700,
-                    marginBottom: '12px',
-                    color: 'var(--text-primary)',
-                  }}
-                >
-                  Key Operations & Highlights:
-                </h4>
-                <ul
-                  style={{
-                    listStyle: 'none',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    gap: '10px',
-                  }}
-                >
-                  {exp.responsibilities.map((resp, rIdx) => (
-                    <li
-                      key={rIdx}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'flex-start',
-                        gap: '10px',
-                        color: 'var(--text-secondary)',
-                        fontSize: '0.95rem',
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      <CheckSquare
-                        size={16}
-                        style={{ color: exp.badgeColor, marginTop: '3px', flexShrink: 0 }}
-                      />
-                      <span>{resp}</span>
-                    </li>
-                  ))}
-                </ul>
+                {exp.location && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: '#475569' }}>
+                    <Globe size={15} style={{ color: '#2563EB' }} />
+                    <span>{exp.location}</span>
+                  </div>
+                )}
+                {exp.skills && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: '#0F172A', fontWeight: 600 }}>
+                    <Layers size={15} style={{ color: '#2563EB' }} />
+                    <span>{exp.skills}</span>
+                  </div>
+                )}
               </div>
+
             </div>
           ))}
         </div>
@@ -308,4 +152,3 @@ export default function Experience() {
     </section>
   );
 }
-

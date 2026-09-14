@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { X, AlertTriangle, Layers, ExternalLink, Calendar, CheckCircle2 } from 'lucide-react';
 
 export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
@@ -23,7 +24,7 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
 
   if (!caseStudy) return null;
 
-  return (
+  return createPortal(
     <div
       className="case-study-overlay"
       style={{
@@ -32,12 +33,14 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
         left: 0,
         width: '100vw',
         height: '100vh',
-        background: 'rgba(0, 0, 0, 0.75)', // Solid dimmed backdrop overlay without blur
+        background: 'rgba(0, 0, 0, 0.82)', // Solid dimmed backdrop overlay
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        zIndex: 999999, // Highest z-index above navbar
-        padding: '16px',
+        zIndex: 9999999, // Highest z-index above all fixed navbars and widgets
+        padding: '20px',
         animation: 'modalFadeIn 0.2s ease-out',
       }}
       onClick={onClose}
@@ -85,11 +88,12 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
                   fontWeight: 800,
                   textTransform: 'uppercase',
                   letterSpacing: '0.06em',
-                  color: 'var(--accent-cyan)',
-                  background: 'rgba(0, 242, 254, 0.1)',
-                  border: '1px solid var(--accent-cyan)',
+                  color: '#2563EB',
+                  background: '#EFF6FF',
+                  border: '1px solid rgba(37, 99, 235, 0.25)',
                   padding: '4px 12px',
                   borderRadius: '20px',
+                  fontFamily: 'var(--font-display)',
                 }}
               >
                 {caseStudy.category}
@@ -509,6 +513,8 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
           </div>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
+

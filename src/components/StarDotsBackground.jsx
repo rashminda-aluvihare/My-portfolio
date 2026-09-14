@@ -30,18 +30,18 @@ export default function StarDotsBackground() {
 
     resizeCanvas();
 
-    // Generate Space Star Dots
-    const starCount = W < 768 ? 60 : 130;
+    // Generate Star Dots
+    const starCount = W < 768 ? 50 : 100;
     const stars = [];
 
     for (let i = 0; i < starCount; i++) {
       stars.push({
         x: Math.random() * W,
         y: Math.random() * H,
-        radius: Math.random() * 1.6 + 0.6,
+        radius: Math.random() * 1.5 + 0.6,
         alpha: Math.random(),
-        speed: Math.random() * 0.015 + 0.005,
-        isPurple: Math.random() > 0.5,
+        speed: Math.random() * 0.012 + 0.004,
+        isOrange: Math.random() > 0.6,
       });
     }
 
@@ -49,8 +49,6 @@ export default function StarDotsBackground() {
       if (!isRunning) return;
 
       ctx.clearRect(0, 0, W, H);
-
-      const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
 
       for (let i = 0; i < stars.length; i++) {
         const s = stars[i];
@@ -62,20 +60,13 @@ export default function StarDotsBackground() {
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
 
-        if (isDark) {
-          ctx.fillStyle = s.isPurple
-            ? `rgba(145, 94, 255, ${Math.max(0.1, s.alpha * 0.85)})`
-            : `rgba(255, 255, 255, ${Math.max(0.1, s.alpha * 0.75)})`;
-        } else {
-          // High-contrast vibrant dots for Light Mode
-          ctx.fillStyle = s.isPurple
-            ? `rgba(124, 58, 237, ${Math.max(0.15, s.alpha * 0.65)})`
-            : `rgba(2, 132, 199, ${Math.max(0.15, s.alpha * 0.65)})`;
-        }
+        ctx.fillStyle = s.isOrange
+          ? `rgba(37, 99, 235, ${Math.max(0.1, s.alpha * 0.85)})`
+          : `rgba(255, 255, 255, ${Math.max(0.08, s.alpha * 0.65)})`;
 
-        if (s.radius > 1.2) {
-          ctx.shadowBlur = isDark ? 8 : 4;
-          ctx.shadowColor = s.isPurple ? '#915eff' : '#0284c7';
+        if (s.radius > 1.2 && s.isOrange) {
+          ctx.shadowBlur = 6;
+          ctx.shadowColor = '#2563EB';
         }
         ctx.fill();
         ctx.shadowBlur = 0;
@@ -101,23 +92,25 @@ export default function StarDotsBackground() {
 
     return () => {
       isRunning = false;
-      cancelAnimationFrame(animationFrameId);
-      clearTimeout(resizeTimer);
       window.removeEventListener('resize', handleResize);
+      if (animationFrameId) {
+        cancelAnimationFrame(animationFrameId);
+      }
     };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
-      aria-hidden="true"
       style={{
         position: 'absolute',
-        inset: 0,
+        top: 0,
+        left: 0,
         width: '100%',
         height: '100%',
         pointerEvents: 'none',
         zIndex: 0,
+        opacity: 0.7,
       }}
     />
   );
