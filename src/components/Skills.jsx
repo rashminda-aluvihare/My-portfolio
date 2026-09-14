@@ -4,36 +4,6 @@ export default function Skills() {
   // Track 1: Cloud, DevOps & Engineering Stacks (matching Image 2 & CV)
   const track1Skills = [
     {
-      name: 'Python',
-      icon: (
-        <svg viewBox="0 0 24 24" width="34" height="34">
-          <path d="M11.91 2c-5.18 0-4.86 2.25-4.86 2.25l.01 2.33h4.94v.7H5.06S2 7.03 2 12.24s2.69 5 2.69 5h1.6v-2.35s-.09-2.69 2.64-2.69h4.52s2.56.04 2.56-2.48V4.48S16.48 2 11.91 2zm-2.7 1.48a.95.95 0 1 1 0 1.9.95.95 0 0 1 0-1.9z" fill="#3776AB"/>
-          <path d="M12.09 22c5.18 0 4.86-2.25 4.86-2.25l-.01-2.33h-4.94v-.7h6.94s3.06.25 3.06-4.96-2.69-5-2.69-5h-1.6v2.35s.09 2.69-2.64 2.69H10.5s-2.56-.04-2.56 2.48v5.24S7.52 22 12.09 22zm2.7-1.48a.95.95 0 1 1 0-1.9.95.95 0 0 1 0 1.9z" fill="#FFD43B"/>
-        </svg>
-      ),
-    },
-    {
-      name: 'AWS',
-      icon: (
-        <svg viewBox="0 0 24 24" width="34" height="34" fill="none">
-          <path d="M7.7 8.3c0-.6.4-1 1-1h1.3c.6 0 1 .4 1 1v4.4c0 .6-.4 1-1 1H8.7c-.6 0-1-.4-1-1V8.3z" fill="#232F3E"/>
-          <path d="M4 11.2c-.3.4-.6.6-1 .6s-.7-.2-1-.6l-.7.8c.5.6 1.1.9 1.7.9s1.2-.3 1.7-.9l-.7-.8z" fill="#232F3E"/>
-          <path d="M12.9 11.5c-2.8 1.4-6.3 1.2-8.8-.4-.3-.2-.7.1-.5.4 2.8 2.3 7 2.4 10.2.7.4-.2.1-.7-.9-.7z" fill="#FF9900"/>
-          <path d="M14.5 10.8c.2-.3.7-.4.9-.1l.9.9c.2.2.1.6-.2.7l-1.4.4c-.3.1-.6-.2-.4-.5l.2-1.4z" fill="#FF9900"/>
-          <path d="M3.2 8.5h1.2v3.2H3.2V8.5zm12.6 0h1.2v3.2h-1.2V8.5z" fill="#232F3E"/>
-          <text x="12" y="10.8" textAnchor="middle" fill="#232F3E" fontWeight="900" fontSize="7" fontFamily="system-ui, sans-serif">AWS</text>
-        </svg>
-      ),
-    },
-    {
-      name: 'Microsoft Azure',
-      icon: (
-        <svg viewBox="0 0 24 24" width="34" height="34">
-          <path d="M12.98 2.63a.85.85 0 0 0-.82-.63H5.32c-.37 0-.69.24-.8.59L.05 18.06c-.14.47.2.94.69.94h6.05c.37 0 .69-.24.8-.6l1.86-6.49 4.38 6.53c.25.37.67.56 1.1.56h8.4c.54 0 .9-.56.66-1.04L12.98 2.63zm-3.23 8.71l-1.89 6.66H1.72L5.8 3.5h5.11l-1.16 7.84z" fill="#0089D6"/>
-        </svg>
-      ),
-    },
-    {
       name: 'Google Cloud',
       icon: (
         <svg viewBox="0 0 24 24" width="34" height="34" fill="none">
@@ -41,22 +11,6 @@ export default function Skills() {
           <path d="M19 14.5c0 2.48-2.02 4.5-4.5 4.5H6c-2.76 0-5-2.24-5-5 0-2.52 1.86-4.59 4.3-4.94.7-2.64 3.09-4.56 5.95-4.56 3.1 0 5.68 2.22 6.27 5.18 2.06.34 3.48 2.16 3.48 4.32z" fill="#EA4335" opacity="0.15"/>
           <path d="M12 5.5c2.4 0 4.4 1.6 5 3.8l.3 1.2 1.2.1c1.5.1 2.5 1.3 2.5 2.8 0 1.6-1.3 2.9-2.9 2.9H6.2c-1.8 0-3.2-1.4-3.2-3.2 0-1.7 1.3-3.1 3-3.2l1.3-.1.5-1.2C8.6 6.8 10.2 5.5 12 5.5m0-1.5C9.1 4 6.6 5.6 5.4 8 2.3 8.4 0 10.9 0 14c0 3.3 2.7 6 6 6h13c2.8 0 5-2.2 5-5 0-2.6-2-4.8-4.6-5-1-3.5-4-6-7.4-6z" fill="#FBBC05"/>
           <circle cx="12" cy="11.5" r="3" fill="#34A853"/>
-        </svg>
-      ),
-    },
-    {
-      name: 'Docker',
-      icon: (
-        <svg viewBox="0 0 24 24" width="34" height="34" fill="#2496ED">
-          <path d="M13.98 11.08h-2.1v-2.1h2.1v2.1zm-2.48 0h-2.1v-2.1h2.1v2.1zm-2.48 0H6.92v-2.1h2.1v2.1zm7.44 0h-2.1v-2.1h2.1v2.1zm-2.48-2.48h-2.1V6.5h2.1v2.1zm-2.48 0h-2.1V6.5h2.1v2.1zm4.96 0h-2.1V6.5h2.1v2.1zm-2.48-2.48h-2.1V3.92h2.1v2.2zm7.64 4.54c-.38-.28-1.42-.36-2.22.1-.08-.6-.38-1.18-.84-1.68l-.48.38c.4.44.62.96.64 1.48-.38.16-.84.44-1.28.9-.38.4-.7.9-.94 1.44H1.42c-.22 0-.42.1-.56.28-.14.18-.18.42-.12.64.9 3.22 3.86 5.42 7.74 5.42 4.98 0 9.1-3.1 9.94-7.44.52.06 1.04-.04 1.42-.32.18-.14.28-.34.26-.56-.02-.22-.14-.42-.34-.54z"/>
-        </svg>
-      ),
-    },
-    {
-      name: 'Kubernetes',
-      icon: (
-        <svg viewBox="0 0 24 24" width="34" height="34" fill="#326CE5">
-          <path d="M11.99 2.05L4.4 6.43l-.04 8.76 7.63 4.41 7.61-4.41.04-8.76-7.65-4.38zm5.95 12.35l-5.95 3.44-5.97-3.45.03-6.86 5.94-3.41 5.98 3.42-.03 6.86zm-5.95-8.48c-2.3 0-4.17 1.87-4.17 4.17s1.87 4.17 4.17 4.17 4.17-1.87 4.17-4.17-1.87-4.17-4.17-4.17zm0 6.67c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/>
         </svg>
       ),
     },
@@ -80,10 +34,10 @@ export default function Skills() {
       ),
     },
     {
-      name: 'TensorFlow',
+      name: 'Node.js',
       icon: (
-        <svg viewBox="0 0 24 24" width="34" height="34" fill="#FF6F00">
-          <path d="M1.2 6.5L11.5.5v23l-4-2.3V14.1l-3.2 1.9V8.6l3.2-1.9v-2.3L1.2 6.5zm21.6 0l-10.3-6v23l4-2.3V14.1l3.2 1.9V8.6l-3.2-1.9v-2.3l6.3 2.1z"/>
+        <svg viewBox="0 0 24 24" width="34" height="34" fill="#339933">
+          <path d="M12 2l9 5.2v10.4L12 23l-9-5.4V7.2L12 2zm0 2.3L4.8 8.4v7.2L12 19.8l7.2-4.2V8.4L12 4.3z"/>
         </svg>
       ),
     },
@@ -256,23 +210,6 @@ export default function Skills() {
         </svg>
       ),
     },
-    {
-      name: 'Credit Risk',
-      icon: (
-        <svg viewBox="0 0 24 24" width="34" height="34" fill="none">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" fill="rgba(225, 29, 72, 0.12)" stroke="#E11D48" strokeWidth="1.8"/>
-          <path d="M9 12l2 2 4-4" stroke="#E11D48" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-        </svg>
-      ),
-    },
-    {
-      name: 'Node.js',
-      icon: (
-        <svg viewBox="0 0 24 24" width="34" height="34" fill="#339933">
-          <path d="M12 2l9 5.2v10.4L12 23l-9-5.4V7.2L12 2zm0 2.3L4.8 8.4v7.2L12 19.8l7.2-4.2V8.4L12 4.3z"/>
-        </svg>
-      ),
-    },
   ];
 
   // Quadruple arrays for smooth continuous seamless infinite marquee loop
@@ -295,15 +232,9 @@ export default function Skills() {
       <div className="container" style={{ marginBottom: '44px' }}>
         {/* Section Header */}
         <div style={{ maxWidth: '850px' }}>
-          <div className="section-label" style={{ marginBottom: '12px' }}>
-            CORE CAPABILITIES / 04
-          </div>
-          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
+          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
             Functional &amp; Technical Competencies
           </h2>
-          <p style={{ color: '#475569', fontSize: '1.05rem', marginTop: '10px', lineHeight: 1.6 }}>
-            Core platforms, cloud environments, business analysis frameworks, and technical stacks utilized across banking operations and software delivery.
-          </p>
         </div>
       </div>
 

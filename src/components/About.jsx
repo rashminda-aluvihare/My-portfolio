@@ -1,5 +1,5 @@
 import React from 'react';
-import profileImg from '../assets/profile.jpg';
+import aboutProfileImg from '../assets/image34354.jpeg';
 
 /**
  * About Component
@@ -57,7 +57,7 @@ export default function About() {
               {/* Portrait Frame & Image */}
               <div className="about-portrait-frame">
                 <img
-                  src={profileImg}
+                  src={aboutProfileImg}
                   alt="Rashminda Aluvihare - Business Analyst"
                   className="about-portrait-img"
                   loading="eager"
@@ -76,9 +76,6 @@ export default function About() {
           <div className="about-content-column">
             {/* Section Main Title */}
             <div className="about-title-wrap">
-              <div className="section-label" style={{ marginBottom: '10px' }}>
-                BIOGRAPHY / 01
-              </div>
               <h2 className="about-main-title">About Me</h2>
             </div>
 
@@ -268,9 +265,9 @@ export default function About() {
           width: 100%;
           height: 100%;
           object-fit: cover;
-          object-position: center 15%;
+          object-position: center 20%;
           display: block;
-          filter: contrast(1.03) brightness(1.02);
+          filter: contrast(1.02) brightness(1.01);
         }
 
         /* Bottom Curved Podium Card */

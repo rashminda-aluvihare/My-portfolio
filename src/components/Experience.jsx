@@ -23,15 +23,9 @@ export default function Experience() {
       <div className="container">
         {/* Section Header */}
         <div style={{ marginBottom: '44px' }}>
-          <div className="section-label" style={{ marginBottom: '12px' }}>
-            EXPERIENCE / 02
-          </div>
-          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
+          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
             Professional Experience
           </h2>
-          <p style={{ color: '#475569', fontSize: '1.05rem', marginTop: '10px', maxWidth: '750px', lineHeight: 1.6 }}>
-            Hands-on institutional experience within the commercial banking sector, bridging operational processes with technology delivery.
-          </p>
         </div>
 
         {/* Experience Cards */}

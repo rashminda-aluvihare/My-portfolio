@@ -114,15 +114,9 @@ export default function Contact() {
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         {/* Section Header */}
         <div style={{ marginBottom: '38px' }}>
-          <div className="section-label" style={{ marginBottom: '12px' }}>
-            GET IN TOUCH / 08
-          </div>
           <h2 style={{ fontSize: 'clamp(1.9rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
             Let's Build Something Together
           </h2>
-          <p style={{ color: '#475569', fontSize: '1.02rem', marginTop: '12px', maxWidth: '750px', lineHeight: 1.6 }}>
-            Available for Business Analyst and Project Management Intern roles. Let's connect to discuss opportunities and collaborations.
-          </p>
         </div>
 
         {/* 2-Column Clean Light Layout */}
@@ -173,9 +167,6 @@ export default function Contact() {
                   <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', margin: 0 }}>
                     Send a Message
                   </h3>
-                  <span style={{ fontSize: '0.78rem', color: '#2563EB', background: '#EFF6FF', padding: '4px 10px', borderRadius: '999px', fontWeight: 700 }}>
-                    Quick Form
-                  </span>
                 </div>
 
                 {status === 'error' && (

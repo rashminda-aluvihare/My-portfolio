@@ -121,15 +121,9 @@ export default function Certifications() {
       <div className="container">
         {/* Section Header */}
         <div style={{ marginBottom: '44px' }}>
-          <div className="section-label" style={{ marginBottom: '12px' }}>
-            CERTIFICATIONS / 06
-          </div>
-          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
+          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
             Verified Professional Certifications
           </h2>
-          <p style={{ color: '#475569', fontSize: '1.05rem', marginTop: '10px', maxWidth: '750px', lineHeight: 1.6 }}>
-            Industry-standard qualifications validating enterprise management information systems, hardware architectures, and network protocols.
-          </p>
         </div>
 
         {/* Certifications Cards Grid */}

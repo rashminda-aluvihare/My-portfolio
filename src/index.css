@@ -520,36 +520,53 @@ h6 {
   animation-play-state: paused;
 }
 
-/* ── PROJECT COMPACT CARDS & DIRECTORY MODAL (Royal Blue Edition) ── */
+/* ── PROJECT CARDS & ALL PROJECTS MODAL (Royal Blue Edition) ── */
+.project-card-item,
 .project-creative-card-compact {
   background: #FFFFFF !important;
   border: 1px solid rgba(226, 232, 240, 0.9) !important;
-  border-top: 3px solid transparent !important;
-  border-radius: 18px !important;
+  border-radius: 20px !important;
   overflow: hidden !important;
   display: flex !important;
   flex-direction: column !important;
   box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04) !important;
   transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1) !important;
   position: relative !important;
+  height: auto !important;
 }
 
+.project-card-marquee-item {
+  width: 350px !important;
+  min-width: 350px !important;
+  flex-shrink: 0 !important;
+}
+
+.project-card-modal-item {
+  width: 100% !important;
+  min-width: unset !important;
+}
+
+.project-card-item:hover,
 .project-creative-card-compact:hover {
   transform: translateY(-6px) !important;
-  border-top-color: #2563EB !important;
-  box-shadow: 0 16px 36px rgba(37, 99, 235, 0.1) !important;
+  border-color: rgba(37, 99, 235, 0.4) !important;
+  box-shadow: 0 16px 36px rgba(37, 99, 235, 0.12) !important;
 }
 
+.project-card-banner,
 .project-card-banner-compact {
   position: relative !important;
-  height: 160px !important;
+  height: 190px !important;
+  min-height: 190px !important;
+  flex-shrink: 0 !important;
   width: 100% !important;
   overflow: hidden !important;
   background: #F1F5F9 !important;
-  border-bottom: 1px solid rgba(226, 232, 240, 0.8) !important;
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85) !important;
   display: block !important;
 }
 
+.project-card-banner-img,
 .project-banner-img-compact {
   width: 100% !important;
   height: 100% !important;
@@ -559,10 +576,12 @@ h6 {
   transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
+.project-card-item:hover .project-card-banner-img,
 .project-creative-card-compact:hover .project-banner-img-compact {
   transform: scale(1.05) !important;
 }
 
+.project-card-badge,
 .project-index-badge-compact {
   position: absolute !important;
   top: 10px !important;
@@ -572,21 +591,24 @@ h6 {
   color: #38BDF8 !important;
   font-size: 0.72rem !important;
   font-weight: 800 !important;
-  padding: 3px 8px !important;
+  padding: 3px 9px !important;
   border-radius: 999px !important;
   font-family: var(--font-display) !important;
   letter-spacing: 0.05em !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
   z-index: 2 !important;
 }
 
+.project-card-body,
 .project-card-body-compact {
-  padding: 16px 18px !important;
+  padding: 18px 20px !important;
   flex: 1 !important;
   display: flex !important;
   flex-direction: column !important;
   gap: 8px !important;
 }
 
+.project-card-category,
 .project-category-tag-compact {
   font-size: 0.68rem !important;
   font-weight: 800 !important;
@@ -596,12 +618,13 @@ h6 {
   font-family: var(--font-display) !important;
 }
 
+.project-card-title,
 .project-title-text-compact {
-  font-size: 1.06rem !important;
+  font-size: 1.08rem !important;
   font-weight: 800 !important;
   color: #0F172A !important;
   letter-spacing: -0.02em !important;
-  line-height: 1.3 !important;
+  line-height: 1.32 !important;
   margin: 0 !important;
   display: -webkit-box !important;
   -webkit-line-clamp: 2 !important;
@@ -609,6 +632,7 @@ h6 {
   overflow: hidden !important;
 }
 
+.project-card-desc,
 .project-desc-text-compact {
   color: #475569 !important;
   font-size: 0.84rem !important;
@@ -616,33 +640,36 @@ h6 {
   margin: 0 !important;
   flex: 1 !important;
   display: -webkit-box !important;
-  -webkit-line-clamp: 2 !important;
+  -webkit-line-clamp: 3 !important;
   -webkit-box-orient: vertical !important;
   overflow: hidden !important;
 }
 
+.project-card-tags,
 .project-tags-row-compact {
   display: flex !important;
   flex-wrap: wrap !important;
   gap: 5px !important;
-  margin-top: 4px !important;
+  margin-top: 6px !important;
 }
 
+.project-card-tag-pill,
 .project-tag-pill-compact {
   font-size: 0.68rem !important;
   font-weight: 600 !important;
   color: #334155 !important;
   background: #F1F5F9 !important;
-  border: 1px solid rgba(226, 232, 240, 0.8) !important;
-  padding: 2px 7px !important;
-  border-radius: 5px !important;
+  border: 1px solid rgba(226, 232, 240, 0.85) !important;
+  padding: 3px 8px !important;
+  border-radius: 6px !important;
   font-family: var(--font-display) !important;
 }
 
+.project-card-footer,
 .project-card-footer-compact {
   padding: 12px 18px !important;
   background: #F8FAFC !important;
-  border-top: 1px solid rgba(226, 232, 240, 0.8) !important;
+  border-top: 1px solid rgba(226, 232, 240, 0.85) !important;
   display: flex !important;
   align-items: center !important;
   justify-content: space-between !important;
@@ -780,12 +807,24 @@ h6 {
 }
 
 .all-projects-modal-grid {
-  padding: 28px 32px !important;
+  padding: 24px 28px !important;
   overflow-y: auto !important;
   display: grid !important;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)) !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  grid-auto-rows: max-content !important;
+  grid-template-rows: none !important;
+  align-items: start !important;
   gap: 22px !important;
   -webkit-overflow-scrolling: touch !important;
+  scrollbar-width: thin !important;
+  scrollbar-color: #2563EB #F1F5F9 !important;
+}
+
+@media (max-width: 1080px) {
+  .all-projects-modal-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 18px !important;
+  }
 }
 
 @keyframes modalFadeIn {
@@ -799,23 +838,26 @@ h6 {
 }
 
 /* ── MODALS MOBILE RESPONSIVENESS ── */
-@media (max-width: 640px) {
+@media (max-width: 680px) {
+  .all-projects-modal-backdrop {
+    padding: 12px !important;
+  }
   .all-projects-modal-container {
-    width: 95vw !important;
-    max-height: 92vh !important;
+    width: 96vw !important;
+    max-height: 94vh !important;
     border-radius: 18px !important;
   }
   .all-projects-modal-header {
-    padding: 16px 18px !important;
+    padding: 14px 18px !important;
   }
   .all-projects-modal-grid {
-    padding: 16px !important;
+    padding: 16px 14px !important;
     grid-template-columns: 1fr !important;
     gap: 16px !important;
   }
   .case-study-modal-box {
-    width: 95vw !important;
-    max-height: 92vh !important;
+    width: 96vw !important;
+    max-height: 94vh !important;
     border-radius: 18px !important;
   }
 }

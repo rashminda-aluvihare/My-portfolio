@@ -117,66 +117,60 @@ export default function Projects() {
 
   const scrollLeft = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: -340, behavior: 'smooth' });
+      scrollContainerRef.current.scrollBy({ left: -360, behavior: 'smooth' });
     }
   };
 
   const scrollRight = () => {
     if (scrollContainerRef.current) {
-      scrollContainerRef.current.scrollBy({ left: 340, behavior: 'smooth' });
+      scrollContainerRef.current.scrollBy({ left: 360, behavior: 'smooth' });
     }
   };
 
   const renderProjectCard = (project, uniqueKey, isModal = false) => (
     <div
       key={uniqueKey}
-      className="project-creative-card-compact"
-      style={isModal ? { width: '100%', minWidth: 'unset' } : { width: '330px', minWidth: '330px' }}
+      className={`project-card-item ${isModal ? 'project-card-modal-item' : 'project-card-marquee-item'}`}
     >
-      {/* Card Image Banner */}
-      <div className="project-card-banner-compact">
+      {/* 1. Preview Image Banner (Always fully visible) */}
+      <div className="project-card-banner">
         <img
           src={project.image}
           alt={project.title}
-          loading="lazy"
+          loading="eager"
           decoding="async"
-          className="project-banner-img-compact"
+          className="project-card-banner-img"
         />
-        <div className="project-index-badge-compact">
+        <div className="project-card-badge">
           {project.index}
         </div>
       </div>
 
-      {/* Card Content Area */}
-      <div className="project-card-body-compact">
-        <div className="project-category-tag-compact">
+      {/* 2. Card Content Body */}
+      <div className="project-card-body">
+        <div className="project-card-category">
           {project.categoryLabel}
         </div>
 
-        <h3 className="project-title-text-compact">
+        <h3 className="project-card-title">
           {project.title}
         </h3>
 
-        <p className="project-desc-text-compact">
+        <p className="project-card-desc">
           {project.description}
         </p>
 
-        <div className="project-tags-row-compact">
-          {project.tags.slice(0, 3).map((tag, tIdx) => (
-            <span key={tIdx} className="project-tag-pill-compact">
+        <div className="project-card-tags">
+          {project.tags.map((tag, tIdx) => (
+            <span key={tIdx} className="project-card-tag-pill">
               {tag}
             </span>
           ))}
-          {project.tags.length > 3 && (
-            <span className="project-tag-pill-compact" style={{ opacity: 0.7 }}>
-              +{project.tags.length - 3}
-            </span>
-          )}
         </div>
       </div>
 
-      {/* Bottom Card Footer Actions: Case Study | GitHub | LIVE */}
-      <div className="project-card-footer-compact">
+      {/* 3. Card Action Footer */}
+      <div className="project-card-footer">
         <button
           onClick={() => {
             if (isModal) setShowAllModal(false);
@@ -186,10 +180,10 @@ export default function Projects() {
           title="View Full Case Study"
         >
           <span>Case Study</span>
-          <ArrowUpRight size={13} strokeWidth={2.5} />
+          <ArrowUpRight size={14} strokeWidth={2.5} />
         </button>
 
-        <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <a
             href={project.github}
             target="_blank"
@@ -197,7 +191,7 @@ export default function Projects() {
             className="btn-github-action"
             title="View Source Code on GitHub"
           >
-            <svg viewBox="0 0 24 24" width="13" height="13" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
               <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
               <path d="M9 18c-4.51 2-5-2-7-2"></path>
             </svg>
@@ -217,7 +211,7 @@ export default function Projects() {
               className="btn-live-action"
               title="Launch Live Application"
             >
-              <ExternalLink size={12} strokeWidth={2.5} />
+              <ExternalLink size={13} strokeWidth={2.5} />
               <span>LIVE</span>
             </button>
           )}
@@ -227,30 +221,27 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" className="section section-light" style={{ backgroundColor: '#F8FAFC', position: 'relative', overflow: 'hidden', padding: '80px 0' }}>
-      <div className="container">
-        {/* Section Header with 'View all projects ↗' & Navigation Controls */}
+    <section id="projects" className="section section-light" style={{ backgroundColor: '#F8FAFC', position: 'relative', overflow: 'hidden', padding: '90px 0' }}>
+      <div className="container" style={{ maxWidth: '1280px' }}>
+        {/* Section Header with 'View all projects ↗' and Navigation Buttons */}
         <div
           style={{
             display: 'flex',
-            alignItems: 'flex-end',
+            alignItems: 'center',
             justifyContent: 'space-between',
             flexWrap: 'wrap',
             gap: '20px',
-            marginBottom: '32px',
+            marginBottom: '36px',
           }}
         >
-          <div style={{ maxWidth: '750px' }}>
-            <div className="section-label" style={{ marginBottom: '10px' }}>
-              SELECTED WORK / 03
-            </div>
+          <div>
             <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
               Projects
             </h2>
           </div>
 
-          {/* Top-Right: 'View all projects ↗' link & Slider Arrow Controls */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          {/* Top-Right Controls */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
             <button
               onClick={() => setShowAllModal(true)}
               className="view-all-projects-btn"
@@ -258,7 +249,7 @@ export default function Projects() {
                 background: 'none',
                 border: 'none',
                 color: '#2563EB',
-                fontSize: '0.94rem',
+                fontSize: '0.96rem',
                 fontWeight: 800,
                 cursor: 'pointer',
                 display: 'inline-flex',
@@ -280,17 +271,17 @@ export default function Projects() {
               }}
             >
               <span>View all projects</span>
-              <ArrowUpRight size={16} strokeWidth={2.5} />
+              <ArrowUpRight size={17} strokeWidth={2.5} />
             </button>
 
-            {/* Slider Navigation Buttons */}
+            {/* Carousel Navigation Buttons */}
             <div style={{ display: 'flex', gap: '8px' }}>
               <button
                 onClick={scrollLeft}
                 aria-label="Previous project"
                 style={{
-                  width: '38px',
-                  height: '38px',
+                  width: '40px',
+                  height: '40px',
                   borderRadius: '50%',
                   background: '#FFFFFF',
                   border: '1px solid rgba(226, 232, 240, 0.9)',
@@ -313,15 +304,15 @@ export default function Projects() {
                   e.currentTarget.style.borderColor = 'rgba(226, 232, 240, 0.9)';
                 }}
               >
-                <ChevronLeft size={18} />
+                <ChevronLeft size={19} />
               </button>
 
               <button
                 onClick={scrollRight}
                 aria-label="Next project"
                 style={{
-                  width: '38px',
-                  height: '38px',
+                  width: '40px',
+                  height: '40px',
                   borderRadius: '50%',
                   background: '#FFFFFF',
                   border: '1px solid rgba(226, 232, 240, 0.9)',
@@ -344,21 +335,23 @@ export default function Projects() {
                   e.currentTarget.style.borderColor = 'rgba(226, 232, 240, 0.9)';
                 }}
               >
-                <ChevronRight size={18} />
+                <ChevronRight size={19} />
               </button>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Smooth Continuous Horizontal Scrolling Stream (Compact Cards + Pause on Hover) */}
-      <div className="projects-marquee-wrapper" ref={scrollContainerRef}>
-        <div className="projects-marquee-track">
-          {marqueeProjects.map((project, idx) => renderProjectCard(project, `${project.id}-${idx}`, false))}
+      {/* ── Main Page: Horizontal Continuous Infinite Scrolling Stream ── */}
+      <div className="projects-scroll-container" ref={scrollContainerRef}>
+        <div className="projects-scroll-track">
+          {marqueeProjects.map((project, idx) =>
+            renderProjectCard(project, `marquee-${project.id}-${idx}`, false)
+          )}
         </div>
       </div>
 
-      {/* 'View All Projects' Grid Modal Overlay using React Portal to render at body root */}
+      {/* ── View All Projects Modal: Responsive Downward Flowing Grid with Full Images ── */}
       {showAllModal && createPortal(
         <div
           className="all-projects-modal-backdrop"
@@ -371,11 +364,8 @@ export default function Projects() {
             {/* Modal Header */}
             <div className="all-projects-modal-header">
               <div>
-                <div className="section-label" style={{ marginBottom: '4px' }}>
-                  ALL PLATFORMS &amp; DELIVERABLES
-                </div>
-                <h3 style={{ fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.02em', margin: 0 }}>
-                  Complete Project Directory ({projectsList.length})
+                <h3 style={{ fontSize: 'clamp(1.35rem, 2.5vw, 1.75rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.02em', margin: 0 }}>
+                  All Projects ({projectsList.length})
                 </h3>
               </div>
               <button
@@ -387,9 +377,11 @@ export default function Projects() {
               </button>
             </div>
 
-            {/* Modal Scrollable Projects Grid */}
+            {/* Modal Scrollable Projects Grid (With Full Images Downward) */}
             <div className="all-projects-modal-grid">
-              {projectsList.map((project) => renderProjectCard(project, `modal-${project.id}`, true))}
+              {projectsList.map((project) =>
+                renderProjectCard(project, `modal-${project.id}`, true)
+              )}
             </div>
           </div>
         </div>,
@@ -417,7 +409,8 @@ export default function Projects() {
       )}
 
       <style>{`
-        .projects-marquee-wrapper {
+        /* ── HORIZONTAL SCROLL CAROUSEL (Main Page) ── */
+        .projects-scroll-container {
           width: 100%;
           overflow-x: auto;
           position: relative;
@@ -428,26 +421,286 @@ export default function Projects() {
           -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent);
         }
 
-        .projects-marquee-wrapper::-webkit-scrollbar {
+        .projects-scroll-container::-webkit-scrollbar {
           display: none;
         }
 
-        .projects-marquee-track {
+        .projects-scroll-track {
           display: flex;
-          gap: 22px;
+          gap: 24px;
           width: max-content;
           will-change: transform;
-          animation: marqueeLeftProjects 65s linear infinite;
-          padding: 4px 16px;
+          animation: marqueeProjectsScroll 65s linear infinite;
+          padding: 6px 20px;
         }
 
-        .projects-marquee-wrapper:hover .projects-marquee-track {
+        .projects-scroll-container:hover .projects-scroll-track {
           animation-play-state: paused;
         }
 
-        @keyframes marqueeLeftProjects {
+        @keyframes marqueeProjectsScroll {
           0% { transform: translateX(0%); }
           100% { transform: translateX(-50%); }
+        }
+
+        /* ── PROJECT CARD BASE ── */
+        .project-card-item {
+          background: #FFFFFF;
+          border: 1px solid rgba(226, 232, 240, 0.9);
+          border-radius: 20px;
+          overflow: hidden;
+          display: flex;
+          flex-direction: column;
+          box-shadow: 0 4px 18px rgba(15, 23, 42, 0.04);
+          transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+          position: relative;
+        }
+
+        .project-card-marquee-item {
+          width: 350px;
+          min-width: 350px;
+          flex-shrink: 0;
+        }
+
+        .project-card-modal-item {
+          width: 100%;
+          min-width: unset;
+        }
+
+        .project-card-item:hover {
+          transform: translateY(-6px);
+          border-color: rgba(37, 99, 235, 0.35);
+          box-shadow: 0 16px 36px rgba(37, 99, 235, 0.12);
+        }
+
+        /* ── CARD IMAGE BANNER (GUARANTEED VISIBLE) ── */
+        .project-card-banner {
+          position: relative;
+          height: 185px;
+          width: 100%;
+          overflow: hidden;
+          background: #F1F5F9;
+          border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+          display: block;
+        }
+
+        .project-card-banner-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: top center;
+          display: block;
+          transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .project-card-item:hover .project-card-banner-img {
+          transform: scale(1.05);
+        }
+
+        .project-card-badge {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+          background: rgba(15, 23, 42, 0.88);
+          backdrop-filter: blur(8px);
+          color: #38BDF8;
+          font-size: 0.72rem;
+          font-weight: 800;
+          padding: 3px 9px;
+          border-radius: 999px;
+          font-family: var(--font-display);
+          letter-spacing: 0.05em;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          z-index: 2;
+        }
+
+        /* ── CARD BODY ── */
+        .project-card-body {
+          padding: 18px 20px;
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+
+        .project-card-category {
+          font-size: 0.68rem;
+          font-weight: 800;
+          color: #2563EB;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          font-family: var(--font-display);
+        }
+
+        .project-card-title {
+          font-size: 1.08rem;
+          font-weight: 800;
+          color: #0F172A;
+          letter-spacing: -0.02em;
+          line-height: 1.32;
+          margin: 0;
+          display: -webkit-box;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .project-card-desc {
+          color: #475569;
+          font-size: 0.84rem;
+          line-height: 1.5;
+          margin: 0;
+          flex: 1;
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+        }
+
+        .project-card-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 5px;
+          margin-top: 6px;
+        }
+
+        .project-card-tag-pill {
+          font-size: 0.68rem;
+          font-weight: 600;
+          color: #334155;
+          background: #F1F5F9;
+          border: 1px solid rgba(226, 232, 240, 0.85);
+          padding: 3px 8px;
+          border-radius: 6px;
+          font-family: var(--font-display);
+        }
+
+        /* ── CARD FOOTER ── */
+        .project-card-footer {
+          padding: 12px 18px;
+          background: #F8FAFC;
+          border-top: 1px solid rgba(226, 232, 240, 0.85);
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 8px;
+        }
+
+        /* ── VIEW ALL PROJECTS MODAL STYLES ── */
+        .all-projects-modal-backdrop {
+          position: fixed !important;
+          top: 0 !important;
+          left: 0 !important;
+          right: 0 !important;
+          bottom: 0 !important;
+          width: 100vw !important;
+          height: 100vh !important;
+          background: rgba(15, 23, 42, 0.72) !important;
+          backdrop-filter: blur(12px) !important;
+          -webkit-backdrop-filter: blur(12px) !important;
+          z-index: 9999999 !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          padding: 24px !important;
+          animation: modalFadeIn 0.2s ease-out;
+        }
+
+        .all-projects-modal-container {
+          background: #F8FAFC !important;
+          border: 1px solid rgba(226, 232, 240, 0.9) !important;
+          border-radius: 24px !important;
+          max-width: 1200px !important;
+          width: 100% !important;
+          max-height: 90vh !important;
+          display: flex !important;
+          flex-direction: column !important;
+          overflow: hidden !important;
+          box-shadow: 0 30px 80px rgba(15, 23, 42, 0.25) !important;
+          animation: modalSlideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        }
+
+        .all-projects-modal-header {
+          display: flex !important;
+          align-items: center !important;
+          justify-content: space-between !important;
+          padding: 20px 28px !important;
+          background: #FFFFFF !important;
+          border-bottom: 1px solid rgba(226, 232, 240, 0.85) !important;
+          flex-shrink: 0 !important;
+        }
+
+        .all-projects-modal-close-btn {
+          background: #F1F5F9 !important;
+          border: 1px solid rgba(226, 232, 240, 0.8) !important;
+          border-radius: 50% !important;
+          width: 38px !important;
+          height: 38px !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          color: #0F172A !important;
+          cursor: pointer !important;
+          transition: all 0.2s ease !important;
+        }
+
+        .all-projects-modal-close-btn:hover {
+          background: #0F172A !important;
+          color: #FFFFFF !important;
+          transform: rotate(90deg) !important;
+        }
+
+        /* Responsive, Balanced Downward Flowing Grid in Modal */
+        .all-projects-modal-grid {
+          padding: 26px 28px !important;
+          overflow-y: auto !important;
+          display: grid !important;
+          grid-template-columns: repeat(3, 1fr) !important;
+          grid-auto-rows: max-content !important;
+          grid-template-rows: none !important;
+          align-items: start !important;
+          gap: 22px !important;
+          -webkit-overflow-scrolling: touch !important;
+          scrollbar-width: thin !important;
+          scrollbar-color: #2563EB #F1F5F9 !important;
+        }
+
+        @media (max-width: 1060px) {
+          .all-projects-modal-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 18px !important;
+          }
+        }
+
+        @media (max-width: 680px) {
+          .all-projects-modal-backdrop {
+            padding: 12px !important;
+          }
+          .all-projects-modal-container {
+            max-height: 94vh !important;
+            border-radius: 18px !important;
+          }
+          .all-projects-modal-header {
+            padding: 14px 18px !important;
+          }
+          .all-projects-modal-grid {
+            padding: 16px 14px !important;
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+          .project-card-marquee-item {
+            width: 300px;
+            min-width: 300px;
+          }
+          .project-card-banner {
+            height: 165px;
+          }
+          .project-card-body {
+            padding: 14px 16px;
+          }
+          .project-card-footer {
+            padding: 10px 14px;
+          }
         }
       `}</style>
     </section>

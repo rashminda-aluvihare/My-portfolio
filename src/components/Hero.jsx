@@ -66,10 +66,6 @@ export default function Hero() {
               <span className="hero-last-name-gradient">Aluvihare</span>
             </h1>
 
-            {/* Sub-headline: Role Title */}
-            <h2 className="hero-role-subtitle">
-              Business Analyst | Aspiring IT Project Manager
-            </h2>
 
             {/* Narrative Description */}
             <p className="hero-description-text">

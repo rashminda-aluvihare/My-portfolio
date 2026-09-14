@@ -9,16 +9,14 @@ export default function Education() {
     {
       degree: 'Higher National Diploma in Information Technology (HNDIT)',
       institution: 'Advanced Technological Institute (ATI), Dehiwala - SLIATE',
-      institutionType: 'Tertiary Higher Education Institution',
       location: 'Dehiwala / Colombo, Sri Lanka',
       duration: '2024 - 2026',
-      qualificationLevel: 'NVQ Level 6 Equivalent • Full-Stack & BA Track',
+      qualificationLevel: 'NVQ Level 6 Equivalent',
       logo: sliateLogo,
     },
     {
       degree: 'Diploma in Banking & Finance (DBF)',
       institution: 'Institute of Bankers of Sri Lanka - IBSL',
-      institutionType: 'Professional Banking Qualification Authority',
       location: 'Colombo, Sri Lanka',
       duration: '2025 - Present',
       status: 'Ongoing Studies',
@@ -28,7 +26,6 @@ export default function Education() {
     {
       degree: 'G.C.E Advanced Level – Bio System Technology Stream',
       institution: "St. Thomas' College, Matale",
-      institutionType: 'Secondary Academic Education',
       location: 'Matale, Sri Lanka',
       duration: '2022 - 2023',
       status: 'Completed',
@@ -43,15 +40,9 @@ export default function Education() {
       <div className="container">
         {/* Section Header */}
         <div style={{ marginBottom: '44px' }}>
-          <div className="section-label" style={{ marginBottom: '12px' }}>
-            ACADEMIC BACKGROUND / 05
-          </div>
-          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
+          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
             Education &amp; Qualifications
           </h2>
-          <p style={{ color: '#475569', fontSize: '1.05rem', marginTop: '10px', maxWidth: '750px', lineHeight: 1.6 }}>
-            A strong multidisciplinary academic foundation in Information Technology, Software Engineering, and Commercial Banking &amp; Finance.
-          </p>
         </div>
 
         {/* Education Cards */}
@@ -122,7 +113,7 @@ export default function Education() {
                       {edu.degree}
                     </h3>
                     <h4 style={{ fontSize: '0.98rem', color: '#475569', fontWeight: 600, marginTop: '4px', margin: 0 }}>
-                      {edu.institution} &bull; <span style={{ color: '#64748B' }}>{edu.institutionType}</span>
+                      {edu.institution}
                     </h4>
                   </div>
                 </div>

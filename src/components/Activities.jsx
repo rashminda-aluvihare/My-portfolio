@@ -81,16 +81,10 @@ export default function Activities() {
     <section id="activities" className="section section-light" style={{ backgroundColor: '#F8FAFC', position: 'relative' }}>
       <div className="container">
         {/* Section Header */}
-        <div style={{ marginBottom: '50px' }}>
-          <div className="section-label" style={{ marginBottom: '12px' }}>
-            ACTIVITIES &amp; LEADERSHIP / 07
-          </div>
-          <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.4rem)', fontWeight: 900, color: '#0B0C0E', letterSpacing: '-0.03em', lineHeight: 1.15 }}>
+        <div style={{ marginBottom: '44px' }}>
+          <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.4rem)', fontWeight: 900, color: '#0B0C0E', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
             Extracurricular Activities
           </h2>
-          <p style={{ color: '#6B7280', fontSize: '1.05rem', marginTop: '10px', maxWidth: '750px' }}>
-            Active participation in technology communities, industrial site visits, and school-level leadership initiatives.
-          </p>
         </div>
 
         {/* Activities Grid */}
