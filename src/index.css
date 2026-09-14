@@ -119,6 +119,23 @@ h6 {
   color: var(--color-text-primary);
 }
 
+/* ── RESPONSIVE CONTAINER ── */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
 /* ── SECTION STYLES (Light Modern Editorial) ── */
 .section {
   padding: 85px 0;

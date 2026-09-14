@@ -76,12 +76,11 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="section section-light"
+      className="section section-light contact-section"
       style={{
         backgroundColor: '#FFFFFF',
         position: 'relative',
         overflow: 'hidden',
-        padding: '95px 0',
       }}
     >
       {/* Soft Ambient Light Glows */}
@@ -114,14 +113,14 @@ export default function Contact() {
 
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         {/* Section Header */}
-        <div style={{ marginBottom: '46px' }}>
+        <div style={{ marginBottom: '38px' }}>
           <div className="section-label" style={{ marginBottom: '12px' }}>
             GET IN TOUCH / 08
           </div>
-          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
+          <h2 style={{ fontSize: 'clamp(1.9rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
             Let's Build Something Together
           </h2>
-          <p style={{ color: '#475569', fontSize: '1.05rem', marginTop: '12px', maxWidth: '750px', lineHeight: 1.6 }}>
+          <p style={{ color: '#475569', fontSize: '1.02rem', marginTop: '12px', maxWidth: '750px', lineHeight: 1.6 }}>
             Available for Business Analyst and Project Management Intern roles. Let's connect to discuss opportunities and collaborations.
           </p>
         </div>
@@ -129,16 +128,7 @@ export default function Contact() {
         {/* 2-Column Clean Light Layout */}
         <div className="contact-main-grid">
           {/* Left Column: Crisp Light Form Card */}
-          <div
-            className="contact-card-white"
-            style={{
-              padding: '38px',
-              background: '#FFFFFF',
-              border: '1px solid rgba(226, 232, 240, 0.95)',
-              borderRadius: '20px',
-              boxShadow: '0 8px 30px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02)',
-            }}
-          >
+          <div className="contact-card-white">
             {status === 'success' ? (
               <div
                 style={{
@@ -287,7 +277,7 @@ export default function Contact() {
           {/* Right Column: Direct Channels & Interactive 3D Real Earth Globe */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '18px', width: '100%' }}>
             {/* Direct Channel Cards (Email & WhatsApp) */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }} className="direct-channels-grid">
+            <div className="direct-channels-grid">
               {/* Direct Email */}
               <a
                 href="mailto:rashmindaluvihare@gmail.com"
@@ -338,6 +328,10 @@ export default function Contact() {
       </div>
 
       <style>{`
+        .contact-section {
+          padding: 95px 0;
+        }
+
         .contact-main-grid {
           display: grid;
           grid-template-columns: 1.15fr 0.85fr;
@@ -345,14 +339,31 @@ export default function Contact() {
           align-items: start;
         }
 
+        .contact-card-white {
+          background: #FFFFFF;
+          border: 1px solid rgba(226, 232, 240, 0.95);
+          border-radius: 20px;
+          padding: 38px;
+          box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
+        }
+
+        .direct-channels-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 12px;
+          width: 100%;
+        }
+
         .contact-input-light {
+          width: 100%;
+          box-sizing: border-box;
           background: #F8FAFC;
           border: 1.5px solid #E2E8F0;
           color: #0F172A;
           padding: 13px 16px;
           border-radius: 12px;
           outline: none;
-          font-size: 0.94rem;
+          font-size: 1rem;
           font-family: inherit;
           transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
         }
@@ -388,34 +399,20 @@ export default function Contact() {
           box-shadow: 0 12px 30px rgba(37, 99, 235, 0.48);
         }
 
-        .contact-live-pulse {
-          width: 9px;
-          height: 9px;
-          border-radius: 50%;
-          background: #10B981;
-          box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
-          animation: statusPing 2s infinite;
-        }
-
-        @keyframes statusPing {
-          0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); }
-          70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-          100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-        }
-
         .channel-card-link {
           background: #FFFFFF;
           border: 1px solid rgba(226, 232, 240, 0.95);
           border-radius: 16px;
-          padding: 18px 20px;
+          padding: 16px 18px;
           display: flex;
           align-items: center;
-          gap: 14px;
+          gap: 12px;
           text-decoration: none;
           color: #0F172A;
           box-shadow: 0 4px 18px rgba(15, 23, 42, 0.03);
           transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
           position: relative;
+          min-width: 0;
         }
 
         .channel-card-link:hover {
@@ -430,8 +427,8 @@ export default function Contact() {
         }
 
         .channel-icon-box {
-          width: 44px;
-          height: 44px;
+          width: 42px;
+          height: 42px;
           border-radius: 12px;
           display: flex;
           align-items: center;
@@ -441,13 +438,11 @@ export default function Contact() {
 
         .box-blue { background: #EFF6FF; color: #2563EB; }
         .box-emerald { background: #ECFDF5; color: #10B981; }
-        .box-indigo { background: #F5F3FF; color: #7C3AED; }
-        .box-slate { background: #F1F5F9; color: #334155; }
 
         .channel-label {
           display: block;
           font-family: var(--font-display);
-          font-size: 0.76rem;
+          font-size: 0.74rem;
           font-weight: 700;
           text-transform: uppercase;
           letter-spacing: 0.04em;
@@ -456,7 +451,7 @@ export default function Contact() {
 
         .channel-val {
           margin: 2px 0 0 0;
-          font-size: 0.88rem;
+          font-size: 0.86rem;
           font-weight: 700;
           color: #0F172A;
           white-space: nowrap;
@@ -472,17 +467,36 @@ export default function Contact() {
         }
 
         @media (max-width: 960px) {
+          .contact-section {
+            padding: 65px 0;
+          }
           .contact-main-grid {
             grid-template-columns: 1fr;
+            gap: 32px;
           }
         }
 
-        @media (max-width: 600px) {
-          .direct-channels-grid {
-            grid-template-columns: 1fr;
+        @media (max-width: 640px) {
+          .contact-section {
+            padding: 50px 0;
           }
           .contact-card-white {
-            padding: 24px;
+            padding: 22px 16px;
+            border-radius: 16px;
+          }
+          .direct-channels-grid {
+            grid-template-columns: 1fr;
+            gap: 10px;
+          }
+          .channel-card-link {
+            padding: 14px 14px;
+          }
+          .channel-icon-box {
+            width: 38px;
+            height: 38px;
+          }
+          .channel-val {
+            font-size: 0.82rem;
           }
         }
       `}</style>

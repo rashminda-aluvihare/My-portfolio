@@ -342,7 +342,7 @@ export default function WorldConnectingGlobe() {
       style={{
         position: 'relative',
         width: '100%',
-        maxWidth: '430px',
+        maxWidth: 'min(430px, 88vw)',
         aspectRatio: '1 / 1',
         margin: '0 auto',
         display: 'flex',
@@ -350,6 +350,7 @@ export default function WorldConnectingGlobe() {
         justifyContent: 'center',
         cursor: 'grab',
         userSelect: 'none',
+        touchAction: 'pan-y',
       }}
     >
       {/* Soft Ambient Light Glow Behind Globe */}
