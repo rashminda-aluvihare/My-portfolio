@@ -15,6 +15,7 @@ export default function Navbar() {
     { label: 'Certifications', href: '#certifications' },
     { label: 'Skills', href: '#skills' },
     { label: 'Activities', href: '#activities' },
+    { label: 'Blogs', href: '#blogs' },
     { label: 'Contact', href: '#contact' },
   ];
 
@@ -27,7 +28,7 @@ export default function Navbar() {
         setScrolled(false);
       }
 
-      const sections = ['home', 'about', 'experience', 'projects', 'education', 'certifications', 'skills', 'activities', 'contact'];
+      const sections = ['home', 'about', 'experience', 'projects', 'education', 'certifications', 'skills', 'activities', 'blogs', 'contact'];
       const scrollPos = window.scrollY + 200;
 
       for (const section of sections) {
@@ -166,107 +167,56 @@ export default function Navbar() {
         </a>
       </div>
 
-      {/* Mobile Bar: Brand Logo & Hamburger */}
-      <div className="mobile-bar-wrapper" style={{ display: 'none', alignItems: 'center', justifyContent: 'space-between', width: '100%', gap: '16px' }}>
-        <a
-          href="#home"
+      {/* Mobile Bar: Hamburger Menu Button Only (Right Side) */}
+      <div className="mobile-bar-wrapper" style={{ display: 'none' }}>
+        <button
+          onClick={() => setIsOpen(!isOpen)}
           style={{
+            background: isOpen ? '#2563EB' : 'rgba(255, 255, 255, 0.95)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
+            border: isOpen ? '1px solid #2563EB' : '1px solid rgba(226, 232, 240, 0.95)',
+            cursor: 'pointer',
+            color: isOpen ? '#FFFFFF' : '#0F172A',
             display: 'flex',
             alignItems: 'center',
-            gap: '8px',
-            textDecoration: 'none',
-            color: '#0F172A',
-            fontFamily: 'var(--font-display)',
-            fontWeight: 800,
-            fontSize: '1rem',
+            justifyContent: 'center',
+            width: '44px',
+            height: '44px',
+            borderRadius: '50%',
+            boxShadow: '0 6px 20px rgba(15, 23, 42, 0.1)',
+            transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)',
           }}
-          onClick={() => setIsOpen(false)}
+          aria-label="Toggle Navigation Menu"
         >
-          <span
-            style={{
-              width: '32px',
-              height: '32px',
-              borderRadius: '999px',
-              background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
-              color: '#FFFFFF',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              fontSize: '0.82rem',
-              fontWeight: 900,
-              boxShadow: '0 2px 8px rgba(37, 99, 235, 0.3)',
-            }}
-          >
-            RA
-          </span>
-          <span style={{ letterSpacing: '-0.02em' }}>Rashminda</span>
-        </a>
-
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <a
-            href="#contact"
-            onClick={() => setIsOpen(false)}
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '4px',
-              background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
-              color: '#FFFFFF',
-              textDecoration: 'none',
-              fontSize: '0.74rem',
-              fontWeight: 700,
-              padding: '6px 12px',
-              borderRadius: '999px',
-              fontFamily: 'var(--font-display)',
-            }}
-          >
-            <span>Contact</span>
-            <ArrowUpRight size={12} />
-          </a>
-
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            style={{
-              background: '#F1F5F9',
-              border: '1px solid rgba(226, 232, 240, 0.9)',
-              cursor: 'pointer',
-              color: '#0F172A',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              width: '34px',
-              height: '34px',
-              borderRadius: '50%',
-              transition: 'all 0.2s ease',
-            }}
-            aria-label="Toggle Menu"
-          >
-            {isOpen ? <X size={18} /> : <Menu size={18} />}
-          </button>
-        </div>
+          {isOpen ? <X size={20} strokeWidth={2.4} /> : <Menu size={20} strokeWidth={2.3} />}
+        </button>
       </div>
 
       {/* Mobile Navigation Drawer */}
       {isOpen && (
         <div
+          className="mobile-drawer-box"
           style={{
             position: 'fixed',
-            top: '75px',
-            left: '50%',
-            transform: 'translateX(-50%)',
-            width: 'calc(100vw - 32px)',
-            maxWidth: '390px',
-            maxHeight: 'calc(100vh - 90px)',
+            top: '68px',
+            right: '16px',
+            left: 'auto',
+            width: 'min(calc(100vw - 32px), 320px)',
+            maxHeight: 'calc(100vh - 84px)',
             overflowY: 'auto',
-            background: '#FFFFFF',
+            background: 'rgba(255, 255, 255, 0.98)',
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)',
             border: '1px solid rgba(226, 232, 240, 0.95)',
-            borderRadius: '20px',
-            padding: '20px 18px',
+            borderRadius: '22px',
+            padding: '18px 16px',
             boxShadow: '0 20px 45px rgba(15, 23, 42, 0.16)',
             display: 'flex',
             flexDirection: 'column',
             gap: '12px',
             zIndex: 1001,
+            animation: 'modalFadeIn 0.2s ease',
           }}
         >
           <ul
@@ -276,7 +226,7 @@ export default function Navbar() {
               margin: 0,
               display: 'flex',
               flexDirection: 'column',
-              gap: '6px',
+              gap: '4px',
             }}
           >
             {navItems.map((item) => {
@@ -297,7 +247,7 @@ export default function Navbar() {
                       textDecoration: 'none',
                       fontSize: '0.94rem',
                       padding: '10px 14px',
-                      borderRadius: '10px',
+                      borderRadius: '12px',
                       background: isActive ? '#EFF6FF' : 'transparent',
                       fontFamily: 'var(--font-display)',
                       transition: 'all 0.15s ease',
@@ -342,9 +292,18 @@ export default function Navbar() {
       <style>{`
         @media (max-width: 992px) {
           nav {
-            width: calc(100% - 32px) !important;
-            max-width: 440px !important;
-            padding: 8px 16px !important;
+            top: 16px !important;
+            right: 16px !important;
+            left: auto !important;
+            transform: none !important;
+            width: auto !important;
+            max-width: unset !important;
+            padding: 0 !important;
+            border: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
           }
           .nav-links-desktop {
             display: none !important;

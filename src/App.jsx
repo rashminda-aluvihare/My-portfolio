@@ -9,6 +9,7 @@ import Certifications from './components/Certifications';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Activities from './components/Activities';
+import Blogs from './components/Blogs';
 import Contact from './components/Contact';
 import FloatingControls from './components/FloatingControls';
 
@@ -67,6 +68,7 @@ export default function App() {
         <Certifications />
         <Skills />
         <Activities />
+        <Blogs />
         <Contact />
       </main>
 
