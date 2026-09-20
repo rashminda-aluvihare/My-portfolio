@@ -4,6 +4,7 @@ import WorldConnectingGlobe from './WorldConnectingGlobe';
 
 
 const WEB3FORMS_ACCESS_KEY = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "YOUR_ACCESS_KEY_HERE";
+const FORMSUBMIT_TOKEN = "a72d1214c02e65062ba2c310682b6764";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -58,7 +59,7 @@ export default function Contact() {
       }
 
       // 2. Direct endpoint: Delivers emails directly to rashmindaluvihare@gmail.com
-      const response = await fetch("https://formsubmit.co/ajax/rashmindaluvihare@gmail.com", {
+      const response = await fetch(`https://formsubmit.co/ajax/${FORMSUBMIT_TOKEN}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,11 +76,7 @@ export default function Contact() {
       });
 
       const result = await response.json();
-      if (
-        result.success === true ||
-        result.success === "true" ||
-        (result.message && result.message.toLowerCase().includes("activation"))
-      ) {
+      if (result.success === true || result.success === "true") {
         setStatus('success');
         setFormData({
           name: '',
@@ -87,6 +84,8 @@ export default function Contact() {
           subject: '',
           message: '',
         });
+      } else if (result.message && result.message.toLowerCase().includes("activation")) {
+        setStatus('activation_pending');
       } else {
         setStatus('error');
       }
@@ -145,7 +144,47 @@ export default function Contact() {
         <div className="contact-main-grid">
           {/* Left Column: Crisp Light Form Card */}
           <div className="contact-card-white">
-            {status === 'success' ? (
+            {status === 'activation_pending' ? (
+              <div
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textAlign: 'center',
+                  padding: '45px 20px',
+                  gap: '16px',
+                }}
+              >
+                <div
+                  style={{
+                    background: '#FEF3C7',
+                    padding: '18px',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    border: '1.5px solid rgba(217, 119, 6, 0.3)',
+                    boxShadow: '0 8px 24px rgba(217, 119, 6, 0.15)',
+                  }}
+                >
+                  <Send size={44} style={{ color: '#D97706' }} />
+                </div>
+                <h3 style={{ fontSize: '1.35rem', fontWeight: 800, color: 'var(--color-text-primary)', margin: 0 }}>
+                  Activation Email Sent to Gmail!
+                </h3>
+                <p style={{ color: 'var(--color-text-secondary)', maxWidth: '420px', fontSize: '0.94rem', lineHeight: 1.6 }}>
+                  FormSubmit needs a one-time activation. Please open your Gmail (<strong>rashmindaluvihare@gmail.com</strong>) or Spam folder, and click the <strong>"Activate Form"</strong> link in the latest email.
+                </p>
+                <button
+                  onClick={() => setStatus('idle')}
+                  className="btn-primary"
+                  style={{ marginTop: '10px' }}
+                >
+                  Back to Form
+                </button>
+              </div>
+            ) : status === 'success' ? (
               <div
                 style={{
                   display: 'flex',
