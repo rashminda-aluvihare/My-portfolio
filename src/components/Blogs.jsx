@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { ExternalLink, Calendar, Clock, BookOpen, ArrowUpRight, Sparkles } from 'lucide-react';
+import { Calendar, Clock, ArrowRight } from 'lucide-react';
 
 const MEDIUM_USERNAME = '@rashmindaluvihare';
 const MEDIUM_PROFILE_URL = 'https://medium.com/@rashmindaluvihare';
@@ -12,10 +12,7 @@ const FALLBACK_BLOGS = [
     pubDate: '2026-09-13 13:10:01',
     link: 'https://medium.com/@rashmindaluvihare/business-process-reengineering-vs-continuous-improvement-22ebf5bbf0b1?source=rss-ac72ecc3419e------2',
     thumbnail: 'https://cdn-images-1.medium.com/max/1024/1*01nzBJ59N3dfY6NiE1g1qQ.png',
-    categories: ['Business Analysis', 'Process Optimization', 'BPR vs CI'],
-    description:
-      'Every organization eventually hits a point where its processes no longer serve its goals well. The question is never whether to improve it’s how. Two dominant strategies compete for that answer: Business Process Reengineering (BPR) and Continuous Improvement (CI). For a business analyst, knowing when to recommend which is one of the more consequential judgment calls.',
-    readTime: '5 min read',
+    readTime: '4 min read',
   },
 ];
 
@@ -33,17 +30,7 @@ export default function Blogs() {
     if (match && match[1]) {
       return match[1];
     }
-    return 'https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1000&q=80';
-  };
-
-  // Helper to strip HTML tags and generate clean summary
-  const extractSnippet = (item) => {
-    const raw = item.description || item.content || '';
-    const text = raw.replace(/<[^>]+>/g, '').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
-    if (text.length > 175) {
-      return text.substring(0, 175) + '...';
-    }
-    return text;
+    return 'https://cdn-images-1.medium.com/max/1024/1*01nzBJ59N3dfY6NiE1g1qQ.png';
   };
 
   // Helper to estimate reading time
@@ -53,15 +40,6 @@ export default function Blogs() {
     const wordCount = text.split(/\s+/).filter(Boolean).length;
     const minutes = Math.max(2, Math.ceil(wordCount / 200));
     return `${minutes} min read`;
-  };
-
-  // Format category slugs nicely (e.g. "bpr-vs-ci" -> "BPR vs CI")
-  const formatCategory = (cat) => {
-    if (!cat) return 'Article';
-    return cat
-      .split('-')
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-      .join(' ');
   };
 
   useEffect(() => {
@@ -78,11 +56,6 @@ export default function Blogs() {
             pubDate: item.pubDate,
             link: item.link,
             thumbnail: extractThumbnail(item),
-            categories:
-              item.categories && item.categories.length > 0
-                ? item.categories.map(formatCategory)
-                : ['Business Analysis', 'Engineering'],
-            description: extractSnippet(item),
             readTime: calculateReadTime(item),
           }));
 
@@ -113,102 +86,28 @@ export default function Blogs() {
       style={{
         position: 'relative',
         overflow: 'hidden',
-        padding: '90px 0',
+        padding: 'clamp(60px, 8vw, 90px) 0',
       }}
     >
-      <div className="container" style={{ maxWidth: '1280px' }}>
-        {/* Section Header */}
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'flex-start',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '20px',
-            marginBottom: '40px',
-          }}
-        >
-          <div>
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '4px 12px',
-                borderRadius: '999px',
-                background: 'var(--color-accent-subtle)',
-                color: 'var(--color-accent)',
-                fontSize: '0.82rem',
-                fontWeight: 700,
-                letterSpacing: '0.04em',
-                textTransform: 'uppercase',
-                marginBottom: '12px',
-              }}
+      <div className="container">
+        <div className="blog-inner-container">
+          {/* Section Header Row */}
+          <div className="blog-header-row">
+            <h2 className="blog-header-title">Blogs</h2>
+
+            <a
+              href={MEDIUM_PROFILE_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="blog-view-all-link"
             >
-              <BookOpen size={14} />
-              <span>Publications & Thoughts</span>
-            </div>
-            <h2
-              style={{
-                fontSize: 'clamp(2.1rem, 4vw, 3.2rem)',
-                fontWeight: 900,
-                color: 'var(--color-text-primary)',
-                letterSpacing: '-0.03em',
-                lineHeight: 1.15,
-                margin: 0,
-              }}
-            >
-              Blogs
-            </h2>
-            <p
-              style={{
-                margin: '8px 0 0',
-                color: 'var(--color-text-muted)',
-                fontSize: '1.05rem',
-                fontWeight: 500,
-                maxWidth: '650px',
-              }}
-            >
-              Industry perspectives, business analysis methodologies, and technical insights published on Medium.
-            </p>
+              <span>View all</span>
+              <ArrowRight size={15} />
+            </a>
           </div>
 
-          {/* Medium Profile CTA Pill */}
-          <a
-            href={MEDIUM_PROFILE_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="view-all-projects-btn"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '8px',
-              padding: '10px 18px',
-              borderRadius: '999px',
-              background: 'var(--card-bg)',
-              border: '1px solid var(--color-border)',
-              color: 'var(--color-text-primary)',
-              fontWeight: 600,
-              fontSize: '0.9rem',
-              textDecoration: 'none',
-              transition: 'all 0.25s ease',
-              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
-            }}
-          >
-            <span>Follow on Medium</span>
-            <ArrowUpRight size={16} />
-          </a>
-        </div>
-
-        {/* Blogs Grid */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 360px), 1fr))',
-            gap: '28px',
-            alignItems: 'stretch',
-          }}
-        >
+          {/* Blogs List */}
+          <div className="blog-cards-list">
           {blogs.map((blog, index) => {
             const formattedDate = new Date(blog.pubDate).toLocaleDateString('en-US', {
               year: 'numeric',
@@ -217,231 +116,320 @@ export default function Blogs() {
             });
 
             return (
-              <article
-                key={index}
-                className="blog-card-item"
-                style={{
-                  background: 'var(--card-bg)',
-                  border: '1px solid var(--color-border)',
-                  borderRadius: '20px',
-                  overflow: 'hidden',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.06)',
-                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-                  position: 'relative',
-                }}
-              >
-                {/* Blog Cover Image */}
+              <article key={index} className="blog-compact-card">
+                {/* Left Thumbnail Image */}
                 <a
                   href={blog.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    position: 'relative',
-                    height: '210px',
-                    width: '100%',
-                    overflow: 'hidden',
-                    background: 'var(--color-bg)',
-                    display: 'block',
-                    borderBottom: '1px solid var(--color-border)',
-                  }}
-                  className="blog-cover-link"
+                  className="blog-thumb-wrapper"
+                  aria-label={blog.title}
                 >
                   <img
                     src={blog.thumbnail}
                     alt={blog.title}
+                    className="blog-thumb-img"
                     loading="lazy"
                     decoding="async"
-                    style={{
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover',
-                      objectPosition: 'center',
-                      transition: 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
-                    }}
-                    className="blog-cover-img"
                   />
-                  <div
-                    style={{
-                      position: 'absolute',
-                      top: '12px',
-                      left: '12px',
-                      background: 'rgba(15, 23, 42, 0.82)',
-                      backdropFilter: 'blur(8px)',
-                      WebkitBackdropFilter: 'blur(8px)',
-                      color: '#FFFFFF',
-                      fontSize: '0.72rem',
-                      fontWeight: 700,
-                      padding: '4px 10px',
-                      borderRadius: '999px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '5px',
-                      border: '1px solid rgba(255, 255, 255, 0.15)',
-                    }}
-                  >
-                    <Sparkles size={12} style={{ color: '#38BDF8' }} />
-                    <span>Medium Story</span>
-                  </div>
                 </a>
 
-                {/* Card Body */}
-                <div
-                  style={{
-                    padding: '22px 24px',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    flexGrow: 1,
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  <div>
-                    {/* Metadata: Date and Read Time */}
-                    <div
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '14px',
-                        color: 'var(--color-text-muted)',
-                        fontSize: '0.82rem',
-                        fontWeight: 500,
-                        marginBottom: '12px',
-                      }}
-                    >
-                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-                        <Calendar size={13} style={{ color: 'var(--color-accent)' }} />
-                        {formattedDate}
-                      </span>
-                      <span style={{ color: 'var(--color-border)' }}>•</span>
-                      <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-                        <Clock size={13} style={{ color: 'var(--color-text-muted)' }} />
-                        {blog.readTime}
-                      </span>
-                    </div>
-
-                    {/* Blog Title */}
-                    <h3
-                      style={{
-                        fontSize: '1.25rem',
-                        fontWeight: 800,
-                        lineHeight: 1.35,
-                        margin: '0 0 12px',
-                        color: 'var(--color-text-primary)',
-                        letterSpacing: '-0.02em',
-                      }}
-                    >
-                      <a
-                        href={blog.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                          color: 'inherit',
-                          textDecoration: 'none',
-                          transition: 'color 0.2s ease',
-                        }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-accent)')}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = 'inherit')}
-                      >
-                        {blog.title}
-                      </a>
-                    </h3>
-
-                    {/* Blog Excerpt */}
-                    <p
-                      style={{
-                        fontSize: '0.92rem',
-                        color: 'var(--color-text-secondary)',
-                        lineHeight: 1.6,
-                        margin: '0 0 18px',
-                      }}
-                    >
-                      {blog.description}
-                    </p>
-
-                    {/* Category Tags */}
-                    {blog.categories && blog.categories.length > 0 && (
-                      <div
-                        style={{
-                          display: 'flex',
-                          flexWrap: 'wrap',
-                          gap: '6px',
-                          marginBottom: '20px',
-                        }}
-                      >
-                        {blog.categories.slice(0, 3).map((tag, idx) => (
-                          <span
-                            key={idx}
-                            style={{
-                              background: 'var(--color-bg-alt)',
-                              color: 'var(--color-text-secondary)',
-                              border: '1px solid var(--color-border)',
-                              padding: '3px 10px',
-                              borderRadius: '999px',
-                              fontSize: '0.74rem',
-                              fontWeight: 600,
-                            }}
-                          >
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
+                {/* Right Content */}
+                <div className="blog-content-col">
+                  {/* Meta: Date & Read time */}
+                  <div className="blog-meta-line">
+                    <span className="blog-meta-item">
+                      <Calendar size={13} className="blog-meta-cal-icon" />
+                      <span>{formattedDate}</span>
+                    </span>
+                    <span className="blog-meta-dot">•</span>
+                    <span className="blog-meta-item">
+                      <Clock size={13} className="blog-meta-clock-icon" />
+                      <span>{blog.readTime || '4 min read'}</span>
+                    </span>
                   </div>
 
-                  {/* Card Bottom CTA Link */}
-                  <div
-                    style={{
-                      borderTop: '1px solid rgba(226, 232, 240, 0.8)',
-                      paddingTop: '16px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                    }}
-                  >
+                  {/* Title */}
+                  <h3 className="blog-card-heading">
                     <a
                       href={blog.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '6px',
-                        color: '#2563EB',
-                        fontWeight: 700,
-                        fontSize: '0.9rem',
-                        textDecoration: 'none',
-                        transition: 'all 0.2s ease',
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.color = '#1D4ED8';
-                        e.currentTarget.style.transform = 'translateX(2px)';
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.color = '#2563EB';
-                        e.currentTarget.style.transform = 'translateX(0)';
-                      }}
+                      className="blog-heading-link"
                     >
-                      <span>Read Story on Medium</span>
-                      <ExternalLink size={14} />
+                      {blog.title}
                     </a>
+                  </h3>
 
-                    <span
-                      style={{
-                        fontSize: '0.76rem',
-                        color: '#94A3B8',
-                        fontWeight: 500,
-                      }}
-                    >
-                      medium.com
-                    </span>
-                  </div>
+                  {/* Read Story Link */}
+                  <a
+                    href={blog.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="blog-read-story-btn"
+                  >
+                    <span>Read Story</span>
+                    <ArrowRight size={14} className="blog-read-arrow" />
+                  </a>
                 </div>
               </article>
             );
           })}
         </div>
+        </div>
       </div>
+
+      <style>{`
+        /* Inner Container - Left Aligned to match other sections */
+        .blog-inner-container {
+          max-width: 860px;
+          width: 100%;
+          margin: 0;
+        }
+
+        /* Header Row */
+        .blog-header-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 20px;
+          margin-bottom: 32px;
+        }
+
+        .blog-header-title {
+          font-size: clamp(2.1rem, 4vw, 3.2rem);
+          font-weight: 900;
+          color: var(--color-text-primary);
+          letter-spacing: -0.03em;
+          line-height: 1.15;
+          margin: 0;
+          font-family: var(--font-display);
+        }
+
+        .blog-view-all-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          color: #2563EB;
+          font-size: 0.92rem;
+          font-weight: 700;
+          text-decoration: none;
+          padding: 6px 0;
+          white-space: nowrap;
+          transition: gap 0.2s ease, color 0.2s ease;
+          font-family: var(--font-display);
+        }
+
+        .blog-view-all-link:hover {
+          color: #1D4ED8;
+          gap: 9px;
+        }
+
+        /* Cards List */
+        .blog-cards-list {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+        }
+
+        /* Compact Horizontal Card */
+        .blog-compact-card {
+          display: flex;
+          align-items: center;
+          gap: 20px;
+          background: #FFFFFF;
+          border: 1px solid rgba(226, 232, 240, 0.95);
+          border-radius: 20px;
+          padding: 16px 20px;
+          box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .blog-compact-card:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 10px 30px rgba(37, 99, 235, 0.08);
+          border-color: rgba(37, 99, 235, 0.3);
+        }
+
+        /* Thumbnail Image */
+        .blog-thumb-wrapper {
+          width: 170px;
+          height: 125px;
+          flex-shrink: 0;
+          border-radius: 14px;
+          overflow: hidden;
+          display: block;
+          background: #F8FAFC;
+        }
+
+        .blog-thumb-img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          object-position: center;
+          display: block;
+          transition: transform 0.4s ease;
+        }
+
+        .blog-compact-card:hover .blog-thumb-img {
+          transform: scale(1.04);
+        }
+
+        /* Content Column */
+        .blog-content-col {
+          display: flex;
+          flex-direction: column;
+          justifyContent: center;
+          gap: 10px;
+          flex: 1;
+          min-width: 0;
+        }
+
+        /* Meta Line */
+        .blog-meta-line {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 0.82rem;
+          font-weight: 500;
+          color: #64748B;
+          font-family: var(--font-display);
+        }
+
+        .blog-meta-item {
+          display: inline-flex;
+          align-items: center;
+          gap: 5px;
+        }
+
+        .blog-meta-cal-icon {
+          color: #2563EB;
+        }
+
+        .blog-meta-clock-icon {
+          color: #94A3B8;
+        }
+
+        .blog-meta-dot {
+          color: #CBD5E1;
+        }
+
+        /* Card Heading */
+        .blog-card-heading {
+          font-size: clamp(1.05rem, 2vw, 1.22rem);
+          font-weight: 800;
+          line-height: 1.35;
+          margin: 0;
+          letter-spacing: -0.02em;
+          font-family: var(--font-display);
+        }
+
+        .blog-heading-link {
+          color: #0F172A;
+          text-decoration: none;
+          transition: color 0.2s ease;
+        }
+
+        .blog-heading-link:hover {
+          color: #2563EB;
+        }
+
+        /* Read Story Button */
+        .blog-read-story-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 6px;
+          color: #2563EB;
+          font-size: 0.9rem;
+          font-weight: 700;
+          text-decoration: none;
+          transition: gap 0.2s ease, color 0.2s ease;
+          font-family: var(--font-display);
+          width: fit-content;
+        }
+
+        .blog-read-story-btn:hover {
+          color: #1D4ED8;
+          gap: 9px;
+        }
+
+        .blog-read-arrow {
+          transition: transform 0.2s ease;
+        }
+
+        .blog-read-story-btn:hover .blog-read-arrow {
+          transform: translateX(2px);
+        }
+
+        /* Dark Mode Overrides */
+        [data-theme="dark"] .blog-header-title {
+          color: #F8FAFC !important;
+        }
+
+        [data-theme="dark"] .blog-view-all-link {
+          color: #38BDF8 !important;
+        }
+
+        [data-theme="dark"] .blog-compact-card {
+          background: #111827 !important;
+          border-color: rgba(255, 255, 255, 0.1) !important;
+          box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
+        }
+
+        [data-theme="dark"] .blog-compact-card:hover {
+          border-color: rgba(96, 165, 250, 0.4) !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 20px rgba(56, 189, 248, 0.15) !important;
+        }
+
+        [data-theme="dark"] .blog-thumb-wrapper {
+          background: #0B0F19 !important;
+        }
+
+        [data-theme="dark"] .blog-heading-link {
+          color: #F8FAFC !important;
+        }
+
+        [data-theme="dark"] .blog-heading-link:hover {
+          color: #38BDF8 !important;
+        }
+
+        [data-theme="dark"] .blog-meta-line {
+          color: #94A3B8 !important;
+        }
+
+        [data-theme="dark"] .blog-read-story-btn {
+          color: #38BDF8 !important;
+        }
+
+        /* Mobile Breakpoint */
+        @media (max-width: 560px) {
+          .blog-compact-card {
+            padding: 12px 14px !important;
+            gap: 14px !important;
+          }
+          .blog-thumb-wrapper {
+            width: 115px !important;
+            height: 95px !important;
+            border-radius: 10px !important;
+          }
+          .blog-card-heading {
+            font-size: 0.95rem !important;
+            line-height: 1.3 !important;
+          }
+          .blog-meta-line {
+            font-size: 0.74rem !important;
+            gap: 6px !important;
+          }
+          .blog-read-story-btn {
+            font-size: 0.82rem !important;
+          }
+          .blog-header-row {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 12px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
