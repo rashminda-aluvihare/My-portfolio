@@ -27,7 +27,7 @@ export const activitiesData = [
     title: 'Sri Lanka FinTech Summit 2025',
     category: 'Industry Conference & Summit',
     organization: 'FinTech Forum Sri Lanka / ICTA / Ministry of Digital Economy',
-    role: 'Delegate & FinTech Researcher',
+    role: 'Academic & FinTech Researcher',
     date: '2025',
     location: 'BMICH, Colombo',
 

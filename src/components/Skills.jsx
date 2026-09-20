@@ -1,4 +1,136 @@
-import React from 'react';
+import React, { useRef, useEffect, useMemo } from 'react';
+
+function InteractiveSkillsRow({ skills, reverse = false, speed = 0.85 }) {
+  const containerRef = useRef(null);
+  const isDraggingRef = useRef(false);
+  const startXRef = useRef(0);
+  const scrollLeftRef = useRef(0);
+  const isPausedRef = useRef(false);
+  const resumeTimerRef = useRef(null);
+  const animFrameIdRef = useRef(null);
+
+  // Replicate skills 6 times for seamless continuous wrapping in both directions
+  const repeatedSkills = useMemo(() => [
+    ...skills, ...skills, ...skills, ...skills, ...skills, ...skills
+  ], [skills]);
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    // Set initial scroll offset for reverse direction so it has buffer
+    const halfWidth = el.scrollWidth / 2;
+    if (reverse && el.scrollLeft === 0) {
+      el.scrollLeft = halfWidth;
+    }
+
+    const step = () => {
+      if (!isPausedRef.current && !isDraggingRef.current && el) {
+        if (!reverse) {
+          el.scrollLeft += speed;
+          if (el.scrollLeft >= halfWidth) {
+            el.scrollLeft -= halfWidth;
+          }
+        } else {
+          el.scrollLeft -= speed;
+          if (el.scrollLeft <= 5) {
+            el.scrollLeft += halfWidth;
+          }
+        }
+      }
+      animFrameIdRef.current = requestAnimationFrame(step);
+    };
+
+    animFrameIdRef.current = requestAnimationFrame(step);
+
+    return () => {
+      if (animFrameIdRef.current) cancelAnimationFrame(animFrameIdRef.current);
+      if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    };
+  }, [reverse, speed]);
+
+  const pauseAutoScroll = () => {
+    isPausedRef.current = true;
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+  };
+
+  const resumeAutoScroll = (delay = 1400) => {
+    if (resumeTimerRef.current) clearTimeout(resumeTimerRef.current);
+    resumeTimerRef.current = setTimeout(() => {
+      isPausedRef.current = false;
+    }, delay);
+  };
+
+  // Touch Handlers (Mobile / Tablet)
+  const handleTouchStart = () => {
+    pauseAutoScroll();
+  };
+
+  const handleTouchEnd = () => {
+    resumeAutoScroll(1400);
+  };
+
+  // Mouse Drag Handlers (Desktop)
+  const handleMouseDown = (e) => {
+    isDraggingRef.current = true;
+    pauseAutoScroll();
+    startXRef.current = e.pageX - containerRef.current.offsetLeft;
+    scrollLeftRef.current = containerRef.current.scrollLeft;
+    if (containerRef.current) {
+      containerRef.current.style.cursor = 'grabbing';
+    }
+  };
+
+  const handleMouseMove = (e) => {
+    if (!isDraggingRef.current || !containerRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - containerRef.current.offsetLeft;
+    const walk = (x - startXRef.current) * 1.5;
+    const el = containerRef.current;
+    el.scrollLeft = scrollLeftRef.current - walk;
+
+    const halfWidth = el.scrollWidth / 2;
+    if (el.scrollLeft >= halfWidth) el.scrollLeft -= halfWidth;
+    if (el.scrollLeft <= 0) el.scrollLeft += halfWidth;
+  };
+
+  const handleMouseUpOrLeave = () => {
+    if (isDraggingRef.current) {
+      isDraggingRef.current = false;
+      if (containerRef.current) {
+        containerRef.current.style.cursor = 'grab';
+      }
+      resumeAutoScroll(1400);
+    }
+  };
+
+  return (
+    <div
+      ref={containerRef}
+      className="skills-interactive-scroll-row"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+      onMouseDown={handleMouseDown}
+      onMouseMove={handleMouseMove}
+      onMouseUp={handleMouseUpOrLeave}
+      onMouseLeave={handleMouseUpOrLeave}
+      onMouseEnter={pauseAutoScroll}
+    >
+      <div className="skills-track-interactive">
+        {repeatedSkills.map((skill, idx) => (
+          <div key={`${skill.name}-${idx}`} className="skill-logo-card">
+            <div className="skill-logo-icon">
+              {skill.icon}
+            </div>
+            <span className="skill-logo-name">
+              {skill.name}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Skills() {
   // Track 1: Cloud, DevOps & Engineering Stacks (matching Image 2 & CV)
@@ -212,21 +344,6 @@ export default function Skills() {
     },
   ];
 
-  // Quadruple arrays for smooth continuous seamless infinite marquee loop
-  const marquee1 = [...track1Skills, ...track1Skills, ...track1Skills, ...track1Skills];
-  const marquee2 = [...track2Skills, ...track2Skills, ...track2Skills, ...track2Skills];
-
-  const renderIconCard = (skill, idx) => (
-    <div key={`${skill.name}-${idx}`} className="skill-logo-card">
-      <div className="skill-logo-icon">
-        {skill.icon}
-      </div>
-      <span className="skill-logo-name">
-        {skill.name}
-      </span>
-    </div>
-  );
-
   return (
     <section id="skills" className="section section-white" style={{ position: 'relative', overflow: 'hidden', padding: '90px 0' }}>
       <div className="container" style={{ marginBottom: '44px' }}>
@@ -238,20 +355,14 @@ export default function Skills() {
         </div>
       </div>
 
-      {/* Clean White Background Horizontal Infinite Marquee Stream (Matching Image 2 Reference) */}
+      {/* Clean White Background Horizontal Infinite Marquee Stream with Native Touch & Drag Scroll */}
       <div className="skills-marquee-wrapper-light">
-        {/* Track 1: Scrolling Left slowly */}
-        <div className="skills-marquee-row-light">
-          <div className="skills-track-light track-left-slow">
-            {marquee1.map((skill, idx) => renderIconCard(skill, idx))}
-          </div>
-        </div>
+        {/* Track 1: Scrolling Left slowly + Touch/Drag Interactive */}
+        <InteractiveSkillsRow skills={track1Skills} reverse={false} speed={0.9} />
 
-        {/* Track 2: Scrolling Right slowly */}
-        <div className="skills-marquee-row-light" style={{ marginTop: '16px' }}>
-          <div className="skills-track-light track-right-slow">
-            {marquee2.map((skill, idx) => renderIconCard(skill, idx))}
-          </div>
+        {/* Track 2: Scrolling Right slowly + Touch/Drag Interactive */}
+        <div style={{ marginTop: '14px' }}>
+          <InteractiveSkillsRow skills={track2Skills} reverse={true} speed={0.9} />
         </div>
       </div>
 
@@ -259,39 +370,36 @@ export default function Skills() {
         .skills-marquee-wrapper-light {
           display: flex;
           flex-direction: column;
-          gap: 6px;
+          gap: 4px;
           width: 100%;
           position: relative;
           overflow: hidden;
-          mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-          -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+          mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, black 4%, black 96%, transparent);
         }
 
-        .skills-marquee-row-light {
-          overflow: hidden;
-          position: relative;
+        .skills-interactive-scroll-row {
           width: 100%;
+          overflow-x: auto;
+          overflow-y: hidden;
+          scrollbar-width: none;
+          -ms-overflow-style: none;
+          -webkit-overflow-scrolling: touch;
+          cursor: grab;
+          user-select: none;
           display: flex;
-          padding: 10px 0;
+          padding: 8px 0;
         }
 
-        .skills-track-light {
+        .skills-interactive-scroll-row::-webkit-scrollbar {
+          display: none;
+        }
+
+        .skills-track-interactive {
           display: flex;
           gap: 18px;
           width: max-content;
           will-change: transform;
-        }
-
-        .track-left-slow {
-          animation: marqueeLeftLight 55s linear infinite;
-        }
-
-        .track-right-slow {
-          animation: marqueeRightLight 60s linear infinite;
-        }
-
-        .skills-marquee-wrapper-light:hover .skills-track-light {
-          animation-play-state: paused;
         }
 
         /* Minimalist Rounded Square Card matching Reference Image 2 */

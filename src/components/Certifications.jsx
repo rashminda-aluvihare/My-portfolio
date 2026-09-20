@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import {
   Award,
@@ -57,6 +57,7 @@ export default function Certifications() {
   // Active certificate index in the single-card showcase
   const [selectedCertIndex, setSelectedCertIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
+  const [slideDirection, setSlideDirection] = useState('next');
 
   // Side Drawer state for "View All Certifications"
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -65,6 +66,94 @@ export default function Certifications() {
   const [activeCertIndex, setActiveCertIndex] = useState(null);
   const [zoomLevel, setZoomLevel] = useState(1);
 
+  // Touch and drag refs for gesture swipe / manual scroll
+  const touchStartXRef = useRef(null);
+  const touchStartYRef = useRef(null);
+  const dragDistanceXRef = useRef(0);
+  const mouseStartXRef = useRef(null);
+  const isMouseDownRef = useRef(false);
+  const mouseDistanceRef = useRef(0);
+
+  const goToNextCert = (e) => {
+    if (e) e.stopPropagation();
+    setSlideDirection('next');
+    setSelectedCertIndex((prev) => (prev + 1) % certifications.length);
+  };
+
+  const goToPrevCert = (e) => {
+    if (e) e.stopPropagation();
+    setSlideDirection('prev');
+    setSelectedCertIndex((prev) => (prev - 1 + certifications.length) % certifications.length);
+  };
+
+  // Touch handlers for mobile swipe
+  const handleCardTouchStart = (e) => {
+    touchStartXRef.current = e.touches[0].clientX;
+    touchStartYRef.current = e.touches[0].clientY;
+    dragDistanceXRef.current = 0;
+    setIsHovered(true);
+  };
+
+  const handleCardTouchMove = (e) => {
+    if (touchStartXRef.current === null) return;
+    const diffX = e.touches[0].clientX - touchStartXRef.current;
+    const diffY = e.touches[0].clientY - touchStartYRef.current;
+    if (Math.abs(diffX) > Math.abs(diffY)) {
+      dragDistanceXRef.current = diffX;
+    }
+  };
+
+  const handleCardTouchEnd = () => {
+    setIsHovered(false);
+    if (Math.abs(dragDistanceXRef.current) > 35) {
+      if (dragDistanceXRef.current < 0) {
+        goToNextCert();
+      } else {
+        goToPrevCert();
+      }
+    }
+    touchStartXRef.current = null;
+    touchStartYRef.current = null;
+    dragDistanceXRef.current = 0;
+  };
+
+  // Mouse drag handlers for desktop
+  const handleCardMouseDown = (e) => {
+    if (e.target.closest('button') || e.target.closest('a')) return;
+    isMouseDownRef.current = true;
+    mouseStartXRef.current = e.clientX;
+    mouseDistanceRef.current = 0;
+    setIsHovered(true);
+  };
+
+  const handleCardMouseMove = (e) => {
+    if (!isMouseDownRef.current || mouseStartXRef.current === null) return;
+    mouseDistanceRef.current = e.clientX - mouseStartXRef.current;
+  };
+
+  const handleCardMouseUp = () => {
+    if (isMouseDownRef.current) {
+      isMouseDownRef.current = false;
+      setIsHovered(false);
+      if (Math.abs(mouseDistanceRef.current) > 35) {
+        if (mouseDistanceRef.current < 0) {
+          goToNextCert();
+        } else {
+          goToPrevCert();
+        }
+      }
+      mouseStartXRef.current = null;
+      mouseDistanceRef.current = 0;
+    }
+  };
+
+  const handleImageClick = () => {
+    if (Math.abs(mouseDistanceRef.current) > 10 || Math.abs(dragDistanceXRef.current) > 10) {
+      return;
+    }
+    openModal(selectedCertIndex);
+  };
+
   // Auto-scroll / auto-advance every 4.5 seconds
   useEffect(() => {
     if (activeCertIndex !== null || isDrawerOpen || isHovered) {
@@ -72,6 +161,7 @@ export default function Certifications() {
     }
 
     const timer = setInterval(() => {
+      setSlideDirection('next');
       setSelectedCertIndex((prev) => (prev + 1) % certifications.length);
     }, 4500);
 
@@ -208,22 +298,53 @@ export default function Certifications() {
         </div>
 
         {/* Single Certificate Showcase Card */}
-        <div style={{ maxWidth: '960px', margin: '0 auto' }}>
+        <div className="cert-showcase-outer-container" style={{ maxWidth: '960px', margin: '0 auto', position: 'relative' }}>
+          {/* Floating Left Arrow */}
+          <button
+            onClick={goToPrevCert}
+            className="cert-side-nav-btn cert-side-prev"
+            aria-label="Previous Certificate"
+            title="Previous Certificate"
+          >
+            <ChevronLeft size={22} />
+          </button>
+
+          {/* Floating Right Arrow */}
+          <button
+            onClick={goToNextCert}
+            className="cert-side-nav-btn cert-side-next"
+            aria-label="Next Certificate"
+            title="Next Certificate"
+          >
+            <ChevronRight size={22} />
+          </button>
+
           <div
-            key={activeFeaturedCert.id}
-            className="card-flat single-cert-showcase"
+            key={`${activeFeaturedCert.id}-${selectedCertIndex}`}
+            className={`card-flat single-cert-showcase cert-slide-${slideDirection}`}
             onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
+            onMouseLeave={() => {
+              setIsHovered(false);
+              handleCardMouseUp();
+            }}
+            onTouchStart={handleCardTouchStart}
+            onTouchMove={handleCardTouchMove}
+            onTouchEnd={handleCardTouchEnd}
+            onMouseDown={handleCardMouseDown}
+            onMouseMove={handleCardMouseMove}
+            onMouseUp={handleCardMouseUp}
             style={{
               borderRadius: '24px',
               overflow: 'hidden',
               position: 'relative',
-              animation: 'certCardFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
+              cursor: 'grab',
+              userSelect: 'none',
+              animation: slideDirection === 'next' ? 'certSlideNext 0.35s cubic-bezier(0.16, 1, 0.3, 1)' : 'certSlidePrev 0.35s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
           >
             {/* Certificate Preview Image Box */}
             <div
-              onClick={() => openModal(selectedCertIndex)}
+              onClick={handleImageClick}
               className="cert-img-container cert-showcase-img-box"
               style={{
                 position: 'relative',
@@ -433,40 +554,63 @@ export default function Certifications() {
             </div>
           </div>
 
-          {/* ── Bullet Indicators Underneath the Card with Auto-Scroll ── */}
+          {/* ── Interactive Bullet Indicators with Prev/Next Controls ── */}
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              gap: '10px',
+              gap: '14px',
               marginTop: '26px',
             }}
           >
-            {certifications.map((_, idx) => {
-              const isActive = selectedCertIndex === idx;
-              return (
-                <button
-                  key={idx}
-                  onClick={() => setSelectedCertIndex(idx)}
-                  aria-label={`Go to certificate ${idx + 1}`}
-                  title={`View Certificate ${idx + 1}`}
-                  style={{
-                    width: isActive ? '34px' : '10px',
-                    height: '10px',
-                    borderRadius: '999px',
-                    background: isActive
-                      ? 'linear-gradient(135deg, #2563EB, #1D4ED8)'
-                      : 'rgba(203, 213, 225, 0.85)',
-                    border: 'none',
-                    cursor: 'pointer',
-                    padding: 0,
-                    transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
-                    boxShadow: isActive ? '0 2px 10px rgba(37, 99, 235, 0.35)' : 'none',
-                  }}
-                />
-              );
-            })}
+            <button
+              onClick={goToPrevCert}
+              className="cert-bottom-nav-arrow"
+              aria-label="Previous Certificate"
+              title="Previous Certificate"
+            >
+              <ChevronLeft size={16} />
+            </button>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+              {certifications.map((_, idx) => {
+                const isActive = selectedCertIndex === idx;
+                return (
+                  <button
+                    key={idx}
+                    onClick={() => {
+                      setSlideDirection(idx >= selectedCertIndex ? 'next' : 'prev');
+                      setSelectedCertIndex(idx);
+                    }}
+                    aria-label={`Go to certificate ${idx + 1}`}
+                    title={`View Certificate ${idx + 1}`}
+                    style={{
+                      width: isActive ? '34px' : '10px',
+                      height: '10px',
+                      borderRadius: '999px',
+                      background: isActive
+                        ? 'linear-gradient(135deg, #2563EB, #1D4ED8)'
+                        : 'rgba(203, 213, 225, 0.85)',
+                      border: 'none',
+                      cursor: 'pointer',
+                      padding: 0,
+                      transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
+                      boxShadow: isActive ? '0 2px 10px rgba(37, 99, 235, 0.35)' : 'none',
+                    }}
+                  />
+                );
+              })}
+            </div>
+
+            <button
+              onClick={goToNextCert}
+              className="cert-bottom-nav-arrow"
+              aria-label="Next Certificate"
+              title="Next Certificate"
+            >
+              <ChevronRight size={16} />
+            </button>
           </div>
         </div>
       </div>
@@ -1221,6 +1365,80 @@ export default function Certifications() {
         @keyframes certCardFadeIn {
           from { opacity: 0.88; transform: scale(0.995); }
           to { opacity: 1; transform: scale(1); }
+        }
+        @keyframes certSlideNext {
+          from { opacity: 0.2; transform: translateX(24px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes certSlidePrev {
+          from { opacity: 0.2; transform: translateX(-24px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        .cert-showcase-outer-container {
+          position: relative;
+        }
+        .cert-side-nav-btn {
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background: #FFFFFF;
+          border: 1px solid rgba(226, 232, 240, 0.95);
+          color: #1E293B;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          z-index: 10;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+          transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .cert-side-prev {
+          left: -22px;
+        }
+        .cert-side-next {
+          right: -22px;
+        }
+        .cert-side-nav-btn:hover {
+          background: #2563EB;
+          color: #FFFFFF;
+          border-color: #2563EB;
+          transform: translateY(-50%) scale(1.08);
+          box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+        }
+        [data-theme="dark"] .cert-side-nav-btn {
+          background: #1E293B;
+          border-color: rgba(255, 255, 255, 0.15);
+          color: #F8FAFC;
+        }
+        [data-theme="dark"] .cert-side-nav-btn:hover {
+          background: #3B82F6;
+          border-color: #3B82F6;
+          color: #FFFFFF;
+        }
+        .cert-bottom-nav-arrow {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          background: var(--color-accent-subtle);
+          border: 1px solid var(--color-border);
+          color: var(--color-accent);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+        .cert-bottom-nav-arrow:hover {
+          background: var(--color-accent);
+          color: #FFFFFF;
+        }
+        @media (max-width: 1024px) {
+          .cert-side-nav-btn {
+            display: none;
+          }
         }
         @keyframes fadeIn {
           from { opacity: 0; }

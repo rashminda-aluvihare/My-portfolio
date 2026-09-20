@@ -10,11 +10,21 @@ import {
   ZoomIn,
   ZoomOut,
   Maximize2,
+  ChevronDown,
+  ChevronUp,
 } from 'lucide-react';
 import { activitiesData } from '../data/activitiesData';
 
 export default function Activities() {
   const [activities] = useState(activitiesData);
+  const [expandedCards, setExpandedCards] = useState({});
+
+  const toggleDetails = (id) => {
+    setExpandedCards((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
 
   // Lightbox Modal state
   const [activeGallery, setActiveGallery] = useState(null);
@@ -108,13 +118,15 @@ export default function Activities() {
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 340px), 1fr))',
             gap: '24px',
+            alignItems: 'start',
           }}
         >
           {activities.map((item) => {
             const allImages = getItemImages(item);
             const totalCount = allImages.length;
+            const isExpanded = !!expandedCards[item.id];
 
             return (
               <div
@@ -126,7 +138,7 @@ export default function Activities() {
                   flexDirection: 'column',
                   gap: '16px',
                   borderRadius: '16px',
-                  height: '100%',
+                  height: 'auto',
                 }}
               >
                 {/* Responsive Photo Gallery Grid */}
@@ -337,71 +349,84 @@ export default function Activities() {
                 </div>
 
                 {/* Title & Organization Header Container */}
+                {/* Title & Organization / Location */}
                 <div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--color-text-primary)', marginBottom: '6px', lineHeight: '1.3', letterSpacing: '-0.02em' }}>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--color-text-primary)', marginBottom: '8px', lineHeight: '1.3', letterSpacing: '-0.02em' }}>
                     {item.title}
                   </h3>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--color-text-muted)', fontSize: '0.85rem', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', color: 'var(--color-text-muted)', fontSize: '0.86rem' }}>
                     {item.organization && (
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <Building2 size={14} style={{ color: 'var(--color-accent)' }} />
-                        {item.organization}
-                      </span>
+                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '6px' }}>
+                        <Building2 size={15} style={{ color: 'var(--color-accent)', flexShrink: 0, marginTop: '2px' }} />
+                        <span style={{ lineHeight: 1.35 }}>{item.organization}</span>
+                      </div>
                     )}
 
                     {item.location && (
-                      <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <MapPin size={14} style={{ color: 'var(--color-accent)' }} />
-                        {item.location}
-                      </span>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <MapPin size={15} style={{ color: 'var(--color-accent)', flexShrink: 0 }} />
+                        <span>{item.location}</span>
+                      </div>
                     )}
                   </div>
                 </div>
 
-                {/* Description */}
-                {item.description && (
-                  <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.9rem', lineHeight: 1.6 }}>
-                    {item.description}
-                  </p>
-                )}
+                {/* Action Button: See More Details */}
+                <button
+                  type="button"
+                  onClick={() => toggleDetails(item.id)}
+                  className="activity-details-toggle-btn"
+                  aria-expanded={isExpanded}
+                >
+                  <span>{isExpanded ? 'Show Less' : 'See More Details'}</span>
+                  {isExpanded ? <ChevronUp size={15} /> : <ChevronDown size={15} />}
+                </button>
 
-                {/* Role & Contribution */}
-                {item.contribution && (
-                  <div style={{ background: 'var(--color-bg-alt)', borderLeft: '3px solid var(--color-accent)', padding: '10px 14px', borderRadius: '0 8px 8px 0', fontSize: '0.86rem', color: 'var(--color-text-secondary)' }}>
-                    <strong style={{ color: 'var(--color-text-primary)', display: 'block', marginBottom: '2px', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Role &amp; Contribution:</strong>
-                    <span>{item.contribution}</span>
-                  </div>
-                )}
+                {/* Expandable Details Container */}
+                {isExpanded && (
+                  <div className="activity-expanded-details">
+                    {/* Role & Contribution */}
+                    {(item.contribution || item.role) && (
+                      <div className="activity-details-box contribution-box">
+                        <strong className="activity-box-label">
+                          Role &amp; Contribution:
+                        </strong>
+                        {item.role && (
+                          <div className="activity-role-pill">
+                            {item.role}
+                          </div>
+                        )}
+                        {item.contribution && (
+                          <p className="activity-box-text">
+                            {item.contribution}
+                          </p>
+                        )}
+                      </div>
+                    )}
 
-                {/* Key Outcome */}
-                {item.outcome && (
-                  <div style={{ fontSize: '0.85rem', fontWeight: 600 }}>
-                    <span style={{ color: 'var(--color-text-primary)', fontWeight: 700 }}>Key Outcome:</span>{' '}
-                    <span style={{ color: '#10B981' }}>{item.outcome}</span>
-                  </div>
-                )}
+                    {/* Key Outcome */}
+                    {item.outcome && (
+                      <div className="activity-details-box outcome-box">
+                        <strong className="activity-box-label outcome-label">
+                          Key Outcome:
+                        </strong>
+                        <p className="activity-box-text outcome-text">
+                          {item.outcome}
+                        </p>
+                      </div>
+                    )}
 
-                {/* Tags */}
-                {item.tags && item.tags.length > 0 && (
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', marginTop: 'auto', paddingTop: '4px' }}>
-                    {item.tags.map((tag, tIdx) => (
-                      <span
-                        key={tIdx}
-                        style={{
-                          fontSize: '0.74rem',
-                          fontWeight: 600,
-                          color: 'var(--color-text-secondary)',
-                          background: 'var(--color-bg-alt)',
-                          border: '1px solid var(--color-border)',
-                          padding: '3px 8px',
-                          borderRadius: '6px',
-                          fontFamily: 'var(--font-display)',
-                        }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
+                    {/* Tags */}
+                    {item.tags && item.tags.length > 0 && (
+                      <div className="activity-details-tags">
+                        {item.tags.map((tag, tIdx) => (
+                          <span key={tIdx} className="activity-tag-chip">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
@@ -580,6 +605,164 @@ export default function Activities() {
         }
         .photo-hover-container:hover img {
           transform: scale(1.04);
+        }
+
+        /* See More Details Toggle Button */
+        .activity-details-toggle-btn {
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          width: 100%;
+          padding: 10px 16px;
+          border-radius: 12px;
+          font-size: 0.86rem;
+          font-weight: 700;
+          font-family: var(--font-display);
+          color: #2563EB;
+          background: rgba(37, 99, 235, 0.08);
+          border: 1px solid rgba(37, 99, 235, 0.22);
+          cursor: pointer;
+          transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+          margin-top: 4px;
+        }
+
+        .activity-details-toggle-btn:hover {
+          background: rgba(37, 99, 235, 0.16);
+          border-color: #2563EB;
+          transform: translateY(-1px);
+          box-shadow: 0 4px 14px rgba(37, 99, 235, 0.12);
+        }
+
+        [data-theme="dark"] .activity-details-toggle-btn {
+          color: #60A5FA;
+          background: rgba(37, 99, 235, 0.18);
+          border-color: rgba(96, 165, 250, 0.32);
+        }
+
+        [data-theme="dark"] .activity-details-toggle-btn:hover {
+          background: rgba(37, 99, 235, 0.3);
+          border-color: #60A5FA;
+          box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
+        }
+
+        /* Expanded Details Section */
+        .activity-expanded-details {
+          display: flex;
+          flex-direction: column;
+          gap: 12px;
+          padding-top: 14px;
+          border-top: 1px dashed var(--color-border);
+          animation: detailsFadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes detailsFadeIn {
+          from {
+            opacity: 0;
+            transform: translateY(-6px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .activity-details-box {
+          padding: 12px 14px;
+          border-radius: 10px;
+          font-size: 0.86rem;
+        }
+
+        .contribution-box {
+          background: var(--color-bg-alt);
+          border-left: 3.5px solid var(--color-accent);
+        }
+
+        .outcome-box {
+          background: rgba(16, 185, 129, 0.08);
+          border: 1px solid rgba(16, 185, 129, 0.2);
+          border-left: 3.5px solid #10B981;
+        }
+
+        [data-theme="dark"] .outcome-box {
+          background: rgba(16, 185, 129, 0.12);
+          border-color: rgba(16, 185, 129, 0.3);
+          border-left-color: #10B981;
+        }
+
+        .activity-box-label {
+          display: block;
+          font-size: 0.76rem;
+          font-weight: 800;
+          text-transform: uppercase;
+          letter-spacing: 0.04em;
+          margin-bottom: 4px;
+          font-family: var(--font-display);
+          color: var(--color-text-primary);
+        }
+
+        .outcome-label {
+          color: #059669;
+        }
+
+        [data-theme="dark"] .outcome-label {
+          color: #34D399;
+        }
+
+        .activity-role-pill {
+          display: inline-block;
+          font-size: 0.74rem;
+          font-weight: 700;
+          color: #2563EB;
+          background: rgba(37, 99, 235, 0.1);
+          border: 1px solid rgba(37, 99, 235, 0.2);
+          padding: 2px 8px;
+          border-radius: 6px;
+          margin-bottom: 6px;
+          font-family: var(--font-display);
+        }
+
+        [data-theme="dark"] .activity-role-pill {
+          color: #93C5FD;
+          background: rgba(37, 99, 235, 0.2);
+          border-color: rgba(96, 165, 250, 0.3);
+        }
+
+        .activity-box-text {
+          margin: 0;
+          font-size: 0.86rem;
+          line-height: 1.55;
+          color: var(--color-text-secondary);
+        }
+
+        .outcome-text {
+          color: var(--color-text-primary);
+          font-weight: 500;
+        }
+
+        .activity-details-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 6px;
+          padding-top: 4px;
+        }
+
+        .activity-tag-chip {
+          font-size: 0.73rem;
+          font-weight: 600;
+          color: var(--color-text-secondary);
+          background: var(--color-bg-alt);
+          border: 1px solid var(--color-border);
+          padding: 3px 8px;
+          border-radius: 6px;
+          font-family: var(--font-display);
+          transition: all 0.2s ease;
+        }
+
+        .activity-tag-chip:hover {
+          border-color: var(--color-accent);
+          color: var(--color-accent);
+          transform: translateY(-1px);
         }
       `}</style>
     </section>
