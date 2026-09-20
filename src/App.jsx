@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import FullPortfolioBackground from './components/FullPortfolioBackground';
 import Hero from './components/Hero';
@@ -14,11 +14,18 @@ import Contact from './components/Contact';
 import FloatingControls from './components/FloatingControls';
 
 export default function App() {
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'dark';
+  });
+
   useEffect(() => {
-    // Force Light Mode permanently
-    document.documentElement.setAttribute('data-theme', 'light');
-    localStorage.setItem('theme', 'light');
-  }, []);
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('theme', theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+  };
 
   // Intersection Observer for scroll-reveal animations
   useEffect(() => {
@@ -56,7 +63,7 @@ export default function App() {
       <FullPortfolioBackground />
 
       {/* Fixed top Navbar dock */}
-      <Navbar />
+      <Navbar theme={theme} toggleTheme={toggleTheme} />
 
       {/* Page Sections */}
       <main style={{ position: 'relative' }}>
@@ -72,9 +79,8 @@ export default function App() {
         <Contact />
       </main>
 
-
       {/* Fixed Right-Side Social Dock & Scroll to Top */}
-      <FloatingControls />
+      <FloatingControls theme={theme} toggleTheme={toggleTheme} />
     </>
   );
 }

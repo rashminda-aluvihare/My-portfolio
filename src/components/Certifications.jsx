@@ -94,15 +94,18 @@ export default function Certifications() {
     }
   };
 
-  // Lock background scroll when either drawer or lightbox is open
+  // Lock background scroll and hide floating navs when either drawer or lightbox is open
   useEffect(() => {
     if (activeCertIndex !== null || isDrawerOpen) {
       document.body.style.overflow = 'hidden';
+      document.body.classList.add('lightbox-open');
     } else {
       document.body.style.overflow = 'auto';
+      document.body.classList.remove('lightbox-open');
     }
     return () => {
       document.body.style.overflow = 'auto';
+      document.body.classList.remove('lightbox-open');
     };
   }, [activeCertIndex, isDrawerOpen]);
 
@@ -155,7 +158,6 @@ export default function Certifications() {
       id="certifications"
       className="section section-white"
       style={{
-        backgroundColor: '#FFFFFF',
         position: 'relative',
         padding: 'clamp(60px, 8vw, 90px) 0',
       }}
@@ -168,7 +170,7 @@ export default function Certifications() {
               style={{
                 fontSize: 'clamp(1.85rem, 4vw, 3.2rem)',
                 fontWeight: 900,
-                color: '#0F172A',
+                color: 'var(--color-text-primary)',
                 letterSpacing: '-0.03em',
                 lineHeight: 1.15,
                 margin: 0,
@@ -189,29 +191,15 @@ export default function Certifications() {
               gap: '8px',
               padding: '11px 22px',
               borderRadius: '999px',
-              background: '#EFF6FF',
-              border: '1.5px solid rgba(37, 99, 235, 0.3)',
-              color: '#2563EB',
+              background: 'var(--color-accent-subtle)',
+              border: '1.5px solid var(--color-border)',
+              color: 'var(--color-accent)',
               fontWeight: 700,
               fontSize: '0.94rem',
               cursor: 'pointer',
               transition: 'all 0.25s ease',
               fontFamily: 'var(--font-display)',
-              boxShadow: '0 2px 10px rgba(37, 99, 235, 0.08)',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = '#2563EB';
-              e.currentTarget.style.color = '#FFFFFF';
-              e.currentTarget.style.borderColor = '#2563EB';
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 6px 18px rgba(37, 99, 235, 0.25)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = '#EFF6FF';
-              e.currentTarget.style.color = '#2563EB';
-              e.currentTarget.style.borderColor = 'rgba(37, 99, 235, 0.3)';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 2px 10px rgba(37, 99, 235, 0.08)';
+              boxShadow: '0 2px 10px rgba(0, 0, 0, 0.08)',
             }}
           >
             <span>View All Certifications</span>
@@ -228,10 +216,7 @@ export default function Certifications() {
             onMouseLeave={() => setIsHovered(false)}
             style={{
               borderRadius: '24px',
-              background: '#FFFFFF',
-              border: '1px solid rgba(226, 232, 240, 0.95)',
               overflow: 'hidden',
-              boxShadow: '0 10px 35px rgba(15, 23, 42, 0.06)',
               position: 'relative',
               animation: 'certCardFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1)',
             }}
@@ -245,7 +230,7 @@ export default function Certifications() {
                 width: '100%',
                 minHeight: '340px',
                 height: '100%',
-                background: '#F1F5F9',
+                background: 'var(--color-bg)',
                 cursor: 'pointer',
                 overflow: 'hidden',
                 display: 'flex',
@@ -371,12 +356,13 @@ export default function Certifications() {
                   </span>
                 </div>
 
-                {/* Title */}
+                {/* Title - ALWAYS BLACK IN BOTH MODES */}
                 <h3
+                  className="cert-main-title-black"
                   style={{
                     fontSize: 'clamp(1.3rem, 2.5vw, 1.7rem)',
                     fontWeight: 800,
-                    color: '#0F172A',
+                    color: '#000000',
                     lineHeight: '1.25',
                     marginBottom: '10px',
                     letterSpacing: '-0.02em',
@@ -536,7 +522,7 @@ export default function Certifications() {
                       style={{
                         fontSize: 'clamp(1.2rem, 3vw, 1.4rem)',
                         fontWeight: 900,
-                        color: '#0F172A',
+                        color: 'var(--color-text-primary)',
                         letterSpacing: '-0.02em',
                         margin: 0,
                       }}
@@ -568,8 +554,8 @@ export default function Certifications() {
                   onClick={() => setIsDrawerOpen(false)}
                   aria-label="Close certifications drawer"
                   style={{
-                    background: '#F1F5F9',
-                    border: '1px solid rgba(226, 232, 240, 0.9)',
+                    background: 'var(--color-bg-alt)',
+                    border: '1px solid var(--color-border)',
                     borderRadius: '50%',
                     width: '38px',
                     height: '38px',
@@ -577,19 +563,9 @@ export default function Certifications() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    color: '#0F172A',
+                    color: 'var(--color-text-primary)',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = '#0F172A';
-                    e.currentTarget.style.color = '#FFFFFF';
-                    e.currentTarget.style.transform = 'rotate(90deg)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = '#F1F5F9';
-                    e.currentTarget.style.color = '#0F172A';
-                    e.currentTarget.style.transform = 'rotate(0deg)';
                   }}
                 >
                   <X size={19} />
@@ -613,8 +589,8 @@ export default function Certifications() {
                     className="card-flat"
                     style={{
                       borderRadius: '18px',
-                      background: '#FFFFFF',
-                      border: '1px solid rgba(226, 232, 240, 0.9)',
+                      background: 'var(--color-surface, #FFFFFF)',
+                      border: '1px solid var(--color-border)',
                       overflow: 'hidden',
                       boxShadow: '0 4px 18px rgba(15, 23, 42, 0.04)',
                       display: 'flex',
@@ -632,8 +608,8 @@ export default function Certifications() {
                         height: '240px',
                         minHeight: '240px',
                         flexShrink: 0,
-                        background: '#F1F5F9',
-                        borderBottom: '1px solid rgba(226, 232, 240, 0.85)',
+                        background: 'var(--color-bg, #F1F5F9)',
+                        borderBottom: '1px solid var(--color-border)',
                         cursor: 'pointer',
                         overflow: 'hidden',
                         display: 'flex',
@@ -752,10 +728,11 @@ export default function Certifications() {
                       </div>
 
                       <h4
+                        className="cert-drawer-title-black"
                         style={{
                           fontSize: '1.18rem',
                           fontWeight: 800,
-                          color: '#0F172A',
+                          color: '#000000',
                           lineHeight: '1.3',
                           marginBottom: '6px',
                           letterSpacing: '-0.01em',
@@ -1111,7 +1088,19 @@ export default function Certifications() {
           flex-direction: column;
           justifyContent: space-between;
           gap: 22px;
-          background: #FFFFFF;
+          background: #FFFFFF !important;
+        }
+        [data-theme="dark"] .cert-showcase-body {
+          background: #FFFFFF !important;
+        }
+        .cert-main-title-black,
+        .cert-drawer-title-black,
+        [data-theme="dark"] .cert-main-title-black,
+        [data-theme="dark"] .cert-drawer-title-black,
+        [data-theme="dark"] .single-cert-showcase h3,
+        [data-theme="dark"] .single-cert-showcase .cert-showcase-body h3,
+        [data-theme="dark"] .cert-drawer-card h4 {
+          color: #000000 !important;
         }
         .cert-showcase-actions {
           display: flex;

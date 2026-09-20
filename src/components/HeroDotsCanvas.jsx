@@ -171,6 +171,7 @@ export default function HeroDotsCanvas() {
 
     // Connect nodes that are near each other with fine delicate constellation lines
     const connectNodes = () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       const maxDist = 115;
       for (let i = 0; i < nodes.length; i++) {
         for (let j = i + 1; j < nodes.length; j++) {
@@ -179,11 +180,13 @@ export default function HeroDotsCanvas() {
           const dist = Math.hypot(dx, dy);
 
           if (dist < maxDist) {
-            const alpha = (1 - dist / maxDist) * 0.45;
+            const alpha = (1 - dist / maxDist) * (isDark ? 0.35 : 0.4);
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
-            ctx.strokeStyle = `rgba(37, 99, 235, ${alpha})`;
+            ctx.strokeStyle = isDark
+              ? `rgba(96, 165, 250, ${alpha})`
+              : `rgba(37, 99, 235, ${alpha})`;
             ctx.lineWidth = 0.8;
             ctx.stroke();
           }
@@ -196,11 +199,13 @@ export default function HeroDotsCanvas() {
           const dist = Math.hypot(dx, dy);
 
           if (dist < mouse.radius) {
-            const alpha = (1 - dist / mouse.radius) * 0.55;
+            const alpha = (1 - dist / mouse.radius) * (isDark ? 0.65 : 0.55);
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(mouse.x, mouse.y);
-            ctx.strokeStyle = `rgba(59, 130, 246, ${alpha})`;
+            ctx.strokeStyle = isDark
+              ? `rgba(56, 189, 248, ${alpha})`
+              : `rgba(59, 130, 246, ${alpha})`;
             ctx.lineWidth = 0.9;
             ctx.stroke();
           }
@@ -251,18 +256,29 @@ export default function HeroDotsCanvas() {
   }, []);
 
   return (
-    <canvas
-      ref={canvasRef}
-      style={{
-        position: 'absolute',
-        top: 0,
-        left: 0,
-        width: '100%',
-        height: '100%',
-        pointerEvents: 'none',
-        zIndex: 1,
-        opacity: 0.22, // Low opacity (~15-30%) as requested so hero text remains 100% crisp
-      }}
-    />
+    <>
+      <canvas
+        ref={canvasRef}
+        className="hero-dots-canvas"
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          pointerEvents: 'none',
+          zIndex: 1,
+        }}
+      />
+      <style>{`
+        .hero-dots-canvas {
+          opacity: 0.24;
+          transition: opacity 0.3s ease;
+        }
+        [data-theme="dark"] .hero-dots-canvas {
+          opacity: 0.52;
+        }
+      `}</style>
+    </>
   );
 }

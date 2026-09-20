@@ -111,7 +111,6 @@ export default function Blogs() {
       id="blogs"
       className="section section-white"
       style={{
-        backgroundColor: '#FFFFFF',
         position: 'relative',
         overflow: 'hidden',
         padding: '90px 0',
@@ -137,8 +136,8 @@ export default function Blogs() {
                 gap: '6px',
                 padding: '4px 12px',
                 borderRadius: '999px',
-                background: 'rgba(37, 99, 235, 0.08)',
-                color: '#2563EB',
+                background: 'var(--color-accent-subtle)',
+                color: 'var(--color-accent)',
                 fontSize: '0.82rem',
                 fontWeight: 700,
                 letterSpacing: '0.04em',
@@ -153,7 +152,7 @@ export default function Blogs() {
               style={{
                 fontSize: 'clamp(2.1rem, 4vw, 3.2rem)',
                 fontWeight: 900,
-                color: '#0F172A',
+                color: 'var(--color-text-primary)',
                 letterSpacing: '-0.03em',
                 lineHeight: 1.15,
                 margin: 0,
@@ -164,7 +163,7 @@ export default function Blogs() {
             <p
               style={{
                 margin: '8px 0 0',
-                color: '#64748B',
+                color: 'var(--color-text-muted)',
                 fontSize: '1.05rem',
                 fontWeight: 500,
                 maxWidth: '650px',
@@ -186,26 +185,14 @@ export default function Blogs() {
               gap: '8px',
               padding: '10px 18px',
               borderRadius: '999px',
-              background: '#F8FAFC',
-              border: '1px solid rgba(226, 232, 240, 0.95)',
-              color: '#0F172A',
+              background: 'var(--card-bg)',
+              border: '1px solid var(--color-border)',
+              color: 'var(--color-text-primary)',
               fontWeight: 600,
               fontSize: '0.9rem',
               textDecoration: 'none',
               transition: 'all 0.25s ease',
-              boxShadow: '0 2px 8px rgba(15, 23, 42, 0.04)',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.borderColor = '#2563EB';
-              e.currentTarget.style.color = '#2563EB';
-              e.currentTarget.style.transform = 'translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 6px 16px rgba(37, 99, 235, 0.12)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.borderColor = 'rgba(226, 232, 240, 0.95)';
-              e.currentTarget.style.color = '#0F172A';
-              e.currentTarget.style.transform = 'translateY(0)';
-              e.currentTarget.style.boxShadow = '0 2px 8px rgba(15, 23, 42, 0.04)';
+              boxShadow: '0 2px 8px rgba(0, 0, 0, 0.04)',
             }}
           >
             <span>Follow on Medium</span>
@@ -234,13 +221,13 @@ export default function Blogs() {
                 key={index}
                 className="blog-card-item"
                 style={{
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(226, 232, 240, 0.9)',
+                  background: 'var(--card-bg)',
+                  border: '1px solid var(--color-border)',
                   borderRadius: '20px',
                   overflow: 'hidden',
                   display: 'flex',
                   flexDirection: 'column',
-                  boxShadow: '0 4px 20px rgba(15, 23, 42, 0.04)',
+                  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.06)',
                   transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
                   position: 'relative',
                 }}
@@ -255,9 +242,9 @@ export default function Blogs() {
                     height: '210px',
                     width: '100%',
                     overflow: 'hidden',
-                    background: '#F1F5F9',
+                    background: 'var(--color-bg)',
                     display: 'block',
-                    borderBottom: '1px solid rgba(226, 232, 240, 0.85)',
+                    borderBottom: '1px solid var(--color-border)',
                   }}
                   className="blog-cover-link"
                 >
@@ -316,19 +303,19 @@ export default function Blogs() {
                         display: 'flex',
                         alignItems: 'center',
                         gap: '14px',
-                        color: '#64748B',
+                        color: 'var(--color-text-muted)',
                         fontSize: '0.82rem',
                         fontWeight: 500,
                         marginBottom: '12px',
                       }}
                     >
                       <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-                        <Calendar size={13} style={{ color: '#2563EB' }} />
+                        <Calendar size={13} style={{ color: 'var(--color-accent)' }} />
                         {formattedDate}
                       </span>
-                      <span style={{ color: '#CBD5E1' }}>•</span>
+                      <span style={{ color: 'var(--color-border)' }}>•</span>
                       <span style={{ display: 'inline-flex', alignItems: 'center', gap: '5px' }}>
-                        <Clock size={13} style={{ color: '#64748B' }} />
+                        <Clock size={13} style={{ color: 'var(--color-text-muted)' }} />
                         {blog.readTime}
                       </span>
                     </div>
@@ -340,7 +327,7 @@ export default function Blogs() {
                         fontWeight: 800,
                         lineHeight: 1.35,
                         margin: '0 0 12px',
-                        color: '#0F172A',
+                        color: 'var(--color-text-primary)',
                         letterSpacing: '-0.02em',
                       }}
                     >
@@ -353,8 +340,8 @@ export default function Blogs() {
                           textDecoration: 'none',
                           transition: 'color 0.2s ease',
                         }}
-                        onMouseEnter={(e) => (e.currentTarget.style.color = '#2563EB')}
-                        onMouseLeave={(e) => (e.currentTarget.style.color = '#0F172A')}
+                        onMouseEnter={(e) => (e.currentTarget.style.color = 'var(--color-accent)')}
+                        onMouseLeave={(e) => (e.currentTarget.style.color = 'inherit')}
                       >
                         {blog.title}
                       </a>
@@ -364,7 +351,7 @@ export default function Blogs() {
                     <p
                       style={{
                         fontSize: '0.92rem',
-                        color: '#475569',
+                        color: 'var(--color-text-secondary)',
                         lineHeight: 1.6,
                         margin: '0 0 18px',
                       }}
@@ -386,8 +373,9 @@ export default function Blogs() {
                           <span
                             key={idx}
                             style={{
-                              background: '#F1F5F9',
-                              color: '#334155',
+                              background: 'var(--color-bg-alt)',
+                              color: 'var(--color-text-secondary)',
+                              border: '1px solid var(--color-border)',
                               padding: '3px 10px',
                               borderRadius: '999px',
                               fontSize: '0.74rem',

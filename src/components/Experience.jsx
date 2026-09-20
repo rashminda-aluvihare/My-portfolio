@@ -19,11 +19,11 @@ export default function Experience() {
   ];
 
   return (
-    <section id="experience" className="section section-white" style={{ backgroundColor: '#FFFFFF', position: 'relative' }}>
+    <section id="experience" className="section section-white" style={{ position: 'relative' }}>
       <div className="container">
         {/* Section Header */}
         <div style={{ marginBottom: '44px' }}>
-          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
+          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: 'var(--color-text-primary)', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
             Professional Experience
           </h2>
         </div>
@@ -39,9 +39,6 @@ export default function Experience() {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '24px',
-                background: '#FFFFFF',
-                border: '1px solid rgba(226, 232, 240, 0.9)',
-                boxShadow: '0 4px 20px rgba(15, 23, 42, 0.04)',
               }}
             >
               {/* Header Row */}
@@ -56,9 +53,10 @@ export default function Experience() {
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '18px' }}>
                   <div
+                    className="experience-logo-box"
                     style={{
-                      background: '#FFFFFF',
-                      border: '1px solid rgba(226, 232, 240, 0.9)',
+                      background: 'var(--card-bg)',
+                      border: '1px solid var(--color-border)',
                       borderRadius: '14px',
                       padding: '4px',
                       width: '56px',
@@ -68,7 +66,7 @@ export default function Experience() {
                       justifyContent: 'center',
                       flexShrink: 0,
                       overflow: 'hidden',
-                      boxShadow: '0 2px 8px rgba(15, 23, 42, 0.04)',
+                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.06)',
                     }}
                   >
                     {exp.logo ? (
@@ -91,11 +89,11 @@ export default function Experience() {
                     )}
                   </div>
                   <div>
-                    <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em' }}>
+                    <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.02em' }}>
                       {exp.role}
                     </h3>
-                    <h4 style={{ fontSize: '1.02rem', color: '#475569', fontWeight: 600, marginTop: '2px' }}>
-                      {exp.company} &bull; <span style={{ color: '#64748B' }}>{exp.companyType}</span>
+                    <h4 style={{ fontSize: '1.02rem', color: 'var(--color-text-secondary)', fontWeight: 600, marginTop: '2px' }}>
+                      {exp.company} &bull; <span style={{ color: 'var(--color-text-muted)' }}>{exp.companyType}</span>
                     </h4>
                   </div>
                 </div>
@@ -105,9 +103,9 @@ export default function Experience() {
                     style={{
                       fontSize: '0.78rem',
                       fontWeight: 700,
-                      color: '#2563EB',
-                      background: '#EFF6FF',
-                      border: '1px solid rgba(37, 99, 235, 0.2)',
+                      color: 'var(--color-accent)',
+                      background: 'var(--color-accent-subtle)',
+                      border: '1px solid var(--color-border)',
                       padding: '5px 14px',
                       borderRadius: '999px',
                       fontFamily: 'var(--font-display)',
@@ -115,25 +113,25 @@ export default function Experience() {
                   >
                     {exp.type}
                   </span>
-                  <span className="card-index" style={{ color: '#2563EB' }}>{exp.index}</span>
+                  <span className="card-index">{exp.index}</span>
                 </div>
               </div>
 
               {/* Meta information row (Duration, Location) */}
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', padding: '12px 16px', background: '#F8FAFC', borderRadius: '10px', border: '1px solid rgba(226, 232, 240, 0.8)' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: '#475569' }}>
-                  <Calendar size={15} style={{ color: '#2563EB' }} />
+              <div className="experience-meta-row" style={{ display: 'flex', flexWrap: 'wrap', gap: '20px', padding: '12px 16px', background: 'var(--color-bg-alt)', borderRadius: '10px', border: '1px solid var(--color-border)' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: 'var(--color-text-secondary)' }}>
+                  <Calendar size={15} style={{ color: 'var(--color-accent)' }} />
                   <span>{exp.duration}</span>
                 </div>
                 {exp.location && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: '#475569' }}>
-                    <Globe size={15} style={{ color: '#2563EB' }} />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: 'var(--color-text-secondary)' }}>
+                    <Globe size={15} style={{ color: 'var(--color-accent)' }} />
                     <span>{exp.location}</span>
                   </div>
                 )}
                 {exp.skills && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: '#0F172A', fontWeight: 600 }}>
-                    <Layers size={15} style={{ color: '#2563EB' }} />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: 'var(--color-text-primary)', fontWeight: 600 }}>
+                    <Layers size={15} style={{ color: 'var(--color-accent)' }} />
                     <span>{exp.skills}</span>
                   </div>
                 )}

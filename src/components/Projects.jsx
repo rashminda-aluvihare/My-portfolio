@@ -23,8 +23,10 @@ export default function Projects() {
   useEffect(() => {
     if (showAllModal) {
       document.body.style.overflow = 'hidden';
+      document.body.classList.add('lightbox-open');
     } else {
       document.body.style.overflow = 'unset';
+      document.body.classList.remove('lightbox-open');
     }
 
     const handleKeyDown = (e) => {
@@ -39,6 +41,7 @@ export default function Projects() {
 
     return () => {
       document.body.style.overflow = 'unset';
+      document.body.classList.remove('lightbox-open');
       window.removeEventListener('keydown', handleKeyDown);
     };
   }, [showAllModal]);
@@ -221,7 +224,7 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" className="section section-light" style={{ backgroundColor: '#F8FAFC', position: 'relative', overflow: 'hidden', padding: '90px 0' }}>
+    <section id="projects" className="section section-light" style={{ position: 'relative', overflow: 'hidden', padding: '90px 0' }}>
       <div className="container" style={{ maxWidth: '1280px' }}>
         {/* Section Header with 'View all projects ↗' and Navigation Buttons */}
         <div
@@ -235,7 +238,7 @@ export default function Projects() {
           }}
         >
           <div>
-            <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
+            <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: 'var(--color-text-primary)', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
               Projects
             </h2>
           </div>
@@ -248,7 +251,7 @@ export default function Projects() {
               style={{
                 background: 'none',
                 border: 'none',
-                color: '#2563EB',
+                color: 'var(--color-accent)',
                 fontSize: '0.96rem',
                 fontWeight: 800,
                 cursor: 'pointer',
@@ -256,18 +259,10 @@ export default function Projects() {
                 alignItems: 'center',
                 gap: '6px',
                 padding: '6px 2px',
-                borderBottom: '2px solid #2563EB',
+                borderBottom: '2px solid var(--color-accent)',
                 fontFamily: 'var(--font-display)',
                 letterSpacing: '-0.01em',
                 transition: 'all 0.25s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = '#1D4ED8';
-                e.currentTarget.style.borderColor = '#1D4ED8';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = '#2563EB';
-                e.currentTarget.style.borderColor = '#2563EB';
               }}
             >
               <span>View all projects</span>
@@ -279,29 +274,18 @@ export default function Projects() {
               <button
                 onClick={scrollLeft}
                 aria-label="Previous project"
+                className="btn-outline project-carousel-btn"
                 style={{
                   width: '40px',
                   height: '40px',
+                  padding: 0,
                   borderRadius: '50%',
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(226, 232, 240, 0.9)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   cursor: 'pointer',
-                  color: '#0F172A',
-                  boxShadow: '0 2px 8px rgba(15, 23, 42, 0.04)',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
                   transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#2563EB';
-                  e.currentTarget.style.color = '#FFFFFF';
-                  e.currentTarget.style.borderColor = '#2563EB';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#FFFFFF';
-                  e.currentTarget.style.color = '#0F172A';
-                  e.currentTarget.style.borderColor = 'rgba(226, 232, 240, 0.9)';
                 }}
               >
                 <ChevronLeft size={19} />
@@ -310,29 +294,18 @@ export default function Projects() {
               <button
                 onClick={scrollRight}
                 aria-label="Next project"
+                className="btn-outline project-carousel-btn"
                 style={{
                   width: '40px',
                   height: '40px',
+                  padding: 0,
                   borderRadius: '50%',
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(226, 232, 240, 0.9)',
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
                   cursor: 'pointer',
-                  color: '#0F172A',
-                  boxShadow: '0 2px 8px rgba(15, 23, 42, 0.04)',
+                  boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
                   transition: 'all 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#2563EB';
-                  e.currentTarget.style.color = '#FFFFFF';
-                  e.currentTarget.style.borderColor = '#2563EB';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.background = '#FFFFFF';
-                  e.currentTarget.style.color = '#0F172A';
-                  e.currentTarget.style.borderColor = 'rgba(226, 232, 240, 0.9)';
                 }}
               >
                 <ChevronRight size={19} />
@@ -364,7 +337,7 @@ export default function Projects() {
             {/* Modal Header */}
             <div className="all-projects-modal-header">
               <div>
-                <h3 style={{ fontSize: 'clamp(1.35rem, 2.5vw, 1.75rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.02em', margin: 0 }}>
+                <h3 style={{ fontSize: 'clamp(1.35rem, 2.5vw, 1.75rem)', fontWeight: 900, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', margin: 0 }}>
                   All Projects ({projectsList.length})
                 </h3>
               </div>

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import {
   Calendar,
   MapPin,
@@ -19,6 +20,14 @@ export default function Activities() {
   const [activeGallery, setActiveGallery] = useState(null);
   const [zoomLevel, setZoomLevel] = useState(1);
 
+  // Cleanup on unmount
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = 'auto';
+      document.body.classList.remove('lightbox-open');
+    };
+  }, []);
+
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (!activeGallery) return;
@@ -38,12 +47,14 @@ export default function Activities() {
     setActiveGallery({ title, images, currentIndex: startIndex });
     setZoomLevel(1);
     document.body.style.overflow = 'hidden';
+    document.body.classList.add('lightbox-open');
   };
 
   const closeLightbox = () => {
     setActiveGallery(null);
     setZoomLevel(1);
     document.body.style.overflow = 'auto';
+    document.body.classList.remove('lightbox-open');
   };
 
   const nextImage = () => {
@@ -65,7 +76,13 @@ export default function Activities() {
   };
 
   const handleZoomIn = () => setZoomLevel((prev) => Math.min(prev + 0.5, 3));
-  const handleZoomOut = () => setZoomLevel((prev) => Math.max(prev - 0.5, 1));
+  const handleZoomOut = () => {
+    if (zoomLevel <= 1) {
+      closeLightbox();
+    } else {
+      setZoomLevel((prev) => Math.max(prev - 0.5, 1));
+    }
+  };
 
   const getItemImages = (item) => {
     if (item.images && Array.isArray(item.images) && item.images.length > 0) {
@@ -78,11 +95,11 @@ export default function Activities() {
   };
 
   return (
-    <section id="activities" className="section section-light" style={{ backgroundColor: '#F8FAFC', position: 'relative' }}>
+    <section id="activities" className="section section-light" style={{ position: 'relative' }}>
       <div className="container">
         {/* Section Header */}
         <div style={{ marginBottom: '44px' }}>
-          <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.4rem)', fontWeight: 900, color: '#0B0C0E', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
+          <h2 style={{ fontSize: 'clamp(2.2rem, 4.5vw, 3.4rem)', fontWeight: 900, color: 'var(--color-text-primary)', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
             Extracurricular Activities
           </h2>
         </div>
@@ -110,8 +127,6 @@ export default function Activities() {
                   gap: '16px',
                   borderRadius: '16px',
                   height: '100%',
-                  background: '#FFFFFF',
-                  border: '1px solid rgba(0,0,0,0.09)',
                 }}
               >
                 {/* Responsive Photo Gallery Grid */}
@@ -120,8 +135,8 @@ export default function Activities() {
                     style={{
                       borderRadius: '12px',
                       overflow: 'hidden',
-                      border: '1px solid rgba(0,0,0,0.08)',
-                      background: '#F4F3EF',
+                      border: '1px solid var(--color-border)',
+                      background: 'var(--color-bg)',
                     }}
                   >
                     {totalCount === 1 ? (
@@ -304,9 +319,9 @@ export default function Activities() {
                     style={{
                       fontSize: '0.74rem',
                       fontWeight: 700,
-                      color: '#2563EB',
-                      background: '#EFF6FF',
-                      border: '1px solid rgba(37, 99, 235, 0.25)',
+                      color: 'var(--color-accent)',
+                      background: 'var(--color-accent-subtle)',
+                      border: '1px solid var(--color-border)',
                       padding: '4px 10px',
                       borderRadius: '999px',
                       fontFamily: 'var(--font-display)',
@@ -315,7 +330,7 @@ export default function Activities() {
                     {item.category}
                   </span>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#6B7280', fontSize: '0.8rem', fontWeight: 600 }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', color: 'var(--color-text-muted)', fontSize: '0.8rem', fontWeight: 600 }}>
                     <Calendar size={13} />
                     <span>{item.date}</span>
                   </div>
@@ -323,21 +338,21 @@ export default function Activities() {
 
                 {/* Title & Organization Header Container */}
                 <div>
-                  <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: '#0B0C0E', marginBottom: '6px', lineHeight: '1.3', letterSpacing: '-0.02em' }}>
+                  <h3 style={{ fontSize: '1.2rem', fontWeight: 800, color: 'var(--color-text-primary)', marginBottom: '6px', lineHeight: '1.3', letterSpacing: '-0.02em' }}>
                     {item.title}
                   </h3>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: '#6B7280', fontSize: '0.85rem', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--color-text-muted)', fontSize: '0.85rem', flexWrap: 'wrap' }}>
                     {item.organization && (
                       <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <Building2 size={14} style={{ color: '#2563EB' }} />
+                        <Building2 size={14} style={{ color: 'var(--color-accent)' }} />
                         {item.organization}
                       </span>
                     )}
 
                     {item.location && (
                       <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                        <MapPin size={14} style={{ color: '#2563EB' }} />
+                        <MapPin size={14} style={{ color: 'var(--color-accent)' }} />
                         {item.location}
                       </span>
                     )}
@@ -346,23 +361,24 @@ export default function Activities() {
 
                 {/* Description */}
                 {item.description && (
-                  <p style={{ color: '#4B5563', fontSize: '0.9rem', lineHeight: 1.6 }}>
+                  <p style={{ color: 'var(--color-text-secondary)', fontSize: '0.9rem', lineHeight: 1.6 }}>
                     {item.description}
                   </p>
                 )}
 
                 {/* Role & Contribution */}
                 {item.contribution && (
-                  <div style={{ background: '#F1F5F9', borderLeft: '3px solid #2563EB', padding: '10px 14px', borderRadius: '0 8px 8px 0', fontSize: '0.86rem', color: '#4B5563' }}>
-                    <strong style={{ color: '#0B0C0E', display: 'block', marginBottom: '2px', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Role &amp; Contribution:</strong>
+                  <div style={{ background: 'var(--color-bg-alt)', borderLeft: '3px solid var(--color-accent)', padding: '10px 14px', borderRadius: '0 8px 8px 0', fontSize: '0.86rem', color: 'var(--color-text-secondary)' }}>
+                    <strong style={{ color: 'var(--color-text-primary)', display: 'block', marginBottom: '2px', fontSize: '0.78rem', textTransform: 'uppercase', letterSpacing: '0.04em' }}>Role &amp; Contribution:</strong>
                     <span>{item.contribution}</span>
                   </div>
                 )}
 
                 {/* Key Outcome */}
                 {item.outcome && (
-                  <div style={{ fontSize: '0.84rem', color: '#059669', fontWeight: 600 }}>
-                    <span style={{ color: '#0B0C0E', fontWeight: 700 }}>Key Outcome:</span> {item.outcome}
+                  <div style={{ fontSize: '0.85rem', fontWeight: 600 }}>
+                    <span style={{ color: 'var(--color-text-primary)', fontWeight: 700 }}>Key Outcome:</span>{' '}
+                    <span style={{ color: '#10B981' }}>{item.outcome}</span>
                   </div>
                 )}
 
@@ -375,9 +391,9 @@ export default function Activities() {
                         style={{
                           fontSize: '0.74rem',
                           fontWeight: 600,
-                          color: '#4B5563',
-                          background: '#F4F3EF',
-                          border: '1px solid rgba(0, 0, 0, 0.08)',
+                          color: 'var(--color-text-secondary)',
+                          background: 'var(--color-bg-alt)',
+                          border: '1px solid var(--color-border)',
                           padding: '3px 8px',
                           borderRadius: '6px',
                           fontFamily: 'var(--font-display)',
@@ -395,18 +411,21 @@ export default function Activities() {
       </div>
 
       {/* LIGHTBOX MODAL */}
-      {activeGallery && (
+      {activeGallery && createPortal(
         <div
+          className="activities-lightbox-overlay"
           style={{
             position: 'fixed',
             inset: 0,
-            zIndex: 999999,
-            background: 'rgba(11, 12, 14, 0.96)',
-            backdropFilter: 'blur(12px)',
+            zIndex: 999999999,
+            background: 'rgba(5, 7, 12, 0.97)',
+            backdropFilter: 'blur(16px)',
+            WebkitBackdropFilter: 'blur(16px)',
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'space-between',
             padding: '20px',
+            animation: 'modalFadeIn 0.2s ease',
           }}
           onClick={closeLightbox}
         >
@@ -470,11 +489,13 @@ export default function Activities() {
               justifyContent: 'center',
               overflow: 'hidden',
             }}
-            onClick={(e) => e.stopPropagation()}
           >
             {activeGallery.images.length > 1 && (
               <button
-                onClick={prevImage}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  prevImage();
+                }}
                 style={{
                   ...navArrowStyle,
                   left: '20px',
@@ -486,6 +507,7 @@ export default function Activities() {
             )}
 
             <div
+              onClick={(e) => e.stopPropagation()}
               style={{
                 maxWidth: '90vw',
                 maxHeight: '75vh',
@@ -506,14 +528,26 @@ export default function Activities() {
                   boxShadow: '0 20px 50px rgba(0, 0, 0, 0.7)',
                   transform: `scale(${zoomLevel})`,
                   transition: 'transform 0.2s ease',
-                  cursor: zoomLevel > 1 ? 'grab' : 'default',
+                  cursor: zoomLevel > 1 ? 'zoom-out' : 'zoom-in',
                 }}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  if (zoomLevel === 1) {
+                    setZoomLevel(1.5);
+                  } else {
+                    setZoomLevel(1);
+                  }
+                }}
+                title={zoomLevel > 1 ? 'Click to zoom out' : 'Click to zoom in'}
               />
             </div>
 
             {activeGallery.images.length > 1 && (
               <button
-                onClick={nextImage}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  nextImage();
+                }}
                 style={{
                   ...navArrowStyle,
                   right: '20px',
@@ -536,7 +570,8 @@ export default function Activities() {
               <span>Close Gallery</span>
             </button>
           </div>
-        </div>
+        </div>,
+        document.body
       )}
 
       <style>{`

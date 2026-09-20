@@ -228,11 +228,11 @@ export default function Skills() {
   );
 
   return (
-    <section id="skills" className="section section-white" style={{ backgroundColor: '#FFFFFF', position: 'relative', overflow: 'hidden', padding: '90px 0' }}>
+    <section id="skills" className="section section-white" style={{ position: 'relative', overflow: 'hidden', padding: '90px 0' }}>
       <div className="container" style={{ marginBottom: '44px' }}>
         {/* Section Header */}
         <div style={{ maxWidth: '850px' }}>
-          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
+          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: 'var(--color-text-primary)', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
             Functional &amp; Technical Competencies
           </h2>
         </div>

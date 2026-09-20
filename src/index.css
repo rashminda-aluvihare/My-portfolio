@@ -64,6 +64,60 @@
   --transition-bounce: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
+:root[data-theme="dark"],
+[data-theme="dark"] {
+  /* ── SLEEK HIGH-CONTRAST DARK FINTECH DESIGN SYSTEM ── */
+  --color-bg: #0B0F19;
+  --color-bg-alt: #0F172A;
+  --color-bg-soft: #141E33;
+  --color-surface: #111827;
+  --color-surface-2: #1E293B;
+  --color-surface-card: #131C2E;
+
+  --color-border: rgba(255, 255, 255, 0.09);
+  --color-border-hover: rgba(59, 130, 246, 0.5);
+
+  --color-text-primary: #F8FAFC;
+  --color-text-secondary: #CBD5E1;
+  --color-text-muted: #94A3B8;
+
+  --color-accent: #3B82F6;
+  --color-accent-hover: #60A5FA;
+  --color-accent-dark: #2563EB;
+  --color-accent-gradient: linear-gradient(135deg, #2563EB 0%, #4F46E5 50%, #7C3AED 100%);
+  --color-accent-subtle: rgba(59, 130, 246, 0.15);
+  --color-accent-glow: rgba(59, 130, 246, 0.4);
+
+  --color-indigo: #818CF8;
+  --color-indigo-subtle: rgba(129, 140, 248, 0.15);
+  --color-highlight: #6366F1;
+  --color-highlight-hover: #818CF8;
+  --color-highlight-glow: rgba(99, 102, 241, 0.35);
+  --color-highlight-subtle: rgba(99, 102, 241, 0.15);
+
+  --bg-primary: #0B0F19;
+  --bg-secondary: #0F172A;
+  --text-primary: #F8FAFC;
+  --text-secondary: #CBD5E1;
+  --text-muted: #94A3B8;
+
+  --card-bg: #111827;
+  --card-border: rgba(255, 255, 255, 0.09);
+  --card-glow: rgba(59, 130, 246, 0.2);
+  --nav-bg: rgba(11, 15, 25, 0.88);
+  --shadow-color: rgba(0, 0, 0, 0.45);
+
+  --accent-cyan: #38BDF8;
+  --accent-purple: #818CF8;
+  --accent-emerald: #10B981;
+  --accent-mint: #34D399;
+  --accent-blue: #3B82F6;
+  --color-cyan: #38BDF8;
+  --color-emerald: #10B981;
+  --color-mint: #34D399;
+  --gradient-end: #818CF8;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -94,17 +148,20 @@
 html {
   scroll-behavior: smooth;
   font-size: 16px;
-  background-color: #FFFFFF;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
-  background-color: #FFFFFF;
+  background-color: var(--color-bg);
   color: var(--color-text-primary);
   font-family: var(--font-body);
   overflow-x: hidden;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1,
@@ -871,4 +928,385 @@ h6 {
 
 .blog-card-item:hover .blog-cover-img {
   transform: scale(1.05) !important;
+}
+
+/* ==========================================================================
+   ── GLOBAL DARK MODE COMPONENT SYSTEM [data-theme="dark"] ──
+   ========================================================================== */
+
+/* 1. Global Sections Transparency (allows animated background to shine through) */
+[data-theme="dark"] section,
+[data-theme="dark"] .section,
+[data-theme="dark"] .section-white,
+[data-theme="dark"] .section-light,
+[data-theme="dark"] .section-soft {
+  background-color: transparent !important;
+}
+
+/* 2. Global Cards & Panels */
+[data-theme="dark"] .card-flat,
+[data-theme="dark"] .card-flat-light {
+  background: #111827 !important;
+  border-color: rgba(255, 255, 255, 0.09) !important;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.35) !important;
+}
+
+[data-theme="dark"] .card-flat:hover,
+[data-theme="dark"] .card-flat-light:hover {
+  border-color: rgba(59, 130, 246, 0.45) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.18) !important;
+}
+
+[data-theme="dark"] .glass-panel {
+  background: rgba(17, 24, 39, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.09) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45) !important;
+}
+
+/* 3. Typography & Headings */
+[data-theme="dark"] h1,
+[data-theme="dark"] h2,
+[data-theme="dark"] h3,
+[data-theme="dark"] h4,
+[data-theme="dark"] h5,
+[data-theme="dark"] h6 {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .text-secondary {
+  color: #CBD5E1 !important;
+}
+
+/* 4. Outline Buttons */
+[data-theme="dark"] .btn-outline,
+[data-theme="dark"] .btn-outline-dark,
+[data-theme="dark"] .btn-outline-light {
+  background: #111827 !important;
+  color: #F8FAFC !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+[data-theme="dark"] .btn-outline:hover,
+[data-theme="dark"] .btn-outline-dark:hover,
+[data-theme="dark"] .btn-outline-light:hover {
+  background: #1E293B !important;
+  border-color: #3B82F6 !important;
+  color: #60A5FA !important;
+}
+
+/* 5. Hero Section Dark Styling */
+[data-theme="dark"] #home {
+  background: linear-gradient(135deg, rgba(11, 15, 25, 0.95) 0%, rgba(15, 23, 42, 0.88) 50%, rgba(11, 15, 25, 0.95) 100%) !important;
+}
+
+[data-theme="dark"] .hero-first-name {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .hero-description-text {
+  color: #94A3B8 !important;
+}
+
+[data-theme="dark"] .hero-pill-item {
+  background: rgba(30, 41, 59, 0.7) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #E2E8F0 !important;
+}
+
+[data-theme="dark"] .hero-floating-card {
+  background: rgba(17, 24, 39, 0.92) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.45) !important;
+}
+
+[data-theme="dark"] .floating-card-text strong {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .floating-card-text span {
+  color: #94A3B8 !important;
+}
+
+[data-theme="dark"] .icon-bg-blue { background: rgba(37, 99, 235, 0.22) !important; color: #60A5FA !important; }
+[data-theme="dark"] .icon-bg-indigo { background: rgba(124, 58, 237, 0.22) !important; color: #A78BFA !important; }
+[data-theme="dark"] .icon-bg-sky { background: rgba(2, 132, 199, 0.22) !important; color: #38BDF8 !important; }
+[data-theme="dark"] .icon-bg-navy { background: rgba(30, 64, 175, 0.28) !important; color: #93C5FD !important; }
+
+/* 6. About Section Dark Styling */
+[data-theme="dark"] .about-podium-card {
+  background: #111827 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .about-podium-name {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .about-podium-role {
+  color: #94A3B8 !important;
+}
+
+[data-theme="dark"] .about-main-title,
+[data-theme="dark"] .about-block-heading {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .about-profile-text {
+  color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .about-timeline-content p {
+  color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .timeline-connector {
+  background: rgba(255, 255, 255, 0.12) !important;
+}
+
+/* 7. Experience & Education Dark Styling */
+[data-theme="dark"] .experience-meta-row,
+[data-theme="dark"] .education-meta-row {
+  background: rgba(30, 41, 59, 0.55) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* 8. Skills Section Dark Styling */
+[data-theme="dark"] .skill-logo-card {
+  background: #111827 !important;
+  border: 1px solid rgba(255, 255, 255, 0.09) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3) !important;
+}
+
+[data-theme="dark"] .skill-logo-name {
+  color: #E2E8F0 !important;
+}
+
+[data-theme="dark"] .skill-logo-card:hover {
+  border-color: #3B82F6 !important;
+  box-shadow: 0 12px 28px rgba(59, 130, 246, 0.25) !important;
+}
+
+/* 9. Projects Section Dark Styling */
+[data-theme="dark"] .project-card-item {
+  background: #111827 !important;
+  border-color: rgba(255, 255, 255, 0.09) !important;
+  box-shadow: 0 8px 26px rgba(0, 0, 0, 0.35) !important;
+}
+
+[data-theme="dark"] .project-card-banner {
+  background: #0F172A !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .project-card-title {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .project-card-desc {
+  color: #94A3B8 !important;
+}
+
+[data-theme="dark"] .project-card-tag-pill {
+  background: rgba(30, 41, 59, 0.8) !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+  color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .project-card-footer {
+  border-top-color: rgba(255, 255, 255, 0.08) !important;
+  background: rgba(15, 23, 42, 0.6) !important;
+}
+
+[data-theme="dark"] .btn-github-action {
+  background: rgba(30, 41, 59, 0.7) !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #E2E8F0 !important;
+}
+
+[data-theme="dark"] .all-projects-modal-container {
+  background: #0F172A !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .all-projects-modal-header {
+  background: #111827 !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .all-projects-modal-header h3 {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .all-projects-modal-close-btn {
+  background: #1E293B !important;
+  color: #F8FAFC !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 10. Certifications Section Dark Styling */
+[data-theme="dark"] .single-cert-showcase {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.45) !important;
+}
+
+.cert-showcase-body,
+[data-theme="dark"] .cert-showcase-body {
+  background: #FFFFFF !important;
+}
+
+/* ALWAYS BLACK COLOR IN BOTH DARK AND LIGHT MODE FOR CERTIFICATE TITLES */
+.cert-main-title-black,
+.cert-drawer-title-black,
+.cert-showcase-body h3,
+.single-cert-showcase h3,
+.cert-drawer-card h4,
+[data-theme="dark"] .cert-main-title-black,
+[data-theme="dark"] .cert-drawer-title-black,
+[data-theme="dark"] .cert-showcase-body h3,
+[data-theme="dark"] .single-cert-showcase h3,
+[data-theme="dark"] .cert-drawer-card h4 {
+  color: #000000 !important;
+}
+
+.cert-drawer-card,
+[data-theme="dark"] .cert-drawer-card {
+  background: #FFFFFF !important;
+  border: 1px solid rgba(226, 232, 240, 0.95) !important;
+}
+
+[data-theme="dark"] .cert-showcase-img-box {
+  background: #0B0F19 !important;
+}
+
+[data-theme="dark"] .cert-side-drawer-container {
+  background: #0F172A !important;
+  border-left-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .cert-side-drawer-header {
+  background: #111827 !important;
+  border-bottom-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .cert-side-drawer-header h3 {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .cert-drawer-card {
+  background: #111827 !important;
+  border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="dark"] .cert-modal-dialog {
+  background: #0F172A !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+[data-theme="dark"] .cert-bullet-dot {
+  background: rgba(255, 255, 255, 0.22) !important;
+}
+
+[data-theme="dark"] .cert-bullet-active {
+  background: #3B82F6 !important;
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.6) !important;
+}
+
+/* 11. Contact Section Dark Styling */
+[data-theme="dark"] .contact-card-white {
+  background: #111827 !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+[data-theme="dark"] .contact-input,
+[data-theme="dark"] .contact-textarea {
+  background: #0B0F19 !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .contact-input:focus,
+[data-theme="dark"] .contact-textarea:focus {
+  border-color: #3B82F6 !important;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2) !important;
+}
+
+[data-theme="dark"] .channel-card-link {
+  background: #111827 !important;
+  border-color: rgba(255, 255, 255, 0.09) !important;
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .channel-val {
+  color: #F8FAFC !important;
+}
+
+[data-theme="dark"] .channel-label {
+  color: #94A3B8 !important;
+}
+
+/* 12. Floating Social Dock & Scroll to Top */
+[data-theme="dark"] .floating-social-dock {
+  background: rgba(15, 23, 42, 0.88) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .floating-social-btn {
+  background: #1E293B !important;
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  color: #CBD5E1 !important;
+}
+
+[data-theme="dark"] .floating-social-btn:hover {
+  background: var(--color-accent-gradient) !important;
+  color: #FFFFFF !important;
+}
+
+/* ── FULLSCREEN PHOTO / LIGHTBOX VIEW: HIDE FLOATING NAVIGATION & RIGHT-SIDE CONTROLS ── */
+.portfolio-navbar,
+nav.portfolio-navbar {
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s !important;
+}
+
+.floating-social-dock {
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.35s !important;
+}
+
+.floating-scroll-top-btn {
+  transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s !important;
+}
+
+body.lightbox-open .portfolio-navbar,
+body.lightbox-open nav.portfolio-navbar {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateX(-50%) translateY(-60px) !important;
+}
+
+body.lightbox-open .floating-social-dock {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(-50%) translateX(120px) !important;
+}
+
+body.lightbox-open .floating-scroll-top-btn,
+body.lightbox-open button[aria-label="Scroll to top"] {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(100px) !important;
+}
+
+body.lightbox-open .chatbot-trigger-wrapper,
+body.lightbox-open .chatbot-window {
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transform: translateY(60px) scale(0.9) !important;
+  transition: all 0.3s ease !important;
 }

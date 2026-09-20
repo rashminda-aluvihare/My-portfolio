@@ -78,13 +78,13 @@ export default function Contact() {
       id="contact"
       className="section section-light contact-section"
       style={{
-        backgroundColor: '#FFFFFF',
         position: 'relative',
         overflow: 'hidden',
       }}
     >
       {/* Soft Ambient Light Glows */}
       <div
+        className="contact-ambient-glow-1"
         style={{
           position: 'absolute',
           top: '-10%',
@@ -92,12 +92,12 @@ export default function Contact() {
           width: '500px',
           height: '500px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(219, 234, 254, 0.45) 0%, rgba(255, 255, 255, 0) 70%)',
           filter: 'blur(60px)',
           pointerEvents: 'none',
         }}
       />
       <div
+        className="contact-ambient-glow-2"
         style={{
           position: 'absolute',
           bottom: '-10%',
@@ -105,7 +105,6 @@ export default function Contact() {
           width: '500px',
           height: '500px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(237, 233, 254, 0.45) 0%, rgba(255, 255, 255, 0) 70%)',
           filter: 'blur(60px)',
           pointerEvents: 'none',
         }}
@@ -114,7 +113,7 @@ export default function Contact() {
       <div className="container" style={{ position: 'relative', zIndex: 1 }}>
         {/* Section Header */}
         <div style={{ marginBottom: '38px' }}>
-          <h2 style={{ fontSize: 'clamp(1.9rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
+          <h2 style={{ fontSize: 'clamp(1.9rem, 4vw, 3.2rem)', fontWeight: 900, color: 'var(--color-text-primary)', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
             Let's Build Something Together
           </h2>
         </div>
@@ -149,8 +148,8 @@ export default function Contact() {
                 >
                   <CheckCircle2 size={46} style={{ color: '#2563EB' }} />
                 </div>
-                <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: '#0F172A', margin: 0 }}>Message Sent Successfully!</h3>
-                <p style={{ color: '#475569', maxWidth: '420px', fontSize: '0.96rem', lineHeight: 1.6 }}>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-text-primary)', margin: 0 }}>Message Sent Successfully!</h3>
+                <p style={{ color: 'var(--color-text-secondary)', maxWidth: '420px', fontSize: '0.96rem', lineHeight: 1.6 }}>
                   Thank you for reaching out, Rashminda has received your message and will respond promptly.
                 </p>
                 <button
@@ -164,7 +163,7 @@ export default function Contact() {
             ) : (
               <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
-                  <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', margin: 0 }}>
+                  <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', margin: 0 }}>
                     Send a Message
                   </h3>
                 </div>
@@ -187,7 +186,7 @@ export default function Contact() {
 
                 {/* Name */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label htmlFor="name" style={{ fontSize: '0.8rem', color: '#334155', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                  <label htmlFor="name" style={{ fontSize: '0.8rem', color: 'var(--color-text-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                     Your Name
                   </label>
                   <input
@@ -204,7 +203,7 @@ export default function Contact() {
 
                 {/* Email */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label htmlFor="email" style={{ fontSize: '0.8rem', color: '#334155', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                  <label htmlFor="email" style={{ fontSize: '0.8rem', color: 'var(--color-text-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                     Email Address
                   </label>
                   <input
@@ -221,7 +220,7 @@ export default function Contact() {
 
                 {/* Subject */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label htmlFor="subject" style={{ fontSize: '0.8rem', color: '#334155', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                  <label htmlFor="subject" style={{ fontSize: '0.8rem', color: 'var(--color-text-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                     Subject
                   </label>
                   <input
@@ -236,7 +235,7 @@ export default function Contact() {
 
                 {/* Message */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-                  <label htmlFor="message" style={{ fontSize: '0.8rem', color: '#334155', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
+                  <label htmlFor="message" style={{ fontSize: '0.8rem', color: 'var(--color-text-primary)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.04em' }}>
                     Message
                   </label>
                   <textarea
@@ -286,6 +285,19 @@ export default function Contact() {
           padding: 95px 0;
         }
 
+        .contact-ambient-glow-1 {
+          background: radial-gradient(circle, rgba(219, 234, 254, 0.45) 0%, rgba(255, 255, 255, 0) 70%);
+        }
+        [data-theme="dark"] .contact-ambient-glow-1 {
+          background: radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, rgba(11, 15, 25, 0) 70%);
+        }
+        .contact-ambient-glow-2 {
+          background: radial-gradient(circle, rgba(237, 233, 254, 0.45) 0%, rgba(255, 255, 255, 0) 70%);
+        }
+        [data-theme="dark"] .contact-ambient-glow-2 {
+          background: radial-gradient(circle, rgba(124, 58, 237, 0.14) 0%, rgba(11, 15, 25, 0) 70%);
+        }
+
         .contact-main-grid {
           display: grid;
           grid-template-columns: 1.15fr 0.85fr;
@@ -299,6 +311,16 @@ export default function Contact() {
           border-radius: 20px;
           padding: 38px;
           box-shadow: 0 8px 30px rgba(15, 23, 42, 0.04), 0 1px 3px rgba(15, 23, 42, 0.02);
+        }
+
+        [data-theme="dark"] .contact-card-white {
+          background: #111827;
+          border-color: rgba(255, 255, 255, 0.1);
+          box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+        }
+
+        [data-theme="dark"] .contact-card-white label {
+          color: #CBD5E1 !important;
         }
 
         .direct-channels-grid {
@@ -322,10 +344,22 @@ export default function Contact() {
           transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
         }
 
+        [data-theme="dark"] .contact-input-light {
+          background: #0B0F19;
+          border-color: rgba(255, 255, 255, 0.12);
+          color: #F8FAFC;
+        }
+
         .contact-input-light:focus {
           background: #FFFFFF;
           border-color: #2563EB;
           box-shadow: 0 0 0 3.5px rgba(37, 99, 235, 0.12);
+        }
+
+        [data-theme="dark"] .contact-input-light:focus {
+          background: #111827;
+          border-color: #3B82F6;
+          box-shadow: 0 0 0 3.5px rgba(59, 130, 246, 0.2);
         }
 
         .contact-submit-btn {
@@ -367,6 +401,31 @@ export default function Contact() {
           transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
           position: relative;
           min-width: 0;
+        }
+
+        [data-theme="dark"] .channel-card-link {
+          background: #111827;
+          border-color: rgba(255, 255, 255, 0.09);
+          color: #F8FAFC;
+          box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+        }
+
+        [data-theme="dark"] .channel-val {
+          color: #F8FAFC !important;
+        }
+
+        [data-theme="dark"] .channel-label {
+          color: #94A3B8 !important;
+        }
+
+        [data-theme="dark"] .box-blue {
+          background: rgba(37, 99, 235, 0.2) !important;
+          color: #60A5FA !important;
+        }
+
+        [data-theme="dark"] .box-emerald {
+          background: rgba(16, 185, 129, 0.2) !important;
+          color: #34D399 !important;
         }
 
         .channel-card-link:hover {

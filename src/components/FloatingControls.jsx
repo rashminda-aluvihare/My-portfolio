@@ -85,6 +85,7 @@ export default function FloatingControls() {
       {showScrollTop && (
         <button
           onClick={scrollToTop}
+          className="floating-scroll-top-btn"
           aria-label="Scroll to top"
           style={{
             position: 'fixed',

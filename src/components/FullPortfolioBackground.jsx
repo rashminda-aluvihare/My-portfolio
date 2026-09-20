@@ -5,6 +5,7 @@ import React, { useEffect, useRef } from 'react';
  * A high-performance, full-page ambient background animation.
  * Features drifting fluid color orbs, subtle financial network nodes with connecting filaments,
  * and an architectural micro-dot grid that brings life and visual depth to the entire portfolio.
+ * Automatically synchronizes with Dark Mode and Light Mode.
  */
 export default function FullPortfolioBackground() {
   const canvasRef = useRef(null);
@@ -25,28 +26,28 @@ export default function FullPortfolioBackground() {
     ctx.scale(dpr, dpr);
 
     // Particle nodes (network constellation)
-    const particleCount = Math.min(Math.floor((width * height) / 22000), 65);
+    const particleCount = Math.min(Math.floor((width * height) / 20000), 75);
     const particles = [];
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        vx: (Math.random() - 0.5) * 0.45,
-        vy: (Math.random() - 0.5) * 0.45,
-        radius: Math.random() * 1.8 + 1.2,
-        alpha: Math.random() * 0.4 + 0.2,
-        sparkle: Math.random() > 0.85,
+        vx: (Math.random() - 0.5) * 0.42,
+        vy: (Math.random() - 0.5) * 0.42,
+        radius: Math.random() * 1.9 + 1.2,
+        alpha: Math.random() * 0.45 + 0.25,
+        sparkle: Math.random() > 0.82,
         phase: Math.random() * Math.PI * 2,
       });
     }
 
     // Drifting ambient color orbs
     const orbs = [
-      { x: width * 0.2, y: height * 0.25, r: 350, color: 'rgba(37, 99, 235, 0.075)', vx: 0.18, vy: 0.12 },
-      { x: width * 0.8, y: height * 0.65, r: 380, color: 'rgba(99, 102, 241, 0.065)', vx: -0.15, vy: -0.16 },
-      { x: width * 0.5, y: height * 0.85, r: 320, color: 'rgba(14, 165, 233, 0.06)', vx: 0.12, vy: -0.14 },
-      { x: width * 0.85, y: height * 0.2, r: 280, color: 'rgba(16, 185, 129, 0.045)', vx: -0.12, vy: 0.1 },
+      { x: width * 0.2, y: height * 0.25, r: 380, vx: 0.18, vy: 0.12, darkColor: 'rgba(37, 99, 235, 0.18)', lightColor: 'rgba(37, 99, 235, 0.08)' },
+      { x: width * 0.8, y: height * 0.65, r: 420, vx: -0.15, vy: -0.16, darkColor: 'rgba(124, 58, 237, 0.15)', lightColor: 'rgba(99, 102, 241, 0.07)' },
+      { x: width * 0.5, y: height * 0.85, r: 350, vx: 0.12, vy: -0.14, darkColor: 'rgba(14, 165, 233, 0.14)', lightColor: 'rgba(14, 165, 233, 0.06)' },
+      { x: width * 0.85, y: height * 0.2, r: 300, vx: -0.12, vy: 0.1, darkColor: 'rgba(16, 185, 129, 0.08)', lightColor: 'rgba(16, 185, 129, 0.045)' },
     ];
 
     let mouseX = -1000;
@@ -65,6 +66,8 @@ export default function FullPortfolioBackground() {
       clock += 0.015;
       ctx.clearRect(0, 0, width, height);
 
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+
       // 1. Draw drifting color orbs
       orbs.forEach((orb) => {
         orb.x += orb.vx;
@@ -75,9 +78,10 @@ export default function FullPortfolioBackground() {
         if (orb.y < -orb.r) orb.y = height + orb.r;
         if (orb.y > height + orb.r) orb.y = -orb.r;
 
+        const baseColor = isDark ? orb.darkColor : orb.lightColor;
         const grad = ctx.createRadialGradient(orb.x, orb.y, 0, orb.x, orb.y, orb.r);
-        grad.addColorStop(0, orb.color);
-        grad.addColorStop(0.6, orb.color.replace(/[\d\.]+\)$/, '0.02)'));
+        grad.addColorStop(0, baseColor);
+        grad.addColorStop(0.65, baseColor.replace(/[\d\.]+\)$/, isDark ? '0.04)' : '0.02)'));
         grad.addColorStop(1, 'transparent');
 
         ctx.fillStyle = grad;
@@ -101,19 +105,21 @@ export default function FullPortfolioBackground() {
         const dx = mouseX - p.x;
         const dy = mouseY - p.y;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        if (dist < 120) {
-          p.x -= (dx / dist) * 0.8;
-          p.y -= (dy / dist) * 0.8;
+        if (dist < 130) {
+          p.x -= (dx / dist) * 0.85;
+          p.y -= (dy / dist) * 0.85;
         }
 
         // Draw connections between nearby particles
         for (let j = i + 1; j < particles.length; j++) {
           const p2 = particles[j];
           const dist2 = Math.hypot(p.x - p2.x, p.y - p2.y);
-          if (dist2 < 110) {
-            const lineAlpha = (1 - dist2 / 110) * 0.14;
-            ctx.strokeStyle = `rgba(37, 99, 235, ${lineAlpha})`;
-            ctx.lineWidth = 0.8;
+          if (dist2 < 115) {
+            const lineAlpha = (1 - dist2 / 115) * (isDark ? 0.22 : 0.14);
+            ctx.strokeStyle = isDark
+              ? `rgba(96, 165, 250, ${lineAlpha})`
+              : `rgba(37, 99, 235, ${lineAlpha})`;
+            ctx.lineWidth = isDark ? 0.9 : 0.8;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
@@ -122,17 +128,21 @@ export default function FullPortfolioBackground() {
         }
 
         // Draw particle dot
-        const pulse = Math.sin(clock + p.phase) * 0.2 + 0.8;
-        ctx.fillStyle = `rgba(37, 99, 235, ${p.alpha * pulse * 0.5})`;
+        const pulse = Math.sin(clock + p.phase) * 0.25 + 0.75;
+        ctx.fillStyle = isDark
+          ? `rgba(147, 197, 253, ${p.alpha * pulse * 0.85})`
+          : `rgba(37, 99, 235, ${p.alpha * pulse * 0.55})`;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fill();
 
         // Occasional 4-point sparkle star
-        if (p.sparkle && pulse > 0.85) {
-          const starLen = p.radius * 3.2;
-          ctx.strokeStyle = `rgba(37, 99, 235, ${(pulse - 0.85) * 0.6})`;
-          ctx.lineWidth = 0.8;
+        if (p.sparkle && pulse > 0.82) {
+          const starLen = p.radius * 3.4;
+          ctx.strokeStyle = isDark
+            ? `rgba(255, 255, 255, ${(pulse - 0.82) * 1.2})`
+            : `rgba(37, 99, 235, ${(pulse - 0.82) * 0.8})`;
+          ctx.lineWidth = 0.9;
           ctx.beginPath();
           ctx.moveTo(p.x - starLen, p.y);
           ctx.lineTo(p.x + starLen, p.y);
@@ -174,13 +184,12 @@ export default function FullPortfolioBackground() {
         overflow: 'hidden',
       }}
     >
-      {/* Modern architectural micro-dot grid background */}
+      {/* Dynamic architectural micro-dot grid background */}
       <div
+        className="portfolio-bg-grid"
         style={{
           position: 'absolute',
           inset: 0,
-          backgroundImage: 'radial-gradient(rgba(37, 99, 235, 0.075) 1.2px, transparent 1.2px)',
-          backgroundSize: '30px 30px',
           opacity: 0.85,
         }}
       />
@@ -196,6 +205,17 @@ export default function FullPortfolioBackground() {
           display: 'block',
         }}
       />
+
+      <style>{`
+        .portfolio-bg-grid {
+          background-image: radial-gradient(rgba(37, 99, 235, 0.08) 1.2px, transparent 1.2px);
+          background-size: 30px 30px;
+        }
+        [data-theme="dark"] .portfolio-bg-grid {
+          background-image: radial-gradient(rgba(59, 130, 246, 0.12) 1.2px, transparent 1.2px);
+          background-size: 30px 30px;
+        }
+      `}</style>
     </div>
   );
 }

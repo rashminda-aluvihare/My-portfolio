@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Briefcase, Landmark, FileText, Rocket, GitFork, RefreshCw, Layers } from 'lucide-react';
+import { ArrowRight, Briefcase, Landmark, FileText, Rocket, GitFork, RefreshCw, Layers, BarChart2, Send } from 'lucide-react';
 import profileImg from '../assets/profile.jpg';
 import HeroDotsCanvas from './HeroDotsCanvas';
 
@@ -13,7 +13,7 @@ export default function Hero() {
         alignItems: 'center',
         position: 'relative',
         overflow: 'hidden',
-        background: 'linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 50%, #EFF6FF 100%)',
+        background: 'transparent',
         paddingTop: '115px',
         paddingBottom: '60px',
       }}
@@ -23,6 +23,7 @@ export default function Hero() {
 
       {/* Soft Ambient Background Glows */}
       <div
+        className="hero-ambient-glow-1"
         style={{
           position: 'absolute',
           top: '-10%',
@@ -30,12 +31,12 @@ export default function Hero() {
           width: '550px',
           height: '550px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(219, 234, 254, 0.7) 0%, rgba(255, 255, 255, 0) 70%)',
           filter: 'blur(50px)',
           pointerEvents: 'none',
         }}
       />
       <div
+        className="hero-ambient-glow-2"
         style={{
           position: 'absolute',
           bottom: '-10%',
@@ -43,7 +44,6 @@ export default function Hero() {
           width: '600px',
           height: '600px',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(237, 233, 254, 0.6) 0%, rgba(255, 255, 255, 0) 70%)',
           filter: 'blur(60px)',
           pointerEvents: 'none',
         }}
@@ -51,48 +51,66 @@ export default function Hero() {
 
       <div className="container" style={{ position: 'relative', zIndex: 2 }}>
         <div className="hero-grid-layout">
-          {/* Left Column: Title, Subtitle, Capability Pills, CTA Button */}
+          {/* Left Column: Title, Subtitle, Capability Pills, CTA Buttons */}
           <div className="hero-left-content">
-            {/* Top Pill Badge: BUSINESS ANALYST */}
-            <div className="hero-badge-pill">
-              <Briefcase size={14} className="hero-badge-icon" />
-              <span>BUSINESS ANALYST</span>
+            {/* Top Status & Badge Row */}
+            <div className="hero-top-status-row">
+              <div className="hero-badge-pill">
+                <FileText size={15} className="hero-badge-icon" />
+                <span>BUSINESS ANALYST</span>
+              </div>
+              <div className="hero-status-indicator">
+                <span className="hero-status-pulse-dot" />
+                <span className="hero-status-text">Open to Opportunities</span>
+              </div>
             </div>
 
             {/* Main Headline: Rashminda Aluvihare */}
             <h1 className="hero-headline-title">
               <span className="hero-first-name">Rashminda</span>
-              <br />
               <span className="hero-last-name-gradient">Aluvihare</span>
             </h1>
 
-
             {/* Narrative Description */}
             <p className="hero-description-text">
-              Turning business requirements into practical digital solutions for a better tomorrow.
+              Turning business requirements
+              <br className="hero-desc-br" />
+              into practical digital solutions
+              <br className="hero-desc-br" />
+              for a{' '}
+              <span className="hero-highlight-phrase">
+                better tomorrow.
+                <svg className="phrase-underline-curve" viewBox="0 0 160 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 9C45 3 115 3 158 8.5" stroke="currentColor" strokeWidth="2.8" strokeLinecap="round" />
+                </svg>
+              </span>
             </p>
 
             {/* 3 Domain & Capability Badges */}
             <div className="hero-capability-row">
               <div className="hero-pill-item hero-pill-blue">
-                <Landmark size={15} />
-                <span>Banking &amp; Financial Technology</span>
-              </div>
-              <div className="hero-pill-item hero-pill-indigo">
-                <FileText size={15} />
+                <BarChart2 size={16} className="hero-pill-icon-blue" />
                 <span>Business Analysis</span>
               </div>
+              <div className="hero-pill-item hero-pill-indigo">
+                <Landmark size={16} className="hero-pill-icon-indigo" />
+                <span>Banking Technology</span>
+              </div>
               <div className="hero-pill-item hero-pill-purple">
-                <Rocket size={15} />
+                <GitFork size={16} className="hero-pill-icon-purple" />
                 <span>Project Management</span>
               </div>
             </div>
 
-            {/* Primary Action Button: View My Projects (NO CV download) */}
+            {/* Primary & Secondary Action Buttons Row */}
             <div className="hero-actions-row">
-              <a href="#projects" className="hero-cta-btn">
+              <a href="#projects" className="hero-btn-primary">
                 <span>View My Projects</span>
                 <ArrowRight size={18} />
+              </a>
+              <a href="#contact" className="hero-btn-secondary">
+                <span>Let's Connect</span>
+                <Send size={15} />
               </a>
             </div>
           </div>
@@ -178,6 +196,19 @@ export default function Hero() {
       </div>
 
       <style>{`
+        .hero-ambient-glow-1 {
+          background: radial-gradient(circle, rgba(219, 234, 254, 0.65) 0%, rgba(255, 255, 255, 0) 70%);
+        }
+        [data-theme="dark"] .hero-ambient-glow-1 {
+          background: radial-gradient(circle, rgba(37, 99, 235, 0.18) 0%, rgba(11, 15, 25, 0) 70%);
+        }
+        .hero-ambient-glow-2 {
+          background: radial-gradient(circle, rgba(237, 233, 254, 0.55) 0%, rgba(255, 255, 255, 0) 70%);
+        }
+        [data-theme="dark"] .hero-ambient-glow-2 {
+          background: radial-gradient(circle, rgba(124, 58, 237, 0.16) 0%, rgba(11, 15, 25, 0) 70%);
+        }
+
         .hero-grid-layout {
           display: grid;
           grid-template-columns: 1.15fr 0.85fr;
@@ -194,134 +225,254 @@ export default function Hero() {
           z-index: 3;
         }
 
-        /* Top Pill Badge */
+        /* Top Status Row: Pill Badge + Open to Opportunities */
+        .hero-top-status-row {
+          display: inline-flex;
+          align-items: center;
+          gap: 16px;
+          flex-wrap: wrap;
+        }
+
         .hero-badge-pill {
           display: inline-flex;
           align-items: center;
           gap: 8px;
-          padding: 6px 18px;
-          background: #EEF2FF;
-          border: 1px solid rgba(37, 99, 235, 0.22);
+          padding: 6px 16px;
+          background: rgba(239, 246, 255, 0.7);
+          border: 1.5px solid rgba(59, 130, 246, 0.35);
           border-radius: 999px;
           color: #2563EB;
           font-family: var(--font-display);
-          font-size: 0.78rem;
+          font-size: 0.76rem;
           font-weight: 800;
           letter-spacing: 0.08em;
-          box-shadow: 0 2px 10px rgba(37, 99, 235, 0.08);
+          box-shadow: 0 2px 10px rgba(37, 99, 235, 0.06);
+          transition: all 0.25s ease;
+        }
+
+        .hero-badge-pill:hover {
+          border-color: rgba(37, 99, 235, 0.6);
+          background: rgba(239, 246, 255, 0.95);
         }
 
         .hero-badge-icon {
           color: #2563EB;
         }
 
+        .hero-status-indicator {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .hero-status-pulse-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #10B981;
+          box-shadow: 0 0 10px rgba(16, 185, 129, 0.7);
+          animation: statusPulse 2s infinite ease-in-out;
+        }
+
+        @keyframes statusPulse {
+          0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 8px rgba(16, 185, 129, 0.7); }
+          50% { opacity: 0.65; transform: scale(1.25); box-shadow: 0 0 14px rgba(16, 185, 129, 0.9); }
+        }
+
+        .hero-status-text {
+          font-family: var(--font-display);
+          font-size: 0.85rem;
+          font-weight: 500;
+          color: #475569;
+          letter-spacing: -0.01em;
+        }
+
         /* Large Display Titles */
         .hero-headline-title {
-          font-size: clamp(3rem, 5.4vw, 4.8rem);
+          font-size: clamp(3.2rem, 5.8vw, 5.2rem);
           font-weight: 900;
-          line-height: 1.05;
-          letter-spacing: -0.035em;
-          margin: 4px 0 0 0;
+          line-height: 1.02;
+          letter-spacing: -0.04em;
+          margin: 0;
+          display: flex;
+          flex-direction: column;
         }
 
         .hero-first-name {
           color: #0F172A;
+          font-weight: 900;
         }
 
         .hero-last-name-gradient {
-          background: linear-gradient(135deg, #2563EB 0%, #4F46E5 50%, #7C3AED 100%);
+          font-weight: 900;
+          background: linear-gradient(90deg, #0070F3 0%, #2563EB 28%, #6366F1 62%, #8B5CF6 100%);
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
         }
 
-        .hero-role-subtitle {
-          font-size: clamp(1.15rem, 2.1vw, 1.45rem);
-          font-weight: 700;
-          color: #1E293B;
-          letter-spacing: -0.015em;
-          line-height: 1.35;
+        /* Narrative Description */
+        .hero-description-text {
+          font-size: clamp(1.05rem, 1.55vw, 1.22rem);
+          font-weight: 500;
+          color: #334155;
+          line-height: 1.42;
+          max-width: 520px;
           margin: 0;
+          font-family: var(--font-body);
         }
 
-        .hero-description-text {
-          font-size: clamp(0.96rem, 1.4vw, 1.1rem);
-          color: #475569;
-          line-height: 1.6;
-          max-width: 540px;
-          margin: 0;
+        .hero-desc-br {
+          display: block;
+        }
+
+        .hero-highlight-phrase {
+          position: relative;
+          display: inline-block;
+          color: #7C3AED;
+          font-weight: 800;
+        }
+
+        .phrase-underline-curve {
+          position: absolute;
+          left: 0;
+          bottom: -7px;
+          width: 100%;
+          height: 10px;
+          color: #6366F1;
+          overflow: visible;
+          pointer-events: none;
         }
 
         /* Capability Badges Row */
         .hero-capability-row {
           display: flex;
           flex-wrap: wrap;
-          gap: 10px;
-          margin: 6px 0;
+          gap: 12px;
+          margin: 2px 0;
         }
 
         .hero-pill-item {
           display: inline-flex;
           align-items: center;
-          gap: 8px;
-          padding: 8px 16px;
+          gap: 9px;
+          padding: 8px 18px;
           border-radius: 999px;
+          background: rgba(248, 250, 252, 0.88);
+          border: 1px solid rgba(226, 232, 240, 0.95);
           font-family: var(--font-display);
-          font-size: 0.82rem;
-          font-weight: 700;
-          transition: all 0.2s ease;
-        }
-
-        .hero-pill-blue {
-          background: #EFF6FF;
-          border: 1px solid rgba(37, 99, 235, 0.18);
-          color: #2563EB;
-        }
-
-        .hero-pill-indigo {
-          background: #F5F3FF;
-          border: 1px solid rgba(124, 58, 237, 0.18);
-          color: #7C3AED;
-        }
-
-        .hero-pill-purple {
-          background: #EEF2FF;
-          border: 1px solid rgba(79, 70, 229, 0.18);
-          color: #4F46E5;
+          font-size: 0.84rem;
+          font-weight: 600;
+          color: #1E293B;
+          box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+          transition: all 0.25s ease;
         }
 
         .hero-pill-item:hover {
           transform: translateY(-2px);
-          box-shadow: 0 4px 12px rgba(37, 99, 235, 0.12);
+          box-shadow: 0 6px 16px rgba(37, 99, 235, 0.12);
+          border-color: rgba(37, 99, 235, 0.3);
         }
 
-        /* CTA Button */
+        .hero-pill-icon-blue { color: #2563EB; }
+        .hero-pill-icon-indigo { color: #7C3AED; }
+        .hero-pill-icon-purple { color: #6366F1; }
+
+        /* Primary & Secondary Action Buttons */
         .hero-actions-row {
           display: flex;
           align-items: center;
-          gap: 16px;
-          margin-top: 8px;
+          flex-wrap: wrap;
+          gap: 14px;
+          margin-top: 6px;
         }
 
-        .hero-cta-btn {
+        .hero-btn-primary {
           display: inline-flex;
           align-items: center;
           gap: 10px;
-          padding: 14px 34px;
-          background: linear-gradient(135deg, #2563EB 0%, #4F46E5 50%, #7C3AED 100%);
+          padding: 13px 32px;
+          background: linear-gradient(135deg, #1E6BFF 0%, #4338CA 50%, #7C3AED 100%);
           color: #FFFFFF !important;
           font-family: var(--font-display);
           font-weight: 700;
-          font-size: 0.98rem;
+          font-size: 0.96rem;
           border-radius: 999px;
           text-decoration: none;
-          box-shadow: 0 6px 24px rgba(37, 99, 235, 0.38);
-          transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+          box-shadow: 0 10px 24px -2px rgba(37, 99, 235, 0.42), 0 4px 12px rgba(124, 58, 237, 0.25);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .hero-cta-btn:hover {
+        .hero-btn-primary:hover {
           transform: translateY(-2px) scale(1.02);
-          box-shadow: 0 10px 32px rgba(37, 99, 235, 0.55);
+          box-shadow: 0 14px 32px rgba(37, 99, 235, 0.55);
+        }
+
+        .hero-btn-secondary {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          padding: 12px 28px;
+          background: rgba(255, 255, 255, 0.95);
+          border: 1.8px solid #3B82F6;
+          color: #2563EB !important;
+          font-family: var(--font-display);
+          font-weight: 700;
+          font-size: 0.96rem;
+          border-radius: 999px;
+          text-decoration: none;
+          box-shadow: 0 4px 14px rgba(37, 99, 235, 0.08);
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .hero-btn-secondary:hover {
+          transform: translateY(-2px) scale(1.02);
+          background: #EFF6FF;
+          border-color: #2563EB;
+          box-shadow: 0 8px 20px rgba(37, 99, 235, 0.18);
+        }
+
+        /* Dark Mode Overrides for Left Section */
+        [data-theme="dark"] .hero-badge-pill {
+          background: rgba(37, 99, 235, 0.15);
+          border-color: rgba(96, 165, 250, 0.35);
+          color: #60A5FA;
+        }
+        [data-theme="dark"] .hero-badge-icon {
+          color: #60A5FA;
+        }
+        [data-theme="dark"] .hero-status-text {
+          color: #94A3B8;
+        }
+        [data-theme="dark"] .hero-first-name {
+          color: #F8FAFC;
+        }
+        [data-theme="dark"] .hero-description-text {
+          color: #CBD5E1;
+        }
+        [data-theme="dark"] .hero-highlight-phrase {
+          color: #A78BFA;
+        }
+        [data-theme="dark"] .phrase-underline-curve {
+          color: #818CF8;
+        }
+        [data-theme="dark"] .hero-pill-item {
+          background: rgba(15, 23, 42, 0.85);
+          border-color: rgba(255, 255, 255, 0.1);
+          color: #E2E8F0;
+        }
+        [data-theme="dark"] .hero-pill-item:hover {
+          background: rgba(30, 41, 59, 0.95);
+          border-color: rgba(96, 165, 250, 0.4);
+        }
+        [data-theme="dark"] .hero-btn-secondary {
+          background: rgba(15, 23, 42, 0.85);
+          border-color: #38BDF8;
+          color: #38BDF8 !important;
+        }
+        [data-theme="dark"] .hero-btn-secondary:hover {
+          background: rgba(56, 189, 248, 0.12);
+          border-color: #60A5FA;
         }
 
         /* Center Cursive Note */
@@ -530,18 +681,29 @@ export default function Hero() {
             padding-bottom: 40px !important;
             min-height: auto !important;
           }
+          .hero-top-status-row {
+            justify-content: center;
+          }
           .hero-headline-title {
             font-size: clamp(2.3rem, 10vw, 3.4rem);
           }
-          .hero-role-subtitle {
-            font-size: 1.05rem;
+          .hero-desc-br {
+            display: inline;
           }
           .hero-description-text {
-            font-size: 0.92rem;
+            font-size: 0.98rem;
           }
           .hero-pill-item {
-            font-size: 0.76rem;
-            padding: 6px 12px;
+            font-size: 0.78rem;
+            padding: 6px 14px;
+          }
+          .hero-actions-row {
+            justify-content: center;
+            width: 100%;
+          }
+          .hero-btn-primary, .hero-btn-secondary {
+            padding: 12px 24px;
+            font-size: 0.92rem;
           }
           .hero-right-visual {
             min-height: auto;

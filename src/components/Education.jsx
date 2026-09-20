@@ -36,11 +36,11 @@ export default function Education() {
   ];
 
   return (
-    <section id="education" className="section section-white" style={{ backgroundColor: '#FFFFFF', position: 'relative' }}>
+    <section id="education" className="section section-white" style={{ position: 'relative' }}>
       <div className="container">
         {/* Section Header */}
         <div style={{ marginBottom: '44px' }}>
-          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: '#0F172A', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
+          <h2 style={{ fontSize: 'clamp(2.1rem, 4vw, 3.2rem)', fontWeight: 900, color: 'var(--color-text-primary)', letterSpacing: '-0.03em', lineHeight: 1.15, margin: 0 }}>
             Education &amp; Qualifications
           </h2>
         </div>
@@ -56,10 +56,7 @@ export default function Education() {
                 display: 'flex',
                 flexDirection: 'column',
                 gap: '20px',
-                background: '#FFFFFF',
-                border: '1px solid rgba(226, 232, 240, 0.9)',
                 borderRadius: '20px',
-                boxShadow: '0 4px 20px rgba(15, 23, 42, 0.04)',
               }}
             >
               {/* Header Row */}
@@ -74,9 +71,10 @@ export default function Education() {
               >
                 <div style={{ display: 'flex', alignItems: 'center', gap: '18px', flex: '1 1 500px', minWidth: 0 }}>
                   <div
+                    className="education-logo-box"
                     style={{
-                      background: '#FFFFFF',
-                      border: '1px solid rgba(226, 232, 240, 0.9)',
+                      background: 'var(--card-bg)',
+                      border: '1px solid var(--color-border)',
                       borderRadius: '14px',
                       padding: '4px',
                       width: '56px',
@@ -86,7 +84,7 @@ export default function Education() {
                       justifyContent: 'center',
                       flexShrink: 0,
                       overflow: 'hidden',
-                      boxShadow: '0 2px 8px rgba(15, 23, 42, 0.04)',
+                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.06)',
                     }}
                   >
                     {edu.logo ? (
@@ -109,10 +107,10 @@ export default function Education() {
                     )}
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
-                    <h3 style={{ fontSize: 'clamp(1.15rem, 2vw, 1.35rem)', fontWeight: 800, color: '#0F172A', letterSpacing: '-0.02em', margin: 0, lineHeight: 1.25 }}>
+                    <h3 style={{ fontSize: 'clamp(1.15rem, 2vw, 1.35rem)', fontWeight: 800, color: 'var(--color-text-primary)', letterSpacing: '-0.02em', margin: 0, lineHeight: 1.25 }}>
                       {edu.degree}
                     </h3>
-                    <h4 style={{ fontSize: '0.98rem', color: '#475569', fontWeight: 600, marginTop: '4px', margin: 0 }}>
+                    <h4 style={{ fontSize: '0.98rem', color: 'var(--color-text-secondary)', fontWeight: 600, marginTop: '4px', margin: 0 }}>
                       {edu.institution}
                     </h4>
                   </div>
@@ -124,9 +122,9 @@ export default function Education() {
                       style={{
                         fontSize: '0.78rem',
                         fontWeight: 700,
-                        color: '#2563EB',
-                        background: '#EFF6FF',
-                        border: '1px solid rgba(37, 99, 235, 0.2)',
+                        color: 'var(--color-accent)',
+                        background: 'var(--color-accent-subtle)',
+                        border: '1px solid var(--color-border)',
                         padding: '5px 14px',
                         borderRadius: '999px',
                         fontFamily: 'var(--font-display)',
@@ -141,24 +139,25 @@ export default function Education() {
 
               {/* Meta information row (Duration, Location, Qualification Level in 2-tier layout) */}
               <div
+                className="education-meta-row"
                 style={{
                   display: 'flex',
                   flexDirection: 'column',
                   gap: '8px',
                   padding: '12px 18px',
-                  background: '#F8FAFC',
+                  background: 'var(--color-bg-alt)',
                   borderRadius: '10px',
-                  border: '1px solid rgba(226, 232, 240, 0.85)',
+                  border: '1px solid var(--color-border)',
                 }}
               >
                 <div style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '20px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: '#475569' }}>
-                    <Calendar size={15} style={{ color: '#2563EB', flexShrink: 0 }} />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: 'var(--color-text-secondary)' }}>
+                    <Calendar size={15} style={{ color: 'var(--color-accent)', flexShrink: 0 }} />
                     <span>{edu.duration}</span>
                   </div>
                   {edu.location && (
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: '#475569' }}>
-                      <Globe size={15} style={{ color: '#2563EB', flexShrink: 0 }} />
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: 'var(--color-text-secondary)' }}>
+                      <Globe size={15} style={{ color: 'var(--color-accent)', flexShrink: 0 }} />
                       <span>{edu.location}</span>
                     </div>
                   )}
@@ -170,22 +169,22 @@ export default function Education() {
                         gap: '6px',
                         fontSize: '0.82rem',
                         fontWeight: 700,
-                        color: '#2563EB',
-                        background: '#EFF6FF',
-                        border: '1px solid rgba(37, 99, 235, 0.25)',
+                        color: 'var(--color-accent)',
+                        background: 'var(--color-accent-subtle)',
+                        border: '1px solid var(--color-border)',
                         padding: '3px 10px',
                         borderRadius: '6px',
                         fontFamily: 'var(--font-display)',
                       }}
                     >
-                      <Award size={14} style={{ color: '#2563EB', flexShrink: 0 }} />
+                      <Award size={14} style={{ color: 'var(--color-accent)', flexShrink: 0 }} />
                       <span>Results: {edu.result}</span>
                     </div>
                   )}
                 </div>
                 {edu.qualificationLevel && (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: '#0F172A', fontWeight: 600 }}>
-                    <Layers size={15} style={{ color: '#2563EB', flexShrink: 0 }} />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '0.88rem', color: 'var(--color-text-primary)', fontWeight: 600 }}>
+                    <Layers size={15} style={{ color: 'var(--color-accent)', flexShrink: 0 }} />
                     <span>{edu.qualificationLevel}</span>
                   </div>
                 )}

@@ -83,8 +83,8 @@ export default function About() {
             <div className="about-content-block">
               <h3 className="about-block-heading">Personal Profile</h3>
               <p className="about-profile-text">
-                Final-year HNDIT undergraduate at <strong style={{ color: '#0F172A' }}>SLIATE – ATI Dehiwala</strong> and{' '}
-                <strong style={{ color: '#0F172A' }}>IBSL DBF</strong> diploma holder with practical experience in commercial banking operations at People's Bank. Specializing in Requirements Engineering, BPMN/UML workflow modeling, SRS/BRD documentation, and Agile project coordination to bridge business vision with software delivery.
+                Final-year HNDIT undergraduate at <strong style={{ color: 'var(--color-text-primary)' }}>SLIATE – ATI Dehiwala</strong> and{' '}
+                <strong style={{ color: 'var(--color-text-primary)' }}>IBSL DBF</strong> diploma holder with practical experience in commercial banking operations at People's Bank. Specializing in Requirements Engineering, BPMN/UML workflow modeling, SRS/BRD documentation, and Agile project coordination to bridge business vision with software delivery.
               </p>
             </div>
 
