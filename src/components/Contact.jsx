@@ -26,37 +26,60 @@ export default function Contact() {
 
     setStatus('sending');
 
-    if (WEB3FORMS_ACCESS_KEY === "YOUR_ACCESS_KEY_HERE" || !WEB3FORMS_ACCESS_KEY) {
-      setTimeout(() => {
-        setStatus('success');
-        setFormData({
-          name: '',
-          email: '',
-          subject: '',
-          message: '',
-        });
-      }, 1200);
-      return;
-    }
-
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      // 1. If Web3Forms access key is configured and valid, use Web3Forms
+      if (WEB3FORMS_ACCESS_KEY && WEB3FORMS_ACCESS_KEY !== "YOUR_ACCESS_KEY_HERE") {
+        const response = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            access_key: WEB3FORMS_ACCESS_KEY,
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject || `Portfolio Message from ${formData.name}`,
+            message: formData.message,
+          }),
+        });
+
+        const result = await response.json();
+        if (result.success) {
+          setStatus('success');
+          setFormData({
+            name: '',
+            email: '',
+            subject: '',
+            message: '',
+          });
+          return;
+        }
+      }
+
+      // 2. Direct endpoint: Delivers emails directly to rashmindaluvihare@gmail.com
+      const response = await fetch("https://formsubmit.co/ajax/rashmindaluvihare@gmail.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
           name: formData.name,
           email: formData.email,
-          subject: formData.subject || "Contact Form Submission",
+          _subject: `Portfolio Message: ${formData.subject || 'New Contact'} (from ${formData.name})`,
           message: formData.message,
+          _template: "table",
+          _captcha: "false",
         }),
       });
 
       const result = await response.json();
-      if (result.success) {
+      if (
+        result.success === true ||
+        result.success === "true" ||
+        (result.message && result.message.toLowerCase().includes("activation"))
+      ) {
         setStatus('success');
         setFormData({
           name: '',
