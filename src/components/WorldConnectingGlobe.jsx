@@ -90,7 +90,7 @@ export default function WorldConnectingGlobe() {
         varying vec3 vNormal;
         void main() {
           float intensity = pow(0.64 - dot(vNormal, vec3(0.0, 0.0, 1.0)), 2.6);
-          gl_FragColor = vec4(0.24, 0.58, 0.98, 1.0) * intensity * 0.7;
+          gl_FragColor = vec4(0.08, 0.72, 0.65, 1.0) * intensity * 0.75;
         }
       `,
       blending: THREE.AdditiveBlending,
@@ -132,7 +132,7 @@ export default function WorldConnectingGlobe() {
     const beaconRings = [];
     const ringGeo = new THREE.RingGeometry(0.02, 0.046, 24);
     const dotGeo = new THREE.SphereGeometry(0.025, 16, 16);
-    const beaconDotMat = new THREE.MeshBasicMaterial({ color: 0x38BDF8 });
+    const beaconDotMat = new THREE.MeshBasicMaterial({ color: 0x14B8A6 });
 
     hubs.forEach((hub) => {
       const pos = latLongToVec3(hub.lat, hub.lon, radius, 0.01);
@@ -145,7 +145,7 @@ export default function WorldConnectingGlobe() {
 
       // Pulsing outer ripple ring
       const ringMat = new THREE.MeshBasicMaterial({
-        color: 0x60A5FA,
+        color: 0x2DD4BF,
         side: THREE.DoubleSide,
         transparent: true,
         opacity: 0.8,
@@ -195,7 +195,7 @@ export default function WorldConnectingGlobe() {
 
       // Glowing curved connection path
       const arcMat = new THREE.LineBasicMaterial({
-        color: idx % 2 === 0 ? 0x3B82F6 : 0x6366F1,
+        color: idx % 2 === 0 ? 0x14B8A6 : 0x0F766E,
         transparent: true,
         opacity: 0.65,
       });
@@ -204,7 +204,7 @@ export default function WorldConnectingGlobe() {
 
       // Traveling glowing photon / data packet
       const photonMat = new THREE.MeshBasicMaterial({
-        color: 0x93C5FD,
+        color: 0x2DD4BF,
         transparent: true,
         opacity: 0.95,
       });
@@ -227,7 +227,7 @@ export default function WorldConnectingGlobe() {
     sunLight.position.set(5, 3, 4);
     scene.add(sunLight);
 
-    const rimLight = new THREE.DirectionalLight(0x93c5fd, 0.75);
+    const rimLight = new THREE.DirectionalLight(0x2dd4bf, 0.75);
     rimLight.position.set(-5, -2, -3);
     scene.add(rimLight);
 
@@ -360,7 +360,7 @@ export default function WorldConnectingGlobe() {
           width: '82%',
           height: '82%',
           borderRadius: '50%',
-          background: 'radial-gradient(circle, rgba(59, 130, 246, 0.16) 0%, rgba(99, 102, 241, 0.05) 50%, transparent 72%)',
+          background: 'radial-gradient(circle, rgba(20, 184, 166, 0.18) 0%, rgba(15, 118, 110, 0.08) 50%, transparent 72%)',
           filter: 'blur(35px)',
           pointerEvents: 'none',
         }}

@@ -44,10 +44,10 @@ export default function FullPortfolioBackground() {
 
     // Drifting ambient color orbs
     const orbs = [
-      { x: width * 0.2, y: height * 0.25, r: 380, vx: 0.18, vy: 0.12, darkColor: 'rgba(37, 99, 235, 0.18)', lightColor: 'rgba(37, 99, 235, 0.08)' },
-      { x: width * 0.8, y: height * 0.65, r: 420, vx: -0.15, vy: -0.16, darkColor: 'rgba(124, 58, 237, 0.15)', lightColor: 'rgba(99, 102, 241, 0.07)' },
-      { x: width * 0.5, y: height * 0.85, r: 350, vx: 0.12, vy: -0.14, darkColor: 'rgba(14, 165, 233, 0.14)', lightColor: 'rgba(14, 165, 233, 0.06)' },
-      { x: width * 0.85, y: height * 0.2, r: 300, vx: -0.12, vy: 0.1, darkColor: 'rgba(16, 185, 129, 0.08)', lightColor: 'rgba(16, 185, 129, 0.045)' },
+      { x: width * 0.2, y: height * 0.25, r: 380, vx: 0.18, vy: 0.12, darkColor: 'rgba(20, 184, 166, 0.16)', lightColor: 'rgba(20, 184, 166, 0.08)' },
+      { x: width * 0.8, y: height * 0.65, r: 420, vx: -0.15, vy: -0.16, darkColor: 'rgba(15, 118, 110, 0.15)', lightColor: 'rgba(15, 118, 110, 0.07)' },
+      { x: width * 0.5, y: height * 0.85, r: 350, vx: 0.12, vy: -0.14, darkColor: 'rgba(45, 212, 191, 0.12)', lightColor: 'rgba(45, 212, 191, 0.06)' },
+      { x: width * 0.85, y: height * 0.2, r: 300, vx: -0.12, vy: 0.1, darkColor: 'rgba(30, 58, 58, 0.18)', lightColor: 'rgba(30, 58, 58, 0.08)' },
     ];
 
     let mouseX = -1000;
@@ -117,8 +117,8 @@ export default function FullPortfolioBackground() {
           if (dist2 < 115) {
             const lineAlpha = (1 - dist2 / 115) * (isDark ? 0.22 : 0.14);
             ctx.strokeStyle = isDark
-              ? `rgba(96, 165, 250, ${lineAlpha})`
-              : `rgba(37, 99, 235, ${lineAlpha})`;
+              ? `rgba(45, 212, 191, ${lineAlpha})`
+              : `rgba(20, 184, 166, ${lineAlpha})`;
             ctx.lineWidth = isDark ? 0.9 : 0.8;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
@@ -130,8 +130,8 @@ export default function FullPortfolioBackground() {
         // Draw particle dot
         const pulse = Math.sin(clock + p.phase) * 0.25 + 0.75;
         ctx.fillStyle = isDark
-          ? `rgba(147, 197, 253, ${p.alpha * pulse * 0.85})`
-          : `rgba(37, 99, 235, ${p.alpha * pulse * 0.55})`;
+          ? `rgba(45, 212, 191, ${p.alpha * pulse * 0.85})`
+          : `rgba(20, 184, 166, ${p.alpha * pulse * 0.55})`;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
         ctx.fill();
@@ -140,8 +140,8 @@ export default function FullPortfolioBackground() {
         if (p.sparkle && pulse > 0.82) {
           const starLen = p.radius * 3.4;
           ctx.strokeStyle = isDark
-            ? `rgba(255, 255, 255, ${(pulse - 0.82) * 1.2})`
-            : `rgba(37, 99, 235, ${(pulse - 0.82) * 0.8})`;
+            ? `rgba(248, 250, 252, ${(pulse - 0.82) * 1.2})`
+            : `rgba(20, 184, 166, ${(pulse - 0.82) * 0.8})`;
           ctx.lineWidth = 0.9;
           ctx.beginPath();
           ctx.moveTo(p.x - starLen, p.y);
@@ -208,11 +208,11 @@ export default function FullPortfolioBackground() {
 
       <style>{`
         .portfolio-bg-grid {
-          background-image: radial-gradient(rgba(37, 99, 235, 0.08) 1.2px, transparent 1.2px);
+          background-image: radial-gradient(rgba(20, 184, 166, 0.08) 1.2px, transparent 1.2px);
           background-size: 30px 30px;
         }
         [data-theme="dark"] .portfolio-bg-grid {
-          background-image: radial-gradient(rgba(59, 130, 246, 0.12) 1.2px, transparent 1.2px);
+          background-image: radial-gradient(rgba(45, 212, 191, 0.10) 1.2px, transparent 1.2px);
           background-size: 30px 30px;
         }
       `}</style>

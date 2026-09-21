@@ -54,12 +54,12 @@ export default function HeroDotsCanvas() {
       parent.addEventListener('mouseleave', handleMouseLeave);
     }
 
-    // Color palette matching Light Mode theme (Royal Blue, Soft Sky, Indigo, Slate)
+    // Color palette matching Teal / Charcoal theme
     const dotColors = [
-      'rgba(37, 99, 235, 0.85)',   // Royal Blue
-      'rgba(59, 130, 246, 0.85)',  // Soft Sky Blue
-      'rgba(99, 102, 241, 0.8)',   // Electric Indigo
-      'rgba(71, 85, 105, 0.75)',   // Slate
+      'rgba(20, 184, 166, 0.85)',  // Bright Teal #14B8A6
+      'rgba(45, 212, 191, 0.85)',  // Light Teal #2DD4BF
+      'rgba(15, 118, 110, 0.8)',   // Deep Teal #0F766E
+      'rgba(148, 163, 184, 0.75)', // Muted Gray #94A3B8
     ];
 
     // Determine node count based on screen width
@@ -185,8 +185,8 @@ export default function HeroDotsCanvas() {
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(nodes[j].x, nodes[j].y);
             ctx.strokeStyle = isDark
-              ? `rgba(96, 165, 250, ${alpha})`
-              : `rgba(37, 99, 235, ${alpha})`;
+              ? `rgba(45, 212, 191, ${alpha})`
+              : `rgba(20, 184, 166, ${alpha})`;
             ctx.lineWidth = 0.8;
             ctx.stroke();
           }
@@ -204,8 +204,8 @@ export default function HeroDotsCanvas() {
             ctx.moveTo(nodes[i].x, nodes[i].y);
             ctx.lineTo(mouse.x, mouse.y);
             ctx.strokeStyle = isDark
-              ? `rgba(56, 189, 248, ${alpha})`
-              : `rgba(59, 130, 246, ${alpha})`;
+              ? `rgba(45, 212, 191, ${alpha})`
+              : `rgba(20, 184, 166, ${alpha})`;
             ctx.lineWidth = 0.9;
             ctx.stroke();
           }

@@ -76,7 +76,7 @@ export default function SplashScreen({ onComplete }) {
         position: 'fixed',
         inset: 0,
         zIndex: 9999,
-        background: '#0B0C0E',
+        background: '#0B1419',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
@@ -107,16 +107,16 @@ export default function SplashScreen({ onComplete }) {
             fontFamily: "'Inter', sans-serif",
             fontSize: 'clamp(2rem, 5.5vw, 3.6rem)',
             fontWeight: 900,
-            color: '#FFFFFF',
+            color: '#F8FAFC',
             letterSpacing: '-0.04em',
             lineHeight: 1.15,
             whiteSpace: 'nowrap',
           }}
         >
-          <span style={{ color: '#9CA3AF', fontWeight: 500, fontSize: '0.6em' }}>
+          <span style={{ color: '#94A3B8', fontWeight: 500, fontSize: '0.6em' }}>
             Hi, I&apos;m&nbsp;
           </span>
-          <span style={{ color: '#FF4D2D' }}>
+          <span style={{ color: '#14B8A6' }}>
             {fullName.slice(0, nameChars)}
           </span>
           <span
@@ -124,7 +124,7 @@ export default function SplashScreen({ onComplete }) {
               display: 'inline-block',
               width: '2.5px',
               height: '0.9em',
-              background: '#FF4D2D',
+              background: '#14B8A6',
               marginLeft: '4px',
               verticalAlign: 'middle',
               borderRadius: '2px',
@@ -169,10 +169,10 @@ export default function SplashScreen({ onComplete }) {
           style={{
             height: '100%',
             width: `${progress}%`,
-            background: '#FF4D2D',
+            background: 'linear-gradient(90deg, #14B8A6, #2DD4BF)',
             borderRadius: '99px',
             transition: 'width 0.05s linear',
-            boxShadow: '0 0 10px rgba(255, 77, 45, 0.8)',
+            boxShadow: '0 0 10px rgba(20, 184, 166, 0.8)',
           }}
         />
       </div>
@@ -182,7 +182,7 @@ export default function SplashScreen({ onComplete }) {
           fontFamily: "'Inter', sans-serif",
           fontSize: '0.74rem',
           fontWeight: 700,
-          color: '#6B7280',
+          color: '#94A3B8',
           letterSpacing: '0.1em',
           marginTop: '-12px',
           opacity: showSub ? 1 : 0,

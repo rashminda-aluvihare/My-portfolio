@@ -38,9 +38,9 @@ export default function HeroBlockchainCanvas() {
 
       ctx.clearRect(0, 0, W, H);
 
-      // Clean CreativeXLab Palette: Electric Orange (#FF4D2D) and subtle cool white
-      const primaryColor = 'rgba(255, 77, 45, ';
-      const secondaryColor = 'rgba(255, 255, 255, ';
+      // Palette: Bright Teal (#14B8A6) and Light Teal (#2DD4BF)
+      const primaryColor = 'rgba(20, 184, 166, ';
+      const secondaryColor = 'rgba(45, 212, 191, ';
 
       // Render Topological Sine-Wave Line Grid
       const linesCount = W < 768 ? 20 : 34;
@@ -82,7 +82,7 @@ export default function HeroBlockchainCanvas() {
         ctx.stroke();
       }
 
-      // Subtle orange glowing particles
+      // Subtle teal glowing particles
       const particleCount = W < 768 ? 10 : 20;
       for (let p = 0; p < particleCount; p++) {
         const px = ((p * (W / particleCount) + time * 50 * ((p % 3) + 1)) % (W + 100)) - 50;
@@ -92,9 +92,9 @@ export default function HeroBlockchainCanvas() {
 
         ctx.beginPath();
         ctx.arc(px, py, 2, 0, Math.PI * 2);
-        ctx.fillStyle = p % 2 === 0 ? 'rgba(255, 77, 45, 0.8)' : 'rgba(255, 255, 255, 0.6)';
+        ctx.fillStyle = p % 2 === 0 ? 'rgba(20, 184, 166, 0.85)' : 'rgba(248, 250, 252, 0.7)';
         ctx.shadowBlur = 8;
-        ctx.shadowColor = '#FF4D2D';
+        ctx.shadowColor = '#14B8A6';
         ctx.fill();
         ctx.shadowBlur = 0;
       }

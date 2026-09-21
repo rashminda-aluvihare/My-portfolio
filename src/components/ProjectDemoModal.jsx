@@ -52,7 +52,7 @@ export default function ProjectDemoModal({ demoType, onClose }) {
           background: 'rgba(15, 15, 25, 0.75)',
           border: '1px solid rgba(255, 255, 255, 0.08)',
           borderRadius: '24px',
-          boxShadow: '0 25px 50px -12px rgba(0, 242, 254, 0.15)',
+          boxShadow: '0 25px 50px -12px rgba(20, 184, 166, 0.15)',
           display: 'flex',
           flexDirection: 'column',
           overflow: 'hidden',
@@ -73,7 +73,7 @@ export default function ProjectDemoModal({ demoType, onClose }) {
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
             <div
               style={{
-                background: 'rgba(0, 242, 254, 0.1)',
+                background: 'rgba(20, 184, 166, 0.1)',
                 padding: '10px',
                 borderRadius: '12px',
                 color: 'var(--accent-cyan)',
@@ -393,8 +393,8 @@ function FixedDepositCalculator() {
           
           <div
             style={{
-              background: 'rgba(0, 242, 254, 0.03)',
-              border: '1px solid rgba(0, 242, 254, 0.15)',
+              background: 'rgba(20, 184, 166, 0.03)',
+              border: '1px solid rgba(20, 184, 166, 0.15)',
               borderRadius: '12px',
               padding: '16px',
               textAlign: 'center',
@@ -534,7 +534,7 @@ function LoanSavingsCalculator() {
           onClick={() => setActiveTab('loan')}
           style={{
             flex: 1,
-            background: activeTab === 'loan' ? 'rgba(0, 242, 254, 0.12)' : 'none',
+            background: activeTab === 'loan' ? 'rgba(20, 184, 166, 0.12)' : 'none',
             border: 'none',
             outline: 'none',
             color: activeTab === 'loan' ? 'var(--accent-cyan)' : 'var(--text-secondary)',
@@ -558,7 +558,7 @@ function LoanSavingsCalculator() {
           onClick={() => setActiveTab('savings')}
           style={{
             flex: 1,
-            background: activeTab === 'savings' ? 'rgba(0, 242, 254, 0.12)' : 'none',
+            background: activeTab === 'savings' ? 'rgba(20, 184, 166, 0.12)' : 'none',
             border: 'none',
             outline: 'none',
             color: activeTab === 'savings' ? 'var(--accent-cyan)' : 'var(--text-secondary)',
@@ -826,8 +826,8 @@ function LoanCalculator() {
         
         <div
           style={{
-            background: 'rgba(0, 242, 254, 0.03)',
-            border: '1px solid rgba(0, 242, 254, 0.15)',
+            background: 'rgba(20, 184, 166, 0.03)',
+            border: '1px solid rgba(20, 184, 166, 0.15)',
             borderRadius: '12px',
             padding: '16px',
             textAlign: 'center',
@@ -1104,8 +1104,8 @@ function SavingsCalculator() {
         
         <div
           style={{
-            background: 'rgba(0, 242, 254, 0.03)',
-            border: '1px solid rgba(0, 242, 254, 0.15)',
+            background: 'rgba(20, 184, 166, 0.03)',
+            border: '1px solid rgba(20, 184, 166, 0.15)',
             borderRadius: '12px',
             padding: '16px',
             textAlign: 'center',

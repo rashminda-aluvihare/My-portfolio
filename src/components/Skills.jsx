@@ -289,9 +289,9 @@ export default function Skills() {
       name: 'BPMN 2.0',
       icon: (
         <svg viewBox="0 0 24 24" width="34" height="34" fill="none">
-          <circle cx="5" cy="12" r="3.5" stroke="#2563EB" strokeWidth="2" fill="rgba(37, 99, 235, 0.1)"/>
-          <rect x="15" y="8.5" width="7" height="7" rx="1.5" stroke="#2563EB" strokeWidth="2" fill="rgba(37, 99, 235, 0.1)"/>
-          <path d="M8.5 12h6.5m-2.5-3l3 3-3 3" stroke="#2563EB" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          <circle cx="5" cy="12" r="3.5" stroke="#14B8A6" strokeWidth="2" fill="rgba(20, 184, 166, 0.15)"/>
+          <rect x="15" y="8.5" width="7" height="7" rx="1.5" stroke="#14B8A6" strokeWidth="2" fill="rgba(20, 184, 166, 0.15)"/>
+          <path d="M8.5 12h6.5m-2.5-3l3 3-3 3" stroke="#14B8A6" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       ),
     },
@@ -425,8 +425,23 @@ export default function Skills() {
 
         .skill-logo-card:hover {
           transform: translateY(-6px) scale(1.05);
-          box-shadow: 0 14px 28px rgba(37, 99, 235, 0.12);
-          border-color: #2563EB;
+          box-shadow: 0 14px 28px rgba(20, 184, 166, 0.16);
+          border-color: #14B8A6;
+        }
+
+        [data-theme="dark"] .skill-logo-card {
+          background: #111C22;
+          border-color: #1E3A3A;
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.35);
+        }
+
+        [data-theme="dark"] .skill-logo-card:hover {
+          border-color: #14B8A6;
+          box-shadow: 0 14px 28px rgba(20, 184, 166, 0.2);
+        }
+
+        [data-theme="dark"] .skill-logo-name {
+          color: #94A3B8;
         }
 
         .skill-logo-icon {

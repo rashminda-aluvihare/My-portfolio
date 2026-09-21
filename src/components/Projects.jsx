@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { ExternalLink, ArrowUpRight, ChevronLeft, ChevronRight, X } from 'lucide-react';
+import { ExternalLink, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import ProjectDemoModal from './ProjectDemoModal';
 import CaseStudyModal from './CaseStudyModal';
 import { caseStudiesData } from '../data/caseStudiesData';
@@ -183,7 +183,6 @@ export default function Projects() {
           title="View Full Case Study"
         >
           <span>Case Study</span>
-          <ArrowUpRight size={14} strokeWidth={2.5} />
         </button>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -266,7 +265,6 @@ export default function Projects() {
               }}
             >
               <span>View all projects</span>
-              <ArrowUpRight size={17} strokeWidth={2.5} />
             </button>
 
             {/* Carousel Navigation Buttons */}
@@ -442,8 +440,8 @@ export default function Projects() {
 
         .project-card-item:hover {
           transform: translateY(-6px);
-          border-color: rgba(37, 99, 235, 0.35);
-          box-shadow: 0 16px 36px rgba(37, 99, 235, 0.12);
+          border-color: rgba(20, 184, 166, 0.35);
+          box-shadow: 0 16px 36px rgba(20, 184, 166, 0.14);
         }
 
         /* ── CARD IMAGE BANNER (GUARANTEED VISIBLE) ── */
@@ -476,7 +474,7 @@ export default function Projects() {
           right: 10px;
           background: rgba(15, 23, 42, 0.88);
           backdrop-filter: blur(8px);
-          color: #38BDF8;
+          color: #2DD4BF;
           font-size: 0.72rem;
           font-weight: 800;
           padding: 3px 9px;
@@ -499,7 +497,7 @@ export default function Projects() {
         .project-card-category {
           font-size: 0.68rem;
           font-weight: 800;
-          color: #2563EB;
+          color: #14B8A6;
           letter-spacing: 0.06em;
           text-transform: uppercase;
           font-family: var(--font-display);
@@ -635,7 +633,7 @@ export default function Projects() {
           gap: 22px !important;
           -webkit-overflow-scrolling: touch !important;
           scrollbar-width: thin !important;
-          scrollbar-color: #2563EB #F1F5F9 !important;
+          scrollbar-color: #14B8A6 #F1F5F9 !important;
         }
 
         @media (max-width: 1060px) {

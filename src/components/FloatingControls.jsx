@@ -94,24 +94,24 @@ export default function FloatingControls() {
             width: '42px',
             height: '42px',
             borderRadius: '50%',
-            background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+            background: 'linear-gradient(135deg, #14B8A6, #0F766E)',
             color: '#FFFFFF',
             border: 'none',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             cursor: 'pointer',
-            boxShadow: '0 6px 20px rgba(37, 99, 235, 0.4)',
+            boxShadow: '0 6px 20px rgba(20, 184, 166, 0.4)',
             zIndex: 99998,
             transition: 'all 0.25s ease',
           }}
           onMouseEnter={(e) => {
             e.currentTarget.style.transform = 'translateY(-3px) scale(1.08)';
-            e.currentTarget.style.boxShadow = '0 10px 24px rgba(37, 99, 235, 0.55)';
+            e.currentTarget.style.boxShadow = '0 10px 24px rgba(20, 184, 166, 0.55)';
           }}
           onMouseLeave={(e) => {
             e.currentTarget.style.transform = 'none';
-            e.currentTarget.style.boxShadow = '0 6px 20px rgba(37, 99, 235, 0.4)';
+            e.currentTarget.style.boxShadow = '0 6px 20px rgba(20, 184, 166, 0.4)';
           }}
         >
           <ArrowUp size={18} strokeWidth={2.5} />

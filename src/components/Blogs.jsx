@@ -210,7 +210,7 @@ export default function Blogs() {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          color: #2563EB;
+          color: #14B8A6;
           font-size: 0.92rem;
           font-weight: 700;
           text-decoration: none;
@@ -221,7 +221,7 @@ export default function Blogs() {
         }
 
         .blog-view-all-link:hover {
-          color: #1D4ED8;
+          color: #0F766E;
           gap: 9px;
         }
 
@@ -247,8 +247,8 @@ export default function Blogs() {
 
         .blog-compact-card:hover {
           transform: translateY(-2px);
-          box-shadow: 0 10px 30px rgba(37, 99, 235, 0.08);
-          border-color: rgba(37, 99, 235, 0.3);
+          box-shadow: 0 10px 30px rgba(20, 184, 166, 0.12);
+          border-color: rgba(20, 184, 166, 0.35);
         }
 
         /* Thumbnail Image */
@@ -303,7 +303,7 @@ export default function Blogs() {
         }
 
         .blog-meta-cal-icon {
-          color: #2563EB;
+          color: #14B8A6;
         }
 
         .blog-meta-clock-icon {
@@ -331,7 +331,7 @@ export default function Blogs() {
         }
 
         .blog-heading-link:hover {
-          color: #2563EB;
+          color: #14B8A6;
         }
 
         /* Read Story Button */
@@ -339,7 +339,7 @@ export default function Blogs() {
           display: inline-flex;
           align-items: center;
           gap: 6px;
-          color: #2563EB;
+          color: #14B8A6;
           font-size: 0.9rem;
           font-weight: 700;
           text-decoration: none;
@@ -349,7 +349,7 @@ export default function Blogs() {
         }
 
         .blog-read-story-btn:hover {
-          color: #1D4ED8;
+          color: #0F766E;
           gap: 9px;
         }
 
@@ -367,22 +367,22 @@ export default function Blogs() {
         }
 
         [data-theme="dark"] .blog-view-all-link {
-          color: #38BDF8 !important;
+          color: #14B8A6 !important;
         }
 
         [data-theme="dark"] .blog-compact-card {
-          background: #111827 !important;
-          border-color: rgba(255, 255, 255, 0.1) !important;
+          background: #111C22 !important;
+          border-color: #1E3A3A !important;
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
         }
 
         [data-theme="dark"] .blog-compact-card:hover {
-          border-color: rgba(96, 165, 250, 0.4) !important;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 20px rgba(56, 189, 248, 0.15) !important;
+          border-color: #14B8A6 !important;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 20px rgba(20, 184, 166, 0.15) !important;
         }
 
         [data-theme="dark"] .blog-thumb-wrapper {
-          background: #0B0F19 !important;
+          background: #0B1419 !important;
         }
 
         [data-theme="dark"] .blog-heading-link {
@@ -390,7 +390,7 @@ export default function Blogs() {
         }
 
         [data-theme="dark"] .blog-heading-link:hover {
-          color: #38BDF8 !important;
+          color: #2DD4BF !important;
         }
 
         [data-theme="dark"] .blog-meta-line {
@@ -398,7 +398,7 @@ export default function Blogs() {
         }
 
         [data-theme="dark"] .blog-read-story-btn {
-          color: #38BDF8 !important;
+          color: #14B8A6 !important;
         }
 
         /* Mobile Breakpoint */

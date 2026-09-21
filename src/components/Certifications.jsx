@@ -11,7 +11,6 @@ import {
   ZoomIn,
   ZoomOut,
   ExternalLink,
-  ArrowUpRight,
 } from 'lucide-react';
 import ciscoItEssentials from '../assets/cisco_it_essentials.png';
 import ciscoNetworkingEssentials from '../assets/cisco_networking_essentials.png';
@@ -293,7 +292,6 @@ export default function Certifications() {
             }}
           >
             <span>View All Certifications</span>
-            <ArrowUpRight size={17} strokeWidth={2.4} />
           </button>
         </div>
 
@@ -397,7 +395,7 @@ export default function Certifications() {
               >
                 <div
                   style={{
-                    background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+                    background: 'linear-gradient(135deg, #14B8A6, #0F766E)',
                     color: '#FFFFFF',
                     borderRadius: '50%',
                     width: '50px',
@@ -405,7 +403,7 @@ export default function Certifications() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    boxShadow: '0 0 20px rgba(37, 99, 235, 0.6)',
+                    boxShadow: '0 0 20px rgba(20, 184, 166, 0.6)',
                   }}
                 >
                   <Eye size={24} />
@@ -429,8 +427,8 @@ export default function Certifications() {
                   top: '14px',
                   left: '14px',
                   background: '#FFFFFF',
-                  border: '1px solid rgba(37, 99, 235, 0.25)',
-                  color: '#2563EB',
+                  border: '1px solid rgba(20, 184, 166, 0.25)',
+                  color: '#14B8A6',
                   padding: '4px 11px',
                   borderRadius: '8px',
                   fontSize: '0.8rem',
@@ -461,9 +459,9 @@ export default function Certifications() {
                     style={{
                       fontSize: '0.78rem',
                       fontWeight: 700,
-                      color: '#2563EB',
-                      background: '#EFF6FF',
-                      border: '1px solid rgba(37, 99, 235, 0.2)',
+                      color: '#14B8A6',
+                      background: 'rgba(20, 184, 166, 0.1)',
+                      border: '1px solid rgba(20, 184, 166, 0.25)',
                       padding: '4px 12px',
                       borderRadius: '999px',
                       display: 'inline-flex',
@@ -498,7 +496,7 @@ export default function Certifications() {
                     display: 'flex',
                     alignItems: 'center',
                     gap: '8px',
-                    color: '#2563EB',
+                    color: '#14B8A6',
                     fontWeight: 700,
                     fontSize: '0.98rem',
                     fontFamily: 'var(--font-display)',
@@ -590,13 +588,13 @@ export default function Certifications() {
                       height: '10px',
                       borderRadius: '999px',
                       background: isActive
-                        ? 'linear-gradient(135deg, #2563EB, #1D4ED8)'
+                        ? 'linear-gradient(135deg, #14B8A6, #0F766E)'
                         : 'rgba(203, 213, 225, 0.85)',
                       border: 'none',
                       cursor: 'pointer',
                       padding: 0,
                       transition: 'all 0.35s cubic-bezier(0.4, 0, 0.2, 1)',
-                      boxShadow: isActive ? '0 2px 10px rgba(37, 99, 235, 0.35)' : 'none',
+                      boxShadow: isActive ? '0 2px 10px rgba(20, 184, 166, 0.35)' : 'none',
                     }}
                   />
                 );
@@ -675,13 +673,13 @@ export default function Certifications() {
                     </h3>
                     <span
                       style={{
-                        background: '#EFF6FF',
-                        color: '#2563EB',
+                        background: 'rgba(20, 184, 166, 0.1)',
+                        color: '#14B8A6',
                         fontSize: '0.78rem',
                         fontWeight: 800,
                         padding: '3px 10px',
                         borderRadius: '999px',
-                        border: '1px solid rgba(37, 99, 235, 0.2)',
+                        border: '1px solid rgba(20, 184, 166, 0.25)',
                         fontFamily: 'var(--font-display)',
                         whiteSpace: 'nowrap',
                       }}
@@ -810,8 +808,8 @@ export default function Certifications() {
                           top: '12px',
                           left: '12px',
                           background: '#FFFFFF',
-                          border: '1px solid rgba(37, 99, 235, 0.25)',
-                          color: '#2563EB',
+                          border: '1px solid rgba(20, 184, 166, 0.25)',
+                          color: '#14B8A6',
                           padding: '3px 9px',
                           borderRadius: '6px',
                           fontSize: '0.74rem',
@@ -841,9 +839,9 @@ export default function Certifications() {
                           style={{
                             fontSize: '0.74rem',
                             fontWeight: 700,
-                            color: '#2563EB',
-                            background: '#EFF6FF',
-                            border: '1px solid rgba(37, 99, 235, 0.2)',
+                            color: '#14B8A6',
+                            background: 'rgba(20, 184, 166, 0.1)',
+                            border: '1px solid rgba(20, 184, 166, 0.25)',
                             padding: '3px 9px',
                             borderRadius: '999px',
                             display: 'inline-flex',
@@ -890,7 +888,7 @@ export default function Certifications() {
                           display: 'flex',
                           alignItems: 'center',
                           gap: '6px',
-                          color: '#2563EB',
+                          color: '#14B8A6',
                           fontWeight: 700,
                           fontSize: '0.86rem',
                           marginBottom: '16px',
@@ -949,12 +947,12 @@ export default function Certifications() {
                           style={{
                             padding: '9px 12px',
                             borderRadius: '8px',
-                            background: selectedCertIndex === index ? '#EFF6FF' : '#F1F5F9',
+                            background: selectedCertIndex === index ? 'rgba(20, 184, 166, 0.12)' : '#F1F5F9',
                             border:
                               selectedCertIndex === index
-                                ? '1px solid #2563EB'
+                                ? '1px solid #14B8A6'
                                 : '1px solid rgba(226, 232, 240, 0.9)',
-                            color: selectedCertIndex === index ? '#2563EB' : '#475569',
+                            color: selectedCertIndex === index ? '#14B8A6' : '#475569',
                             fontSize: '0.82rem',
                             fontWeight: 700,
                             cursor: 'pointer',
@@ -1000,7 +998,7 @@ export default function Certifications() {
                     fontFamily: 'var(--font-display)',
                     transition: 'background 0.2s ease',
                   }}
-                  onMouseEnter={(e) => (e.currentTarget.style.background = '#2563EB')}
+                  onMouseEnter={(e) => (e.currentTarget.style.background = '#14B8A6')}
                   onMouseLeave={(e) => (e.currentTarget.style.background = '#0F172A')}
                 >
                   Done
@@ -1056,14 +1054,14 @@ export default function Certifications() {
                       gap: '6px',
                       padding: '8px 16px',
                       borderRadius: '999px',
-                      background: 'linear-gradient(135deg, #2563EB, #7C3AED)',
+                      background: 'linear-gradient(135deg, #14B8A6, #0F766E)',
                       color: '#FFFFFF',
                       fontWeight: 700,
                       fontSize: '0.84rem',
                       textDecoration: 'none',
                       transition: 'all 0.2s ease',
                       fontFamily: 'var(--font-display)',
-                      boxShadow: '0 2px 10px rgba(37, 99, 235, 0.4)',
+                      boxShadow: '0 2px 10px rgba(20, 184, 166, 0.4)',
                     }}
                     title="Verify online credential"
                   >
@@ -1188,8 +1186,8 @@ export default function Certifications() {
                   fontFamily: 'var(--font-display)',
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.background = '#2563EB';
-                  e.currentTarget.style.borderColor = '#2563EB';
+                  e.currentTarget.style.background = '#14B8A6';
+                  e.currentTarget.style.borderColor = '#14B8A6';
                 }}
                 onMouseLeave={(e) => {
                   e.currentTarget.style.background = 'rgba(255, 255, 255, 0.1)';
@@ -1402,20 +1400,20 @@ export default function Certifications() {
           right: -22px;
         }
         .cert-side-nav-btn:hover {
-          background: #2563EB;
+          background: #14B8A6;
           color: #FFFFFF;
-          border-color: #2563EB;
+          border-color: #14B8A6;
           transform: translateY(-50%) scale(1.08);
-          box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+          box-shadow: 0 6px 20px rgba(20, 184, 166, 0.35);
         }
         [data-theme="dark"] .cert-side-nav-btn {
-          background: #1E293B;
-          border-color: rgba(255, 255, 255, 0.15);
+          background: #111C22;
+          border-color: #1E3A3A;
           color: #F8FAFC;
         }
         [data-theme="dark"] .cert-side-nav-btn:hover {
-          background: #3B82F6;
-          border-color: #3B82F6;
+          background: #14B8A6;
+          border-color: #14B8A6;
           color: #FFFFFF;
         }
         .cert-bottom-nav-arrow {

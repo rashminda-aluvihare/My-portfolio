@@ -173,7 +173,7 @@ export default function About() {
           width: 5px;
           height: 5px;
           border-radius: 50%;
-          background: #2563EB;
+          background: #14B8A6;
         }
 
         .about-geom-striped-circle {
@@ -185,8 +185,8 @@ export default function About() {
           border-radius: 50%;
           background: repeating-linear-gradient(
             -45deg,
-            rgba(37, 99, 235, 0.45),
-            rgba(37, 99, 235, 0.45) 2px,
+            rgba(20, 184, 166, 0.45),
+            rgba(20, 184, 166, 0.45) 2px,
             transparent 2px,
             transparent 9px
           );
@@ -197,10 +197,10 @@ export default function About() {
           position: absolute;
           font-family: var(--font-display);
           font-weight: 900;
-          color: #2563EB;
+          color: #2DD4BF;
           font-size: 1.35rem;
           line-height: 1;
-          opacity: 0.55;
+          opacity: 0.65;
           z-index: 2;
           pointer-events: none;
         }
@@ -232,8 +232,8 @@ export default function About() {
           right: 30px;
           bottom: 50px;
           border-radius: 200px 200px 100px 100px;
-          background: linear-gradient(145deg, #2563EB 0%, #4F46E5 60%, #7C3AED 100%);
-          box-shadow: 0 20px 45px rgba(37, 99, 235, 0.22);
+          background: linear-gradient(145deg, #14B8A6 0%, #0F766E 60%, #111C22 100%);
+          box-shadow: 0 20px 45px rgba(20, 184, 166, 0.22);
           z-index: 1;
         }
 
@@ -244,7 +244,7 @@ export default function About() {
           right: 12px;
           bottom: 32px;
           border-radius: 210px 210px 110px 110px;
-          border: 2px dashed rgba(37, 99, 235, 0.3);
+          border: 2px dashed rgba(45, 212, 191, 0.35);
           z-index: 1;
         }
 
@@ -277,12 +277,12 @@ export default function About() {
           left: 50%;
           transform: translateX(-50%);
           width: 92%;
-          background: #FFFFFF;
-          border: 1px solid rgba(226, 232, 240, 0.95);
+          background: #111C22;
+          border: 1px solid #1E3A3A;
           border-radius: 24px;
           padding: 16px 20px;
           text-align: center;
-          box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
+          box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
           z-index: 5;
         }
 
@@ -290,7 +290,7 @@ export default function About() {
           font-family: var(--font-display);
           font-size: 1.35rem;
           font-weight: 900;
-          color: #0F172A;
+          color: #F8FAFC;
           letter-spacing: -0.025em;
           margin: 0;
         }
@@ -299,7 +299,7 @@ export default function About() {
           font-family: var(--font-body);
           font-size: 0.84rem;
           font-style: italic;
-          color: #475569;
+          color: #94A3B8;
           font-weight: 600;
           margin: 3px 0 0 0;
         }
@@ -318,10 +318,14 @@ export default function About() {
         .about-main-title {
           font-size: clamp(2.3rem, 4.4vw, 3.4rem);
           font-weight: 900;
-          color: #0F172A;
+          color: #F8FAFC;
           letter-spacing: -0.035em;
           line-height: 1.12;
           margin: 0;
+        }
+
+        [data-theme="light"] .about-main-title {
+          color: #0F172A !important;
         }
 
         .about-content-block {
@@ -333,16 +337,24 @@ export default function About() {
         .about-block-heading {
           font-size: 1.22rem;
           font-weight: 800;
-          color: #0F172A;
+          color: #F8FAFC;
           letter-spacing: -0.02em;
           margin: 0;
         }
 
+        [data-theme="light"] .about-block-heading {
+          color: #0F172A !important;
+        }
+
         .about-profile-text {
           font-size: 0.98rem;
-          color: #475569;
+          color: #94A3B8;
           line-height: 1.72;
           margin: 0;
+        }
+
+        [data-theme="light"] .about-profile-text {
+          color: #475569 !important;
         }
 
         /* Timeline / Connected Nodes */
@@ -375,18 +387,18 @@ export default function About() {
         }
 
         .node-blue {
-          background: #2563EB;
-          box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.18);
+          background: #14B8A6;
+          box-shadow: 0 0 0 4px rgba(20, 184, 166, 0.2);
         }
 
         .node-indigo {
-          background: #4F46E5;
-          box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.18);
+          background: #0F766E;
+          box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.2);
         }
 
         .timeline-connector {
           width: 2px;
-          background: rgba(203, 213, 225, 0.8);
+          background: #1E3A3A;
           flex-grow: 1;
           margin: 4px 0;
         }
@@ -396,11 +408,15 @@ export default function About() {
         }
 
         .about-timeline-content p {
-          font-size: 0.92rem;
-          color: #334155;
-          line-height: 1.55;
+          font-size: 0.94rem;
+          color: #E2E8F0;
+          line-height: 1.6;
           margin: 0;
           font-weight: 500;
+        }
+
+        [data-theme="light"] .about-timeline-content p {
+          color: #334155;
         }
 
         /* Responsive */

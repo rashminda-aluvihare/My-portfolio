@@ -61,12 +61,12 @@ export default function StarDotsBackground() {
         ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
 
         ctx.fillStyle = s.isOrange
-          ? `rgba(37, 99, 235, ${Math.max(0.1, s.alpha * 0.85)})`
-          : `rgba(255, 255, 255, ${Math.max(0.08, s.alpha * 0.65)})`;
+          ? `rgba(20, 184, 166, ${Math.max(0.1, s.alpha * 0.85)})`
+          : `rgba(248, 250, 252, ${Math.max(0.08, s.alpha * 0.65)})`;
 
         if (s.radius > 1.2 && s.isOrange) {
           ctx.shadowBlur = 6;
-          ctx.shadowColor = '#2563EB';
+          ctx.shadowColor = '#14B8A6';
         }
         ctx.fill();
         ctx.shadowBlur = 0;

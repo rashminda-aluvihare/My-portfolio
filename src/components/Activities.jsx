@@ -189,7 +189,7 @@ export default function Activities() {
                         >
                           <div
                             style={{
-                              background: '#2563EB',
+                              background: '#14B8A6',
                               padding: '8px 16px',
                               borderRadius: '999px',
                               color: '#fff',
@@ -199,7 +199,7 @@ export default function Activities() {
                               fontSize: '0.8rem',
                               fontWeight: 700,
                               fontFamily: 'var(--font-display)',
-                              boxShadow: '0 4px 14px rgba(37, 99, 235, 0.4)',
+                              boxShadow: '0 4px 14px rgba(20, 184, 166, 0.4)',
                             }}
                           >
                             <Maximize2 size={14} /> Zoom Photo
@@ -469,7 +469,7 @@ export default function Activities() {
           >
             <div style={{ color: '#FFFFFF', fontWeight: 800, fontSize: '1.1rem', fontFamily: 'var(--font-display)' }}>
               {activeGallery.title}{' '}
-              <span style={{ color: '#60A5FA', fontSize: '0.9rem', fontWeight: 700 }}>
+              <span style={{ color: '#2DD4BF', fontSize: '0.9rem', fontWeight: 700 }}>
                 ({activeGallery.currentIndex + 1}/{activeGallery.images.length})
               </span>
             </div>
@@ -619,31 +619,31 @@ export default function Activities() {
           font-size: 0.86rem;
           font-weight: 700;
           font-family: var(--font-display);
-          color: #2563EB;
-          background: rgba(37, 99, 235, 0.08);
-          border: 1px solid rgba(37, 99, 235, 0.22);
+          color: #14B8A6;
+          background: rgba(20, 184, 166, 0.08);
+          border: 1px solid rgba(20, 184, 166, 0.22);
           cursor: pointer;
           transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
           margin-top: 4px;
         }
 
         .activity-details-toggle-btn:hover {
-          background: rgba(37, 99, 235, 0.16);
-          border-color: #2563EB;
+          background: rgba(20, 184, 166, 0.16);
+          border-color: #14B8A6;
           transform: translateY(-1px);
-          box-shadow: 0 4px 14px rgba(37, 99, 235, 0.12);
+          box-shadow: 0 4px 14px rgba(20, 184, 166, 0.16);
         }
 
         [data-theme="dark"] .activity-details-toggle-btn {
-          color: #60A5FA;
-          background: rgba(37, 99, 235, 0.18);
-          border-color: rgba(96, 165, 250, 0.32);
+          color: #2DD4BF;
+          background: rgba(20, 184, 166, 0.14);
+          border-color: #1E3A3A;
         }
 
         [data-theme="dark"] .activity-details-toggle-btn:hover {
-          background: rgba(37, 99, 235, 0.3);
-          border-color: #60A5FA;
-          box-shadow: 0 4px 16px rgba(37, 99, 235, 0.25);
+          background: rgba(20, 184, 166, 0.25);
+          border-color: #2DD4BF;
+          box-shadow: 0 4px 16px rgba(20, 184, 166, 0.25);
         }
 
         /* Expanded Details Section */
@@ -679,15 +679,15 @@ export default function Activities() {
         }
 
         .outcome-box {
-          background: rgba(16, 185, 129, 0.08);
-          border: 1px solid rgba(16, 185, 129, 0.2);
-          border-left: 3.5px solid #10B981;
+          background: rgba(20, 184, 166, 0.08);
+          border: 1px solid rgba(20, 184, 166, 0.2);
+          border-left: 3.5px solid #14B8A6;
         }
 
         [data-theme="dark"] .outcome-box {
-          background: rgba(16, 185, 129, 0.12);
-          border-color: rgba(16, 185, 129, 0.3);
-          border-left-color: #10B981;
+          background: rgba(20, 184, 166, 0.12);
+          border-color: #1E3A3A;
+          border-left-color: #14B8A6;
         }
 
         .activity-box-label {
@@ -702,20 +702,20 @@ export default function Activities() {
         }
 
         .outcome-label {
-          color: #059669;
+          color: #0F766E;
         }
 
         [data-theme="dark"] .outcome-label {
-          color: #34D399;
+          color: #2DD4BF;
         }
 
         .activity-role-pill {
           display: inline-block;
           font-size: 0.74rem;
           font-weight: 700;
-          color: #2563EB;
-          background: rgba(37, 99, 235, 0.1);
-          border: 1px solid rgba(37, 99, 235, 0.2);
+          color: #14B8A6;
+          background: rgba(20, 184, 166, 0.1);
+          border: 1px solid rgba(20, 184, 166, 0.22);
           padding: 2px 8px;
           border-radius: 6px;
           margin-bottom: 6px;
@@ -723,9 +723,9 @@ export default function Activities() {
         }
 
         [data-theme="dark"] .activity-role-pill {
-          color: #93C5FD;
-          background: rgba(37, 99, 235, 0.2);
-          border-color: rgba(96, 165, 250, 0.3);
+          color: #2DD4BF;
+          background: rgba(20, 184, 166, 0.18);
+          border-color: #1E3A3A;
         }
 
         .activity-box-text {

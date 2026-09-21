@@ -103,7 +103,7 @@ export default function Education() {
                         }}
                       />
                     ) : (
-                      <GraduationCap size={28} color="#2563EB" />
+                      <GraduationCap size={28} color="#14B8A6" />
                     )}
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>

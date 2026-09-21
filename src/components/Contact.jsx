@@ -198,17 +198,17 @@ export default function Contact() {
               >
                 <div
                   style={{
-                    background: '#EFF6FF',
+                    background: 'rgba(20, 184, 166, 0.12)',
                     padding: '18px',
                     borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    border: '1.5px solid rgba(37, 99, 235, 0.25)',
-                    boxShadow: '0 8px 24px rgba(37, 99, 235, 0.15)',
+                    border: '1.5px solid rgba(20, 184, 166, 0.25)',
+                    boxShadow: '0 8px 24px rgba(20, 184, 166, 0.2)',
                   }}
                 >
-                  <CheckCircle2 size={46} style={{ color: '#2563EB' }} />
+                  <CheckCircle2 size={46} style={{ color: '#14B8A6' }} />
                 </div>
                 <h3 style={{ fontSize: '1.5rem', fontWeight: 800, color: 'var(--color-text-primary)', margin: 0 }}>Message Sent Successfully!</h3>
                 <p style={{ color: 'var(--color-text-secondary)', maxWidth: '420px', fontSize: '0.96rem', lineHeight: 1.6 }}>
@@ -351,13 +351,13 @@ export default function Contact() {
           background: radial-gradient(circle, rgba(219, 234, 254, 0.45) 0%, rgba(255, 255, 255, 0) 70%);
         }
         [data-theme="dark"] .contact-ambient-glow-1 {
-          background: radial-gradient(circle, rgba(37, 99, 235, 0.16) 0%, rgba(11, 15, 25, 0) 70%);
+          background: radial-gradient(circle, rgba(20, 184, 166, 0.16) 0%, rgba(11, 20, 25, 0) 70%);
         }
         .contact-ambient-glow-2 {
           background: radial-gradient(circle, rgba(237, 233, 254, 0.45) 0%, rgba(255, 255, 255, 0) 70%);
         }
         [data-theme="dark"] .contact-ambient-glow-2 {
-          background: radial-gradient(circle, rgba(124, 58, 237, 0.14) 0%, rgba(11, 15, 25, 0) 70%);
+          background: radial-gradient(circle, rgba(15, 118, 110, 0.16) 0%, rgba(11, 20, 25, 0) 70%);
         }
 
         .contact-main-grid {
@@ -376,8 +376,8 @@ export default function Contact() {
         }
 
         [data-theme="dark"] .contact-card-white {
-          background: #111827;
-          border-color: rgba(255, 255, 255, 0.1);
+          background: #111C22;
+          border-color: #1E3A3A;
           box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
         }
 
@@ -407,21 +407,21 @@ export default function Contact() {
         }
 
         [data-theme="dark"] .contact-input-light {
-          background: #0B0F19;
-          border-color: rgba(255, 255, 255, 0.12);
+          background: #0B1419;
+          border-color: #1E3A3A;
           color: #F8FAFC;
         }
 
         .contact-input-light:focus {
           background: #FFFFFF;
-          border-color: #2563EB;
-          box-shadow: 0 0 0 3.5px rgba(37, 99, 235, 0.12);
+          border-color: #14B8A6;
+          box-shadow: 0 0 0 3.5px rgba(20, 184, 166, 0.15);
         }
 
         [data-theme="dark"] .contact-input-light:focus {
-          background: #111827;
-          border-color: #3B82F6;
-          box-shadow: 0 0 0 3.5px rgba(59, 130, 246, 0.2);
+          background: #111C22;
+          border-color: #14B8A6;
+          box-shadow: 0 0 0 3.5px rgba(20, 184, 166, 0.25);
         }
 
         .contact-submit-btn {
@@ -431,7 +431,7 @@ export default function Contact() {
           font-weight: 700;
           font-family: var(--font-display);
           color: #FFFFFF;
-          background: linear-gradient(135deg, #2563EB 0%, #4F46E5 50%, #7C3AED 100%);
+          background: linear-gradient(135deg, #14B8A6 0%, #0F766E 100%);
           border: none;
           border-radius: 12px;
           cursor: pointer;
@@ -439,14 +439,14 @@ export default function Contact() {
           align-items: center;
           justify-content: center;
           gap: 10px;
-          box-shadow: 0 8px 24px rgba(37, 99, 235, 0.35);
+          box-shadow: 0 8px 24px rgba(20, 184, 166, 0.35);
           transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
           margin-top: 4px;
         }
 
         .contact-submit-btn:hover {
           transform: translateY(-2px);
-          box-shadow: 0 12px 30px rgba(37, 99, 235, 0.48);
+          box-shadow: 0 12px 30px rgba(20, 184, 166, 0.48);
         }
 
         .channel-card-link {
@@ -466,8 +466,8 @@ export default function Contact() {
         }
 
         [data-theme="dark"] .channel-card-link {
-          background: #111827;
-          border-color: rgba(255, 255, 255, 0.09);
+          background: #111C22;
+          border-color: #1E3A3A;
           color: #F8FAFC;
           box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
         }
@@ -481,24 +481,24 @@ export default function Contact() {
         }
 
         [data-theme="dark"] .box-blue {
-          background: rgba(37, 99, 235, 0.2) !important;
-          color: #60A5FA !important;
+          background: rgba(20, 184, 166, 0.18) !important;
+          color: #14B8A6 !important;
         }
 
         [data-theme="dark"] .box-emerald {
-          background: rgba(16, 185, 129, 0.2) !important;
-          color: #34D399 !important;
+          background: rgba(45, 212, 191, 0.18) !important;
+          color: #2DD4BF !important;
         }
 
         .channel-card-link:hover {
           transform: translateY(-3px);
-          border-color: #2563EB;
-          box-shadow: 0 10px 25px rgba(37, 99, 235, 0.12);
+          border-color: #14B8A6;
+          box-shadow: 0 10px 25px rgba(20, 184, 166, 0.15);
         }
 
         .channel-card-link:hover .channel-arrow {
           transform: translateX(3px);
-          color: #2563EB;
+          color: #14B8A6;
         }
 
         .channel-icon-box {
@@ -511,8 +511,8 @@ export default function Contact() {
           flex-shrink: 0;
         }
 
-        .box-blue { background: #EFF6FF; color: #2563EB; }
-        .box-emerald { background: #ECFDF5; color: #10B981; }
+        .box-blue { background: rgba(20, 184, 166, 0.1); color: #14B8A6; }
+        .box-emerald { background: rgba(15, 118, 110, 0.1); color: #0F766E; }
 
         .channel-label {
           display: block;

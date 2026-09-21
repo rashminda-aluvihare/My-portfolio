@@ -9,7 +9,6 @@ export default function Experience() {
       role: 'Internship Trainee',
       company: "People's Bank Sri Lanka",
       logo: peoplesBankLogo,
-      companyType: 'Commercial Banking Institution',
       location: 'Ukuwela Branch, Sri Lanka',
       duration: 'Jan 2024 - Jul 2024',
       type: 'Bank Internship',
@@ -85,7 +84,7 @@ export default function Experience() {
                         }}
                       />
                     ) : (
-                      <Briefcase size={26} color="#2563EB" />
+                      <Briefcase size={26} color="#14B8A6" />
                     )}
                   </div>
                   <div>
@@ -93,7 +92,7 @@ export default function Experience() {
                       {exp.role}
                     </h3>
                     <h4 style={{ fontSize: '1.02rem', color: 'var(--color-text-secondary)', fontWeight: 600, marginTop: '2px' }}>
-                      {exp.company} &bull; <span style={{ color: 'var(--color-text-muted)' }}>{exp.companyType}</span>
+                      {exp.company}
                     </h4>
                   </div>
                 </div>
