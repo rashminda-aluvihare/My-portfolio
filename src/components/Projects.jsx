@@ -225,7 +225,7 @@ export default function Projects() {
   return (
     <section id="projects" className="section section-light" style={{ position: 'relative', overflow: 'hidden', padding: '90px 0' }}>
       <div className="container" style={{ maxWidth: '1280px' }}>
-        {/* Section Header with 'View all projects ↗' and Navigation Buttons */}
+        {/* Section Header with 'View all projects' and Navigation Buttons */}
         <div
           style={{
             display: 'flex',
