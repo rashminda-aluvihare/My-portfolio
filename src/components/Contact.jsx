@@ -15,16 +15,43 @@ export default function Contact() {
   });
 
   const [status, setStatus] = useState('idle');
+  const [emailError, setEmailError] = useState('');
+
+  const isValidGmail = (val) => {
+    return /^[a-zA-Z0-9._%+-]+@gmail\.com$/i.test(val.trim());
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+
+    if (name === 'email' && emailError) {
+      if (!value.trim() || isValidGmail(value)) {
+        setEmailError('');
+      }
+    }
+  };
+
+  const handleEmailBlur = (e) => {
+    const val = e.target.value.trim();
+    if (val && !isValidGmail(val)) {
+      setEmailError('Please enter a valid Gmail address (must end with @gmail.com)');
+    } else {
+      setEmailError('');
+    }
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.message) return;
+    const emailVal = formData.email.trim();
+    if (!formData.name.trim() || !emailVal || !formData.message.trim()) return;
 
+    if (!isValidGmail(emailVal)) {
+      setEmailError('Please enter a valid Gmail address (must end with @gmail.com)');
+      return;
+    }
+
+    setEmailError('');
     setStatus('sending');
 
     try {
@@ -259,7 +286,7 @@ export default function Contact() {
                     value={formData.name}
                     onChange={handleInputChange}
                     className="contact-input-light"
-                    placeholder="e.g. Kasun Perera"
+                    placeholder="Kasun Perera"
                   />
                 </div>
 
@@ -273,11 +300,19 @@ export default function Contact() {
                     id="email"
                     name="email"
                     required
+                    pattern="[a-zA-Z0-9._%+\-]+@gmail\.com"
+                    title="Please enter a valid Gmail address (must end with @gmail.com)"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="contact-input-light"
-                    placeholder="e.g. kasun@example.com"
+                    onBlur={handleEmailBlur}
+                    className={`contact-input-light ${emailError ? 'contact-input-error' : ''}`}
+                    placeholder="kasun@gmail.com"
                   />
+                  {emailError && (
+                    <span className="contact-error-msg">
+                      {emailError}
+                    </span>
+                  )}
                 </div>
 
                 {/* Subject */}
@@ -292,6 +327,7 @@ export default function Contact() {
                     value={formData.subject}
                     onChange={handleInputChange}
                     className="contact-input-light"
+                    placeholder="Project inquiry or discussion"
                   />
                 </div>
 
@@ -422,6 +458,22 @@ export default function Contact() {
           background: #111C22;
           border-color: #14B8A6;
           box-shadow: 0 0 0 3.5px rgba(20, 184, 166, 0.25);
+        }
+
+        .contact-input-error,
+        .contact-input-error:focus {
+          border-color: #EF4444 !important;
+          box-shadow: 0 0 0 3.5px rgba(239, 68, 68, 0.2) !important;
+        }
+
+        .contact-error-msg {
+          color: #EF4444;
+          font-size: 0.8rem;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          gap: 5px;
+          animation: fadeIn 0.2s ease-in-out;
         }
 
         .contact-submit-btn {

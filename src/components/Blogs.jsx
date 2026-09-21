@@ -8,17 +8,24 @@ const RSS_API_URL = `https://api.rss2json.com/v1/api.json?rss_url=https://medium
 // Reliable fallback so the section is never empty
 const FALLBACK_BLOGS = [
   {
+    title: 'How E-Wallets Work: The Role of Tokenization in Digital Payments',
+    pubDate: '2026-09-21 12:08:14',
+    link: 'https://medium.com/@rashmindaluvihare/how-e-wallets-work-the-role-of-tokenization-in-digital-payments-029e24889091',
+    thumbnail: '/ewallet_tokenization.png',
+    readTime: '3 min read',
+  },
+  {
     title: 'Business Process Reengineering vs. Continuous Improvement',
     pubDate: '2026-09-13 13:10:01',
-    link: 'https://medium.com/@rashmindaluvihare/business-process-reengineering-vs-continuous-improvement-22ebf5bbf0b1?source=rss-ac72ecc3419e------2',
-    thumbnail: 'https://cdn-images-1.medium.com/max/1024/1*01nzBJ59N3dfY6NiE1g1qQ.png',
+    link: 'https://medium.com/@rashmindaluvihare/business-process-reengineering-vs-continuous-improvement-22ebf5bbf0b1',
+    thumbnail: '/bpr_vs_ci.png',
     readTime: '4 min read',
   },
 ];
 
 export default function Blogs() {
   const [blogs, setBlogs] = useState(FALLBACK_BLOGS);
-  const [loading, setLoading] = useState(true);
+  const [_loading, setLoading] = useState(true);
 
   // Helper to extract cover image from content or description if thumbnail field is empty
   const extractThumbnail = (item) => {
@@ -30,7 +37,10 @@ export default function Blogs() {
     if (match && match[1]) {
       return match[1];
     }
-    return 'https://cdn-images-1.medium.com/max/1024/1*01nzBJ59N3dfY6NiE1g1qQ.png';
+    if (item.title && item.title.toLowerCase().includes('tokenization')) {
+      return '/ewallet_tokenization.png';
+    }
+    return '/bpr_vs_ci.png';
   };
 
   // Helper to estimate reading time
@@ -54,13 +64,31 @@ export default function Blogs() {
           const parsedBlogs = data.items.map((item) => ({
             title: item.title,
             pubDate: item.pubDate,
-            link: item.link,
+            link: item.link ? item.link.split('?')[0] : '',
             thumbnail: extractThumbnail(item),
             readTime: calculateReadTime(item),
           }));
 
+          // Merge live fetched items with static FALLBACK_BLOGS so static fallback items are retained
+          // even if the external RSS-to-JSON service returns stale or partial items.
+          const blogsMap = new Map();
+          parsedBlogs.forEach((blog) => {
+            const key = blog.title.toLowerCase().trim();
+            blogsMap.set(key, blog);
+          });
+
+          FALLBACK_BLOGS.forEach((blog) => {
+            const key = blog.title.toLowerCase().trim();
+            if (!blogsMap.has(key)) {
+              blogsMap.set(key, blog);
+            }
+          });
+
+          const mergedBlogs = Array.from(blogsMap.values());
+          mergedBlogs.sort((a, b) => new Date(b.pubDate) - new Date(a.pubDate));
+
           if (isMounted) {
-            setBlogs(parsedBlogs);
+            setBlogs(mergedBlogs);
           }
         }
       } catch (err) {
@@ -131,6 +159,14 @@ export default function Blogs() {
                     className="blog-thumb-img"
                     loading="lazy"
                     decoding="async"
+                    onError={(e) => {
+                      e.currentTarget.onerror = null;
+                      if (blog.title && blog.title.toLowerCase().includes('tokenization')) {
+                        e.currentTarget.src = '/ewallet_tokenization.png';
+                      } else {
+                        e.currentTarget.src = '/bpr_vs_ci.png';
+                      }
+                    }}
                   />
                 </a>
 

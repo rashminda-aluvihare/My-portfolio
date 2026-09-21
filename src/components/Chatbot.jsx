@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Bot, X, Send, Sparkles, RefreshCw, MessageSquare, ArrowRight, User, ExternalLink, Mail, Phone } from 'lucide-react';
+import { X, Send, Sparkles, RefreshCw, ExternalLink } from 'lucide-react';
 import chatbotAvatar from '../assets/chatbot_avatar.png';
 
 export default function Chatbot() {
@@ -19,7 +19,7 @@ export default function Chatbot() {
         '👨‍💻 Who is Rashminda?',
         '⚡ Technical Skills',
         '🚀 Projects & Work',
-        '💼 Work Experience',
+        '📝 Blogs & Articles',
         '📩 How to Contact?'
       ]
     }
@@ -96,7 +96,16 @@ export default function Chatbot() {
       };
     }
 
-    // 5. Contact / Hire / Phone / Email / WhatsApp
+    // 5. Blogs / Articles / Medium Publications
+    if (text.match(/(blog|article|medium|post|publication|tokenization|e-wallet|reengineering|writing|read)/i)) {
+      return {
+        text: "📝 **Rashminda's Articles on Medium**:\n\n1. 💳 **How E-Wallets Work: The Role of Tokenization in Digital Payments**\n   - Demystifying how payment tokenization (PAN replacement, network tokens) secures mobile transactions.\n2. 🔄 **Business Process Reengineering vs. Continuous Improvement**\n   - A Business Analyst's guide to choosing between radical transformation (BPR) and incremental enhancement (CI).",
+        actionBtn: { label: 'Explore Blogs Section', targetId: 'blogs' },
+        suggestions: ['🚀 View Projects', '⚡ Technical Skills', '📩 Contact Info']
+      };
+    }
+
+    // 6. Contact / Hire / Phone / Email / WhatsApp
     if (text.match(/(contact|hire|email|phone|whatsapp|number|reach|message|call|mail|connect)/i)) {
       return {
         text: "📩 **Contact Information**:\n\n• 📧 **Email**: rashmindaluvihare@gmail.com\n• 📱 **WhatsApp / Direct Line**: +94 77 974 3901\n• 📍 **Location**: Sri Lanka\n\nYou can also send a direct message through the Contact section on this website!",
