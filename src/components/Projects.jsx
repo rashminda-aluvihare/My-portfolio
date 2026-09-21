@@ -50,8 +50,7 @@ export default function Projects() {
     {
       id: 'agronexa',
       index: '01',
-      categoryLabel: 'BA & PM LEAD / AGRI-FINTECH',
-      title: 'AgroNexa LK — Smart Farming & Supply Chain Ledger',
+      title: 'AgroNexa LK - Smart Farming Platform with Blockchain-Inspired Technology for Sri Lanka ',
       description: 'Led end-to-end planning, multi-role stakeholder elicitation (Farmer, Buyer, Equipment Owner), KYC workflows, and cryptographic ledger integrity.',
       tags: ['BA & PM Lead', 'React.js', 'Node.js', 'PostgreSQL', 'SHA-256 Ledger'],
       github: 'https://github.com/rashminda-aluvihare/agronexa-lk',
@@ -61,8 +60,7 @@ export default function Projects() {
     {
       id: 'finbridge',
       index: '02',
-      categoryLabel: 'AI FINTECH / COMMERCIAL LENDING',
-      title: 'FinBridge — AI-Powered Credit Scoring & Lending Platform',
+      title: 'FinBridge - AI-Based Personal Financial Health & Loan Risk Assessment Platform',
       description: 'Engineered an alternative 300–850 credit risk model, Grameen group lending workflows, trilingual i18n support, and real-time EMI repayment schedules.',
       tags: ['Next.js 16', 'React 19', 'TypeScript', 'Credit Scoring', 'Grameen Lending'],
       github: 'https://github.com/rashminda-aluvihare/finbridge',
@@ -72,8 +70,7 @@ export default function Projects() {
     {
       id: 'fund-management',
       index: '03',
-      categoryLabel: 'CUSTOM SOFTWARE / FINANCIAL MANAGEMENT',
-      title: 'Fund Management System — HNDIT Enterprise Platform',
+      title: 'Fund Management System - HNDIT Enterprise Platform',
       description: 'Coordinated team scope, structured role-based contributions & expense logging, modeled transparent accounting workflows, and delivered full SRS.',
       tags: ['Scope Coordination', 'SRS Documentation', 'PHP 8', 'MySQL', 'Role Dashboards'],
       github: 'https://github.com/suneththivanka128/FundManagementSystem-v2',
@@ -83,8 +80,7 @@ export default function Projects() {
     {
       id: 'portfolio-website',
       index: '04',
-      categoryLabel: 'WEB PLATFORM / INTERACTIVE ENGINE',
-      title: 'Rashminda Aluvihare — BA & PM Portfolio Showcase',
+      title: 'Rashminda Aluvihare - Portfolio Showcase',
       description: 'High-speed editorial portfolio built with React 19, Vite, and custom CSS design systems, featuring BA & PM deliverables and interactive case studies.',
       tags: ['React 19', 'Vite', 'Design System', 'Case Studies Modal'],
       github: 'https://github.com/rashminda-aluvihare/My-portfolio',
@@ -94,8 +90,7 @@ export default function Projects() {
     {
       id: 'fixed-deposit',
       index: '05',
-      categoryLabel: 'CORE BANKING / JAVA SE',
-      title: 'Fixed Deposit Calculation & Maturity Engine',
+      title: 'Fixed Deposit Calculation System',
       description: "Desktop banking suite modeled on People's Bank fixed deposit schemes, computing compound interest, maturity values, and statutory tax deductions.",
       tags: ['Java SE', 'Commercial Banking Formulas', 'OOP Architecture', 'Maturity Modeling'],
       github: 'https://github.com/rashminda-aluvihare/FixedDepositCalculation-System',
@@ -105,8 +100,7 @@ export default function Projects() {
     {
       id: 'loan-savings',
       index: '06',
-      categoryLabel: 'FINANCIAL MODELING / JAVA SE',
-      title: 'Savings & Loan Amortization Calculation Suite',
+      title: 'Saving & Loan Amortization Calculation System',
       description: "Automated loan EMI, reducing-balance interest formulas, and structured repayment schedules inspired by People's Bank commercial lending operations.",
       tags: ['Java SE', 'OOP Architecture', 'Loan EMI & Repayment', 'Reducing-Balance'],
       github: 'https://github.com/rashminda-aluvihare/Savingaccounts-LoancalculationSystem',
@@ -151,9 +145,11 @@ export default function Projects() {
 
       {/* 2. Card Content Body */}
       <div className="project-card-body">
-        <div className="project-card-category">
-          {project.categoryLabel}
-        </div>
+        {project.categoryLabel && (
+          <div className="project-card-category">
+            {project.categoryLabel}
+          </div>
+        )}
 
         <h3 className="project-card-title">
           {project.title}
