@@ -58,7 +58,7 @@ export default function About() {
               <div className="about-portrait-frame">
                 <img
                   src={aboutProfileImg}
-                  alt="Rashminda Aluvihare - Business Analyst"
+                  alt="Rashminda Aluvihare - Aspiring Business Analyst & IT Project Manager"
                   className="about-portrait-img"
                   loading="eager"
                 />
@@ -67,7 +67,7 @@ export default function About() {
               {/* Bottom Overlapping Curved Podium Card */}
               <div className="about-podium-card">
                 <h3 className="about-podium-name">Rashminda Aluvihare</h3>
-                <p className="about-podium-role">Business Analyst &amp; Aspiring IT Project Manager</p>
+                <p className="about-podium-role">Aspiring Business Analyst &amp; IT Project Manager</p>
               </div>
             </div>
           </div>
