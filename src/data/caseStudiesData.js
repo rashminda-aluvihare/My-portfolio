@@ -289,7 +289,7 @@ export const caseStudiesData = {
     subtitle: 'Digitizing physical workshop operations with an automated timber & labor quotation engine and a trilingual web portal.',
     date: null,
     image: vaduMaduwaImg,
-    github: 'https://github.com/rashminda-aluvihare/vadu-maduwa',
+    github: 'https://github.com/DishmiDahara/Vadu-Maduwa-Carpentry-System',
     demo: null,
     collaborator: 'Co-developed with Dishmi Dahara (University Colleague)',
     tags: [
