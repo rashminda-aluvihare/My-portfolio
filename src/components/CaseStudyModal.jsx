@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { X, AlertTriangle, Layers, ExternalLink, Calendar, CheckCircle2 } from 'lucide-react';
+import { X, AlertTriangle, Layers, ExternalLink, Calendar, CheckCircle2, Users } from 'lucide-react';
 
 export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
   // Handle ESC key press to close modal
@@ -81,37 +81,43 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: '6px', minWidth: 0 }}>
             {/* Category & Date badges */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
-              <span
-                style={{
-                  fontSize: '0.72rem',
-                  fontWeight: 800,
-                  textTransform: 'uppercase',
-                  letterSpacing: '0.06em',
-                  color: '#14B8A6',
-                  background: 'rgba(20, 184, 166, 0.1)',
-                  border: '1px solid rgba(20, 184, 166, 0.25)',
-                  padding: '4px 12px',
-                  borderRadius: '20px',
-                  fontFamily: 'var(--font-display)',
-                }}
-              >
-                {caseStudy.category}
-              </span>
-              <span
-                style={{
-                  fontSize: '0.78rem',
-                  fontWeight: 600,
-                  color: 'var(--text-muted)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '5px',
-                }}
-              >
-                <Calendar size={13} />
-                {caseStudy.date}
-              </span>
-            </div>
+            {(caseStudy.category || caseStudy.date) && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px', flexWrap: 'wrap' }}>
+                {caseStudy.category && (
+                  <span
+                    style={{
+                      fontSize: '0.72rem',
+                      fontWeight: 800,
+                      textTransform: 'uppercase',
+                      letterSpacing: '0.06em',
+                      color: '#14B8A6',
+                      background: 'rgba(20, 184, 166, 0.1)',
+                      border: '1px solid rgba(20, 184, 166, 0.25)',
+                      padding: '4px 12px',
+                      borderRadius: '20px',
+                      fontFamily: 'var(--font-display)',
+                    }}
+                  >
+                    {caseStudy.category}
+                  </span>
+                )}
+                {caseStudy.date && (
+                  <span
+                    style={{
+                      fontSize: '0.78rem',
+                      fontWeight: 600,
+                      color: 'var(--text-muted)',
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '5px',
+                    }}
+                  >
+                    <Calendar size={13} />
+                    {caseStudy.date}
+                  </span>
+                )}
+              </div>
+            )}
 
             {/* Title */}
             <h2
@@ -258,6 +264,27 @@ export default function CaseStudyModal({ caseStudy, onClose, onOpenDemo }) {
                   </h3>
                 </div>
               </div>
+
+              {caseStudy.collaborator && (
+                <div
+                  style={{
+                    display: 'inline-flex',
+                    alignItems: 'center',
+                    gap: '8px',
+                    background: 'rgba(20, 184, 166, 0.12)',
+                    border: '1px solid rgba(20, 184, 166, 0.32)',
+                    padding: '6px 14px',
+                    borderRadius: '10px',
+                    width: 'fit-content',
+                    fontSize: '0.84rem',
+                    fontWeight: 700,
+                    color: '#2DD4BF',
+                  }}
+                >
+                  <Users size={16} />
+                  <span>{caseStudy.collaborator}</span>
+                </div>
+              )}
 
               <p style={{ color: 'var(--text-secondary)', fontSize: '0.96rem', lineHeight: 1.65 }}>
                 {caseStudy.contribution.description}

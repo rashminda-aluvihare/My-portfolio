@@ -55,9 +55,9 @@ export default function Chatbot() {
     }
 
     // 1. Projects / Case Studies / Work (check before generic about/rashminda)
-    if (text.match(/(project|work|app|portfolio|system|loan|fund|furniture|demo|built|make|created)/i)) {
+    if (text.match(/(project|work|app|portfolio|system|loan|fund|furniture|vadu|maduwa|carpentry|erp|demo|built|make|created)/i)) {
       return {
-        text: "🚀 **Featured Projects & Web Apps**:\n\n1. 🌾 **AgroNexa LK**: Smart Farming Platform with Blockchain Inspired Technology for Sri Lanka.\n2. 💰 **FinBridge**: AI-Based Personal Financial Health & Loan Risk Assessment Platform.\n3. 💰 **Fund Management System**: A web based fund management system for SLIATE HNDIT academic curriculum.\n🌐 **Personal Interactive Portfolio**: Glassmorphism UI built with React 19 & Vite.",
+        text: "🚀 **Featured Projects & Web Apps**:\n\n1. 🌾 **AgroNexa LK**: Smart Farming Platform with Blockchain Inspired Technology for Sri Lanka.\n2. 💰 **FinBridge**: AI-Based Personal Financial Health & Loan Risk Assessment Platform.\n3. 🪵 **Vadu Maduwa (වඩු මඩුව)**: Commercial Carpentry Workshop ERP & Trilingual Customer Portal.\n4. 💰 **Fund Management System**: Web-based fund management system for SLIATE HNDIT.\n🌐 **Personal Interactive Portfolio**: Glassmorphism UI built with React 19 & Vite.",
         actionBtn: { label: 'Go to Projects Section', targetId: 'projects' },
         suggestions: ['⚡ Tech Stack', '💼 Experience', '📩 Contact Info']
       };

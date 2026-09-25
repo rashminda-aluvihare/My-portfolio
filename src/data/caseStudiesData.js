@@ -5,6 +5,7 @@ import agronexaImg from '../assets/agronexa.png';
 import fixedDepositImg from '../assets/fixed_deposit.png';
 import loanSavingsImg from '../assets/loan_savings.png';
 import portfolioProjectImg from '../assets/portfolioproject.png';
+import vaduMaduwaImg from '../assets/vadumaduwa.png';
 
 export const caseStudiesData = {
   'finbridge': {
@@ -277,6 +278,60 @@ export const caseStudiesData = {
         { label: 'SEO Score', value: '100%', subtext: 'Structured JSON-LD' },
         { label: 'Design', value: 'Dark Glass', subtext: 'Custom CSS design system' },
         { label: 'Deployment', value: 'Vercel', subtext: 'CI/CD pipeline' }
+      ]
+    }
+  },
+
+  'vadu-maduwa': {
+    id: 'vadu-maduwa',
+    title: 'Vadu Maduwa (වඩු මඩුව) – Commercial Carpentry Workshop ERP & Customer Portal',
+    category: null,
+    subtitle: 'Digitizing physical workshop operations with an automated timber & labor quotation engine and a trilingual web portal.',
+    date: null,
+    image: vaduMaduwaImg,
+    github: 'https://github.com/rashminda-aluvihare/vadu-maduwa',
+    demo: null,
+    collaborator: 'Co-developed with Dishmi Dahara (University Colleague)',
+    tags: [
+      'Co-Developed',
+      'Client Project',
+      'Spring Boot',
+      'React.js',
+      'MySQL',
+      'Trilingual (EN|SI|TA)',
+      'Quotation Engine'
+    ],
+    contribution: {
+      title: 'Client Consultation & Collaborative Engineering',
+      description: 'Co-developed in collaboration with university colleague Dishmi Dahara. Engaged directly with the physical workshop owner and craftsmen to gather on-site business requirements and map out their day-to-day carpentry workflow. Together, we architected and engineered the entire solution—from custom UI/UX and trilingual localization in React to secure Spring Boot REST APIs and MySQL relational schema—transitioning the physical workshop from manual paper notebooks to a streamlined digital system.'
+    },
+    problem: {
+      title: 'Manual Workshop Operations & Digital Visibility Barriers',
+      description: 'The physical carpentry workshop was running entirely on manual record books, facing operational slowdowns and financial leakages. Custom furniture pricing was estimated through guesswork, customer advance payments frequently led to ledger disputes, and their business was restricted only to local walk-in clients due to a lack of online presence.',
+      points: [
+        'Pricing Inconsistencies: Calculating custom timber costs (Teak, Mahogany, Nadun) and craftsman daily wages manually often led to undercharging or delayed customer quotes.',
+        'Payment Ledger Disputes: Multi-stage orders (advance deposit -> progress payment -> balance upon delivery) lacked clear digital tracking and receipts.',
+        'Limited Walk-in Reach: No digital catalog to showcase completed custom interior projects or take online quote requests from distant clients.',
+        'Language Barrier: The workshop\'s local clientele required seamless interaction in native languages (Sinhala & Tamil) rather than traditional English-only portals.'
+      ]
+    },
+    process: {
+      title: 'Digitizing Workshop Operations with a High-Performance Full-Stack Platform',
+      description: 'Delivered a tailor-made ERP system combining a modern React frontend with a secure Java Spring Boot backend, designed specifically for non-technical workshop staff to use effortlessly on mobile and desktop devices.',
+      points: [
+        'Automated Material & Labor Quotation Engine: Built an itemized estimation tool that factors in timber volume, craftsmanship hours, and extra charges—instantly creating professional digital quotations.',
+        'Native Trilingual Client Web Portal: Implemented a localized interface supporting English (EN), සිංහල (SI), and தமிழ் (TA) to allow local customers to browse furniture collections and submit inquiries online.',
+        'Secure RESTful Architecture: Integrated Spring Security with JWT authentication to safeguard workshop financial data and customer information.'
+      ]
+    },
+    outcome: {
+      title: 'Workshop Digitization & Operational Milestones',
+      description: 'Successfully digitized manual workshop bookkeeping, eliminated customer billing discrepancies, and expanded online reach with a trilingual customer presence.',
+      metrics: [
+        { label: 'Paper Notebooks', value: '0 Logs', subtext: '100% paperless ERP' },
+        { label: 'Quote Speed', value: 'Instant', subtext: 'Automated timber math' },
+        { label: 'Localization', value: 'Trilingual', subtext: 'English, සිංහල, தமிழ்' },
+        { label: 'Tech Stack', value: 'Full-Stack', subtext: 'Spring Boot + React + MySQL' }
       ]
     }
   }

@@ -12,6 +12,7 @@ import agronexaImg from '../assets/agronexa.png';
 import fixedDepositImg from '../assets/fixed_deposit.png';
 import loanSavingsImg from '../assets/loan_savings.png';
 import portfolioProjectImg from '../assets/portfolioproject.png';
+import vaduMaduwaImg from '../assets/vadumaduwa.png';
 
 export default function Projects() {
   const [activeDemo, setActiveDemo] = useState(null);
@@ -106,6 +107,16 @@ export default function Projects() {
       github: 'https://github.com/rashminda-aluvihare/Savingaccounts-LoancalculationSystem',
       demo: 'loan-savings',
       image: loanSavingsImg,
+    },
+    {
+      id: 'vadu-maduwa',
+      index: '07',
+      title: 'Vadu Maduwa (වඩු මඩුව) - Commercial Carpentry Workshop ERP & Customer Portal',
+      description: 'Co-developed with university colleague Dishmi Dahara — engineered a custom full-stack ERP and trilingual web portal for a carpentry workshop in Sri Lanka, eliminating paper logs and automating timber estimations.',
+      tags: ['Co-Developed', 'Client Project', 'Spring Boot', 'React.js', 'MySQL', 'Trilingual (EN|SI|TA)', 'Quotation Engine'],
+      github: 'https://github.com/rashminda-aluvihare/vadu-maduwa',
+      demo: null,
+      image: vaduMaduwaImg,
     },
   ];
 
@@ -491,12 +502,20 @@ export default function Projects() {
         }
 
         .project-card-category {
+          display: inline-flex;
+          align-items: center;
+          align-self: flex-start;
           font-size: 0.68rem;
           font-weight: 800;
-          color: #14B8A6;
-          letter-spacing: 0.06em;
+          color: #0d9488;
+          background: rgba(20, 184, 166, 0.1);
+          border: 1px solid rgba(20, 184, 166, 0.25);
+          padding: 2.5px 8.5px;
+          border-radius: 999px;
+          letter-spacing: 0.05em;
           text-transform: uppercase;
           font-family: var(--font-display);
+          margin-bottom: 2px;
         }
 
         .project-card-title {
