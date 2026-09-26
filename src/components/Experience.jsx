@@ -54,10 +54,10 @@ export default function Experience() {
                   <div
                     className="experience-logo-box"
                     style={{
-                      background: 'var(--card-bg)',
+                      background: '#FFFFFF',
                       border: '1px solid var(--color-border)',
                       borderRadius: '14px',
-                      padding: '4px',
+                      padding: '5px',
                       width: '56px',
                       height: '56px',
                       display: 'flex',
@@ -65,7 +65,7 @@ export default function Experience() {
                       justifyContent: 'center',
                       flexShrink: 0,
                       overflow: 'hidden',
-                      boxShadow: '0 2px 8px rgba(0, 0, 0, 0.06)',
+                      boxShadow: '0 4px 12px rgba(0, 0, 0, 0.12)',
                     }}
                   >
                     {exp.logo ? (

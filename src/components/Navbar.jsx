@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import { Menu, X, Sun, Moon } from 'lucide-react';
 
 export default function Navbar({ theme = 'dark', toggleTheme }) {
@@ -208,52 +209,9 @@ export default function Navbar({ theme = 'dark', toggleTheme }) {
         </a>
       </div>
 
-      {/* Mobile Bar: Brand Link + Get in Touch + Theme Toggle + Hamburger Menu */}
-      <div className="mobile-bar-wrapper" style={{ display: 'none', alignItems: 'center', justifyContent: 'space-between', width: '100%', gap: '8px' }}>
-        {/* Brand Logo / Name */}
-        <a
-          href="#home"
-          className="mobile-brand-link"
-          style={{
-            display: 'inline-flex',
-            alignItems: 'center',
-            gap: '2px',
-            textDecoration: 'none',
-            fontFamily: 'var(--font-display)',
-            fontSize: '1.05rem',
-            fontWeight: 800,
-            color: isDark ? '#F8FAFC' : '#0F172A',
-            letterSpacing: '-0.02em',
-            padding: '4px 0',
-          }}
-        >
-          <span>Rashminda</span>
-          <span style={{ color: '#14B8A6' }}>.</span>
-        </a>
-
+      {/* Mobile Bar: Theme Toggle + Hamburger Menu */}
+      <div className="mobile-bar-wrapper" style={{ display: 'none', alignItems: 'center', gap: '8px' }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          {/* Header Contact CTA Button */}
-          <a
-            href="#contact"
-            className="mobile-header-contact-btn"
-            style={{
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: '4px',
-              background: 'linear-gradient(135deg, #14B8A6 0%, #0F766E 100%)',
-              color: '#FFFFFF',
-              textDecoration: 'none',
-              fontSize: '0.78rem',
-              fontWeight: 700,
-              padding: '7px 13px',
-              borderRadius: '999px',
-              boxShadow: '0 3px 10px rgba(20, 184, 166, 0.35)',
-              fontFamily: 'var(--font-display)',
-              whiteSpace: 'nowrap',
-            }}
-          >
-            <span>Touch</span>
-          </a>
 
           {/* Theme Toggle Button (Mobile) */}
           {toggleTheme && (
@@ -311,23 +269,20 @@ export default function Navbar({ theme = 'dark', toggleTheme }) {
         </div>
       </div>
 
-      {/* Backdrop overlay for Mobile Drawer */}
-      {isOpen && (
-        <div
-          onClick={() => setIsOpen(false)}
-          style={{
-            position: 'fixed',
-            inset: 0,
-            background: 'rgba(11, 20, 25, 0.65)',
-            backdropFilter: 'blur(4px)',
-            WebkitBackdropFilter: 'blur(4px)',
-            zIndex: 999,
-          }}
-        />
-      )}
-
-      {/* Mobile Navigation Drawer */}
-      {isOpen && (
+      {/* Backdrop overlay & Navigation Drawer for Mobile */}
+      {isOpen && typeof document !== 'undefined' && createPortal(
+        <>
+          <div
+            onClick={() => setIsOpen(false)}
+            style={{
+              position: 'fixed',
+              inset: 0,
+              background: 'rgba(11, 20, 25, 0.65)',
+              backdropFilter: 'blur(4px)',
+              WebkitBackdropFilter: 'blur(4px)',
+              zIndex: 99998,
+            }}
+          />
         <div
           className="mobile-drawer-box"
           style={{
@@ -459,20 +414,21 @@ export default function Navbar({ theme = 'dark', toggleTheme }) {
             <span>Get in Touch</span>
           </a>
         </div>
+        </>,
+        document.body
       )}
 
       <style>{`
         @media (max-width: 1024px) {
           nav.portfolio-navbar {
-            top: 12px !important;
-            left: 12px !important;
-            right: 12px !important;
+            top: 14px !important;
+            right: 14px !important;
+            left: auto !important;
             transform: none !important;
-            width: calc(100% - 24px) !important;
-            max-width: 100% !important;
+            width: auto !important;
+            max-width: max-content !important;
             border-radius: 999px !important;
-            padding: 7px 14px !important;
-            justify-content: space-between !important;
+            padding: 6px 8px !important;
             box-sizing: border-box !important;
           }
           .nav-links-desktop {
@@ -480,6 +436,8 @@ export default function Navbar({ theme = 'dark', toggleTheme }) {
           }
           .mobile-bar-wrapper {
             display: flex !important;
+            width: auto !important;
+            gap: 8px !important;
           }
         }
       `}</style>

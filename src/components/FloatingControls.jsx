@@ -30,7 +30,7 @@ export default function FloatingControls() {
           href="https://www.linkedin.com/in/rashminda-aluvihare/"
           target="_blank"
           rel="noreferrer"
-          className="floating-social-btn"
+          className="floating-social-btn floating-social-btn-1"
           aria-label="LinkedIn"
         >
           <svg viewBox="0 0 24 24" width="19" height="19" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -46,7 +46,7 @@ export default function FloatingControls() {
           href="https://github.com/rashminda-aluvihare"
           target="_blank"
           rel="noreferrer"
-          className="floating-social-btn"
+          className="floating-social-btn floating-social-btn-2"
           aria-label="GitHub"
         >
           <svg viewBox="0 0 24 24" width="19" height="19" stroke="currentColor" strokeWidth="2.2" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -59,7 +59,7 @@ export default function FloatingControls() {
         {/* Email */}
         <a
           href="mailto:rashmindaluvihare@gmail.com"
-          className="floating-social-btn"
+          className="floating-social-btn floating-social-btn-3"
           aria-label="Email"
         >
           <Mail size={19} strokeWidth={2.2} />
@@ -71,7 +71,7 @@ export default function FloatingControls() {
           href="https://wa.me/94779743901?text=Hi%20Rashminda,%20I%20saw%20your%20portfolio!"
           target="_blank"
           rel="noreferrer"
-          className="floating-social-btn"
+          className="floating-social-btn floating-social-btn-4"
           aria-label="WhatsApp"
         >
           <svg viewBox="0 0 24 24" width="19" height="19" fill="currentColor">

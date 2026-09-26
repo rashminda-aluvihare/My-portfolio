@@ -483,9 +483,9 @@
 }
 
 [data-theme="light"] .floating-social-btn {
-  background: #F1F5F9 !important;
-  border-color: #E2E8F0 !important;
-  color: #475569 !important;
+  background: #F1F5F9;
+  border-color: #E2E8F0;
+  color: #475569;
 }
 
 [data-theme="light"] .floating-social-btn:hover {
@@ -850,6 +850,75 @@ h6 {
   }
 }
 
+/* Staggered Entrance Pop */
+@keyframes socialEntrancePop {
+  0% {
+    opacity: 0;
+    transform: scale(0.2) translateY(10px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.2) translateY(-2px);
+  }
+  85% {
+    transform: scale(0.95) translateY(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Sequential Lighting Pop Wave (Dark Mode) */
+@keyframes sequentialLightingPopDark {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    border-color: #1E3A3A;
+    color: #94A3B8;
+    background: #16252E;
+  }
+  10% {
+    transform: scale(1.15);
+    box-shadow: 0 0 18px rgba(45, 212, 191, 0.8), 0 0 6px rgba(20, 184, 166, 0.95), inset 0 0 8px rgba(45, 212, 191, 0.35);
+    border-color: #2DD4BF;
+    color: #2DD4BF;
+    background: rgba(20, 184, 166, 0.2);
+  }
+  20% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    border-color: #1E3A3A;
+    color: #94A3B8;
+    background: #16252E;
+  }
+}
+
+/* Sequential Lighting Pop Wave (Light Mode) */
+@keyframes sequentialLightingPopLight {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+    border-color: #E2E8F0;
+    color: #475569;
+    background: #F1F5F9;
+  }
+  10% {
+    transform: scale(1.15);
+    box-shadow: 0 0 16px rgba(20, 184, 166, 0.65), 0 0 6px rgba(13, 148, 136, 0.85), inset 0 0 8px rgba(20, 184, 166, 0.2);
+    border-color: #14B8A6;
+    color: #0F766E;
+    background: rgba(20, 184, 166, 0.14);
+  }
+  20% {
+    transform: scale(1);
+    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+    border-color: #E2E8F0;
+    color: #475569;
+    background: #F1F5F9;
+  }
+}
+
 .floating-social-dock {
   position: fixed;
   right: 18px;
@@ -881,16 +950,65 @@ h6 {
   color: #94A3B8;
   background: #16252E;
   border: 1px solid #1E3A3A;
-  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
   text-decoration: none;
+  opacity: 0;
+  will-change: transform, box-shadow;
+}
+
+/* One-by-One Staggered Entrance + Sequential Lighting Pop (Dark Theme / Default) */
+.floating-social-btn-1 {
+  animation: socialEntrancePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards,
+             sequentialLightingPopDark 7.5s ease-in-out 1.5s infinite;
+}
+
+.floating-social-btn-2 {
+  animation: socialEntrancePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards,
+             sequentialLightingPopDark 7.5s ease-in-out 2.4s infinite;
+}
+
+.floating-social-btn-3 {
+  animation: socialEntrancePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s forwards,
+             sequentialLightingPopDark 7.5s ease-in-out 3.3s infinite;
+}
+
+.floating-social-btn-4 {
+  animation: socialEntrancePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s forwards,
+             sequentialLightingPopDark 7.5s ease-in-out 4.2s infinite;
+}
+
+/* One-by-One Staggered Entrance + Sequential Lighting Pop (Light Theme) */
+[data-theme="light"] .floating-social-btn-1 {
+  animation: socialEntrancePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards,
+             sequentialLightingPopLight 7.5s ease-in-out 1.5s infinite;
+}
+
+[data-theme="light"] .floating-social-btn-2 {
+  animation: socialEntrancePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.5s forwards,
+             sequentialLightingPopLight 7.5s ease-in-out 2.4s infinite;
+}
+
+[data-theme="light"] .floating-social-btn-3 {
+  animation: socialEntrancePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s forwards,
+             sequentialLightingPopLight 7.5s ease-in-out 3.3s infinite;
+}
+
+[data-theme="light"] .floating-social-btn-4 {
+  animation: socialEntrancePop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) 0.9s forwards,
+             sequentialLightingPopLight 7.5s ease-in-out 4.2s infinite;
+}
+
+/* Pause automatic animation when user hovers the dock for calm interaction */
+.floating-social-dock:hover .floating-social-btn {
+  animation-play-state: paused;
 }
 
 .floating-social-btn:hover {
-  background: var(--color-accent-gradient);
+  background: var(--color-accent-gradient) !important;
   color: #FFFFFF !important;
-  border-color: transparent;
-  transform: scale(1.12);
-  box-shadow: 0 6px 18px rgba(20, 184, 166, 0.4);
+  border-color: transparent !important;
+  transform: scale(1.15) !important;
+  box-shadow: 0 0 20px rgba(20, 184, 166, 0.75), 0 4px 14px rgba(0, 0, 0, 0.3) !important;
 }
 
 .floating-social-btn:hover svg {
@@ -1678,9 +1796,9 @@ h6 {
 }
 
 [data-theme="dark"] .floating-social-btn {
-  background: #16252E !important;
-  border-color: #1E3A3A !important;
-  color: #94A3B8 !important;
+  background: #16252E;
+  border-color: #1E3A3A;
+  color: #94A3B8;
 }
 
 [data-theme="dark"] .floating-social-btn:hover {
@@ -1732,4 +1850,16 @@ body.lightbox-open .chatbot-window {
   pointer-events: none !important;
   transform: translateY(60px) scale(0.9) !important;
   transition: all 0.3s ease !important;
+}
+
+/* Institutional logo boxes: ensure crisp, clean white background in both dark & light modes */
+.education-logo-box,
+.experience-logo-box {
+  background: #FFFFFF !important;
+}
+
+[data-theme="dark"] .education-logo-box,
+[data-theme="dark"] .experience-logo-box {
+  background: #FFFFFF !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.28) !important;
 }
