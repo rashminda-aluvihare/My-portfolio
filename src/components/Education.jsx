@@ -20,7 +20,7 @@ export default function Education() {
       location: 'Colombo, Sri Lanka',
       duration: '2025 - Present',
       status: 'Ongoing Studies',
-      qualificationLevel: 'Passed: IT, Digital Banking & Electronic Settlements',
+      qualificationLevel: 'Passed: IT, Digital Banking  and Settlements',
       logo: ibslLogo,
     },
     {
