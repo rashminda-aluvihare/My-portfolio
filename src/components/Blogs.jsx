@@ -1,5 +1,5 @@
-import { useState, useEffect } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { useState, useEffect, useRef } from 'react';
+import { ArrowRight, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const MEDIUM_USERNAME = '@rashmindaluvihare';
 const MEDIUM_PROFILE_URL = 'https://medium.com/@rashmindaluvihare';
@@ -30,6 +30,38 @@ const FALLBACK_BLOGS = [
 export default function Blogs() {
   const [blogs, setBlogs] = useState(FALLBACK_BLOGS);
   const [_loading, setLoading] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const scrollContainerRef = useRef(null);
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const container = scrollContainerRef.current;
+      const cardWidth = container.offsetWidth * 0.8;
+      const index = Math.round(container.scrollLeft / (cardWidth || 1));
+      setActiveIndex(Math.min(Math.max(index, 0), blogs.length - 1));
+    }
+  };
+
+  const scrollPrev = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: -290, behavior: 'smooth' });
+    }
+  };
+
+  const scrollNext = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ left: 290, behavior: 'smooth' });
+    }
+  };
+
+  const scrollToCard = (idx) => {
+    if (scrollContainerRef.current) {
+      const cards = scrollContainerRef.current.querySelectorAll('.blog-card-slot');
+      if (cards[idx]) {
+        cards[idx].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+      }
+    }
+  };
 
   // Helper to extract cover image from content or description if thumbnail field is empty
   const extractThumbnail = (item) => {
@@ -118,21 +150,50 @@ export default function Blogs() {
         <div className="blog-inner-container">
           {/* Section Header Row */}
           <div className="blog-header-row">
-            <h2 className="blog-header-title">Blogs</h2>
+            <div>
+              <h2 className="blog-header-title">Blogs</h2>
+              <p className="blog-mobile-subtitle">Swipe horizontally to browse articles</p>
+            </div>
 
-            <a
-              href={MEDIUM_PROFILE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="blog-view-all-link"
-            >
-              <span>View all</span>
-              <ArrowRight size={15} />
-            </a>
+            <div className="blog-header-actions">
+              {/* Mobile Prev / Next Arrow Controls */}
+              <div className="blog-mobile-nav-buttons">
+                <button
+                  type="button"
+                  onClick={scrollPrev}
+                  aria-label="Previous blog article"
+                  className="blog-nav-arrow-btn"
+                >
+                  <ChevronLeft size={16} />
+                </button>
+                <button
+                  type="button"
+                  onClick={scrollNext}
+                  aria-label="Next blog article"
+                  className="blog-nav-arrow-btn"
+                >
+                  <ChevronRight size={16} />
+                </button>
+              </div>
+
+              <a
+                href={MEDIUM_PROFILE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="blog-view-all-link"
+              >
+                <span>View all</span>
+                <ArrowRight size={15} />
+              </a>
+            </div>
           </div>
 
-          {/* Blogs Grid - 3 Card Slots Horizontally Side by Side */}
-          <div className="blog-cards-grid">
+          {/* Blogs Grid - Desktop 3 Columns / Mobile Smooth Horizontal Scroll */}
+          <div
+            ref={scrollContainerRef}
+            onScroll={handleScroll}
+            className="blog-cards-grid"
+          >
             {blogs.map((blog, index) => (
               <article key={index} className="blog-card-slot">
                 {/* Top Thumbnail Banner */}
@@ -195,6 +256,19 @@ export default function Blogs() {
                   </div>
                 </div>
               </article>
+            ))}
+          </div>
+
+          {/* Mobile Swipe / Carousel Dot Indicators */}
+          <div className="blog-mobile-indicators">
+            {blogs.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                onClick={() => scrollToCard(i)}
+                aria-label={`Go to article ${i + 1}`}
+                className={`blog-dot ${activeIndex === i ? 'active' : ''}`}
+              />
             ))}
           </div>
         </div>
@@ -407,7 +481,88 @@ export default function Blogs() {
           color: #2DD4BF !important;
         }
 
-        /* Responsive Breakpoints */
+        /* ── HEADER ACTIONS & CONTROLS ── */
+        .blog-header-actions {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+        }
+
+        .blog-mobile-subtitle {
+          display: none;
+          margin: 6px 0 0;
+          font-size: 0.82rem;
+          color: #64748B;
+          font-family: var(--font-display);
+          letter-spacing: 0.01em;
+        }
+
+        [data-theme="dark"] .blog-mobile-subtitle {
+          color: #94A3B8;
+        }
+
+        .blog-mobile-nav-buttons {
+          display: none;
+          align-items: center;
+          gap: 6px;
+        }
+
+        .blog-nav-arrow-btn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 34px;
+          height: 34px;
+          border-radius: 50%;
+          background: #FFFFFF;
+          border: 1px solid rgba(226, 232, 240, 0.95);
+          color: #0F172A;
+          cursor: pointer;
+          transition: all 0.2s ease;
+          box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+        }
+
+        [data-theme="dark"] .blog-nav-arrow-btn {
+          background: #16252E;
+          border-color: #1E3A3A;
+          color: #F8FAFC;
+          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-nav-arrow-btn:active {
+          transform: scale(0.92);
+          background: #14B8A6;
+          color: #FFFFFF;
+          border-color: #14B8A6;
+        }
+
+        /* ── MOBILE CAROUSEL DOT INDICATORS ── */
+        .blog-mobile-indicators {
+          display: none;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          margin-top: 14px;
+        }
+
+        .blog-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 999px;
+          border: none;
+          background: rgba(148, 163, 184, 0.35);
+          cursor: pointer;
+          padding: 0;
+          transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .blog-dot.active {
+          width: 24px;
+          background: #14B8A6;
+          box-shadow: 0 0 10px rgba(20, 184, 166, 0.6);
+        }
+
+        /* ── RESPONSIVE BREAKPOINTS ── */
         @media (max-width: 1024px) {
           .blog-cards-grid {
             grid-template-columns: repeat(2, 1fr);
@@ -415,14 +570,58 @@ export default function Blogs() {
           }
         }
 
-        @media (max-width: 680px) {
-          .blog-cards-grid {
-            grid-template-columns: 1fr;
-            gap: 20px;
+        /* Mobile View: Smooth Horizontal Touch Carousel (No vertical stack) */
+        @media (max-width: 768px) {
+          .blog-header-row {
+            margin-bottom: 20px;
           }
+
+          .blog-mobile-subtitle {
+            display: block;
+          }
+
+          .blog-mobile-nav-buttons {
+            display: flex;
+          }
+
+          .blog-mobile-indicators {
+            display: flex;
+          }
+
+          .blog-cards-grid {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            overflow-x: auto !important;
+            overflow-y: hidden !important;
+            scroll-snap-type: x mandatory !important;
+            -webkit-overflow-scrolling: touch !important;
+            gap: 16px !important;
+            padding: 8px 16px 20px 16px !important;
+            margin-left: -16px !important;
+            margin-right: -16px !important;
+            scroll-padding: 0 16px !important;
+            scrollbar-width: none;
+          }
+
+          .blog-cards-grid::-webkit-scrollbar {
+            display: none;
+          }
+
+          .blog-card-slot {
+            flex: 0 0 85% !important;
+            max-width: 320px !important;
+            min-width: 270px !important;
+            scroll-snap-align: start !important;
+            height: auto !important;
+            display: flex !important;
+            flex-direction: column !important;
+          }
+
           .blog-slot-body {
             padding: 18px 20px 20px !important;
           }
+
           .blog-slot-title {
             font-size: 1.05rem !important;
             min-height: auto !important;

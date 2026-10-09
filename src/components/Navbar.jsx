@@ -51,6 +51,18 @@ export default function Navbar({ theme = 'dark', toggleTheme }) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
+
   return (
     <nav
       className="portfolio-navbar"
@@ -61,7 +73,7 @@ export default function Navbar({ theme = 'dark', toggleTheme }) {
         transform: 'translateX(-50%)',
         width: 'max-content',
         maxWidth: '92%',
-        zIndex: 1000,
+        zIndex: isOpen ? 99996 : 1000,
         borderRadius: '999px',
         padding: scrolled ? '7px 18px' : '9px 22px',
         background: isDark
@@ -277,10 +289,10 @@ export default function Navbar({ theme = 'dark', toggleTheme }) {
             style={{
               position: 'fixed',
               inset: 0,
-              background: 'rgba(11, 20, 25, 0.65)',
-              backdropFilter: 'blur(4px)',
-              WebkitBackdropFilter: 'blur(4px)',
-              zIndex: 99998,
+              background: isDark ? 'rgba(5, 12, 16, 0.72)' : 'rgba(15, 23, 42, 0.45)',
+              backdropFilter: 'blur(6px)',
+              WebkitBackdropFilter: 'blur(6px)',
+              zIndex: 99990,
             }}
           />
         <div
@@ -294,9 +306,7 @@ export default function Navbar({ theme = 'dark', toggleTheme }) {
             margin: '0 auto',
             maxHeight: 'calc(100vh - 80px)',
             overflowY: 'auto',
-            background: isDark ? '#111C22' : 'rgba(255, 255, 255, 0.98)',
-            backdropFilter: 'blur(20px)',
-            WebkitBackdropFilter: 'blur(20px)',
+            background: isDark ? '#111C22' : '#FFFFFF',
             border: isDark ? '1px solid #1E3A3A' : '1px solid rgba(226, 232, 240, 0.95)',
             borderRadius: '20px',
             padding: '16px 14px',
@@ -306,7 +316,7 @@ export default function Navbar({ theme = 'dark', toggleTheme }) {
             display: 'flex',
             flexDirection: 'column',
             gap: '12px',
-            zIndex: 1001,
+            zIndex: 99995,
             animation: 'modalFadeIn 0.22s ease',
           }}
         >
@@ -315,9 +325,27 @@ export default function Navbar({ theme = 'dark', toggleTheme }) {
             <span style={{ fontSize: '0.76rem', fontWeight: 800, letterSpacing: '0.08em', color: '#14B8A6', textTransform: 'uppercase', fontFamily: 'var(--font-display)' }}>
               Navigation Menu
             </span>
-            <span style={{ fontSize: '0.74rem', color: isDark ? '#94A3B8' : '#64748B' }}>
-              Select a section
-            </span>
+            <button
+              onClick={() => setIsOpen(false)}
+              aria-label="Close menu"
+              style={{
+                background: isDark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.05)',
+                border: isDark ? '1px solid #1E3A3A' : '1px solid rgba(226, 232, 240, 0.9)',
+                cursor: 'pointer',
+                color: isDark ? '#94A3B8' : '#64748B',
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '4px',
+                fontSize: '0.76rem',
+                fontWeight: 600,
+                padding: '4px 8px',
+                borderRadius: '8px',
+                transition: 'all 0.15s ease',
+              }}
+            >
+              <span>Close</span>
+              <X size={13} />
+            </button>
           </div>
 
           <ul
