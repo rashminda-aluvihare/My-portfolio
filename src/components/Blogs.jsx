@@ -150,10 +150,7 @@ export default function Blogs() {
         <div className="blog-inner-container">
           {/* Section Header Row */}
           <div className="blog-header-row">
-            <div>
-              <h2 className="blog-header-title">Blogs</h2>
-              <p className="blog-mobile-subtitle">Swipe horizontally to browse articles</p>
-            </div>
+            <h2 className="blog-header-title">Blogs</h2>
 
             <div className="blog-header-actions">
               {/* Mobile Prev / Next Arrow Controls */}
@@ -488,19 +485,6 @@ export default function Blogs() {
           gap: 12px;
         }
 
-        .blog-mobile-subtitle {
-          display: none;
-          margin: 6px 0 0;
-          font-size: 0.82rem;
-          color: #64748B;
-          font-family: var(--font-display);
-          letter-spacing: 0.01em;
-        }
-
-        [data-theme="dark"] .blog-mobile-subtitle {
-          color: #94A3B8;
-        }
-
         .blog-mobile-nav-buttons {
           display: none;
           align-items: center;
@@ -574,10 +558,6 @@ export default function Blogs() {
         @media (max-width: 768px) {
           .blog-header-row {
             margin-bottom: 20px;
-          }
-
-          .blog-mobile-subtitle {
-            display: block;
           }
 
           .blog-mobile-nav-buttons {
