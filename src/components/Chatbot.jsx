@@ -97,9 +97,9 @@ export default function Chatbot() {
     }
 
     // 5. Blogs / Articles / Medium Publications
-    if (text.match(/(blog|article|medium|post|publication|tokenization|e-wallet|reengineering|writing|read)/i)) {
+    if (text.match(/(blog|article|medium|post|publication|tokenization|e-wallet|reengineering|writing|read|reconciliation|payment)/i)) {
       return {
-        text: "📝 **Rashminda's Articles on Medium**:\n\n1. 💳 **How E-Wallets Work: The Role of Tokenization in Digital Payments**\n   - Demystifying how payment tokenization (PAN replacement, network tokens) secures mobile transactions.\n2. 🔄 **Business Process Reengineering vs. Continuous Improvement**\n   - A Business Analyst's guide to choosing between radical transformation (BPR) and incremental enhancement (CI).",
+        text: "📝 **Rashminda's Articles on Medium**:\n\n1. ⚖️ **When Digital Payments Don't Match: Understanding Payment Reconciliation**\n   - Operational guide to transaction reconciliation, clearing vs. settlement mechanics, and resolving payment discrepancies.\n2. 💳 **How E-Wallets Work: The Role of Tokenization in Digital Payments**\n   - Demystifying how payment tokenization (PAN replacement, network tokens) secures mobile transactions.\n3. 🔄 **Business Process Reengineering vs. Continuous Improvement**\n   - A Business Analyst's guide to choosing between radical transformation (BPR) and incremental enhancement (CI).",
         actionBtn: { label: 'Explore Blogs Section', targetId: 'blogs' },
         suggestions: ['🚀 View Projects', '⚡ Technical Skills', '📩 Contact Info']
       };

@@ -1,25 +1,29 @@
 import { useState, useEffect } from 'react';
-import { Calendar, Clock, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 const MEDIUM_USERNAME = '@rashmindaluvihare';
 const MEDIUM_PROFILE_URL = 'https://medium.com/@rashmindaluvihare';
 const RSS_API_URL = `https://api.rss2json.com/v1/api.json?rss_url=https://medium.com/feed/${MEDIUM_USERNAME}`;
 
-// Reliable fallback so the section is never empty
+// Reliable fallback with all 3 published articles so the section is always populated and fast
 const FALLBACK_BLOGS = [
+  {
+    title: 'When Digital Payments Don’t Match: Understanding Payment Reconciliation',
+    pubDate: '2026-10-09 10:17:00',
+    link: 'https://medium.com/@rashmindaluvihare/when-digital-payments-dont-match-understanding-payment-reconciliation-d04d48a9de9b',
+    thumbnail: '/payment_reconciliation.png',
+  },
   {
     title: 'How E-Wallets Work: The Role of Tokenization in Digital Payments',
     pubDate: '2026-09-21 12:08:14',
     link: 'https://medium.com/@rashmindaluvihare/how-e-wallets-work-the-role-of-tokenization-in-digital-payments-029e24889091',
     thumbnail: '/ewallet_tokenization.png',
-    readTime: '3 min read',
   },
   {
     title: 'Business Process Reengineering vs. Continuous Improvement',
     pubDate: '2026-09-13 13:10:01',
     link: 'https://medium.com/@rashmindaluvihare/business-process-reengineering-vs-continuous-improvement-22ebf5bbf0b1',
     thumbnail: '/bpr_vs_ci.png',
-    readTime: '4 min read',
   },
 ];
 
@@ -29,6 +33,13 @@ export default function Blogs() {
 
   // Helper to extract cover image from content or description if thumbnail field is empty
   const extractThumbnail = (item) => {
+    const titleLower = (item.title || '').toLowerCase();
+    if (titleLower.includes('reconciliation') || titleLower.includes('match')) {
+      return '/payment_reconciliation.png';
+    }
+    if (titleLower.includes('tokenization') || titleLower.includes('wallet')) {
+      return '/ewallet_tokenization.png';
+    }
     if (item.thumbnail && item.thumbnail.trim() !== '') {
       return item.thumbnail;
     }
@@ -37,19 +48,7 @@ export default function Blogs() {
     if (match && match[1]) {
       return match[1];
     }
-    if (item.title && item.title.toLowerCase().includes('tokenization')) {
-      return '/ewallet_tokenization.png';
-    }
     return '/bpr_vs_ci.png';
-  };
-
-  // Helper to estimate reading time
-  const calculateReadTime = (item) => {
-    const raw = item.content || item.description || '';
-    const text = raw.replace(/<[^>]+>/g, '');
-    const wordCount = text.split(/\s+/).filter(Boolean).length;
-    const minutes = Math.max(2, Math.ceil(wordCount / 200));
-    return `${minutes} min read`;
   };
 
   useEffect(() => {
@@ -66,11 +65,9 @@ export default function Blogs() {
             pubDate: item.pubDate,
             link: item.link ? item.link.split('?')[0] : '',
             thumbnail: extractThumbnail(item),
-            readTime: calculateReadTime(item),
           }));
 
-          // Merge live fetched items with static FALLBACK_BLOGS so static fallback items are retained
-          // even if the external RSS-to-JSON service returns stale or partial items.
+          // Merge live fetched items with static FALLBACK_BLOGS
           const blogsMap = new Map();
           parsedBlogs.forEach((blog) => {
             const key = blog.title.toLowerCase().trim();
@@ -114,7 +111,7 @@ export default function Blogs() {
       style={{
         position: 'relative',
         overflow: 'hidden',
-        padding: 'clamp(60px, 8vw, 90px) 0',
+        padding: 'clamp(60px, 8vw, 95px) 0',
       }}
     >
       <div className="container">
@@ -134,34 +131,34 @@ export default function Blogs() {
             </a>
           </div>
 
-          {/* Blogs List */}
-          <div className="blog-cards-list">
-          {blogs.map((blog, index) => {
-            const formattedDate = new Date(blog.pubDate).toLocaleDateString('en-US', {
-              year: 'numeric',
-              month: 'short',
-              day: 'numeric',
-            });
-
-            return (
-              <article key={index} className="blog-compact-card">
-                {/* Left Thumbnail Image */}
+          {/* Blogs Grid - 3 Card Slots Horizontally Side by Side */}
+          <div className="blog-cards-grid">
+            {blogs.map((blog, index) => (
+              <article key={index} className="blog-card-slot">
+                {/* Top Thumbnail Banner */}
                 <a
                   href={blog.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="blog-thumb-wrapper"
+                  className="blog-slot-banner"
                   aria-label={blog.title}
                 >
                   <img
                     src={blog.thumbnail}
                     alt={blog.title}
-                    className="blog-thumb-img"
+                    className="blog-slot-img"
                     loading="lazy"
                     decoding="async"
                     onError={(e) => {
                       e.currentTarget.onerror = null;
-                      if (blog.title && blog.title.toLowerCase().includes('tokenization')) {
+                      if (blog.localFallback) {
+                        e.currentTarget.src = blog.localFallback;
+                        return;
+                      }
+                      const title = (blog.title || '').toLowerCase();
+                      if (title.includes('reconciliation') || title.includes('match')) {
+                        e.currentTarget.src = '/payment_reconciliation.png';
+                      } else if (title.includes('tokenization') || title.includes('wallet')) {
                         e.currentTarget.src = '/ewallet_tokenization.png';
                       } else {
                         e.currentTarget.src = '/bpr_vs_ci.png';
@@ -170,57 +167,44 @@ export default function Blogs() {
                   />
                 </a>
 
-                {/* Right Content */}
-                <div className="blog-content-col">
-                  {/* Meta: Date & Read time */}
-                  <div className="blog-meta-line">
-                    <span className="blog-meta-item">
-                      <Calendar size={13} className="blog-meta-cal-icon" />
-                      <span>{formattedDate}</span>
-                    </span>
-                    <span className="blog-meta-dot">•</span>
-                    <span className="blog-meta-item">
-                      <Clock size={13} className="blog-meta-clock-icon" />
-                      <span>{blog.readTime || '4 min read'}</span>
-                    </span>
-                  </div>
-
-                  {/* Title */}
-                  <h3 className="blog-card-heading">
+                {/* Card Slot Content Body */}
+                <div className="blog-slot-body">
+                  {/* Title Link */}
+                  <h3 className="blog-slot-title">
                     <a
                       href={blog.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="blog-heading-link"
+                      className="blog-slot-title-link"
                     >
                       {blog.title}
                     </a>
                   </h3>
 
-                  {/* Read Story Link */}
-                  <a
-                    href={blog.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="blog-read-story-btn"
-                  >
-                    <span>Read Story</span>
-                    <ArrowRight size={14} className="blog-read-arrow" />
-                  </a>
+                  {/* Card Footer Action */}
+                  <div className="blog-slot-footer">
+                    <a
+                      href={blog.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="blog-slot-action-btn"
+                    >
+                      <span>Read Story</span>
+                      <ArrowRight size={14} className="blog-slot-arrow" />
+                    </a>
+                  </div>
                 </div>
               </article>
-            );
-          })}
-        </div>
+            ))}
+          </div>
         </div>
       </div>
 
       <style>{`
-        /* Inner Container - Left Aligned to match other sections */
+        /* Inner Container - Full width matching container (1240px) */
         .blog-inner-container {
-          max-width: 860px;
           width: 100%;
-          margin: 0;
+          margin: 0 auto;
         }
 
         /* Header Row */
@@ -261,122 +245,104 @@ export default function Blogs() {
           gap: 9px;
         }
 
-        /* Cards List */
-        .blog-cards-list {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
+        /* ── HORIZONTAL CARD SLOTS GRID ── */
+        .blog-cards-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+          width: 100%;
         }
 
-        /* Compact Horizontal Card */
-        .blog-compact-card {
+        /* Individual Card Slot */
+        .blog-card-slot {
           display: flex;
-          align-items: center;
-          gap: 20px;
+          flex-direction: column;
           background: #FFFFFF;
           border: 1px solid rgba(226, 232, 240, 0.95);
           border-radius: 20px;
-          padding: 16px 20px;
+          overflow: hidden;
           box-shadow: 0 4px 20px rgba(15, 23, 42, 0.04);
-          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+          transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+          height: 100%;
         }
 
-        .blog-compact-card:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 10px 30px rgba(20, 184, 166, 0.12);
-          border-color: rgba(20, 184, 166, 0.35);
+        .blog-card-slot:hover {
+          transform: translateY(-6px);
+          box-shadow: 0 16px 36px rgba(20, 184, 166, 0.14);
+          border-color: rgba(20, 184, 166, 0.45);
         }
 
-        /* Thumbnail Image */
-        .blog-thumb-wrapper {
-          width: 170px;
-          height: 125px;
-          flex-shrink: 0;
-          border-radius: 14px;
+        /* Top Thumbnail Banner */
+        .blog-slot-banner {
+          position: relative;
+          width: 100%;
+          aspect-ratio: 16 / 9.5;
+          background: #0E171E;
           overflow: hidden;
           display: block;
-          background: #F8FAFC;
         }
 
-        .blog-thumb-img {
+        .blog-slot-img {
           width: 100%;
           height: 100%;
           object-fit: cover;
           object-position: center;
           display: block;
-          transition: transform 0.4s ease;
+          transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .blog-compact-card:hover .blog-thumb-img {
-          transform: scale(1.04);
+        .blog-card-slot:hover .blog-slot-img {
+          transform: scale(1.06);
         }
 
-        /* Content Column */
-        .blog-content-col {
+        /* Card Slot Content Body */
+        .blog-slot-body {
           display: flex;
           flex-direction: column;
-          justifyContent: center;
-          gap: 10px;
+          justify-content: space-between;
+          padding: 22px 24px 24px;
           flex: 1;
-          min-width: 0;
+          gap: 20px;
         }
 
-        /* Meta Line */
-        .blog-meta-line {
-          display: flex;
-          align-items: center;
-          gap: 8px;
-          font-size: 0.82rem;
-          font-weight: 500;
-          color: #64748B;
-          font-family: var(--font-display);
-        }
-
-        .blog-meta-item {
-          display: inline-flex;
-          align-items: center;
-          gap: 5px;
-        }
-
-        .blog-meta-cal-icon {
-          color: #14B8A6;
-        }
-
-        .blog-meta-clock-icon {
-          color: #94A3B8;
-        }
-
-        .blog-meta-dot {
-          color: #CBD5E1;
-        }
-
-        /* Card Heading */
-        .blog-card-heading {
-          font-size: clamp(1.05rem, 2vw, 1.22rem);
+        /* Title */
+        .blog-slot-title {
+          font-size: 1.16rem;
           font-weight: 800;
-          line-height: 1.35;
+          line-height: 1.4;
           margin: 0;
           letter-spacing: -0.02em;
           font-family: var(--font-display);
+          display: -webkit-box;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+          overflow: hidden;
+          min-height: 4.2em;
         }
 
-        .blog-heading-link {
+        .blog-slot-title-link {
           color: #0F172A;
           text-decoration: none;
           transition: color 0.2s ease;
         }
 
-        .blog-heading-link:hover {
+        .blog-slot-title-link:hover {
           color: #14B8A6;
         }
 
-        /* Read Story Button */
-        .blog-read-story-btn {
+        /* Footer Action */
+        .blog-slot-footer {
+          display: flex;
+          align-items: center;
+          margin-top: auto;
+        }
+
+        .blog-slot-action-btn {
           display: inline-flex;
           align-items: center;
           gap: 6px;
           color: #14B8A6;
-          font-size: 0.9rem;
+          font-size: 0.92rem;
           font-weight: 700;
           text-decoration: none;
           transition: gap 0.2s ease, color 0.2s ease;
@@ -384,17 +350,17 @@ export default function Blogs() {
           width: fit-content;
         }
 
-        .blog-read-story-btn:hover {
+        .blog-slot-action-btn:hover {
           color: #0F766E;
-          gap: 9px;
+          gap: 10px;
         }
 
-        .blog-read-arrow {
+        .blog-slot-arrow {
           transition: transform 0.2s ease;
         }
 
-        .blog-read-story-btn:hover .blog-read-arrow {
-          transform: translateX(2px);
+        .blog-slot-action-btn:hover .blog-slot-arrow {
+          transform: translateX(3px);
         }
 
         /* Dark Mode Overrides */
@@ -406,63 +372,60 @@ export default function Blogs() {
           color: #14B8A6 !important;
         }
 
-        [data-theme="dark"] .blog-compact-card {
+        [data-theme="dark"] .blog-view-all-link:hover {
+          color: #2DD4BF !important;
+        }
+
+        [data-theme="dark"] .blog-card-slot {
           background: #111C22 !important;
           border-color: #1E3A3A !important;
           box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
         }
 
-        [data-theme="dark"] .blog-compact-card:hover {
+        [data-theme="dark"] .blog-card-slot:hover {
           border-color: #14B8A6 !important;
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.55), 0 0 20px rgba(20, 184, 166, 0.15) !important;
+          box-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), 0 0 24px rgba(20, 184, 166, 0.18) !important;
         }
 
-        [data-theme="dark"] .blog-thumb-wrapper {
+        [data-theme="dark"] .blog-slot-banner {
           background: #0B1419 !important;
         }
 
-        [data-theme="dark"] .blog-heading-link {
+        [data-theme="dark"] .blog-slot-title-link {
           color: #F8FAFC !important;
         }
 
-        [data-theme="dark"] .blog-heading-link:hover {
+        [data-theme="dark"] .blog-slot-title-link:hover {
           color: #2DD4BF !important;
         }
 
-        [data-theme="dark"] .blog-meta-line {
-          color: #94A3B8 !important;
-        }
-
-        [data-theme="dark"] .blog-read-story-btn {
+        [data-theme="dark"] .blog-slot-action-btn {
           color: #14B8A6 !important;
         }
 
-        /* Mobile Breakpoint */
-        @media (max-width: 560px) {
-          .blog-compact-card {
-            padding: 12px 14px !important;
-            gap: 14px !important;
+        [data-theme="dark"] .blog-slot-action-btn:hover {
+          color: #2DD4BF !important;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+          .blog-cards-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
           }
-          .blog-thumb-wrapper {
-            width: 115px !important;
-            height: 95px !important;
-            border-radius: 10px !important;
+        }
+
+        @media (max-width: 680px) {
+          .blog-cards-grid {
+            grid-template-columns: 1fr;
+            gap: 20px;
           }
-          .blog-card-heading {
-            font-size: 0.95rem !important;
-            line-height: 1.3 !important;
+          .blog-slot-body {
+            padding: 18px 20px 20px !important;
           }
-          .blog-meta-line {
-            font-size: 0.74rem !important;
-            gap: 6px !important;
-          }
-          .blog-read-story-btn {
-            font-size: 0.82rem !important;
-          }
-          .blog-header-row {
-            flex-direction: column !important;
-            align-items: flex-start !important;
-            gap: 12px !important;
+          .blog-slot-title {
+            font-size: 1.05rem !important;
+            min-height: auto !important;
           }
         }
       `}</style>

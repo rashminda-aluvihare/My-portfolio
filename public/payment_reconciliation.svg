@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0B1419" />
+      <stop offset="50%" stop-color="#111C22" />
+      <stop offset="100%" stop-color="#0E171E" />
+    </linearGradient>
+    <linearGradient id="tealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2DD4BF" />
+      <stop offset="100%" stop-color="#0F766E" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#16252E" />
+      <stop offset="100%" stop-color="#0F171F" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="675" fill="url(#bg)" />
+
+  <!-- Grid lines -->
+  <g stroke="rgba(30, 58, 58, 0.4)" stroke-width="1">
+    <line x1="0" y1="135" x2="1200" y2="135" />
+    <line x1="0" y1="270" x2="1200" y2="270" />
+    <line x1="0" y1="405" x2="1200" y2="405" />
+    <line x1="0" y1="540" x2="1200" y2="540" />
+    <line x1="240" y1="0" x2="240" y2="675" />
+    <line x1="480" y1="0" x2="480" y2="675" />
+    <line x1="720" y1="0" x2="720" y2="675" />
+    <line x1="960" y1="0" x2="960" y2="675" />
+  </g>
+
+  <!-- Title Badge -->
+  <rect x="80" y="70" width="220" height="36" rx="18" fill="rgba(20, 184, 166, 0.15)" stroke="#14B8A6" stroke-width="1.5" />
+  <text x="190" y="93" fill="#2DD4BF" font-family="'Inter', sans-serif" font-size="14" font-weight="700" letter-spacing="1" text-anchor="middle">PAYMENT RECONCILIATION</text>
+
+  <!-- Main Headline in graphic -->
+  <text x="80" y="150" fill="#FFFFFF" font-family="'Inter', sans-serif" font-size="34" font-weight="800">When Digital Payments Don’t Match</text>
+  <text x="80" y="185" fill="#94A3B8" font-family="'Inter', sans-serif" font-size="18">Understanding Internal Ledgers, Payment Gateways &amp; Bank Settlements</text>
+
+  <!-- Flow Diagrams / 3 Slots -->
+  <!-- Step 1: Merchant / App Ledger -->
+  <g transform="translate(80, 230)">
+    <rect width="310" height="340" rx="20" fill="url(#cardGrad)" stroke="#1E3A3A" stroke-width="1.5" />
+    <circle cx="50" cy="50" r="24" fill="rgba(20, 184, 166, 0.15)" />
+    <!-- Ledger Icon -->
+    <path d="M40 40h20v20H40z" fill="none" stroke="#2DD4BF" stroke-width="2" />
+    <path d="M45 46h10M45 52h10" stroke="#2DD4BF" stroke-width="2" stroke-linecap="round" />
+    <text x="90" y="56" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="18" font-weight="700">1. Internal Ledger</text>
+
+    <!-- Details -->
+    <rect x="25" y="100" width="260" height="42" rx="10" fill="#0B1419" stroke="rgba(30,58,58,0.8)" />
+    <text x="40" y="126" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="13">TXN_ID #98421 • $150.00</text>
+
+    <rect x="25" y="155" width="260" height="42" rx="10" fill="#0B1419" stroke="rgba(30,58,58,0.8)" />
+    <text x="40" y="181" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="13">STATUS: CAPTURED</text>
+
+    <rect x="25" y="210" width="260" height="42" rx="10" fill="#0B1419" stroke="rgba(30,58,58,0.8)" />
+    <text x="40" y="236" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="13">TIMESTAMP: 10:14:02 UTC</text>
+
+    <!-- Status pill -->
+    <rect x="25" y="275" width="260" height="36" rx="8" fill="rgba(20, 184, 166, 0.12)" stroke="rgba(20, 184, 166, 0.4)" />
+    <text x="155" y="298" fill="#2DD4BF" font-family="'Inter', sans-serif" font-size="13" font-weight="600" text-anchor="middle">Order Placed on App</text>
+  </g>
+
+  <!-- Step 2: Payment Gateway / Processor -->
+  <g transform="translate(445, 230)">
+    <rect width="310" height="340" rx="20" fill="url(#cardGrad)" stroke="#14B8A6" stroke-width="2" filter="url(#glow)" opacity="0.3" />
+    <rect width="310" height="340" rx="20" fill="url(#cardGrad)" stroke="#14B8A6" stroke-width="1.8" />
+    <circle cx="50" cy="50" r="24" fill="rgba(20, 184, 166, 0.2)" />
+    <!-- Gateway Icon -->
+    <path d="M42 42h16l-3 16h-10z" fill="none" stroke="#2DD4BF" stroke-width="2" />
+    <circle cx="50" cy="50" r="3" fill="#2DD4BF" />
+    <text x="90" y="56" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="18" font-weight="700">2. Gateway Report</text>
+
+    <!-- Details -->
+    <rect x="25" y="100" width="260" height="42" rx="10" fill="#0B1419" stroke="rgba(20,184,166,0.3)" />
+    <text x="40" y="126" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="13">AUTH_CODE #OK_7718</text>
+
+    <rect x="25" y="155" width="260" height="42" rx="10" fill="#0B1419" stroke="rgba(20,184,166,0.3)" />
+    <text x="40" y="181" fill="#F8FAFC" font-family="'JetBrains Mono', monospace" font-size="13">SETTLED: $146.50 (FEE $3.50)</text>
+
+    <rect x="25" y="210" width="260" height="42" rx="10" fill="#0B1419" stroke="rgba(20,184,166,0.3)" />
+    <text x="40" y="236" fill="#F59E0B" font-family="'JetBrains Mono', monospace" font-size="13">DISCREPANCY: BATCH DELAY</text>
+
+    <!-- Status pill -->
+    <rect x="25" y="275" width="260" height="36" rx="8" fill="rgba(45, 212, 191, 0.2)" stroke="#2DD4BF" />
+    <text x="155" y="298" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="13" font-weight="700" text-anchor="middle">Clearing vs Settlement</text>
+  </g>
+
+  <!-- Step 3: Bank Settlement & Recon -->
+  <g transform="translate(810, 230)">
+    <rect width="310" height="340" rx="20" fill="url(#cardGrad)" stroke="#1E3A3A" stroke-width="1.5" />
+    <circle cx="50" cy="50" r="24" fill="rgba(20, 184, 166, 0.15)" />
+    <!-- Bank Icon -->
+    <path d="M38 58h24M50 38l12 10H38zM42 48v8M50 48v8M58 48v8" stroke="#2DD4BF" stroke-width="2" stroke-linecap="round" fill="none" />
+    <text x="90" y="56" fill="#F8FAFC" font-family="'Inter', sans-serif" font-size="18" font-weight="700">3. Bank Settlement</text>
+
+    <!-- Details -->
+    <rect x="25" y="100" width="260" height="42" rx="10" fill="#0B1419" stroke="rgba(30,58,58,0.8)" />
+    <text x="40" y="126" fill="#2DD4BF" font-family="'JetBrains Mono', monospace" font-size="13">BANK CREDIT • $146.50</text>
+
+    <rect x="25" y="155" width="260" height="42" rx="10" fill="#0B1419" stroke="rgba(30,58,58,0.8)" />
+    <text x="40" y="181" fill="#10B981" font-family="'JetBrains Mono', monospace" font-size="13">RECONCILED: MATCH 100%</text>
+
+    <rect x="25" y="210" width="260" height="42" rx="10" fill="#0B1419" stroke="rgba(30,58,58,0.8)" />
+    <text x="40" y="236" fill="#94A3B8" font-family="'JetBrains Mono', monospace" font-size="13">CYCLE: T+1 SETTLEMENT</text>
+
+    <!-- Status pill -->
+    <rect x="25" y="275" width="260" height="36" rx="8" fill="rgba(16, 185, 129, 0.15)" stroke="#10B981" />
+    <text x="155" y="298" fill="#34D399" font-family="'Inter', sans-serif" font-size="13" font-weight="600" text-anchor="middle">Automated 3-Way Match</text>
+  </g>
+
+  <!-- Connectors / Arrows -->
+  <path d="M395 400 L440 400" stroke="#14B8A6" stroke-width="2.5" stroke-dasharray="4 4" />
+  <polygon points="440,395 448,400 440,405" fill="#14B8A6" />
+
+  <path d="M760 400 L805 400" stroke="#14B8A6" stroke-width="2.5" stroke-dasharray="4 4" />
+  <polygon points="805,395 813,400 805,405" fill="#14B8A6" />
+</svg>
